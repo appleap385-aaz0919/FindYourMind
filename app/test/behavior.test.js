@@ -182,3 +182,76 @@ test("잘리거나 빈 응답은 캐시에 들어가지 못한다", () => {
     assert.equal(isCompleteVideosPayload(bad), false, `통과하면 안 됨: ${JSON.stringify(bad)}`);
   }
 });
+
+// --- label 회귀: 사용자가 가장 먼저 떠올리는 말은 카테고리 이름 그 자체다 -----
+
+test("세분류 label 24개가 전부 매칭된다", () => {
+  const missed = [];
+  for (const category of taxonomy.categories) {
+    for (const sub of category.subcategories) {
+      const outcome = classify(sub.label, taxonomy);
+      if (outcome.kind !== RESULT.OK && outcome.kind !== RESULT.CATEGORY) {
+        missed.push(`${sub.id}(${sub.label})`);
+      }
+    }
+  }
+  assert.deepEqual(missed, [], `미매칭 label: ${missed.join(", ")}`);
+});
+
+test("대분류 label 9개가 전부 매칭된다", () => {
+  const missed = [];
+  for (const category of taxonomy.categories) {
+    const outcome = classify(category.label, taxonomy);
+    if (outcome.kind !== RESULT.OK && outcome.kind !== RESULT.CATEGORY) {
+      missed.push(`${category.id}(${category.label})`);
+    }
+  }
+  assert.deepEqual(missed, [], `미매칭 label: ${missed.join(", ")}`);
+});
+
+test("모든 대분류에 폴백 keywords가 있다", () => {
+  for (const category of taxonomy.categories) {
+    assert.ok(
+      Array.isArray(category.keywords) && category.keywords.length > 0,
+      `${category.id}: 대분류 keywords 없음`,
+    );
+  }
+});
+
+test("'답답해'는 frustration 대분류로 떨어져 선택 UI로 간다", () => {
+  const outcome = classify("답답해", taxonomy);
+  assert.equal(outcome.kind, RESULT.CATEGORY);
+  assert.equal(outcome.category.id, "frustration");
+});
+
+test("label 활용형이 어간 매칭으로 잡힌다", () => {
+  for (const input of [
+    "답답하다", "답답한", "답답함", "답답하네요",
+    "불안해", "불안하다",
+    "외로워", "외로움", "외롭다",
+    "즐거워", "즐거움",
+    "슬퍼", "슬픔", "슬프다",
+  ]) {
+    const outcome = classify(input, taxonomy);
+    assert.ok(
+      outcome.kind === RESULT.OK || outcome.kind === RESULT.CATEGORY,
+      `"${input}" 미매칭`,
+    );
+  }
+});
+
+test("세분류가 걸리면 대분류 폴백보다 우선한다", () => {
+  // "우울"은 sadness 대분류 keywords에도, sadness.sorrow 세분류에도 있다.
+  const outcome = classify("우울해", taxonomy);
+  assert.equal(outcome.kind, RESULT.OK);
+  assert.equal(outcome.subcategory.id, "sadness.sorrow");
+});
+
+test("위기 검사는 대분류 폴백보다도 먼저다", () => {
+  // "답답"(대분류 폴백)과 위기 키워드가 함께 있어도 위기가 이긴다.
+  assert.equal(classify("답답해서 죽고싶다", taxonomy).kind, RESULT.CRISIS);
+});
+
+test("체계에 없는 감정은 여전히 nomatch다 (기록 대상)", () => {
+  assert.equal(classify("혼란스러워", taxonomy).kind, RESULT.NO_MATCH);
+});

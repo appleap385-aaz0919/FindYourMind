@@ -308,6 +308,7 @@ categories:
 
   - id: anxiety
     label: 불안
+    keywords: [불안]   # 대분류 폴백용 — 세분류가 하나도 안 걸릴 때만 쓴다
     subcategories:
       - id: anxiety.restless
         label: 초조함
@@ -416,6 +417,7 @@ categories:
 
   - id: anger
     label: 분노
+    keywords: [분노]   # 대분류 폴백용 — 세분류가 하나도 안 걸릴 때만 쓴다
     subcategories:
       - id: anger.irritation
         label: 짜증
@@ -524,6 +526,7 @@ categories:
 
   - id: frustration
     label: 답답함
+    keywords: [답답]   # 대분류 폴백용 — 세분류가 하나도 안 걸릴 때만 쓴다
     subcategories:
       - id: frustration.stuck
         label: 막막함
@@ -573,7 +576,7 @@ categories:
           - "조금 물러나서 보면 달라 보이기도 해요."
           - "쉬는 것도 진도에 포함돼요."
         tone: 환기
-        keywords: [안풀려, 안풀린, 제자리, 진도가안, 진전이없, 벽에막힌, 벽에부딪,
+        keywords: [안풀려, 안풀린, 제자리, 진도가안, 진전없, 진전이없, 벽에막힌, 벽에부딪,
                    노력해도, 열심히해도, 성과가없, 결과가안, 정체, 늪에빠진, 답보,
                    나아지지않, 변화가없, 그대로, 계속실패, 몇번째, 되는일이없, 꽉막힌,
                    숨통이, 진척이없]
@@ -631,6 +634,7 @@ categories:
 
   - id: sadness
     label: 우울
+    keywords: [우울]   # 대분류 폴백용 — 세분류가 하나도 안 걸릴 때만 쓴다
     subcategories:
       - id: sadness.sorrow
         label: 슬픔
@@ -646,7 +650,7 @@ categories:
           - "웃음이 안 나는 날도 있어요."
           - "이유가 없어도 슬플 수 있어요."
         tone: 위로
-        keywords: [슬퍼, 슬프, 눈물이, 눈물나, 울고싶, 울었, 마음이아파, 가슴이아파,
+        keywords: [슬픔, 슬퍼, 슬프, 눈물이, 눈물나, 울고싶, 울었, 마음이아파, 가슴이아파,
                    울적, 서글, 가라앉, 우울, 침울, 마음이무거, 기분이바닥, 다운돼,
                    축처지, 웃음이안나, 아무것도즐겁지, 세상이회색, ㅠㅠ, 흑흑, 훌쩍]
         search_queries:
@@ -680,7 +684,7 @@ categories:
           - "이 마음, 생각보다 많은 사람이 알아요."
           - "오늘은 조용히 함께 있어요."
         tone: 위로
-        keywords: [외로워, 외롭, 혼자, 쓸쓸, 허전, 그리워, 그립, 아무도없, 소외,
+        keywords: [외로, 외로움, 외롭, 혼자, 쓸쓸, 허전, 그리워, 그립, 아무도없, 소외,
                    공허, 곁에없, 연락올사람, 말할사람이없, 나혼자, 혼밥, 혼자밥,
                    친구가없, 아무도날찾, 존재감, 투명인간, 혼자남겨진, 소속감]
         search_queries:
@@ -714,7 +718,7 @@ categories:
           - "괜찮아지라고 재촉하지 않을게요."
           - "기억하는 것도 사랑의 방식이에요."
         tone: 위로
-        keywords: [잃었, 잃어버린, 떠나보냈, 떠나갔, 이별, 헤어졌, 헤어지, 그사람이,
+        keywords: [상실, 잃었, 잃어버린, 떠나보냈, 떠나갔, 이별, 헤어졌, 헤어지, 그사람이,
                    텅빈, 사라진, 다시못, 보고싶, 그리운, 빈자리, 없어졌, 마지막이었,
                    추억, 남겨진, 되돌릴수없, 후회돼, 못지켰]
         search_queries:
@@ -736,6 +740,7 @@ categories:
 
   - id: exhaustion
     label: 지침/무기력
+    keywords: [지침, 무기력]   # 대분류 폴백용 — 세분류가 하나도 안 걸릴 때만 쓴다
     subcategories:
       - id: exhaustion.burnout
         label: 번아웃
@@ -785,7 +790,7 @@ categories:
           - "눈이 감기는 대로 두어도 돼요."
           - "잘 자는 게 오늘의 할 일이에요."
         tone: 유지
-        keywords: [피곤, 지쳤, 지치, 졸려, 졸린, 힘이없, 노곤, 몸이무거, 눕고싶,
+        keywords: [피로, 피곤, 지쳤, 지치, 졸려, 졸린, 힘이없, 노곤, 몸이무거, 눕고싶,
                    기운이없, 축처, 나른, 뻐근, 몸살, 잠부족, 못잤, 밤샜, 야근,
                    과로, 쉬지못, 몸이천근, 눈이감겨, 하품]
         search_queries:
@@ -841,6 +846,7 @@ categories:
 
   - id: joy
     label: 기쁨
+    keywords: [기쁨, 기뻐, 기쁘]   # 대분류 폴백용 — 세분류가 하나도 안 걸릴 때만 쓴다
     subcategories:
       - id: joy.proud
         label: 뿌듯함
@@ -890,7 +896,7 @@ categories:
           - "좋은 기분엔 이유를 안 물을게요."
           - "이런 날이 자주 오면 좋겠어요."
         tone: 증폭
-        keywords: [즐거워, 즐겁, 신나, 신난, 재밌, 재미있, 행복해, 행복하, 웃음이,
+        keywords: [즐거, 즐겁, 신나, 신난, 재밌, 재미있, 행복해, 행복하, 웃음이,
                    기분좋, 최고야, 날아갈것, 룰루랄라, 짱이야, 개꿀, 좋아죽겠,
                    웃겨죽, 신남, 텐션, 하하, ㅋㅋ, 기쁘]
         search_queries:
@@ -946,6 +952,7 @@ categories:
 
   - id: flutter
     label: 설렘
+    keywords: [설렘, 설레]   # 대분류 폴백용 — 세분류가 하나도 안 걸릴 때만 쓴다
     subcategories:
       - id: flutter.anticipation
         label: 기대
@@ -1017,6 +1024,7 @@ categories:
 
   - id: calm
     label: 평온
+    keywords: [평온]   # 대분류 폴백용 — 세분류가 하나도 안 걸릴 때만 쓴다
     subcategories:
       - id: calm.ease
         label: 여유
@@ -1088,6 +1096,7 @@ categories:
 
   - id: boredom
     label: 심심함/무료함
+    keywords: [심심, 무료함]   # 대분류 폴백용 — 세분류가 하나도 안 걸릴 때만 쓴다
     subcategories:
       - id: boredom.dull
         label: 지루함
@@ -1137,7 +1146,7 @@ categories:
           - "낯선 걸 찾는 날이군요."
           - "변화가 필요한 시기인가 봐요."
         tone: 전환
-        keywords: [새로운거, 색다른, 자극이필요, 뭔가배우고, 도전하고싶, 신선한,
+        keywords: [새로운자극, 새로운거, 색다른, 자극이필요, 뭔가배우고, 도전하고싶, 신선한,
                    요즘뜨는, 궁금한게, 새로시작, 취미찾, 배워볼까, 뭐라도해보,
                    변화가필요, 일탈, 안해본거, 처음보는]
         search_queries:

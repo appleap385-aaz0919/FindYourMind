@@ -26,6 +26,7 @@ import {
   revisitSlot,
 } from "./lib/messages.js";
 import { useOnline, usePrefersReducedMotion, withMinDuration } from "./lib/offline.js";
+import { exposeConsoleApi, recordFailure } from "./lib/failures.js";
 import { Videos } from "./components/Videos.jsx";
 import { BreathingGuide } from "./components/BreathingGuide.jsx";
 import { Closing, CrisisBlock, Msg } from "./components/common.jsx";
@@ -49,9 +50,19 @@ export default function App() {
   const online = useOnline();
   const reducedMotion = usePrefersReducedMotion();
 
+  // 결과가 뜨면 화면 맨 위로 올린다.
+  // 공감 문장이 가장 먼저 읽혀야 하는데, 직전 화면의 스크롤 위치가 남아 있으면
+  // 영상 목록 중간에서 시작해 그 문장을 지나쳐 버린다.
+  useEffect(() => {
+    if (phase !== "result") return;
+    window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+  }, [phase, result, reducedMotion]);
+
   // --- 시작: 캐시(없으면 시드)로 즉시 그리고, 갱신은 뒤에서 --------------------
   useEffect(() => {
     let cancelled = false;
+
+    exposeConsoleApi();
 
     (async () => {
       await loadMessageIndexes();
@@ -85,6 +96,16 @@ export default function App() {
 
   // --- 분류 실행 --------------------------------------------------------------
   const show = useCallback((outcome) => {
+    // 대분류까지만 알아들은 경우 — 결과 화면으로 가지 않고 선택 UI로 넘긴다.
+    // 세분류를 임의로 고르면 틀린 공감 문장을 먼저 내밀게 된다.
+    if (outcome.kind === RESULT.CATEGORY) {
+      const category = taxonomy.categories.find((c) => c.id === outcome.category.id);
+      setSelectedCategory(category ?? null); // step2("조금 더 자세히 알려주실래요?")로 들어간다
+      setMode("select");
+      setPhase("input");
+      return;
+    }
+
     if (outcome.kind === RESULT.OK) {
       const id = outcome.subcategory.id;
       setResult({
@@ -110,6 +131,14 @@ export default function App() {
 
   const run = useCallback(
     async (outcome) => {
+      // 사전이 놓친 입력을 남긴다 (개발용, 기기 밖으로 나가지 않는다).
+      //   nomatch  — 아무것도 못 알아들음
+      //   category — 대분류까지만. 세분류 키워드를 보강할 후보다
+      // 위기(crisis)는 기록하지 않는다 — 가장 민감한 문장이고 감지는 이미 동작했다.
+      if (outcome.kind === RESULT.NO_MATCH || outcome.kind === RESULT.CATEGORY) {
+        void recordFailure(text, outcome.kind);
+      }
+
       // 빈 입력·분류 실패는 뜸을 들이지 않는다. 기다리게 할 내용이 없다.
       if (outcome.kind === RESULT.EMPTY || outcome.kind === RESULT.NO_MATCH) {
         setResult(outcome);
@@ -125,7 +154,7 @@ export default function App() {
       const resolved = await withMinDuration(async () => outcome, MIN_DURATION_MS);
       show(resolved);
     },
-    [show],
+    [show, text],
   );
 
   const submitText = () => void run(classify(text, taxonomy));

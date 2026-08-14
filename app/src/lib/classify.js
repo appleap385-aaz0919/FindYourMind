@@ -16,6 +16,7 @@ export const RESULT = {
   EMPTY: "empty",
   CRISIS: "crisis",
   OK: "ok",
+  CATEGORY: "category", // 대분류까지만 확실하다 — 세분류는 사용자가 고른다
   NO_MATCH: "nomatch",
 };
 
@@ -37,7 +38,33 @@ export function classify(text, taxonomy) {
   }
 
   const best = scoreSubcategories(input, taxonomy);
-  return best ? { kind: RESULT.OK, ...best } : { kind: RESULT.NO_MATCH };
+  if (best) return { kind: RESULT.OK, ...best };
+
+  // --- 대분류 폴백 ---------------------------------------------------------
+  // "답답해"처럼 대분류 이름만 말한 입력은 세분류를 특정할 근거가 없다.
+  // 임의로 하나를 고르면 틀린 공감 문장을 먼저 내밀게 되므로,
+  // 여기까지만 알아들었다고 하고 세분류는 사용자에게 묻는다.
+  // 세분류가 먼저 걸리면 그쪽이 이긴다 — 이 층은 폴백이다.
+  const category = matchCategory(input, taxonomy);
+  if (category) return { kind: RESULT.CATEGORY, ...category };
+
+  return { kind: RESULT.NO_MATCH };
+}
+
+/** 대분류 keywords만 본다 (taxonomy.yaml categories[].keywords). */
+function matchCategory(input, taxonomy) {
+  let best = null;
+  for (const category of taxonomy.categories) {
+    const hits = (category.keywords || []).filter((k) => {
+      const needle = normalize(k);
+      return needle && input.includes(needle);
+    });
+    if (!hits.length) continue;
+
+    const score = hits.length * 1000 + hits.reduce((sum, k) => sum + k.length, 0);
+    if (!best || score > best.score) best = { score, category, hits };
+  }
+  return best;
 }
 
 /**

@@ -42,8 +42,16 @@ def build_payload(raw: dict) -> dict:
             if missing:
                 raise SystemExit(f"{sub.get('id', '?')}: 필수 필드 누락 — {missing}")
             subs.append({f: sub.get(f) for f in SUB_FIELDS})
+        if not category.get("keywords"):
+            # 대분류 폴백이 통째로 빠진 채 배포되면 "답답해" 같은 입력이 다시 미매칭이 된다.
+            raise SystemExit(f"{category['id']}: 대분류 keywords가 비어 있다")
         categories.append(
-            {"id": category["id"], "label": category["label"], "subcategories": subs}
+            {
+                "id": category["id"],
+                "label": category["label"],
+                "keywords": category["keywords"],
+                "subcategories": subs,
+            }
         )
 
     return {
