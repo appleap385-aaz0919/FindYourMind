@@ -102,37 +102,14 @@ export function CrisisBlock({ message, resources }) {
 
 
 /**
- * 결과 화면의 "다시 적기" — 라벨 줄 오른쪽 끝에 붙는 텍스트.
- *
- * 버튼처럼 보이지 않게 한다. 테두리·배경 없이 라벨과 같은 크기·색으로 두어,
- * 같은 줄의 오른쪽 끝에 놓인 또 하나의 라벨처럼 읽히게 하는 것이 목적이다.
- * (하단의 "다시 적어보기"는 그대로 둔다 — 마무리 문구 뒤에 오는 마침표 역할이다)
- */
-export function InlineRestart({ onClick }) {
-  return (
-    <button
-      onClick={onClick}
-      style={{
-        background: "none",
-        border: "none",
-        padding: 0,
-        fontSize: 11.5,
-        letterSpacing: "0.2em",
-        color: T.muted,
-        opacity: 0.75,
-      }}
-    >
-      다시 적기
-    </button>
-  );
-}
-
-/**
  * 스크롤하면 우하단에 나타나는 "다시 적기".
  *
  * 결과가 길면 하단의 "다시 적어보기"까지 내려가야만 돌아갈 수 있었다.
  * 처음부터 떠 있으면 화면을 방해하므로, 스크롤을 시작한 뒤에만 조용히 나타난다.
- * 최상단으로 돌아가면 다시 사라진다 — 그 자리에는 라벨 줄의 InlineRestart가 있다.
+ *
+ * 최상단에서는 나타나지 않는다. 그 자리는 공감 문장이 처음 읽히는 자리이고,
+ * 마음을 털어놓고 답을 받는 순간에 무르기 동작이 함께 보이면 안 된다.
+ * 스크롤을 시작했다는 것은 이미 그 문장을 지났다는 뜻이라 타이밍이 맞다.
  */
 const REVEAL_AFTER_PX = 100;
 

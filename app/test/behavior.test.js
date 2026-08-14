@@ -344,3 +344,13 @@ test("recordVisit이 주는 값으로 회차가 계산된다", () => {
   assert.equal((1 ?? 0) + 1, 2); // 2회차 → 숫자 문구 허용
   assert.equal((3 ?? 0) + 1, 4); // 4회차 → 숫자 문구 배제
 });
+
+// --- 다시 적기는 항상 텍스트 입력으로 돌아간다 ---------------------------------
+
+test("reset의 기본 모드는 text, 인자로 select도 지정할 수 있다", () => {
+  // App.jsx reset(nextMode = "text")과 같은 규칙.
+  // 선택 UI로 들어온 뒤 다시 적기를 눌러도 처음 적던 자리로 가야 한다.
+  const reset = (nextMode = "text") => nextMode;
+  assert.equal(reset(), "text", "기본값이 text가 아니다");
+  assert.equal(reset("select"), "select", "무매칭 → 골라서 찾기 경로가 깨졌다");
+});

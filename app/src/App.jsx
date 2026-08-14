@@ -33,7 +33,6 @@ import {
   Closing,
   CrisisBlock,
   FloatingRestart,
-  InlineRestart,
   Msg,
 } from "./components/common.jsx";
 
@@ -165,7 +164,18 @@ export default function App() {
 
   const submitText = () => void run(classify(text, taxonomy));
 
-  const reset = () => {
+  /**
+   * 처음 화면으로 되돌린다.
+   *
+   * 기본은 텍스트 입력이다. "갑갑해"처럼 대분류 폴백으로 선택 UI에 들어온 뒤
+   * 다시 적기를 누르면, 방금 고르던 목록이 아니라 처음 적던 자리로 가야 한다 —
+   * "다시 적기"가 약속하는 것이 그것이다.
+   *
+   * nextMode를 받는 이유: 무매칭 화면의 "골라서 찾기"는 선택 UI로 가야 한다.
+   * 호출부에서 setMode를 따로 부르면 여기의 setMode가 덮어써 버린다.
+   */
+  const reset = (nextMode = "text") => {
+    setMode(nextMode);
     setPhase("input");
     setText("");
     setSelectedCategory(null);
@@ -386,10 +396,7 @@ export default function App() {
             title="제가 잘 못 알아들었어요"
             sub="아래에서 가까운 마음을 골라주실래요?"
             back="골라서 찾기"
-            onBack={() => {
-              setMode("select");
-              reset();
-            }}
+            onBack={() => reset("select")}
           />
         )}
 
@@ -417,22 +424,19 @@ export default function App() {
 
         {phase === "result" && result?.kind === RESULT.OK && (
           <div className="rise">
+            {/* 여기에 "다시 적기"를 두지 않는다.
+                화면 최상단이라 공감 문장보다 먼저 눈에 들어오는데, 마음을 털어놓고
+                답을 받는 순간에 무르기 동작이 나란히 놓이는 셈이 된다.
+                접근성은 스크롤 후 나타나는 FloatingRestart가 맡는다 — 타이밍도 그쪽이 맞다. */}
             <div
               style={{
                 fontSize: 11.5,
                 letterSpacing: "0.2em",
                 color: T.muted,
                 marginBottom: 14,
-                display: "flex",
-                alignItems: "baseline",
-                justifyContent: "space-between",
-                gap: 12,
               }}
             >
-              <span>
-                {result.category.label} · {result.subcategory.label}
-              </span>
-              <InlineRestart onClick={reset} />
+              {result.category.label} · {result.subcategory.label}
             </div>
             <div style={{ fontFamily: SERIF, fontSize: 20, lineHeight: 1.8, color: T.mist }}>
               {result.empathy}
