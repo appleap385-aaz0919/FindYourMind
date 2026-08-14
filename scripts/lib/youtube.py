@@ -159,9 +159,11 @@ class YouTubeClient:
             if response.status_code == 200:
                 return response.json()
 
-            if response.status_code == 403 and _is_quota_error(response):
+            # 일일 쿼터 소진은 403으로도 429로도 온다. 상태 코드로 가르지 않고
+            # 응답 내용으로 판정한다 (_is_daily_quota_error 참조).
+            if response.status_code in (403, 429) and _is_daily_quota_error(response):
                 raise QuotaExceeded(
-                    f"API가 쿼터 초과를 반환했다 ({endpoint}). "
+                    f"API가 일일 쿼터 소진을 반환했다 ({endpoint}, HTTP {response.status_code}). "
                     "재시도하지 않고 중단한다 — 재실행은 다음 리셋 이후에."
                 )
             if 500 <= response.status_code < 600:
@@ -180,36 +182,81 @@ class YouTubeClient:
 # 일일 쿼터 소진 — 재시도해도 리셋 전까지 같은 결과다.
 _QUOTA_REASONS = frozenset({"quotaExceeded", "dailyLimitExceeded"})
 
-# 초당·사용자별 호출 한도 — 잠시 뒤엔 실제로 풀린다. 위와 반드시 구분한다.
+# 분당·초당 호출 한도 — 잠시 뒤엔 실제로 풀린다. 위와 반드시 구분한다.
 # 둘을 같이 묶으면 일시적 스파이크에 하루치 배치를 통째로 포기하게 된다.
 _RATE_LIMIT_REASONS = frozenset({"rateLimitExceeded", "userRateLimitExceeded"})
 
+# 오류 메시지의 limit 문자열. Google은 어떤 한도인지 여기에 직접 적어준다.
+#   일일: "...and limit 'Search Queries per day' of service 'youtube.googleapis.com'"
+#   단기: "...and limit 'Queries per minute per user' of service ..."
+_DAILY_LIMIT_MARKERS = ("per day", "per-day", "/day", "daily limit")
+_SHORT_LIMIT_MARKERS = (
+    "per minute",
+    "per second",
+    "per 100 seconds",
+    "per 10 seconds",
+)
 
-def _is_quota_error(response: requests.Response) -> bool:
-    """403이 '일일 쿼터 소진'인지 판정한다 (True면 재시도하지 않고 종료 코드 2).
 
-    reason 필드만 보면 놓치는 형태가 있다:
-      - 신형 Google API 오류는 errors 배열 없이 error.status = "RESOURCE_EXHAUSTED"만 준다
-      - 게이트웨이 단에서 잘리면 본문이 JSON이 아니라 HTML로 온다
-    이 두 경우를 놓치면 쿼터가 바닥났는데도 워크플로가 60초 뒤 재시도해
-    똑같이 실패한다(build.yml "videos.json 생성" 단계 참조).
+def _is_daily_quota_error(response: requests.Response) -> bool:
+    """이 응답이 '일일 쿼터 소진'인지 판정한다 (True면 재시도 없이 종료 코드 2).
+
+    상태 코드로는 가를 수 없다. 실측에서 일일 쿼터 소진이 403이 아니라 429로 왔다:
+
+        HTTP 429, error.code=429
+        "Quota exceeded for quota metric 'Search Queries' and limit
+         'Search Queries per day' of service 'youtube.googleapis.com'"
+
+    같은 429가 분당 한도일 때도 있어서, 429를 통째로 쿼터로 보거나 통째로 재시도
+    대상으로 두면 둘 중 하나가 반드시 틀린다. 그래서 **메시지의 limit 문자열**로 가른다
+    — Google이 어떤 한도인지 거기에 직접 적어주기 때문에 가장 정확한 신호다.
+
+    판정 순서:
+      1. limit 문자열의 창(window)  — "per day"면 소진, "per minute"이면 단기
+      2. reason 필드                — quotaExceeded / rateLimitExceeded
+      3. 창을 알 수 없을 때의 기본값 — 403은 소진, 429는 단기(재시도)
+
+    3번을 이렇게 둔 이유: 403은 그동안 일일 쿼터 신호였고, 429는 이름 그대로
+    '요청이 너무 많다'라 단기 한도일 가능성이 크다. 애매할 때 단기로 보는 쪽이
+    안전하다 — 틀려도 60초를 버리는 데 그치지만, 반대로 틀리면 실제로는 복구 가능한
+    실패에 하루치 배치를 통째로 포기하게 된다.
     """
-    body = _safe_json(response)
-    if body is None:
-        # JSON이 아니면 본문 문자열로만 판단할 수 있다.
-        return _mentions_quota(response.text or "")
+    error = (_safe_json(response) or {}).get("error") or {}
+    message = str(error.get("message", "")) or (response.text or "")
 
-    error = body.get("error") or {}
+    window = _limit_window(message)
+    if window is not None:
+        return window == "daily"
+
     reasons = {str(e.get("reason", "")) for e in (error.get("errors") or [])}
-
-    # 초당 한도가 명시됐다면 쿼터 소진이 아니다 — 재시도 대상으로 남긴다.
     if reasons & _RATE_LIMIT_REASONS:
         return False
     if reasons & _QUOTA_REASONS:
         return True
-    if str(error.get("status", "")) == "RESOURCE_EXHAUSTED":
-        return True
-    return _mentions_quota(str(error.get("message", "")))
+
+    if response.status_code == 429:
+        return False
+    return (
+        str(error.get("status", "")) == "RESOURCE_EXHAUSTED"
+        or _mentions_quota(message)
+    )
+
+
+def _limit_window(text: str) -> str | None:
+    """limit 문자열이 가리키는 한도의 창을 돌려준다 — "daily" | "short" | None.
+
+    단기 표지를 먼저 본다. 둘 다 있는 애매한 문구라면 재시도 가능한 쪽으로 기운다
+    (예: "per user per day"는 "per day"만 걸려 daily로 판정된다 —
+     "per user per"를 단기 표지에 넣지 않은 이유가 이것이다).
+    """
+    lowered = " ".join(text.lower().split())
+    if not lowered:
+        return None
+    if any(marker in lowered for marker in _SHORT_LIMIT_MARKERS):
+        return "short"
+    if any(marker in lowered for marker in _DAILY_LIMIT_MARKERS):
+        return "daily"
+    return None
 
 
 def _safe_json(response: requests.Response) -> dict[str, Any] | None:
