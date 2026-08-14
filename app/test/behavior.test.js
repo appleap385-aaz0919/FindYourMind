@@ -354,3 +354,31 @@ test("reset의 기본 모드는 text, 인자로 select도 지정할 수 있다",
   assert.equal(reset(), "text", "기본값이 text가 아니다");
   assert.equal(reset("select"), "select", "무매칭 → 골라서 찾기 경로가 깨졌다");
 });
+
+// --- 화면 전환 시 스크롤 최상단 -------------------------------------------------
+
+test("스크롤 리셋이 전환 전체에 걸려 있다", () => {
+  const src = readFileSync(join(here, "..", "src", "App.jsx"), "utf8");
+  const effect = src.slice(
+    src.indexOf("화면이 바뀌면 항상 맨 위에서 시작한다"),
+    src.indexOf("// --- 시작:"),
+  );
+  // 주석에 "smooth"를 설명하는 문장이 있으므로 주석을 걷어내고 코드만 본다.
+  const code = effect
+    .split(/\r?\n/)
+    .filter((line) => !line.trim().startsWith("//"))
+    .join(" ");
+
+  assert.ok(code.includes("window.scrollTo({ top: 0"), "scrollTo가 없다");
+  // 결과 화면만 거르던 조기 반환이 남아 있으면 입력 복귀에서 스크롤이 안 올라간다
+  assert.ok(!code.includes('phase !== "result"'), "결과 전용 분기가 남아 있다");
+
+  const deps = code.slice(code.lastIndexOf("["), code.lastIndexOf("]") + 1);
+  for (const dep of ["phase", "mode", "selectedCategory", "result"]) {
+    assert.ok(
+      deps.includes(dep),
+      `의존성에 ${dep}가 없다 — 그 전환에서 스크롤이 남는다 (deps: ${deps})`,
+    );
+  }
+  assert.ok(!code.includes("smooth"), "전환에는 smooth를 쓰지 않기로 했다");
+});

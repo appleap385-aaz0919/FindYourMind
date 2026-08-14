@@ -55,13 +55,22 @@ export default function App() {
   const online = useOnline();
   const reducedMotion = usePrefersReducedMotion();
 
-  // 결과가 뜨면 화면 맨 위로 올린다.
-  // 공감 문장이 가장 먼저 읽혀야 하는데, 직전 화면의 스크롤 위치가 남아 있으면
-  // 영상 목록 중간에서 시작해 그 문장을 지나쳐 버린다.
+  // 화면이 바뀌면 항상 맨 위에서 시작한다.
+  //
+  // 결과 화면만 걸었더니, 다시 적기로 입력 화면에 돌아왔을 때 결과에서 내렸던
+  // 스크롤이 그대로 남았다. 전환 지점을 하나씩 챙기는 대신 전환 자체에 건다 —
+  // phase(input/loading/result), mode(text↔select), 선택 UI 단계(selectedCategory)가
+  // 모두 "화면이 바뀌었다"는 같은 사건이고, 앞으로 전환이 늘어도 자동으로 따라온다.
+  //
+  // behavior는 auto로 통일했다. smooth를 쓰지 않는 이유:
+  //   전환마다 DOM 내용이 통째로 교체되므로, 부드럽게 스크롤하면 이미 사라진
+  //   콘텐츠 위를 지나가는 셈이라 움직임이 아니라 흔들림으로 읽힌다.
+  //   smooth가 값을 하는 건 같은 화면 안에서 위치를 옮길 때다.
+  //   등장의 부드러움은 이미 .rise 애니메이션(fade + translateY)이 맡고 있어
+  //   스크롤까지 애니메이션할 이유가 없다.
   useEffect(() => {
-    if (phase !== "result") return;
-    window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
-  }, [phase, result, reducedMotion]);
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [phase, mode, selectedCategory, result]);
 
   // --- 시작: 캐시(없으면 시드)로 즉시 그리고, 갱신은 뒤에서 --------------------
   useEffect(() => {
