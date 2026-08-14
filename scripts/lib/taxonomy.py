@@ -95,9 +95,17 @@ class Taxonomy:
         queries = list(sub.search_queries)
         if len(queries) <= MAX_QUERIES_PER_SUBCATEGORY:
             return queries
+
+        # skip 다음 위치부터 순환하며 고른다.
+        #
+        # 이전 구현은 skip 하나를 빼고 남은 목록의 앞에서 3개를 잘랐다(kept[:3]).
+        # 검색어가 4개일 때는 모든 항목이 돌아가며 뽑혔지만, 5개가 되는 순간
+        # 마지막 항목이 단 하루도 선택되지 않는다 — 남은 4개 중 앞 3개만 쓰므로
+        # 5번째는 skip이 아닐 때 항상 4번째 자리에 있다가 잘려 나간다.
+        # 조용히 죽은 검색어는 로그에도 안 남아서 알아채기 어렵다.
         skip = (day_of_year + sub.index) % len(queries)
-        kept = [q for i, q in enumerate(queries) if i != skip]
-        return kept[:MAX_QUERIES_PER_SUBCATEGORY]
+        rotated = queries[skip + 1 :] + queries[:skip]
+        return rotated[:MAX_QUERIES_PER_SUBCATEGORY]
 
     def total_search_calls(self, day_of_year: int) -> int:
         return sum(len(self.rotated_queries(s, day_of_year)) for s in self.subcategories)
