@@ -1,0 +1,9 @@
+# 줄바꿈을 저장소·워킹트리 모두 LF로 고정한다.
+#
+# core.autocrlf 설정은 개발자마다 다르고 Windows에서는 기본이 true라,
+# 같은 파일이 사람에 따라 CRLF/LF로 오가며 diff 전체가 바뀐 것처럼 보인다.
+# 배치는 Linux 러너(ubuntu-latest)에서 돌고 산출물도 LF이므로 LF로 통일한다.
+#
+# text=auto  — 텍스트 파일을 자동 판별해 저장소에 LF로 저장
+# eol=lf     — 체크아웃할 때도 LF (개인의 core.autocrlf 설정을 무시한다)
+* text=auto eol=lf
