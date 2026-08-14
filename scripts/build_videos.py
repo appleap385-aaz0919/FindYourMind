@@ -52,6 +52,14 @@ from lib.allowlist import MIN_ALLOWLIST_SIZE, Allowlist, load_allowlist
 from lib.filters import FilterStats, Video, apply_filters, dedupe
 from lib.normalize import normalize
 from lib.quota import DEFAULT_HARD_CAP, QuotaBudget, QuotaExceeded, build_estimate
+from lib.quota_log import (
+    DAILY_CEILING,
+    DEFAULT_LOG,
+    QuotaBudgetExceeded,
+    check as check_daily_quota,
+    record as record_quota,
+    table as quota_table,
+)
 from lib.taxonomy import (
     CATEGORY_MAX_VIDEOS,
     CATEGORY_MIN_VIDEOS,
@@ -813,6 +821,29 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
     parser.add_argument(
         "--dry-run", action="store_true", help="API를 호출하지 않고 전 과정을 검증한다"
     )
+    parser.add_argument(
+        "--quota-log",
+        type=Path,
+        default=root / DEFAULT_LOG,
+        help=f"일일 소모 기록 파일 (기본 {DEFAULT_LOG}, 커밋하지 않는다)",
+    )
+    parser.add_argument(
+        "--daily-ceiling",
+        type=int,
+        default=DAILY_CEILING,
+        help=f"그날 전체 소모 상한 (기본 {DAILY_CEILING:,})",
+    )
+    parser.add_argument(
+        "--no-quota-log",
+        action="store_true",
+        help="일일 누적 검사·기록을 건너뛴다 (긴급 시에만)",
+    )
+    parser.add_argument(
+        "--no-reserve-actions-batch",
+        dest="reserve_actions_batch",
+        action="store_false",
+        help="Actions 일일 배치 몫을 미리 빼두지 않는다 (오늘 배치가 안 돈다고 확신할 때)",
+    )
     parser.add_argument("-v", "--verbose", action="store_true")
     return parser.parse_args(argv)
 
@@ -824,7 +855,7 @@ def make_client(args: argparse.Namespace, tax: Taxonomy, budget: QuotaBudget) ->
     return YouTubeClient(os.environ.get("YOUTUBE_API_KEY", ""), budget)
 
 
-def run(args: argparse.Namespace) -> int:
+def run(args: argparse.Namespace, spent_box: dict[str, Any] | None = None) -> int:
     now = datetime.now(timezone.utc)
     day_of_year = args.day_of_year if args.day_of_year is not None else now.timetuple().tm_yday
 
@@ -865,7 +896,32 @@ def run(args: argparse.Namespace) -> int:
         )
         return EXIT_QUOTA
 
+    # 하드캡은 "이번 실행 하나"의 상한이고, 여기서는 "그날 전체"를 본다.
+    # 배치를 한 번 돌린 뒤 부분 실행을 몇 번 더 하면 매번 여유가 있어 보이지만
+    # 합쳐서 한도를 넘는다 — 실제로 그렇게 소진됐다.
+    if not args.dry_run and not args.no_quota_log:
+        try:
+            usage, reserve = check_daily_quota(
+                args.quota_log,
+                estimated,
+                ceiling=args.daily_ceiling,
+                reserve_actions_batch=args.reserve_actions_batch,
+            )
+        except QuotaBudgetExceeded as exc:
+            logger.error("%s", exc)
+            logger.error(
+                "그날 이미 쓴 양을 포함한 판단이다. "
+                "정말 실행하려면 --no-quota-log, Actions 배치 예약을 빼려면 "
+                "--no-reserve-actions-batch."
+            )
+            return EXIT_QUOTA
+        print(quota_table(usage, estimated, reserve, args.daily_ceiling))
+
     budget = QuotaBudget(hard_cap=args.hard_cap)
+    # 예외로 중단되더라도 호출자가 실제 소모량을 읽을 수 있게 budget 자체를 넘긴다.
+    # 중단 시점까지 부른 호출은 이미 쿼터를 썼으므로 그것도 기록해야 한다.
+    if spent_box is not None:
+        spent_box["budget"] = budget
     ctx = BuildContext(
         tax=tax, client=make_client(args, tax, budget), budget=budget, previous=previous
     )
@@ -926,7 +982,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     _setup_logging(args.verbose)
     try:
-        return run(args)
+        return _run_and_record(args)
     except QuotaExceeded as exc:
         logger.error("쿼터 중단: %s", exc)
         logger.error("부분 결과를 쓰지 않았다 — 직전 videos.json이 그대로 유지된다")
@@ -942,6 +998,37 @@ def main(argv: list[str] | None = None) -> int:
         logger.exception("배치 실패: %s", exc)
         logger.error("부분 결과를 쓰지 않았다 — 직전 videos.json이 그대로 유지된다")
         return EXIT_RETRYABLE
+
+
+def _run_and_record(args: argparse.Namespace) -> int:
+    """실행 결과와 무관하게 실제 소모량을 기록한다.
+
+    중단된 실행도 중단 전까지 부른 호출만큼 쿼터를 이미 썼다.
+    기록하지 않으면 다음 실행이 그 소모를 모른 채 "여유 있다"고 판단한다.
+    """
+    spent_box: dict[str, Any] = {}
+    exit_code = EXIT_RETRYABLE
+    try:
+        exit_code = run(args, spent_box)
+        return exit_code
+    finally:
+        budget = spent_box.get("budget")
+        spent = budget.spent if budget is not None else 0
+        if not args.dry_run and not args.no_quota_log and spent > 0:
+            usage = record_quota(
+                args.quota_log,
+                script="build_videos",
+                units=spent,
+                exit_code=exit_code,
+                only=args.only.split(",") if args.only else None,
+                dry_run=args.dry_run,
+            )
+            logger.info(
+                "쿼터 기록 — 이번 %s units, 오늘(PT %s) 누적 %s units",
+                f"{spent:,}",
+                usage.date,
+                f"{usage.spent:,}",
+            )
 
 
 def _setup_logging(verbose: bool) -> None:

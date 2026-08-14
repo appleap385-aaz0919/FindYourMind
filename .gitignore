@@ -18,6 +18,10 @@ channel_candidates.md
 .env.*
 !.env.example
 
+# 일일 쿼터 소모 기록 (scripts/lib/quota_log.py)
+# 기기마다 값이 다르고 매 실행마다 바뀐다. 커밋하면 워킹트리가 계속 더러워진다.
+.quota_log.json
+
 # Python
 __pycache__/
 *.py[cod]

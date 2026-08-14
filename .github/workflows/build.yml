@@ -151,6 +151,26 @@ jobs:
           )
           PY
 
+      - name: 쿼터 소모 요약
+        if: always()
+        # 러너는 매번 초기화되므로 .quota_log.json이 다음 실행까지 남지 않는다.
+        # 대신 이번 실행이 얼마를 썼는지를 Job Summary에 남겨, 사람이 Actions 화면에서
+        # 바로 확인하고 같은 날 로컬 실행 여부를 판단할 수 있게 한다.
+        run: |
+          spent=$(python -c "import json;print(json.load(open('dist/build_report.json',encoding='utf-8'))['quota_spent'])" 2>/dev/null || echo "?")
+          {
+            echo "### 쿼터 소모"
+            echo ""
+            echo "| 항목 | 값 |"
+            echo "|---|---:|"
+            echo "| 이번 배치 | ${spent} units |"
+            echo "| 일일 한도 | 10,000 units |"
+            echo "| 리셋 | 태평양 시간 자정 |"
+            echo ""
+            echo "오늘 로컬에서 추가 실행이 필요하면 남은 여유를 확인하세요."
+            echo "로컬은 \`.quota_log.json\`에 누적을 기록하지만 이 실행은 거기 잡히지 않습니다."
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: 진단용 산출물 보관
         if: always()
         uses: actions/upload-artifact@v4

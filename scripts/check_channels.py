@@ -47,6 +47,14 @@ from lib.allowlist import (
 from lib.filters import blocklist_text
 from lib.normalize import matched_terms
 from lib.quota import QuotaBudget, QuotaExceeded
+from lib.quota_log import (
+    DAILY_CEILING,
+    DEFAULT_LOG,
+    QuotaBudgetExceeded,
+    check as check_daily_quota,
+    record as record_quota,
+    table as quota_table,
+)
 from lib.taxonomy import Taxonomy, load_taxonomy
 from lib.youtube import Client, DryRunClient, YouTubeClient
 
@@ -230,7 +238,7 @@ def _blocklist_pass_rate(
     return (len(items) - len(blocked)) / len(items), blocked
 
 
-def run(args: argparse.Namespace) -> int:
+def run(args: argparse.Namespace, budget_box: dict[str, Any] | None = None) -> int:
     now = datetime.now(timezone.utc)
     tax: Taxonomy = load_taxonomy(args.taxonomy)
     allowlist: Allowlist = load_allowlist(args.allowlist)
@@ -249,6 +257,8 @@ def run(args: argparse.Namespace) -> int:
         collector.add(**alert_specs.allowlist_undersized(allowlist.size, MIN_ALLOWLIST_SIZE))
 
     budget = QuotaBudget(hard_cap=args.hard_cap)
+    if budget_box is not None:
+        budget_box["budget"] = budget  # 중단돼도 실제 소모량을 기록할 수 있게 공유
     client = _make_client(args, tax, budget)
 
     found: dict[str, dict[str, Any]] = {}
@@ -302,6 +312,22 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
     parser.add_argument("--out", type=Path, default=root / "dist" / "channel_health.json")
     parser.add_argument("--hard-cap", type=int, default=DEFAULT_HARD_CAP)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--quota-log",
+        type=Path,
+        default=root / DEFAULT_LOG,
+        help=f"일일 소모 기록 파일 (기본 {DEFAULT_LOG}, 커밋하지 않는다)",
+    )
+    parser.add_argument("--daily-ceiling", type=int, default=DAILY_CEILING)
+    parser.add_argument(
+        "--no-quota-log", action="store_true", help="일일 누적 검사·기록을 건너뛴다"
+    )
+    parser.add_argument(
+        "--no-reserve-actions-batch",
+        dest="reserve_actions_batch",
+        action="store_false",
+        help="Actions 일일 배치 몫을 미리 빼두지 않는다",
+    )
     parser.add_argument("-v", "--verbose", action="store_true")
     return parser.parse_args(argv)
 
@@ -317,14 +343,49 @@ def main(argv: list[str] | None = None) -> int:
         datefmt="%H:%M:%S",
         stream=sys.stdout,
     )
+    # 이 스크립트는 배치 뒤에 이어서 도는 일이 많다. 그날 누적을 보지 않으면
+    # 배치가 이미 한도 근처까지 쓴 뒤에 25 units를 더 얹어 넘길 수 있다.
+    estimate = 25
+    if not args.dry_run and not args.no_quota_log:
+        try:
+            usage, reserve = check_daily_quota(
+                args.quota_log,
+                estimate,
+                ceiling=args.daily_ceiling,
+                reserve_actions_batch=args.reserve_actions_batch,
+            )
+            print(quota_table(usage, estimate, reserve, args.daily_ceiling))
+        except QuotaBudgetExceeded as exc:
+            logger.error("%s", exc)
+            return EXIT_QUOTA
+
+    budget_box: dict[str, Any] = {}
+    exit_code = EXIT_RETRYABLE
     try:
-        return run(args)
+        exit_code = run(args, budget_box)
+        return exit_code
     except QuotaExceeded as exc:
         logger.error("쿼터 중단: %s", exc)
+        exit_code = EXIT_QUOTA
         return EXIT_QUOTA
     except Exception as exc:  # noqa: BLE001
         logger.exception("채널 점검 실패: %s", exc)
+        exit_code = EXIT_RETRYABLE
         return EXIT_RETRYABLE
+    finally:
+        budget = budget_box.get("budget")
+        spent = budget.spent if budget is not None else 0
+        if not args.dry_run and not args.no_quota_log and spent > 0:
+            usage = record_quota(
+                args.quota_log,
+                script="check_channels",
+                units=spent,
+                exit_code=exit_code,
+            )
+            logger.info(
+                "쿼터 기록 — 이번 %s units, 오늘(PT %s) 누적 %s units",
+                f"{spent:,}", usage.date, f"{usage.spent:,}",
+            )
 
 
 if __name__ == "__main__":
