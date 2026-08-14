@@ -76,7 +76,14 @@ def build_payload(raw: dict) -> dict:
             "revisit": {
                 k: v
                 for k, v in ui["revisit"].items()
-                if k in ("first_visit", "same_day", "recent", "long_absence")
+                if k
+                in (
+                    "first_visit",
+                    "same_day",
+                    "same_day_second",  # 2회차 전용 (횟수를 말하는 문구)
+                    "recent",
+                    "long_absence",
+                )
             },
         },
         "safety": {

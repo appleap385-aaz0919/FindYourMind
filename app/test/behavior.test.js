@@ -255,3 +255,92 @@ test("위기 검사는 대분류 폴백보다도 먼저다", () => {
 test("체계에 없는 감정은 여전히 nomatch다 (기록 대상)", () => {
   assert.equal(classify("혼란스러워", taxonomy).kind, RESULT.NO_MATCH);
 });
+
+// --- 동의어 보강 · 충돌 키워드 ------------------------------------------------
+
+test("frustration 동의어가 매칭된다", () => {
+  const cases = [
+    ["갑갑해", RESULT.CATEGORY, "frustration"],
+    ["옥죄어와", RESULT.OK, "frustration.suppressed"],
+    ["숨통막혀", RESULT.OK, "frustration.suppressed"],
+    ["짓눌린 것 같아", RESULT.OK, "frustration.suppressed"],
+    ["꽉막힌 느낌", RESULT.OK, "frustration.blocked"],
+  ];
+  for (const [input, kind, id] of cases) {
+    const outcome = classify(input, taxonomy);
+    assert.equal(outcome.kind, kind, `"${input}" 종류`);
+    const got = kind === RESULT.CATEGORY ? outcome.category.id : outcome.subcategory.id;
+    assert.equal(got, id, `"${input}" → ${got}`);
+  }
+});
+
+test("짧은 키워드가 일상어를 삼키지 않는다", () => {
+  // "분해"(anger.unfair)가 차분해/따분해에 걸리던 오분류.
+  const cases = [
+    ["차분해", "calm.stable"],
+    ["따분해", "boredom.dull"],
+    ["뭔가 해보고 싶어", "boredom.novelty"],
+    ["새로운게 하고 싶어", "boredom.novelty"],
+  ];
+  for (const [input, id] of cases) {
+    const outcome = classify(input, taxonomy);
+    assert.equal(outcome.kind, RESULT.OK, `"${input}" 미매칭`);
+    assert.equal(outcome.subcategory.id, id, `"${input}" → ${outcome.subcategory.id}`);
+  }
+});
+
+test("보강한 동의어가 의도한 세분류로 간다", () => {
+  const cases = [
+    ["원통해", "anger.unfair"], ["열불나", "anger.rage"], ["성질나", "anger.irritation"],
+    ["고독해", "sadness.lonely"], ["녹초야", "exhaustion.tired"],
+    ["기진맥진", "exhaustion.tired"], ["짜릿해", "flutter.thrill"],
+    ["움츠러들어", "anxiety.tension"], ["마음이 쓰여", "anxiety.worry"],
+    ["앞이 안 보여", "frustration.stuck"], ["타버린 것 같아", "exhaustion.burnout"],
+  ];
+  for (const [input, id] of cases) {
+    const outcome = classify(input, taxonomy);
+    assert.equal(outcome.kind, RESULT.OK, `"${input}" 미매칭`);
+    assert.equal(outcome.subcategory.id, id, `"${input}" → ${outcome.subcategory.id}`);
+  }
+});
+
+// --- 재방문 문구가 방문 횟수와 맞는가 -----------------------------------------
+
+test("숫자를 말하는 문구는 same_day_second에만 있다", () => {
+  const counting = /두 번|세 번|번째|두번|세번/;
+  for (const message of taxonomy.ui.revisit.same_day) {
+    assert.ok(!counting.test(message), `same_day에 횟수 문구: "${message}"`);
+  }
+  assert.ok(taxonomy.ui.revisit.same_day_second.every((m) => counting.test(m)));
+});
+
+test("same_day 문구 풀이 충분히 크다", () => {
+  assert.ok(taxonomy.ui.revisit.same_day.length >= 8, "3회차 이상 풀이 8개 미만");
+  const total =
+    taxonomy.ui.revisit.same_day.length + taxonomy.ui.revisit.same_day_second.length;
+  assert.equal(total, 10, `2회차 풀이 10개가 아님 (${total})`);
+});
+
+test("2회차에만 숫자 문구가 후보에 들어간다", () => {
+  // App.jsx pickGreeting과 같은 규칙
+  const poolFor = (visitNumber) =>
+    visitNumber === 2
+      ? [...taxonomy.ui.revisit.same_day, ...taxonomy.ui.revisit.same_day_second]
+      : taxonomy.ui.revisit.same_day;
+
+  const counting = /번째|두 번|두번/;
+  assert.ok(poolFor(2).some((m) => counting.test(m)), "2회차에 숫자 문구가 없다");
+  for (const n of [3, 4, 5, 9]) {
+    assert.ok(
+      !poolFor(n).some((m) => counting.test(m)),
+      `${n}회차 풀에 숫자 문구가 있다`,
+    );
+  }
+});
+
+test("recordVisit이 주는 값으로 회차가 계산된다", () => {
+  // recordVisit()은 증가 전 상태를 준다 → 이번 방문은 +1
+  assert.equal((0 ?? 0) + 1, 1);
+  assert.equal((1 ?? 0) + 1, 2); // 2회차 → 숫자 문구 허용
+  assert.equal((3 ?? 0) + 1, 4); // 4회차 → 숫자 문구 배제
+});

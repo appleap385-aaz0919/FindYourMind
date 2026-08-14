@@ -29,7 +29,13 @@ import { useOnline, usePrefersReducedMotion, withMinDuration } from "./lib/offli
 import { exposeConsoleApi, recordFailure } from "./lib/failures.js";
 import { Videos } from "./components/Videos.jsx";
 import { BreathingGuide } from "./components/BreathingGuide.jsx";
-import { Closing, CrisisBlock, Msg } from "./components/common.jsx";
+import {
+  Closing,
+  CrisisBlock,
+  FloatingRestart,
+  InlineRestart,
+  Msg,
+} from "./components/common.jsx";
 
 const MIN_DURATION_MS = taxonomy.ui.loading.min_duration_ms;
 
@@ -417,9 +423,16 @@ export default function App() {
                 letterSpacing: "0.2em",
                 color: T.muted,
                 marginBottom: 14,
+                display: "flex",
+                alignItems: "baseline",
+                justifyContent: "space-between",
+                gap: 12,
               }}
             >
-              {result.category.label} · {result.subcategory.label}
+              <span>
+                {result.category.label} · {result.subcategory.label}
+              </span>
+              <InlineRestart onClick={reset} />
             </div>
             <div style={{ fontFamily: SERIF, fontSize: 20, lineHeight: 1.8, color: T.mist }}>
               {result.empathy}
@@ -431,6 +444,14 @@ export default function App() {
           </div>
         )}
       </div>
+
+      {/* 결과가 길어 하단 "다시 적어보기"가 멀 때를 위한 보조 경로.
+          위기 화면에도 둔다 — 상담 안내는 최상단에 그대로 있고,
+          돌아갈 길을 막아두는 편이 오히려 나쁘다. */}
+      {phase === "result" &&
+        (result?.kind === RESULT.OK || result?.kind === RESULT.CRISIS) && (
+          <FloatingRestart onClick={reset} reducedMotion={reducedMotion} />
+        )}
     </div>
   );
 }
@@ -441,6 +462,21 @@ export default function App() {
  */
 function pickGreeting(visit) {
   const slot = revisitSlot(visit);
+
+  if (slot === "same_day") {
+    // recordVisit()은 증가 *전* 상태를 준다. 이번 방문을 포함하면 +1이 실제 횟수다.
+    const visitNumber = (visit.visitCountToday ?? 0) + 1;
+    // 횟수를 말하는 문구는 2회차에서만 쓴다. 3회차 이상에서 "두 번째네요"가
+    // 나오면 틀린 숫자를 말하게 되고, 그건 아무 말도 안 하느니만 못하다.
+    const pool =
+      visitNumber === 2
+        ? [...taxonomy.ui.revisit.same_day, ...taxonomy.ui.revisit.same_day_second]
+        : taxonomy.ui.revisit.same_day;
+    // 회전 키를 하나로 둔다 — same_day가 항상 앞쪽 인덱스라 2회차/3회차 이상에서
+    // 같은 인덱스가 같은 문구를 가리킨다.
+    return pickMessage("revisit:same_day", pool);
+  }
+
   if (slot !== "first_visit") {
     const items = taxonomy.ui.revisit[slot];
     if (items?.length) return pickMessage(`revisit:${slot}`, items);

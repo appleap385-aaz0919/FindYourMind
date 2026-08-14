@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { T, SERIF } from "../theme.js";
 
 /** 영상 목록 하단에 조용히 붙는 한 마디 + 돌아가기. 프로토타입 그대로. */
@@ -96,5 +97,82 @@ export function CrisisBlock({ message, resources }) {
         ))}
       </div>
     </div>
+  );
+}
+
+
+/**
+ * 결과 화면의 "다시 적기" — 라벨 줄 오른쪽 끝에 붙는 텍스트.
+ *
+ * 버튼처럼 보이지 않게 한다. 테두리·배경 없이 라벨과 같은 크기·색으로 두어,
+ * 같은 줄의 오른쪽 끝에 놓인 또 하나의 라벨처럼 읽히게 하는 것이 목적이다.
+ * (하단의 "다시 적어보기"는 그대로 둔다 — 마무리 문구 뒤에 오는 마침표 역할이다)
+ */
+export function InlineRestart({ onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        background: "none",
+        border: "none",
+        padding: 0,
+        fontSize: 11.5,
+        letterSpacing: "0.2em",
+        color: T.muted,
+        opacity: 0.75,
+      }}
+    >
+      다시 적기
+    </button>
+  );
+}
+
+/**
+ * 스크롤하면 우하단에 나타나는 "다시 적기".
+ *
+ * 결과가 길면 하단의 "다시 적어보기"까지 내려가야만 돌아갈 수 있었다.
+ * 처음부터 떠 있으면 화면을 방해하므로, 스크롤을 시작한 뒤에만 조용히 나타난다.
+ * 최상단으로 돌아가면 다시 사라진다 — 그 자리에는 라벨 줄의 InlineRestart가 있다.
+ */
+const REVEAL_AFTER_PX = 100;
+
+export function FloatingRestart({ onClick, reducedMotion }) {
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShown(window.scrollY > REVEAL_AFTER_PX);
+    onScroll(); // 이미 스크롤된 상태로 들어올 수 있다
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // reduced-motion이면 페이드를 쓰지 않는다. 나타나고 사라지는 것 자체는 유지한다.
+  if (reducedMotion && !shown) return null;
+
+  return (
+    <button
+      onClick={onClick}
+      aria-hidden={!shown}
+      tabIndex={shown ? 0 : -1}
+      style={{
+        position: "fixed",
+        right: 20,
+        bottom: 24,
+        padding: "10px 16px",
+        borderRadius: 99,
+        border: `1px solid ${T.jade}33`,
+        background: `${T.ink}d9`,
+        backdropFilter: "blur(6px)",
+        WebkitBackdropFilter: "blur(6px)",
+        color: T.muted,
+        fontSize: 12.5,
+        letterSpacing: "0.04em",
+        opacity: shown ? 1 : 0,
+        pointerEvents: shown ? "auto" : "none",
+        transition: reducedMotion ? "none" : "opacity .3s ease",
+      }}
+    >
+      다시 적기
+    </button>
   );
 }
