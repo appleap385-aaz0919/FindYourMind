@@ -23,3 +23,15 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
+
+# --- 앱 (Phase 3) ---
+node_modules/
+app/dist/
+
+# taxonomy.yaml에서 빌드 때마다 생성한다 (npm run gen:taxonomy).
+# 사본을 커밋하면 taxonomy.yaml과 반드시 어긋난다 — 단일 소스를 지킨다.
+app/src/data/taxonomy.json
+
+# 단, seed-videos.json은 커밋한다 (무시하지 않는다).
+#   최초 실행·오프라인·캐시 30일 만료 시 돌아갈 바닥이라 번들에 들어가야 하고,
+#   dist/가 gitignore라 CI 체크아웃에는 없다. 갱신 주기는 OPERATIONS.md 참조.

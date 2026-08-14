@@ -50,7 +50,41 @@ GitHub Actions (매일 1회, PT 자정 직후)
 | 월 1회 | 자동 생성된 Issue 처리 | 채널 교체·제외 후 `channel_allowlist.yaml` 수정 | 운영자 |
 | 분기 1회 | 화이트리스트 전체 재검토 | 채널별 최근 영상 성향 변화 확인, 필요 시 신규 채널 보충 | 운영자 |
 | 분기 1회 | `blocklist_tiers` 갱신 | 신조어·새로운 위험 표현 반영 | 운영자 |
+| 분기 1회 | **앱 번들 시드 갱신** | `app/src/data/seed-videos.json`을 최신 `videos.json`으로 교체 (아래 절차) | 운영자 |
 | 반기 1회 | 감정 키워드 사전 보강 | 오분류 사례 반영 | 운영자 |
+
+### 앱 번들 시드 갱신 — 구체적 절차
+
+`app/src/data/seed-videos.json`은 앱에 함께 묶여 나가는 **최초 실행용 영상 목록**이다.
+다음 세 경우에 이 파일이 화면에 그대로 나온다.
+
+- 앱을 처음 열었을 때 (아직 아무것도 받지 않은 상태)
+- 오프라인에서 처음 열었을 때
+- 캐시가 30일을 넘겨 폐기됐을 때 (YouTube API 약관상 30일 내 갱신 의무)
+
+**방치하면 위험해지는 지점이 여기다.** 시드가 낡을수록 위 세 경우에 나오는 영상 중
+삭제·비공개된 것이 늘어난다. 앱이 썸네일 404를 감지해 카드를 조용히 숨기므로 화면이
+깨지지는 않지만, 목록이 점점 비어 보인다. 특히 **위기 카테고리의 시드가 비면
+상담 안내 아래에 아무것도 남지 않는다.**
+
+```bash
+# 1. 최신 배치 산출물을 받는다 (또는 직접 배치를 1회 실행한다)
+curl -o dist/videos.json https://appleap385-aaz0919.github.io/FindYourMind/data/videos.json
+
+# 2. 시드로 복사한다 (minify — 번들 크기를 줄인다)
+python -c "import json; d=json.load(open('dist/videos.json',encoding='utf-8')); \
+  open('app/src/data/seed-videos.json','w',encoding='utf-8').write(json.dumps(d,ensure_ascii=False,separators=(',',':')))"
+
+# 3. 위기 영상이 들어 있는지 반드시 확인한다
+cd app && npm test
+```
+
+`npm test`의 "crisis 영상과 일반 카테고리 영상이 서로소다", "모든 세분류에서 categories
+조회 결과에 위기 영상이 섞이지 않는다"가 시드를 대상으로 돌기 때문에, 잘못된 파일을
+넣으면 여기서 걸린다. 통과하면 PR로 커밋한다.
+
+> 시드는 `dist/`가 아니라 `app/src/data/`에 있다. `dist/`는 `.gitignore` 대상이라
+> CI 체크아웃에 존재하지 않으므로, 번들에 들어가려면 추적되는 경로에 있어야 한다.
 
 ### 월 1회 위기 카테고리 샘플 점검 — 구체적 절차
 
@@ -192,6 +226,16 @@ gh-pages/
 | `concurrency.group: gh-pages-deploy` | **양쪽 워크플로 모두 같은 이름** | 동시 배포 시 브랜치 충돌 방지 |
 | `cancel-in-progress: false` | 양쪽 | 배포 중 취소되면 브랜치가 반쯤 갱신된 채 남는다 |
 | 배포 후 존재 확인 | 앱 워크플로 마지막 | `keep_files` 설정이 깨진 걸 조용히 넘기지 않는다 |
+
+**최초 1회는 데이터 워크플로를 먼저 돌린다.** 앱 워크플로 마지막의 `data/` 생존 확인은
+`data/videos.json`이 없으면 실패하는데, 데이터를 한 번도 배포하지 않은 상태에서는
+당연히 없다. 순서를 지키지 않으면 첫 앱 배포가 실패한다 — 앱은 정상 배포됐고 검증만
+걸린 것이므로 데이터 배치를 돌린 뒤 앱 워크플로를 재실행하면 된다.
+
+```
+1) Actions → "데이터 배치 (videos.json)" → Run workflow   (data/ 생성)
+2) Actions → "앱 배포 (PWA)"             → Run workflow   (앱 + 검증 통과)
+```
 
 ### 앱이 데이터를 받는 방식
 

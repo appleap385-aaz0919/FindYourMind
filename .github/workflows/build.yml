@@ -69,7 +69,13 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: |
           # 재시도는 정확히 1회로 제한한다. 무한 재시도는 쿼터를 이중으로 소모한다.
+          #
           # 종료 코드 2(쿼터 중단)는 재시도해도 같은 결과이므로 즉시 포기한다.
+          # 여기에는 하드캡 초과뿐 아니라 API가 돌려준 403 쿼터 소진도 포함된다
+          # (quotaExceeded / dailyLimitExceeded / RESOURCE_EXHAUSTED —
+          #  판정은 scripts/lib/youtube.py의 _is_quota_error가 한다).
+          # 초당 호출 한도(rateLimitExceeded)와 429는 잠시 뒤 풀리므로 코드 1로 남겨
+          # 아래 재시도 경로를 타게 한다.
           run_build() {
             python scripts/build_videos.py \
               --previous "$PREVIOUS_VIDEOS" \

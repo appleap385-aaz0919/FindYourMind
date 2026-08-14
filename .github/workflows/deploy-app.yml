@@ -1,0 +1,100 @@
+name: 앱 배포 (PWA)
+
+# 앱은 gh-pages 루트에, 데이터는 같은 브랜치의 data/ 하위에 배포된다.
+# 두 워크플로가 같은 브랜치에 쓰므로 반드시 지켜야 하는 두 가지:
+#   1. concurrency 그룹을 데이터 워크플로와 공유해 동시 배포를 막는다
+#   2. keep_files: true — 이게 없으면 앱 배포가 data/를 통째로 지운다
+on:
+  push:
+    branches: [main]
+    paths:
+      - "app/**"
+      - "taxonomy.yaml"
+      - "scripts/gen_taxonomy_json.py"
+      - ".github/workflows/deploy-app.yml"
+  workflow_dispatch:
+
+concurrency:
+  # build.yml과 같은 그룹명이어야 한다. 바꾸면 동시 배포 방지가 풀린다.
+  group: gh-pages-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Python 준비 (taxonomy.yaml → taxonomy.json)
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: PyYAML 설치
+        run: pip install "PyYAML>=6.0.1"
+
+      - name: Node 준비
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: 의존성 설치
+        working-directory: app
+        run: npm ci
+
+      - name: 테스트
+        # 위기 격리·정규화 패리티·로딩 지연이 여기서 깨지면 배포하지 않는다.
+        working-directory: app
+        run: npm test
+
+      - name: 빌드
+        working-directory: app
+        run: npm run build
+
+      - name: 산출물 확인
+        working-directory: app
+        run: |
+          test -f dist/index.html || { echo "::error::index.html이 없습니다"; exit 1; }
+          test -f dist/sw.js || { echo "::error::sw.js가 없습니다"; exit 1; }
+          test -f dist/manifest.webmanifest || { echo "::error::manifest가 없습니다"; exit 1; }
+          echo "빌드 산출물 확인됨"
+          du -sh dist
+
+      - name: gh-pages 배포
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./app/dist
+          publish_branch: gh-pages
+          # ⚠ 데이터 워크플로가 배포한 data/를 지우지 않기 위해 반드시 필요하다.
+          keep_files: true
+          commit_message: "deploy: 앱 ${{ github.sha }}"
+
+      - name: 배포 후 data/ 생존 확인
+        # keep_files 설정이 깨진 걸 조용히 넘기지 않는다 (PLAN.md Phase 1 배포 후 검증).
+        # 앱만 남고 data/videos.json이 사라지면 앱은 번들 시드로만 살아가는데,
+        # 화면상으로는 멀쩡해 보여서 아무도 눈치채지 못한다. 그래서 실패로 만든다.
+        run: |
+          git fetch origin gh-pages --depth=1
+          missing=0
+          for f in data/videos.json data/version.json; do
+            if git cat-file -e origin/gh-pages:"$f" 2>/dev/null; then
+              echo "  OK  $f"
+            else
+              echo "::error::배포 후 $f 가 사라졌습니다 — keep_files 설정을 확인하세요."
+              missing=1
+            fi
+          done
+          if [ "$missing" -ne 0 ]; then
+            echo "::error::데이터가 유실됐습니다. 다음 데이터 배치가 복구하지만 그 전까지 앱은 번들 시드로만 동작합니다."
+            exit 1
+          fi
+          echo "data/ 확인 완료"

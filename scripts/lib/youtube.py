@@ -177,12 +177,59 @@ class YouTubeClient:
         raise YouTubeError(f"{endpoint} 호출 실패: {last_error}")
 
 
+# 일일 쿼터 소진 — 재시도해도 리셋 전까지 같은 결과다.
+_QUOTA_REASONS = frozenset({"quotaExceeded", "dailyLimitExceeded"})
+
+# 초당·사용자별 호출 한도 — 잠시 뒤엔 실제로 풀린다. 위와 반드시 구분한다.
+# 둘을 같이 묶으면 일시적 스파이크에 하루치 배치를 통째로 포기하게 된다.
+_RATE_LIMIT_REASONS = frozenset({"rateLimitExceeded", "userRateLimitExceeded"})
+
+
 def _is_quota_error(response: requests.Response) -> bool:
-    try:
-        errors = response.json().get("error", {}).get("errors", [])
-    except ValueError:
+    """403이 '일일 쿼터 소진'인지 판정한다 (True면 재시도하지 않고 종료 코드 2).
+
+    reason 필드만 보면 놓치는 형태가 있다:
+      - 신형 Google API 오류는 errors 배열 없이 error.status = "RESOURCE_EXHAUSTED"만 준다
+      - 게이트웨이 단에서 잘리면 본문이 JSON이 아니라 HTML로 온다
+    이 두 경우를 놓치면 쿼터가 바닥났는데도 워크플로가 60초 뒤 재시도해
+    똑같이 실패한다(build.yml "videos.json 생성" 단계 참조).
+    """
+    body = _safe_json(response)
+    if body is None:
+        # JSON이 아니면 본문 문자열로만 판단할 수 있다.
+        return _mentions_quota(response.text or "")
+
+    error = body.get("error") or {}
+    reasons = {str(e.get("reason", "")) for e in (error.get("errors") or [])}
+
+    # 초당 한도가 명시됐다면 쿼터 소진이 아니다 — 재시도 대상으로 남긴다.
+    if reasons & _RATE_LIMIT_REASONS:
         return False
-    return any(e.get("reason") in {"quotaExceeded", "dailyLimitExceeded"} for e in errors)
+    if reasons & _QUOTA_REASONS:
+        return True
+    if str(error.get("status", "")) == "RESOURCE_EXHAUSTED":
+        return True
+    return _mentions_quota(str(error.get("message", "")))
+
+
+def _safe_json(response: requests.Response) -> dict[str, Any] | None:
+    try:
+        payload = response.json()
+    except ValueError:
+        return None
+    return payload if isinstance(payload, dict) else None
+
+
+def _mentions_quota(text: str) -> bool:
+    """본문에 쿼터 소진 표현이 있는지 본다.
+
+    quota라는 단어만으로 판단한다. 여기서 잡지 못한 403은 종료 코드 1이 되어
+    1회 재시도되는데, 그 재시도는 실패한 호출이라 쿼터를 더 쓰지 않는다.
+    즉 놓쳤을 때의 대가는 60초이고, 반대로 과하게 잡으면 멀쩡히 복구될 수 있는
+    실패에 하루치 배치를 버리게 된다. 그래서 넓히지 않고 좁게 둔다.
+    """
+    lowered = text.lower()
+    return "quota" in lowered or "resource_exhausted" in lowered
 
 
 # =============================================================================

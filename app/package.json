@@ -1,0 +1,24 @@
+{
+  "name": "findyourmind",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "gen:taxonomy": "python ../scripts/gen_taxonomy_json.py",
+    "predev": "npm run gen:taxonomy",
+    "dev": "vite",
+    "prebuild": "npm run gen:taxonomy",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test \"test/**/*.test.js\""
+  },
+  "dependencies": {
+    "idb": "^8.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.0"
+  }
+}
