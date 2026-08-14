@@ -1,0 +1,3679 @@
+{
+  "version": "2026-08-14T09:37:18Z",
+  "categories": [
+    {
+      "id": "anxiety.restless",
+      "parent": "anxiety",
+      "label": "초조함",
+      "videos": [
+        {
+          "videoId": "cRbYxsLHyJU",
+          "title": "불안한 마음을 위한 힐링음악☁스트레스해소음악,명상음악,이완음악,스파음악,수면음악 -\"Warm Candle\"",
+          "channel": "뮤직 메이트 Music Mate",
+          "publishedAt": "2021-03-12T10:30:03Z",
+          "duration": "PT6H37M50S"
+        },
+        {
+          "videoId": "feQn-0ObCAM",
+          "title": "실제 신경 정신과에서 사용하는 심신 뇌파 안정과 숙면에 효과가 있는 음악 🎵 머리아플때듣는음악,편안한 음악,스트레스 해소음악",
+          "channel": "Relax Gently",
+          "publishedAt": "2022-05-27T14:00:30Z",
+          "duration": "PT10H6M9S"
+        },
+        {
+          "videoId": "292XpV3vum0",
+          "title": "𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 머리가 복잡할 때 듣는 음악 🎧 ⎮ 당신을 위해 선곡한 잔잔하고 차분한 피아노 연주곡 플레이리스트",
+          "channel": "율다우피아노 Yuldau Piano",
+          "publishedAt": "2025-03-16T22:00:01Z",
+          "duration": "PT3H12M19S"
+        },
+        {
+          "videoId": "K_8Lyvmw43g",
+          "title": "우울증 환자가 직접테스트한 불면증,불안장애,공황장애 정신치료음악 relaxing music",
+          "channel": "드림쿠키뮤직 Dream Cookie Music",
+          "publishedAt": "2022-03-13T11:30:03Z",
+          "duration": "PT3H4M40S"
+        },
+        {
+          "videoId": "4-9gp1puvMI",
+          "title": "❄️겨울에 듣기 좋은 바흐 피아노 명곡 모음 | 중간광고❌| 집중, 휴식, 수면유도 배경음악 | Best of Bach Keyboard Music for Relaxation",
+          "channel": "퓨얼리 피아노 𝚋𝚐𝚖",
+          "publishedAt": "2024-01-06T08:22:14Z",
+          "duration": "PT3H1M23S"
+        },
+        {
+          "videoId": "Yuw8TnTei58",
+          "title": "[Playlist]숲 공기🌿가득 마시며 일하기 |업무음악,공부음악,작업음악,집중할때듣는음악,독서음악 |",
+          "channel": "마인드피아노 MIND PIANO",
+          "publishedAt": "2023-05-14T23:00:18Z",
+          "duration": "PT10H1M28S"
+        },
+        {
+          "videoId": "p2fxv3PAtLU",
+          "title": "10시간 잔잔한 수면음악 🎵 스트레스 해소음악, 잠잘때 듣는 음악, 불면증치료음악, 수면유도음악 (My Dream)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2019-09-19T12:00:10Z",
+          "duration": "PT10H2M3S"
+        },
+        {
+          "videoId": "P8_8C2kA1WY",
+          "title": "마음의 휴식을 위한 힐링음악☁편안한 피아노 음악ㅣ독서음악,공부음악,명상음악 -\"Gift\"",
+          "channel": "뮤직 메이트 Music Mate",
+          "publishedAt": "2021-01-30T08:15:01Z",
+          "duration": "PT3H33M"
+        },
+        {
+          "videoId": "ZFfqrXv1zzY",
+          "title": "편안한 음악은 불안한 마음을 치유합니다 - 부정적인 감정을 없애고, 마음을 정화하고, 스트레스와 불안을 즉시 없애줍 (3시간 명상음악 + 최상의 숙면)",
+          "channel": "Yunchan Lim - 수면 음악 프로듀서",
+          "publishedAt": "2025-08-06T21:00:44Z",
+          "duration": "PT3H2M58S"
+        },
+        {
+          "videoId": "2XE_lxZ5vgI",
+          "title": "불안을 잠재우고 평안과 은혜을 채워주는 찬송가 연주 + 모닥불♨ㅣ공부음악, 기도음악, 심신안정ㅣstaring at a fire while  listening to hymns",
+          "channel": "잘잘법 :잘 믿고 잘 사는 법",
+          "publishedAt": "2022-09-06T10:00:01Z",
+          "duration": "PT4H53M6S"
+        },
+        {
+          "videoId": "K2Dsbca4AP4",
+          "title": "마음이 편안해지는 클래식피아노 10시간 모음 수면,명상,휴식,공부,요가 [중간광고없음]",
+          "channel": "마인드피아노 MIND PIANO",
+          "publishedAt": "2021-11-01T10:09:04Z",
+          "duration": "PT10H1M7S"
+        },
+        {
+          "videoId": "BDhekh6jQPY",
+          "title": "[𝐂𝐂𝐌 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭] 기도할 때 듣는 피아노 찬양 모음 | [4시간]",
+          "channel": "택피아노 | TAEK PIANO",
+          "publishedAt": "2025-05-15T13:00:12Z",
+          "duration": "PT4H3M43S"
+        },
+        {
+          "videoId": "OK5YHVdtMg4",
+          "title": "[𝐂𝐂𝐌 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭] 하나님의 위로와 힘이 필요할 때 듣는 피아노 찬양 2시간 모음 | God Works For You CCM Piano Collection 2 Hours",
+          "channel": "택피아노 | TAEK PIANO",
+          "publishedAt": "2022-02-03T12:22:13Z",
+          "duration": "PT2H5M13S"
+        },
+        {
+          "videoId": "RtPwBk0pqKE",
+          "title": "[명상음악] 우와 진짜 놀랍다. 하루10분 만병을 치료 해주는 힐링 명상 기치료 음악 및 영상, 스트레스 해소 음악, 긴장이완음악, 편안한 음악 (치유음악)",
+          "channel": "Relaxing Music Korea",
+          "publishedAt": "2020-04-05T20:00:04Z",
+          "duration": "PT6H3M6S"
+        },
+        {
+          "videoId": "npqwKtWqNds",
+          "title": "이 음악을 들으면 모든 걱정이 사라질 거예요 [효과100%] - 마음이 편안해지는 힐링음악, 스트레스 해소, 수면, 명상음악",
+          "channel": "Yunchan Lim - 수면 음악 프로듀서",
+          "publishedAt": "2025-06-18T23:00:54Z",
+          "duration": "PT1H2M4S"
+        },
+        {
+          "videoId": "zAIZpNbYytI",
+          "title": "😌💚 잠에 들며 공황장애, 불안장애의 치유를 돕는 수면 명상가이드, 하루 1번씩 들으며 공황장애, 불안증 극복하는 훈련! [BSM Level 2 - 정서 안정 및 잠재의식 치유]",
+          "channel": "브레이너 제이의 숙면 여행",
+          "publishedAt": "2020-04-13T13:26:22Z",
+          "duration": "PT3H10S"
+        },
+        {
+          "videoId": "_fcdh3UyrCo",
+          "title": "불안한 마음이 사라지는 숲 속 명상음악 🎵 아침음악, 요가음악, 치유음악, 마음이 편안해지는 음악 (Pure Mind)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2020-11-09T22:00:05Z",
+          "duration": "PT3H7M11S"
+        },
+        {
+          "videoId": "vXvsSSD7yzE",
+          "title": "8시간 Black Screen 실제 신경 정신과에서 사용하는 심신 뇌파 안정과 숙면에 효과가 있는 음악",
+          "channel": "서래마을 윤한씨",
+          "publishedAt": "2020-07-15T00:45:58Z",
+          "duration": "PT7H49M35S"
+        },
+        {
+          "videoId": "ee3PFk33aTQ",
+          "title": "[힐링트리뮤직] 우와 진짜 놀랍다. 하루10분 만병을 치료 해주는 힐링 명상 기치료 음악 및 영상, 명상음악, 스트레스 해소 음악, 긴장이완음악, 편안한 음악 (치유음악)",
+          "channel": "Beautiful Relaxing Piano",
+          "publishedAt": "2023-11-05T16:22:43Z",
+          "duration": "PT11H55M"
+        },
+        {
+          "videoId": "quUl8dlKA8E",
+          "title": "깊은 안정을 돕는 릴렉스음악 °• 잔잔하고 평온한 시간",
+          "channel": "Tempo:rest",
+          "publishedAt": "2022-12-05T00:00:28Z",
+          "duration": "PT1H35M19S"
+        }
+      ]
+    },
+    {
+      "id": "anxiety.worry",
+      "parent": "anxiety",
+      "label": "걱정",
+      "videos": [
+        {
+          "videoId": "cvPS_25gRPs",
+          "title": "생각 비우기 명상 - 부정적인 생각을 없애는 방법 (걱정, 나쁜 생각 대처법)",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2020-06-15T11:00:19Z",
+          "duration": "PT12M5S"
+        },
+        {
+          "videoId": "QZyj-XzRJtg",
+          "title": "[정목스님의 하루명상] 걱정이 꼬리에 꼬리를 물 때 / 안심명상",
+          "channel": "정목스님의 유나방송",
+          "publishedAt": "2022-03-07T01:30:03Z",
+          "duration": "PT13M46S"
+        },
+        {
+          "videoId": "-Ih13Cl6RFM",
+          "title": "☯ 내려놓아라! 모든것이 좋아진다. #내려놓음명상 포함 ㅣ그래야 모든것이 풀리고 해결된다. 쥐어잡고 있지 마라.하루 한번만 들어라! 방하착(放下着) 하라 명상의 말씀, 명상의 시간",
+          "channel": "귓전명상 채환TV Healing Meditation ChaeHwanTV",
+          "publishedAt": "2021-09-26T13:30:14Z",
+          "duration": "PT3H6M58S"
+        },
+        {
+          "videoId": "ehLNCUqR1hw",
+          "title": "복잡한 생각 비워내기 명상 │ 생각 흘려보내기 │ 유나명상연구소",
+          "channel": "정목스님의 유나방송",
+          "publishedAt": "2023-10-30T01:30:15Z",
+          "duration": "PT21M46S"
+        },
+        {
+          "videoId": "7lKI_XVHh_Q",
+          "title": "10분만에 마음을 다스리는 법 | 마음챙김 명상, 알아차림, 생각 비우기",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2022-02-28T11:00:05Z",
+          "duration": "PT20M5S"
+        },
+        {
+          "videoId": "VbPMb7HOQUo",
+          "title": "스트레스가 심한 날 듣는 명상 | 걱정을 내려놓는 15분",
+          "channel": "오르다TV 건강연구소",
+          "publishedAt": "2026-06-03T12:30:56Z",
+          "duration": "PT15M"
+        },
+        {
+          "videoId": "wIVR6hL8G0I",
+          "title": "불안·걱정 내려놓는 부처님 명상 | 마음의 평안 30분",
+          "channel": "지혜가 머무는 시간",
+          "publishedAt": "2026-01-03T22:00:55Z",
+          "duration": "PT23M52S"
+        },
+        {
+          "videoId": "Vq9vbEPQG2E",
+          "title": "𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 l 내면의 평화의 소리 | 걱정을 내려놓는 명상 음악",
+          "channel": "마음의 바다",
+          "publishedAt": "2026-04-30T11:00:50Z",
+          "duration": "PT1H10M14S"
+        },
+        {
+          "videoId": "4hTFpih7IUE",
+          "title": "생각과 걱정을 내려놓는 응원명상/귓속명상/매일명상 8분",
+          "channel": "마음멘토TV",
+          "publishedAt": "2020-09-08T07:50:47Z",
+          "duration": "PT8M12S"
+        },
+        {
+          "videoId": "z3wGBxIqdKc",
+          "title": "마음을 내려놓는 법, 마음을 비우는 법 - 판단하지 않기 [오늘하루위로]",
+          "channel": "정신의학신문",
+          "publishedAt": "2019-08-02T01:00:04Z",
+          "duration": "PT4M52S"
+        },
+        {
+          "videoId": "ya04SG8ntFQ",
+          "title": "자면서 듣는 걱정내려놓는 1시간, 부처님 명상 치유 걱정이 사라지는 1시간 잠자며 듣는 마음치유 법문 불안한 마음을 가라앉히는 방법",
+          "channel": "지혜 연못",
+          "publishedAt": "2025-10-31T11:02:14Z",
+          "duration": "PT2H26M36S"
+        },
+        {
+          "videoId": "Yllnxzvw71c",
+          "title": "비움│마음의 짐을 내려놓는 생각을 비우는 시간│걱정 대처법",
+          "channel": "김사부 케이명상",
+          "publishedAt": "2022-09-07T05:38:23Z",
+          "duration": "PT3M36S"
+        },
+        {
+          "videoId": "ypNi1AfYDZY",
+          "title": "마음의 짐을 내려놓는 비움명상 ㅣ 마음그릇을 비우는 시간",
+          "channel": "명상하는그녀_내안의별",
+          "publishedAt": "2022-01-18T12:32:57Z",
+          "duration": "PT14M52S"
+        },
+        {
+          "videoId": "gA9YBFdNPKs",
+          "title": "비우면 충만해집니다 – 생각과 걱정을 내려놓는 명상 음악 | 마음 리셋, 에너지 회복/",
+          "channel": "노래명상tv",
+          "publishedAt": "2025-08-01T04:13:41Z",
+          "duration": "PT58M43S"
+        },
+        {
+          "videoId": "n1pFuMeAn0U",
+          "title": "☯ 마음속 짐을 내려놓는 비움명상 \"내려놓으면 편안해진다. 비워내면 원하는 것을 얻는다.\" 욕심과 집착을 내려놓는 가장 쉬운 수면명상, 놓아버려라 모든 것이 좋아진다 #내려놓기명상",
+          "channel": "귓전명상 채환TV Healing Meditation ChaeHwanTV",
+          "publishedAt": "2022-10-24T13:00:08Z",
+          "duration": "PT2H1M26S"
+        },
+        {
+          "videoId": "rRUlASCKvwU",
+          "title": "수면 명상｜걱정 많은 밤, 차분한 안내 속에 마음을 내려놓는 20분 숙면 가이드",
+          "channel": "마리서킷",
+          "publishedAt": "2025-12-26T13:01:42Z",
+          "duration": "PT20M"
+        },
+        {
+          "videoId": "-7ZmBhL4iCk",
+          "title": "걱정 내려놓는 밤 – 부처님의 마음 편지 | 수면 유도 명상 오디오북 | 잠들기 전 듣는 위로",
+          "channel": "마음의 등불",
+          "publishedAt": "2025-07-10T15:00:00Z",
+          "duration": "PT16M46S"
+        },
+        {
+          "videoId": "xFFFF7TuSXg",
+          "title": "걱정도 집착도 내려놓으십시오, 무심하게 살면 모든 일은 알아서 흘러간다 | 부처님 말씀",
+          "channel": "부처님가르침",
+          "publishedAt": "2025-11-16T07:00:52Z",
+          "duration": "PT26M22S"
+        },
+        {
+          "videoId": "gRNV_WbPYlk",
+          "title": "마음의 짐, 염려하는 마음, 걱정을 내려놓는ㅣ아침.저녁 명상 가이드",
+          "channel": "나다운 Wellness",
+          "publishedAt": "2023-09-01T10:00:27Z",
+          "duration": "PT13M10S"
+        },
+        {
+          "videoId": "TQ19C4A61ZY",
+          "title": "근심걱정 내려놓는 불교노래 🙏 마음 편안해지는 기도음악 | 불안 해소 명상",
+          "channel": "금빛연꽃",
+          "publishedAt": "2026-03-04T04:07:00Z",
+          "duration": "PT49M9S"
+        }
+      ]
+    },
+    {
+      "id": "anxiety.tension",
+      "parent": "anxiety",
+      "label": "긴장",
+      "videos": [
+        {
+          "videoId": "bT0qwMvvSTE",
+          "title": "이완 호흡명상 | 몸과 마음 휴식 복식 호흡법 | 피로를 풀어주는 호흡명상 | 마인드바디 요가명상",
+          "channel": "마인드바디 요가명상",
+          "publishedAt": "2020-09-21T11:45:02Z",
+          "duration": "PT12M11S"
+        },
+        {
+          "videoId": "inxAScz0PTM",
+          "title": "누워서 하는 10분 명상 | 호흡명상, 마음챙김 명상 가이드",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2023-10-23T11:30:16Z",
+          "duration": "PT10M10S"
+        },
+        {
+          "videoId": "A2FjPz4ILhw",
+          "title": "몸에 배인 긴장과 불안을 완화하여 삶의 질을 높이는 심신 이완명상, 불면증 해소, 자율이완법",
+          "channel": "명상하는그녀_내안의별",
+          "publishedAt": "2021-02-02T09:16:13Z",
+          "duration": "PT15M55S"
+        },
+        {
+          "videoId": "dZewQEbQQM0",
+          "title": "5분 호흡명상 - 뇌를 위한 최고의 휴식법 (스트레스 해소, 뇌 피로회복)",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2020-03-27T11:00:30Z",
+          "duration": "PT7M13S"
+        },
+        {
+          "videoId": "XPXmSq3ybKc",
+          "title": "내부감각신호의 알아차림ㅣ정목스님명상ㅣ편도체를 안정시키는 명상ㅣ불안과 두려움을 느낄 때 #횡격막호흡명상",
+          "channel": "정목스님의 유나방송",
+          "publishedAt": "2025-06-25T01:00:37Z",
+          "duration": "PT16M15S"
+        },
+        {
+          "videoId": "TRQV5h0XMns",
+          "title": "숙면하는 방법 💤 10분안에 꿀잠자는 바디스캔 명상 | 수면 명상 가이드 ・ 불면증 해소",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2020-05-25T11:00:19Z",
+          "duration": "PT22M9S"
+        },
+        {
+          "videoId": "cvPS_25gRPs",
+          "title": "생각 비우기 명상 - 부정적인 생각을 없애는 방법 (걱정, 나쁜 생각 대처법)",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2020-06-15T11:00:19Z",
+          "duration": "PT12M5S"
+        },
+        {
+          "videoId": "CNYYWuH_Fcc",
+          "title": "몸과 마음의 완전한 휴식을 위한 이완명상 (ASMR · 바디스캔 · 자기암시) | 20분 요가니드라  | 요가소년 044",
+          "channel": "요가소년",
+          "publishedAt": "2018-03-15T06:22:29Z",
+          "duration": "PT21M11S"
+        },
+        {
+          "videoId": "MmWwXbUM9uY",
+          "title": "초보자를 위한 기본 호흡명상 │ 숨결 따라가기 │유나명상연구소",
+          "channel": "정목스님의 유나방송",
+          "publishedAt": "2023-10-09T01:30:10Z",
+          "duration": "PT19M22S"
+        },
+        {
+          "videoId": "zOmdmTGxnoM",
+          "title": "누워서 하는 재충전 요가명상 (이완명상 · 바디스캔 · 자기암시) | 20분 요가니드라  | 요가소년 062",
+          "channel": "요가소년",
+          "publishedAt": "2018-04-19T07:32:07Z",
+          "duration": "PT20M20S"
+        },
+        {
+          "videoId": "bWIT2If5X8k",
+          "title": "[곰호흡]🧸설명필독❗️딱! 10분만 따라 해보세요! 답답함과 괴로움에서 해방됩니다. 21일동안 매일 10분씩만 ▶10분만에 스트레스해소 호흡명상, 수면 숙면 불면",
+          "channel": "귓전명상 채환TV Healing Meditation ChaeHwanTV",
+          "publishedAt": "2022-08-14T20:00:05Z",
+          "duration": "PT18M29S"
+        },
+        {
+          "videoId": "PwXYtw7WZ48",
+          "title": "수면유도 명상 31 - 뇌신경계 이완 명상 (종합)",
+          "channel": "김주환의 내면소통",
+          "publishedAt": "2023-01-31T14:33:10Z",
+          "duration": "PT28M1S"
+        },
+        {
+          "videoId": "TGoAN5L_oPI",
+          "title": "5분 마음챙김 명상 - 마음을 다스리는 호흡 (스트레스 해소)",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2025-06-30T11:00:49Z",
+          "duration": "PT6M9S"
+        },
+        {
+          "videoId": "P7HxILdxbbo",
+          "title": "🙂스트레스/불안/공황 완화를 위한 심호흡이완 뇌파소리 | 5.35 Hz 세타파 - '긴장완화, 마음진정을 위한 심호흡' | 5.35 Hz EEG",
+          "channel": "잠박사 JAMBAKSA",
+          "publishedAt": "2020-02-25T04:11:04Z",
+          "duration": "PT7H59M48S"
+        },
+        {
+          "videoId": "PdeV5CLt2_E",
+          "title": "초보자를 위한 숫자세기 호흡명상 │ 호흡과 친해지기 │유나명상연구소",
+          "channel": "정목스님의 유나방송",
+          "publishedAt": "2023-11-13T01:30:07Z",
+          "duration": "PT20M18S"
+        },
+        {
+          "videoId": "_MTd1opMBk0",
+          "title": "마음이 평온해지는 10분 명상 | 스트레스 해소, 호흡 명상 가이드",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2023-04-10T11:00:31Z",
+          "duration": "PT10M52S"
+        },
+        {
+          "videoId": "LrE1vB_DrLw",
+          "title": "[따라해보세요] 뇌파 안정, 부교감신경 활성화되는 호흡 집중 명상",
+          "channel": "오상신경외과의원",
+          "publishedAt": "2024-04-06T10:00:25Z",
+          "duration": "PT7M33S"
+        },
+        {
+          "videoId": "N-vftlqrC8A",
+          "title": "[아나빠나사띠🧘🏻‍♂️15분명상] 호흡만 잘해도 건강하게 오래 산다 / 10분 호흡명상으로 건강을 회복하세요",
+          "channel": "귓전명상 채환TV Healing Meditation ChaeHwanTV",
+          "publishedAt": "2023-12-22T20:00:10Z",
+          "duration": "PT14M22S"
+        },
+        {
+          "videoId": "RhPN7difaQc",
+          "title": "😌💦 신경질, 예민함을 없애주는 잔여긴장 해소법 수면 명상가이드, 습관적 긴장증에 기인한 조기 불면 증세 완화 [BSM Level 1+2 - 신체 긴장 이완 및 수면 유도]",
+          "channel": "브레이너 제이의 숙면 여행",
+          "publishedAt": "2020-05-10T13:57:14Z",
+          "duration": "PT1H33M45S"
+        },
+        {
+          "videoId": "E_jHTuSTAK8",
+          "title": "수면유도 명상9 - 점진적 이완 명상 (PMR + 호흡 훈련)",
+          "channel": "김주환의 내면소통",
+          "publishedAt": "2023-01-09T14:30:40Z",
+          "duration": "PT27M6S"
+        }
+      ]
+    },
+    {
+      "id": "anger.irritation",
+      "parent": "anger",
+      "label": "짜증",
+      "videos": [
+        {
+          "videoId": "TRtL_lw7JcM",
+          "title": "불닭볶음면 이런 조합이 있다고? 불닭볶음면으로 스트레스 푸는 꿀팁!ㅋㅋㅋ",
+          "channel": "흔한남매",
+          "publishedAt": "2022-03-18T06:00:08Z",
+          "duration": "PT12M29S"
+        },
+        {
+          "videoId": "oW5R46_4zOg",
+          "title": "냥숲 요리영상 음식 모음 - 봄春 | Spring food cooking collection",
+          "channel": "냥숲nyangsoop",
+          "publishedAt": "2020-08-14T12:53:53Z",
+          "duration": "PT58M47S"
+        },
+        {
+          "videoId": "nkjLJd6EdS4",
+          "title": "묘하게 스트레스가 해소되는 기분좋아지는 영상 & ASMR # 13",
+          "channel": "묘한힐링",
+          "publishedAt": "2022-04-13T09:19:47Z",
+          "duration": "PT10M"
+        },
+        {
+          "videoId": "9bHLr1Hpy0I",
+          "title": "비 오는 날 시골 아궁이 장작 타는 소리 | 불면증 해소 스트레스 완화 수면 ASMR",
+          "channel": "소리바구니 SoriBaguni ASMR",
+          "publishedAt": "2025-10-09T12:30:11Z",
+          "duration": "PT8H"
+        },
+        {
+          "videoId": "kwV7KaEmL28",
+          "title": "스트레스 해소 영상 모음:) 스트레스 다 뿌셔뿌셔ㅋㅋㅋ",
+          "channel": "다람냥-Daram Slime",
+          "publishedAt": "2026-01-06T08:00:55Z",
+          "duration": "PT25M49S"
+        },
+        {
+          "videoId": "8EWUG_mPs1U",
+          "title": "보고만 있어도 기분 좋아지는 쾌감 영상 !! 수박 안에 구슬이 ?!",
+          "channel": "버섯도리",
+          "publishedAt": "2023-10-24T07:00:03Z",
+          "duration": "PT13M49S"
+        },
+        {
+          "videoId": "9OfvJZgBusI",
+          "title": "스트레스 해소와 마음에 안정을 주는 기분좋아지는 영상 & ASMR # 8",
+          "channel": "묘한힐링",
+          "publishedAt": "2022-03-31T09:45:26Z",
+          "duration": "PT8M16S"
+        },
+        {
+          "videoId": "WKGiY3gBXTo",
+          "title": "𝗣𝗹𝗮𝘆𝗹𝗶𝘀𝘁 기분 전환이 필요할땐 리드미컬한 그루브〰️🌿 | 청량하고 신나는 팝 | Groovy Pop🫧🎧",
+          "channel": "SISO Wave",
+          "publishedAt": "2025-04-19T12:39:04Z",
+          "duration": "PT2H32M31S"
+        },
+        {
+          "videoId": "Xmn1jgD_x6s",
+          "title": "기분 좋은 하루를 만들어주는 플레이리스트 | ☀️🌿 𝗚𝗼𝗼𝗱 𝗩𝗶𝗯𝗲𝘀 ☁️",
+          "channel": "SISO Wave",
+          "publishedAt": "2025-08-13T21:41:56Z",
+          "duration": "PT2H51M54S"
+        },
+        {
+          "videoId": "DstfDqTjPIE",
+          "title": "𝘱𝘭𝘢𝘺𝘭𝘪𝘴𝘵 오늘 제일 잘 될 사람 바로 나 ✌🏻🍀 | 듣자마자 기분 좋아지는 봄 플리",
+          "channel": "seroma room",
+          "publishedAt": "2026-03-03T01:00:15Z",
+          "duration": "PT9H15M49S"
+        },
+        {
+          "videoId": "qBhHucqxff0",
+          "title": "2010년대 아이돌 댄스곡 모음, 2010년대에 히트했던 아이돌 가수의 신나는 댄스음악 40곡 연속듣기, 기분좋을때 들으면 더욱 신나는 음악, 보고듣는 소울뮤직TV",
+          "channel": "소울뮤직TV",
+          "publishedAt": "2020-06-15T04:17:14Z",
+          "duration": "PT2H33M18S"
+        },
+        {
+          "videoId": "lQhSefrjtUE",
+          "title": "희망찬 아침을 만들어주는 아침에 듣기 좋은 노래 10곡  - Heony`s Music Cafe",
+          "channel": "친절한이사장",
+          "publishedAt": "2020-07-27T03:00:07Z",
+          "duration": "PT39M5S"
+        },
+        {
+          "videoId": "Tr5-cBvP22g",
+          "title": "기분전환 200%🔥 도파민 터지는, 신나는 노래들🎧 | EDM | Playlist | 클럽음악 | 노동요 | 플레이리스트",
+          "channel": "DJ Corgi",
+          "publishedAt": "2026-05-27T22:00:02Z",
+          "duration": "PT2H30M51S"
+        },
+        {
+          "videoId": "eQ1YuJjL4ZA",
+          "title": "신나는 노래 모음 ☀️ |  기분 좋아지는 팝송 플레이리스트",
+          "channel": "SISO Wave",
+          "publishedAt": "2026-01-01T00:00:53Z",
+          "duration": "PT3H20M58S"
+        },
+        {
+          "videoId": "nlS6YOuVwi0",
+          "title": "[신나는 힐링 댄스곡 30곡 연속듣기 no.1] 🎧 누구나 듣기 편한 기분 좋은 신나는 힐링 댄스곡 모음, 🎧 쉴 때, 일할 때, 드라이브 할 때, 가을에 듣기 좋은 노래 모음.",
+          "channel": "행복",
+          "publishedAt": "2025-10-21T22:01:05Z",
+          "duration": "PT4H50M34S"
+        },
+        {
+          "videoId": "L3fvGsxqpFc",
+          "title": "𝐏𝐋𝐀𝐘𝐋𝐈𝐒𝐓  딴 거 필요 없어. 이거 틀면 그냥 기분 날아감.zip 신나는 팝송 다 모아놨음!",
+          "channel": "주인장 𝐏𝐋𝐀𝐘𝐋𝐈𝐒𝐓",
+          "publishedAt": "2025-02-09T14:22:47Z",
+          "duration": "PT2H55M22S"
+        },
+        {
+          "videoId": "tU1P1jaKIHU",
+          "title": "유튜브 최고의 신나는 댄스곡 💛 90~2000년대 댄스그룹 노래모음 💛광고 없는 연속재생 90년대 히트곡 논스톱 메들리 best 신나는 댄스 음악 모음 광고없는 신나는노래",
+          "channel": "STILL LOVE YOU",
+          "publishedAt": "2023-10-05T08:44:38Z",
+          "duration": "PT1H44M4S"
+        },
+        {
+          "videoId": "--nLlu7pdPk",
+          "title": "🥰듣기만해도 행복해지는 빠른템포의 경쾌한 피아노연주곡 10시간 모음[Happy Piano Playlist]",
+          "channel": "마인드피아노 MIND PIANO",
+          "publishedAt": "2022-06-11T01:40:13Z",
+          "duration": "PT10H2M41S"
+        },
+        {
+          "videoId": "QY0C7WO13d0",
+          "title": "[𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭] 이 노래들 틀자마자, 기분이 맑아졌어요 🍃 아무 생각 없이 듣기 좋은 국내 음악 모음 | 나답게 사는 법",
+          "channel": "잔잔",
+          "publishedAt": "2025-08-12T22:05:00Z",
+          "duration": "PT3H27M24S"
+        },
+        {
+          "videoId": "_J6J4LVYZnA",
+          "title": "응답하라 1990년대 댄스곡 모음집💚90년대 댄스곡 - 2000년대 히트곡 - 90년대 히트곡 - 댄스곡 연속듣기 - 신나는댄스곡모음 💚 신나는 댄스곡모음",
+          "channel": "신나는 노래 모음 90-2000",
+          "publishedAt": "2022-09-28T21:00:13Z",
+          "duration": "PT53M38S"
+        }
+      ]
+    },
+    {
+      "id": "anger.unfair",
+      "parent": "anger",
+      "label": "억울함",
+      "videos": [
+        {
+          "videoId": "IHt4kgF-Ytk",
+          "title": "마음이 편안해지는 힐링음악 3시간 🎵 아침음악, 편안한음악, 스트레스해소음악 (Winter Love)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2024-12-23T22:00:17Z",
+          "duration": "PT3H1M30S"
+        },
+        {
+          "videoId": "npqwKtWqNds",
+          "title": "이 음악을 들으면 모든 걱정이 사라질 거예요 [효과100%] - 마음이 편안해지는 힐링음악, 스트레스 해소, 수면, 명상음악",
+          "channel": "Yunchan Lim - 수면 음악 프로듀서",
+          "publishedAt": "2025-06-18T23:00:54Z",
+          "duration": "PT1H2M4S"
+        },
+        {
+          "videoId": "RtPwBk0pqKE",
+          "title": "[명상음악] 우와 진짜 놀랍다. 하루10분 만병을 치료 해주는 힐링 명상 기치료 음악 및 영상, 스트레스 해소 음악, 긴장이완음악, 편안한 음악 (치유음악)",
+          "channel": "Relaxing Music Korea",
+          "publishedAt": "2020-04-05T20:00:04Z",
+          "duration": "PT6H3M6S"
+        },
+        {
+          "videoId": "ZFfqrXv1zzY",
+          "title": "편안한 음악은 불안한 마음을 치유합니다 - 부정적인 감정을 없애고, 마음을 정화하고, 스트레스와 불안을 즉시 없애줍 (3시간 명상음악 + 최상의 숙면)",
+          "channel": "Yunchan Lim - 수면 음악 프로듀서",
+          "publishedAt": "2025-08-06T21:00:44Z",
+          "duration": "PT3H2M58S"
+        },
+        {
+          "videoId": "ZQWrleq-NhQ",
+          "title": "마음이 편안해지는 힐링음악☁숲 속 휴식음악,모닥불 소리,스트레스 해소음악,명상음악 - \"With Coffee\"",
+          "channel": "뮤직 메이트 Music Mate",
+          "publishedAt": "2021-01-03T06:00:19Z",
+          "duration": "PT3H16M2S"
+        },
+        {
+          "videoId": "mWASFFB8YFY",
+          "title": "몸의 긴장을 풀어주는 힐링음악 + 물소리 🎵 마사지음악, 스파음악, 휴식음악, 수면유도음악",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2021-08-12T13:30:05Z",
+          "duration": "PT10H8M47S"
+        },
+        {
+          "videoId": "feQn-0ObCAM",
+          "title": "실제 신경 정신과에서 사용하는 심신 뇌파 안정과 숙면에 효과가 있는 음악 🎵 머리아플때듣는음악,편안한 음악,스트레스 해소음악",
+          "channel": "Relax Gently",
+          "publishedAt": "2022-05-27T14:00:30Z",
+          "duration": "PT10H6M9S"
+        },
+        {
+          "videoId": "m7GOmncIU5A",
+          "title": "지친 마음을 달래주는 음악 🎵 1시간 힐링음악, 스트레스해소음악, 마음이 편안해지는 음악, 위로음악",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2019-08-29T22:00:03Z",
+          "duration": "PT1H3M22S"
+        },
+        {
+          "videoId": "p2fxv3PAtLU",
+          "title": "10시간 잔잔한 수면음악 🎵 스트레스 해소음악, 잠잘때 듣는 음악, 불면증치료음악, 수면유도음악 (My Dream)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2019-09-19T12:00:10Z",
+          "duration": "PT10H2M3S"
+        },
+        {
+          "videoId": "Cif562p7ZpI",
+          "title": "𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 : 괜히 모든 게 잘 풀리는 날 🎵조용히 마음이 풀리는 힐링 피아노 (스트레스 해소 · 편안한 휴식 · 잔잔한 카페음악 · Winter Calm)",
+          "channel": "Romua 로무아",
+          "publishedAt": "2026-01-30T06:00:10Z",
+          "duration": "PT2H59M36S"
+        },
+        {
+          "videoId": "pywxuQJk3vc",
+          "title": "숲을 걷는 효과🌿 10분만에 머리가 맑아져요  | 5시간, 치유음악, 힐링음악, 새소리  | White Noise, the sound of birds in the forest",
+          "channel": "살구사운드 SalguSound",
+          "publishedAt": "2025-04-14T02:45:05Z",
+          "duration": "PT5H5M5S"
+        },
+        {
+          "videoId": "j99nm--mVIc",
+          "title": "[Playlist] 마음이 편안해지는 대금 힐링음악☁숲 속 휴식음악,스트레스 해소음악,명상음악",
+          "channel": "대금이누나 _Daegeumi Nuna",
+          "publishedAt": "2024-06-24T12:30:07Z",
+          "duration": "PT38M40S"
+        },
+        {
+          "videoId": "quUl8dlKA8E",
+          "title": "깊은 안정을 돕는 릴렉스음악 °• 잔잔하고 평온한 시간",
+          "channel": "Tempo:rest",
+          "publishedAt": "2022-12-05T00:00:28Z",
+          "duration": "PT1H35M19S"
+        },
+        {
+          "videoId": "ee3PFk33aTQ",
+          "title": "[힐링트리뮤직] 우와 진짜 놀랍다. 하루10분 만병을 치료 해주는 힐링 명상 기치료 음악 및 영상, 명상음악, 스트레스 해소 음악, 긴장이완음악, 편안한 음악 (치유음악)",
+          "channel": "Beautiful Relaxing Piano",
+          "publishedAt": "2023-11-05T16:22:43Z",
+          "duration": "PT11H55M"
+        },
+        {
+          "videoId": "6m0xbFKKPx0",
+          "title": "3시간 잔잔한 수면음악 + 풀벌레소리 🎵 스트레스 해소음악, 잠잘때 듣는 음악, 불면증치료음악, 수면유도음악 (My Dream)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2021-01-26T12:30:01Z",
+          "duration": "PT3H4M51S"
+        },
+        {
+          "videoId": "ZOndYQkJWaY",
+          "title": "물소리 + 피아노 = 완벽!  입증된 치유 음악 치료, 98 9% 효과🎵 피로 회복 음악, 휴식, 집중력 향상 음악, 명상, 마사지, 스파, 깊은 잠과 힐링 시간...",
+          "channel": "Yunchan Lim - 수면 음악 프로듀서",
+          "publishedAt": "2025-07-09T23:00:37Z",
+          "duration": "PT3H1M20S"
+        },
+        {
+          "videoId": "TyT02nwr8Ss",
+          "title": "☯ [스트레스 호르몬 40% 감소] 참 편안하다. 듣는것만으로 마음의 평안이 찾아오는 치유명상음악 ▶ 불안했던 마음이 편안해지는 음악 [황금손명상 8시간] CH Meditation",
+          "channel": "귓전명상 채환TV Healing Meditation ChaeHwanTV",
+          "publishedAt": "2022-04-13T13:41:19Z",
+          "duration": "PT8H"
+        },
+        {
+          "videoId": "PBrPG1ZKKCM",
+          "title": "🎵 그냥 틀어놓기만 해도, 아무 일 없어도 마음이 좋은 음악",
+          "channel": "Mira Lush",
+          "publishedAt": "2025-05-14T13:25:00Z",
+          "duration": "PT7H23M53S"
+        },
+        {
+          "videoId": "DXB84VgBP18",
+          "title": "1시간 잔잔한 수면음악 + 풀벌레소리 🎵 스트레스 해소음악, 잠잘때 듣는 음악, 불면증치료음악, 수면유도음악 (My Dream)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2021-07-13T13:00:04Z",
+          "duration": "PT1H2M9S"
+        },
+        {
+          "videoId": "EncxoXf0eU0",
+          "title": "소리지르는아이를 위로하는 편안한 음악🔉정서적 안정을 찾아주는 힐링음악",
+          "channel": "조이엘리 뮤직 Joyeli Music",
+          "publishedAt": "2022-04-28T01:00:53Z",
+          "duration": "PT59M36S"
+        }
+      ]
+    },
+    {
+      "id": "anger.rage",
+      "parent": "anger",
+      "label": "격분",
+      "videos": [
+        {
+          "videoId": "TYGYOAFVIE4",
+          "title": "[정목스님의 하루명상] 화가 불쑥 치밀어 오를 때 / 분노명상",
+          "channel": "정목스님의 유나방송",
+          "publishedAt": "2022-02-21T01:30:04Z",
+          "duration": "PT13M52S"
+        },
+        {
+          "videoId": "JzPDVLdjLsg",
+          "title": "분노와 화를 비워내는 명상 l 어렵지않은 명상의 시작",
+          "channel": "숨쉬는고래 Breathingwhale",
+          "publishedAt": "2020-06-30T13:00:05Z",
+          "duration": "PT11M25S"
+        },
+        {
+          "videoId": "c4vzXAPlnI4",
+          "title": "[10분🧘🏻‍♂️명상] 화가 멈추지 않는다면 지금 한번 해보세요  ▶화 비우기 명상 ✔️내 발목을 잡는 그 분노",
+          "channel": "귓전명상 채환TV Healing Meditation ChaeHwanTV",
+          "publishedAt": "2023-06-21T20:00:19Z",
+          "duration": "PT13M44S"
+        },
+        {
+          "videoId": "G8zjg8p_HYo",
+          "title": "분노를 다스리는 6분 명상🙏 : 화가 날 땐 이렇게 해보세요｜아침명상｜짧은명상｜불교명상｜운성스님",
+          "channel": "BTN라디오 불교",
+          "publishedAt": "2022-06-16T07:46:36Z",
+          "duration": "PT6M21S"
+        },
+        {
+          "videoId": "cvPS_25gRPs",
+          "title": "생각 비우기 명상 - 부정적인 생각을 없애는 방법 (걱정, 나쁜 생각 대처법)",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2020-06-15T11:00:19Z",
+          "duration": "PT12M5S"
+        },
+        {
+          "videoId": "7lKI_XVHh_Q",
+          "title": "10분만에 마음을 다스리는 법 | 마음챙김 명상, 알아차림, 생각 비우기",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2022-02-28T11:00:05Z",
+          "duration": "PT20M5S"
+        },
+        {
+          "videoId": "RtPwBk0pqKE",
+          "title": "[명상음악] 우와 진짜 놀랍다. 하루10분 만병을 치료 해주는 힐링 명상 기치료 음악 및 영상, 스트레스 해소 음악, 긴장이완음악, 편안한 음악 (치유음악)",
+          "channel": "Relaxing Music Korea",
+          "publishedAt": "2020-04-05T20:00:04Z",
+          "duration": "PT6H3M6S"
+        },
+        {
+          "videoId": "I6djPeD10Qo",
+          "title": "[감정명상] 화를 이해하고 다정하게 비우는 20분 명상｜분노를 억누르지 않고 바라보는 연습",
+          "channel": "숨쉬는고래 Breathingwhale",
+          "publishedAt": "2025-07-06T12:00:30Z",
+          "duration": "PT19M59S"
+        },
+        {
+          "videoId": "ZUsQKJstf4g",
+          "title": "화가 나거나 불안할 때 마음을 쉽게 다스리는 방법 I 불안과 분노를 잠재우는 법 I 자면서 듣는 부처님 명언 4시간 I 인간관계 I 오디오북 I 삶의 지혜",
+          "channel": "명언과 위로",
+          "publishedAt": "2025-02-20T11:15:03Z",
+          "duration": "PT3H53M"
+        },
+        {
+          "videoId": "inxAScz0PTM",
+          "title": "누워서 하는 10분 명상 | 호흡명상, 마음챙김 명상 가이드",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2023-10-23T11:30:16Z",
+          "duration": "PT10M10S"
+        },
+        {
+          "videoId": "x0ruigAVsoI",
+          "title": "화는 내 삶에 '단 1%도' 도움이 되지 않습니다. (김주환 교수)",
+          "channel": "스터디언",
+          "publishedAt": "2022-11-21T07:00:31Z",
+          "duration": "PT20M52S"
+        },
+        {
+          "videoId": "uc7RtVFD6L0",
+          "title": "인간관계 스트레스 상처 치유 회복ㅣ누군가가 밉고 싫을 때 듣는 불편한 마음 해소 명상 가이드",
+          "channel": "나탐 Natam",
+          "publishedAt": "2023-08-14T07:00:22Z",
+          "duration": "PT25M40S"
+        },
+        {
+          "videoId": "lrvlUXjGx8k",
+          "title": "🤗화를 다스리는 뇌파소리 | 3.5 Hz 델타파 - '과민/불안초조/화 완화' | 3.5 Hz EEG",
+          "channel": "잠박사 JAMBAKSA",
+          "publishedAt": "2020-02-09T08:39:17Z",
+          "duration": "PT7H59M14S"
+        },
+        {
+          "videoId": "YaJiLIF25H0",
+          "title": "스트레스 뇌파 30% 감소, 면역력 증진 치유음악 (Music Therapy) 피아노 ▶벚꽃음악 - Korea Meditation MUSIC",
+          "channel": "귓전명상 채환TV Healing Meditation ChaeHwanTV",
+          "publishedAt": "2020-04-05T13:30:11Z",
+          "duration": "PT3H19M6S"
+        },
+        {
+          "videoId": "_MTd1opMBk0",
+          "title": "마음이 평온해지는 10분 명상 | 스트레스 해소, 호흡 명상 가이드",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2023-04-10T11:00:31Z",
+          "duration": "PT10M52S"
+        },
+        {
+          "videoId": "dZewQEbQQM0",
+          "title": "5분 호흡명상 - 뇌를 위한 최고의 휴식법 (스트레스 해소, 뇌 피로회복)",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2020-03-27T11:00:30Z",
+          "duration": "PT7M13S"
+        },
+        {
+          "videoId": "LfrO8t8lsWU",
+          "title": "💜🎆 잠에 들며 답답한 마음과 울화가 정화되는 숙면 명상가이드, 자면서 치유하는 PMR & 순환 명상법 with 싱잉볼 사운드 [BSM LEVEL 2 - 감정 정화 및 치유]",
+          "channel": "브레이너 제이의 숙면 여행",
+          "publishedAt": "2020-03-27T14:03:23Z",
+          "duration": "PT3H28S"
+        },
+        {
+          "videoId": "M9TAg1bLphw",
+          "title": "화를 가라앉히는 5분 명상_내안의 화를 다스리는 시간 [나레이션:샐리]",
+          "channel": "샐리와 해리의 명상",
+          "publishedAt": "2022-03-28T10:00:21Z",
+          "duration": "PT5M27S"
+        },
+        {
+          "videoId": "ARdeop34Ehc",
+          "title": "마음의 응어리를 풀어주는 분노 억울함 해소 명상 ㅣ 낡은 에너지 정화",
+          "channel": "명상하는그녀_내안의별",
+          "publishedAt": "2019-01-21T08:19:23Z",
+          "duration": "PT17M21S"
+        },
+        {
+          "videoId": "5OVCsa0cfDo",
+          "title": "직장인을 위한 분노명상 │ 멘탈강화연습 │유나명상연구소",
+          "channel": "정목스님의 유나방송",
+          "publishedAt": "2023-11-06T01:30:03Z",
+          "duration": "PT18M57S"
+        }
+      ]
+    },
+    {
+      "id": "frustration.stuck",
+      "parent": "frustration",
+      "label": "막막함",
+      "videos": [
+        {
+          "videoId": "80EYwpdvMac",
+          "title": "[레전드] 웃고 삽시다! 듣고 있으면 웃음 + 감동이 있는 강연 | #재미있는 #세바시 #배움은 #덤",
+          "channel": "세바시 강연 Sebasi Talk",
+          "publishedAt": "2024-09-18T09:00:05Z",
+          "duration": "PT2H53M13S"
+        },
+        {
+          "videoId": "4RPc3nFAMFM",
+          "title": "유독 힘든 날 보면 위로가 되는 드라마속 명대사",
+          "channel": "짧은명언:AWAKE",
+          "publishedAt": "2025-07-20T06:00:08Z",
+          "duration": "PT4M50S"
+        },
+        {
+          "videoId": "WSAoeCFHp9s",
+          "title": "마치 지구상에 존재하면 안될 것 같은 씨앗의 구조 | 비가오면 스스로 ‘드릴처럼 회전’하여 땅으로 들어가는 씨앗 | 국화쥐손이 | 다큐프라임 | #골라듄다큐",
+          "channel": "EBSDocumentary (EBS 다큐)",
+          "publishedAt": "2023-03-17T09:00:31Z",
+          "duration": "PT4M27S"
+        },
+        {
+          "videoId": "7xh_hDQgSSI",
+          "title": "“이건 못 참지” 다큐3일 레전드 명장면 모아보기(with 댓글모음) ｜크랩",
+          "channel": "크랩 KLAB",
+          "publishedAt": "2022-03-25T08:00:04Z",
+          "duration": "PT9M40S"
+        },
+        {
+          "videoId": "4SMqnwqeORs",
+          "title": "다독보다 중요한 건 정독! 독서에 숨겨진 속도의 비밀｜한 권을 읽어도 제대로 읽으려면 필요한 독서습관｜ 영상이 아무리 발전해도 독서 못 따라잡는 이유｜다큐멘터리K｜#골라듄다큐",
+          "channel": "EBSDocumentary (EBS 다큐)",
+          "publishedAt": "2024-10-14T09:00:06Z",
+          "duration": "PT12M49S"
+        },
+        {
+          "videoId": "OnwnPqyZC5w",
+          "title": "운행 중 갑자기 배가 아프다. 철도 기관사는 화장실 어떻게 해결하는지 봤더니｜화장실 전쟁｜다큐프라임｜#골라듄다큐",
+          "channel": "EBSDocumentary (EBS 다큐)",
+          "publishedAt": "2025-12-20T10:30:30Z",
+          "duration": "PT11M6S"
+        },
+        {
+          "videoId": "ahNyJgDZmkc",
+          "title": "누적 조회수 2500만 이상! 10년 연속 경제 서적 부문 베스트 셀러 1위!┃부자가 되는 법은 이 한편에 모두 담겨있다┃레전드명작 다큐프라임 자본주의 한방에 몰아보기┃#골라듄다큐",
+          "channel": "EBSDocumentary (EBS 다큐)",
+          "publishedAt": "2024-03-23T09:00:04Z",
+          "duration": "PT4H40M6S"
+        },
+        {
+          "videoId": "pwjHtb5VsQQ",
+          "title": "외출을 포기한 상태. 겉은 멀쩡한데 일상 생활이 힘든 20대 알고보니 불안장애였다｜공황 장애의 실체｜불안 증세 치료법｜다큐프라임｜#골라듄다큐",
+          "channel": "EBSDocumentary (EBS 다큐)",
+          "publishedAt": "2025-10-28T11:01:49Z",
+          "duration": "PT22M4S"
+        },
+        {
+          "videoId": "H7_oH-Ujqak",
+          "title": "EBS가 영혼을 갈아 만든 2026 주식 다큐멘터리 1시간 핵심 요약본｜코스피 6,000시대 우량주와 ETF｜AI 버블｜다큐프라임 2026｜#골라듄다큐",
+          "channel": "EBSDocumentary (EBS 다큐)",
+          "publishedAt": "2026-03-01T06:00:12Z",
+          "duration": "PT1H13S"
+        },
+        {
+          "videoId": "Zhex_2a7DmU",
+          "title": "🟣60에 '이것' 없으면 진짜 삶의 질이 떨어집니다 - 20분 인생명언",
+          "channel": "MKTV 김미경TV",
+          "publishedAt": "2025-05-21T22:30:15Z",
+          "duration": "PT17M50S"
+        },
+        {
+          "videoId": "j2n1wGLVpEo",
+          "title": "그 시절 감성이 가득 담긴 다큐 3일 명장면&명언 모음｜크랩",
+          "channel": "크랩 KLAB",
+          "publishedAt": "2025-08-23T02:00:46Z",
+          "duration": "PT8M27S"
+        },
+        {
+          "videoId": "u4eQL30vA1o",
+          "title": "[다큐3일★하이라이트] 새벽에 왔다 가는 우렁각시 | “태양을 향해 달려라- 새벽 배송 현장 72시간” (KBS 210523 방송)",
+          "channel": "KBS 다큐",
+          "publishedAt": "2021-05-27T11:00:13Z",
+          "duration": "PT30M59S"
+        },
+        {
+          "videoId": "EEhGwhIKQN8",
+          "title": "[다큐3일★풀버전] 원석을 보석으로 만드는 국내 보석 세공사들 | “내 인생의 보석상자 익산 귀금속 보석가공단지” (KBS 160306 방송)",
+          "channel": "KBS 다큐",
+          "publishedAt": "2021-04-23T12:00:19Z",
+          "duration": "PT51M3S"
+        },
+        {
+          "videoId": "aOXuJV35nqE",
+          "title": "제대로 만들 수밖에 없다 \"내가 죽지 않으려면\"｜아찔한 절벽 위 중국 잔도공이 사는 법｜레전드｜극한직업｜#골라듄다큐",
+          "channel": "EBSDocumentary (EBS 다큐)",
+          "publishedAt": "2025-02-06T05:42:44Z",
+          "duration": "PT41M5S"
+        },
+        {
+          "videoId": "AhrmOxExs34",
+          "title": "0.2초에 결판나는 싸움. 야구의 기초부터 모든 원리 총정리 영상│프로야구│kbo│야구 분석│원더풀사이언스│#골라듄다큐",
+          "channel": "EBSDocumentary (EBS 다큐)",
+          "publishedAt": "2024-10-24T11:30:07Z",
+          "duration": "PT42M6S"
+        },
+        {
+          "videoId": "aUWdjFfint4",
+          "title": "수면음악도 아니고 이렇게 잠이 오기는 처음이네요! 그리스 로마 신화 [신화의 숲] 들으니 마음이 편해지고 세상이 평화롭습니다!ㅣ중간 광고없는 오디오북ㅣ책 읽어주는 남자",
+          "channel": "그 남자의 목소리",
+          "publishedAt": "2024-08-07T13:30:01Z",
+          "duration": "PT1H28M32S"
+        },
+        {
+          "videoId": "9tljRiWhh70",
+          "title": "미국이란 세계최대강국은 우연히 만들어지지 않았다. 미국이 초강대국이 된 역사적 배경 총정리｜고작 240여 년 역사에 세계 1위가 된 이유｜미국역사기행｜세계테마기행｜#골라듄다큐",
+          "channel": "EBSDocumentary (EBS 다큐)",
+          "publishedAt": "2024-08-10T05:00:06Z",
+          "duration": "PT2H13M38S"
+        },
+        {
+          "videoId": "8jgwV6rO74Q",
+          "title": "다큐 [곡선을 더하다] EP 01. ChatGPT와 대학생의 관계ㅣKUTV Documentary",
+          "channel": "고려대학교 교육TV방송국 KUTV",
+          "publishedAt": "2023-03-28T09:00:05Z",
+          "duration": "PT10M4S"
+        },
+        {
+          "videoId": "ZknwqieFqwk",
+          "title": "지구는 어떻게 탄생했을까?",
+          "channel": "EBS 컬렉션 - 사이언스",
+          "publishedAt": "2021-02-18T11:00:20Z",
+          "duration": "PT10M2S"
+        },
+        {
+          "videoId": "3666YMaGWHk",
+          "title": "[다큐멘터리] '새로운 일상, 우리의 여정. A New Journey’ 코로나19 극복을 위한 국민 런웨이",
+          "channel": "대한민국정부",
+          "publishedAt": "2022-05-04T00:00:02Z",
+          "duration": "PT8M46S"
+        }
+      ]
+    },
+    {
+      "id": "frustration.blocked",
+      "parent": "frustration",
+      "label": "진전 없음",
+      "videos": [
+        {
+          "videoId": "XQX9zUBKj4w",
+          "title": "[경북여행]《REFRESH 경북》 자연이 주는 수채화 Feat. 날씨맑음 Amazing traveling to South Korea!",
+          "channel": "엔조이 라이프TV",
+          "publishedAt": "2020-07-30T07:01:20Z",
+          "duration": "PT4M18S"
+        },
+        {
+          "videoId": "UiRlUm0mWtI",
+          "title": "[ F5 : Refresh ]  전주 여행 VLOG | JeonJu Trip VLOG",
+          "channel": "F5: Refresh",
+          "publishedAt": "2023-01-21T06:56:59Z",
+          "duration": "PT10M58S"
+        },
+        {
+          "videoId": "hT6yHPbwa0s",
+          "title": "[신.대.리] EP.4 신협 직원 대신 가는 리프레시 여행🛫 네 번째 여행지는? 🌊강원특별자치도 강릉시🌊 (feat.강릉신협)",
+          "channel": "신협중앙회",
+          "publishedAt": "2025-02-07T02:00:24Z",
+          "duration": "PT6M46S"
+        },
+        {
+          "videoId": "5accDWnU0v0",
+          "title": "[신.대.리] EP.2 신협 직원 대신 가는 리프레시 여행🛫 두 번째 여행지는? 🩵군산🩵 (feat.군산중앙신협)",
+          "channel": "신협중앙회",
+          "publishedAt": "2024-12-10T02:00:02Z",
+          "duration": "PT6M13S"
+        },
+        {
+          "videoId": "NkWJ-gNH8Mg",
+          "title": "라오스 리프레시:)",
+          "channel": "EY LEE",
+          "publishedAt": "2016-12-02T19:30:59Z",
+          "duration": "PT3M32S"
+        },
+        {
+          "videoId": "4JIkyd5XHrw",
+          "title": "My Refresh Trip - 양양_부산_포항_경주_Ver1",
+          "channel": "PAPATRIP",
+          "publishedAt": "2018-08-23T14:22:05Z",
+          "duration": "PT3M50S"
+        },
+        {
+          "videoId": "EGrGS5wn8bU",
+          "title": "유럽여행 | 30대 직장인 부부 리프레시 휴가 다녀왔습니다 🇫🇷 파리 EP.01",
+          "channel": "busyvicky",
+          "publishedAt": "2022-10-03T15:12:02Z",
+          "duration": "PT13M1S"
+        },
+        {
+          "videoId": "RxuJMc8F7Xg",
+          "title": "멍 때리러 부산과 남해로 떠난 리프레시 휴가. 남해군 유럽리를 찾아서. mia vlog #2",
+          "channel": "Mia Sim",
+          "publishedAt": "2021-07-23T18:11:59Z",
+          "duration": "PT15M38S"
+        },
+        {
+          "videoId": "-am6fcOT_so",
+          "title": "[여행VLOG]올해 첫 해외여행 GUAM🇺🇸리프레시하는 마음으로 힐링여행‼️3박4일 여행 괌🏝️",
+          "channel": "나리 hamo",
+          "publishedAt": "2024-02-08T12:26:21Z",
+          "duration": "PT5M25S"
+        },
+        {
+          "videoId": "bixszSe6vcI",
+          "title": "3년 일하면 한달은 쉽시다. 리프레시 여행 마드리드편",
+          "channel": "jackson",
+          "publishedAt": "2026-03-01T10:05:30Z",
+          "duration": "PT34M44S"
+        },
+        {
+          "videoId": "lZbG6TNkqsc",
+          "title": "🏝 제주도 한 달 살기 옆에서 3일 살기 | 리프레시 휴가 | 일상 브이로그 | 브이로그 | 일상이룰 Vlog",
+          "channel": "일상이룰 yirul",
+          "publishedAt": "2019-03-13T05:33:11Z",
+          "duration": "PT8M9S"
+        },
+        {
+          "videoId": "yj67ijuDspw",
+          "title": "[cinema theraphy] Refresh _ 부천도당근린공원 #마음챙김 #영상테라피 #위로가되는영상",
+          "channel": "yogi jogi",
+          "publishedAt": "2026-06-22T10:45:24Z",
+          "duration": "PT5M6S"
+        },
+        {
+          "videoId": "M90XgGwC-p8",
+          "title": "[VLOG] 무계획도 계획이다. | 이사배(RISABAE Makeup)",
+          "channel": "RISABAE",
+          "publishedAt": "2026-08-09T10:00:12Z",
+          "duration": "PT24M1S"
+        },
+        {
+          "videoId": "YbE1a3dYIq4",
+          "title": "[VLOG] 강의 준비 속에서 찾은 작은 성취와 행복 ✨",
+          "channel": "웰니스 유진🌿",
+          "publishedAt": "2025-09-12T05:05:58Z",
+          "duration": "PT5M5S"
+        },
+        {
+          "videoId": "WQYprmLr1y8",
+          "title": "생산성 MAX 하루 루틴! 업무·운동·자기관리·편집까지 꽉 채운 UXUI 디자이너 브이로그✨",
+          "channel": "채힐리",
+          "publishedAt": "2025-11-28T03:00:45Z",
+          "duration": "PT5M36S"
+        },
+        {
+          "videoId": "JV2LdN8kB4Q",
+          "title": "작은 성취로 자존감 찾는 프리랜서 브이로그 📹 성수동 맛집 카페 그라운드시소 국립중앙박물관 전시 보는 매일매일 일상 📖",
+          "channel": "총총총",
+          "publishedAt": "2023-02-23T23:10:21Z",
+          "duration": "PT11M59S"
+        },
+        {
+          "videoId": "6vQrJaNxOt4",
+          "title": "✨이너뷰티 관리루틴 공개 | 단순하고 건강하게 · 한라산 관음사 🏔️ 스킨케어 Q&A · 마인드셋",
+          "channel": "manaolana",
+          "publishedAt": "2025-12-27T00:25:44Z",
+          "duration": "PT19M31S"
+        },
+        {
+          "videoId": "fLuczuPL8Yo",
+          "title": "9월 기록 l 무기력함을 이겨내기위한 작은 성취 l 직장인 일상 브이로그 l 병아리 부화 l 타로보기 l 추석연휴 l",
+          "channel": "-361- 기록",
+          "publishedAt": "2021-10-10T11:20:31Z",
+          "duration": "PT14M58S"
+        },
+        {
+          "videoId": "tcvVE5hDGe4",
+          "title": "VLOG 소원 성취한 일상 브이로그🎊이사도 가고 쉑쉑도 먹고 진로 고민도 끝! + 낯선 운동과의 사투,,, 사람 살려,,,",
+          "channel": "아일라isla",
+          "publishedAt": "2019-10-31T10:49:18Z",
+          "duration": "PT19M23S"
+        },
+        {
+          "videoId": "yIfq1hnMTg0",
+          "title": "직장인 워킹맘의 모닝 루틴 | 매일 꾸준히 공부하고 독서하는 원동력🔥 | 작은 성취, 큰 기쁨✨| 경제신문공부, 독서, 기록의 향연",
+          "channel": "이지라이프 EJ Life",
+          "publishedAt": "2026-06-06T07:38:20Z",
+          "duration": "PT21M11S"
+        }
+      ]
+    },
+    {
+      "id": "frustration.suppressed",
+      "parent": "frustration",
+      "label": "억눌림",
+      "videos": [
+        {
+          "videoId": "B4XtzzCL6H4",
+          "title": "[내 감정 다스리기 #1] 감정일기 사용법, 쓰는 구체적인 방법  | 정신과 의사가 직접 쓴 감정일기 [뇌부자들]",
+          "channel": "정신과의사 뇌부자들",
+          "publishedAt": "2020-02-21T10:09:10Z",
+          "duration": "PT14M"
+        },
+        {
+          "videoId": "SEh4zBdWsIM",
+          "title": "내 마음을 스스로 치유할 수 있는 다이어리 쓰는 방법, 셀프 인지행동치료 '감정 일기' 쓰기!",
+          "channel": "윤닥의 인지행동치료 클리닉",
+          "publishedAt": "2025-11-22T04:05:25Z",
+          "duration": "PT7M54S"
+        },
+        {
+          "videoId": "6M8AGynahD4",
+          "title": "[감정 일기] 감정조절 하는 법? 이 영상으로 끝내세요. (감정 일기의 정석)",
+          "channel": "진지우기",
+          "publishedAt": "2023-02-15T17:04:00Z",
+          "duration": "PT14M59S"
+        },
+        {
+          "videoId": "rT07drkd2JI",
+          "title": "부정적인 감정, 이렇게 정리하면 사라집니다 | 감정일기 쓰는 법 & 감정 조절하는 법, 예시 공개 (짠토커 감정일기, 리포즈너 감정한줄 다이어리)",
+          "channel": "심리상담사 짠토커",
+          "publishedAt": "2025-03-20T11:21:32Z",
+          "duration": "PT16M45S"
+        },
+        {
+          "videoId": "KpTl1DrcHcU",
+          "title": "인생을 살리는, 감정을 다스리는 감정일기 쓰는 법. 양식, 예시, 효과까지!",
+          "channel": "나살이 - 나답게 살아가는 이야기 ",
+          "publishedAt": "2021-05-24T08:13:56Z",
+          "duration": "PT10M55S"
+        },
+        {
+          "videoId": "E9-CZ-A0f_U",
+          "title": "(감정 쓰레기통🤫) 감정일기 쓰는 법, 감정일기는 왜 쓸까?",
+          "channel": "도리dolee",
+          "publishedAt": "2023-02-25T00:45:01Z",
+          "duration": "PT15M37S"
+        },
+        {
+          "videoId": "FjWA9svMYBI",
+          "title": "나를 잃지않게 감정 다스리기📚 #감정일기 제대로 쓰는 법| 앤드쌤의 사랑방",
+          "channel": "앤드쌤의 사랑방 Love & Care by Andsam",
+          "publishedAt": "2026-04-01T11:00:30Z",
+          "duration": "PT12M28S"
+        },
+        {
+          "videoId": "bK7yj9ymYr4",
+          "title": "GWRM 감정일기 같이 쓰실래요? 쓰는 방법,일기장 고르기,루틴,꾸준히 쓰는 꿀팁까지ㅣ일기 브이로그",
+          "channel": "나살이 - 나답게 살아가는 이야기 ",
+          "publishedAt": "2023-10-29T11:00:23Z",
+          "duration": "PT12M56S"
+        },
+        {
+          "videoId": "BmJxaj1jFxs",
+          "title": "일기를 잘 쓰는 5가지 방법 (1편) / 초등선생님과 일기전쟁에서 벗어나요",
+          "channel": "어디든학교",
+          "publishedAt": "2021-01-28T22:00:03Z",
+          "duration": "PT8M33S"
+        },
+        {
+          "videoId": "ZrF703ci4QA",
+          "title": "당신이 일기를 '잘 못' 쓰고 있었던 이유 | 정신과의사가 추천하는 불안·우울 극복하는 일기 쓰는 방법!",
+          "channel": "멘탈탄탄 | 정신과의사의 멘탈 관리 채널 ",
+          "publishedAt": "2024-12-23T10:54:37Z",
+          "duration": "PT5M44S"
+        },
+        {
+          "videoId": "LcSWwyxNflc",
+          "title": "효과적으로 감정을 다스리는 감정 일기 쓰는법을 소개📒ㅣ감정 일기 쓰는법ㅣ감정 일기 앱 추천ㅣ무다, 무디, 마인디",
+          "channel": "투이컨설팅-투이톡",
+          "publishedAt": "2025-07-25T08:00:21Z",
+          "duration": "PT4M58S"
+        },
+        {
+          "videoId": "E_Nmj0jcN30",
+          "title": "나의 감정을 일기에 적어보기 《생활속의심리학 15강》 |방송대|한국방송통신대학교|하혜숙교수|상담|청소년교육과|신편입",
+          "channel": "방송대 지식+",
+          "publishedAt": "2020-05-29T23:00:04Z",
+          "duration": "PT6M23S"
+        },
+        {
+          "videoId": "OEte7u9lkAA",
+          "title": "[2018 교육방송 연구대회] 알고 싶니? 일기 쓰기 비법",
+          "channel": "EBS 키즈",
+          "publishedAt": "2018-12-10T00:16:25Z",
+          "duration": "PT7M"
+        },
+        {
+          "videoId": "fc3X3WQ7Gk4",
+          "title": "인생을 바꾸는, 감정을 정리하는 감정일기 쓰는 법 (양식, 예시, 효과까지!)",
+          "channel": "펜땀눈물",
+          "publishedAt": "2026-04-02T08:30:18Z",
+          "duration": "PT8M1S"
+        },
+        {
+          "videoId": "bryRLp3leic",
+          "title": "감정일기를 매일 쓰면 일어나는 일 (불안감 없애는 법)",
+          "channel": "영감수업",
+          "publishedAt": "2023-10-05T12:00:35Z",
+          "duration": "PT19M10S"
+        },
+        {
+          "videoId": "1VO1mwyoPuU",
+          "title": "매일 밤 일기를 쓰면 일어나는 변화 (삶을 드라마틱하게 바꾸는 손 쉬운 방법)",
+          "channel": "영감수업",
+          "publishedAt": "2023-10-26T12:00:02Z",
+          "duration": "PT17M24S"
+        },
+        {
+          "videoId": "OUvbfw5OsrM",
+          "title": "예민한 사람이 감정에 휘둘리지 않는 법 (feat. 감정 일기)",
+          "channel": "지예로움",
+          "publishedAt": "2025-09-24T11:00:48Z",
+          "duration": "PT8M33S"
+        },
+        {
+          "videoId": "kVGOm87mTCw",
+          "title": "글을 쓰면 생기는 놀라운 변화 [내일을 여는 인문학 #글쓰기 #감정일기]",
+          "channel": "EBS",
+          "publishedAt": "2022-04-11T09:00:19Z",
+          "duration": "PT4M58S"
+        },
+        {
+          "videoId": "J1Za8pVA5w4",
+          "title": "기록 5년차의 감정일기, 일기 쓰면 인생이 바뀌는 이유(Feat. 현존수업)",
+          "channel": "내바다_나를 믿는 기록법",
+          "publishedAt": "2025-02-17T08:00:18Z",
+          "duration": "PT8M16S"
+        },
+        {
+          "videoId": "rPEhneMImGQ",
+          "title": "일기 쓰는 요령! 내면과 대화하기. 나다운 나 찾기. 세살 버릇 일기 점검하기. 칭찬, 자기정리, 성찰, 위안의 글쓰기. 작가로 성장하는 지름길.",
+          "channel": "김교수의 세 가지",
+          "publishedAt": "2021-11-30T00:00:30Z",
+          "duration": "PT7M58S"
+        }
+      ]
+    },
+    {
+      "id": "sadness.sorrow",
+      "parent": "sadness",
+      "label": "슬픔",
+      "videos": [
+        {
+          "videoId": "qdbyV3wVoLY",
+          "title": "[지니뮤직 PLAYLIST] 지치고 힘든 날, 위로가 되어줄 노래",
+          "channel": "GENIE MUSIC",
+          "publishedAt": "2019-11-15T09:00:18Z",
+          "duration": "PT51M55S"
+        },
+        {
+          "videoId": "gVqYuE5IKYg",
+          "title": "너의 마음을 들어줄 따뜻한 음악들 ⎮ 중간광고없음 ⎮ 집중 공부 힐링 휴식 감성 명상 태교음악 카페음악",
+          "channel": "Cold Water",
+          "publishedAt": "2019-11-09T11:00:16Z",
+          "duration": "PT10H"
+        },
+        {
+          "videoId": "7o7doLurSik",
+          "title": "마음이 지친 당신을 위한 위로곡 모음 | 《 나를 안아주는 노래》Comfort Songs for a Tired Heart | Melodies That Hold Me",
+          "channel": "트롯콜미 ",
+          "publishedAt": "2025-08-08T10:35:20Z",
+          "duration": "PT17M59S"
+        },
+        {
+          "videoId": "m7GOmncIU5A",
+          "title": "지친 마음을 달래주는 음악 🎵 1시간 힐링음악, 스트레스해소음악, 마음이 편안해지는 음악, 위로음악",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2019-08-29T22:00:03Z",
+          "duration": "PT1H3M22S"
+        },
+        {
+          "videoId": "-RqgJz-v12I",
+          "title": "[playlist] 이런 날도 있고 저런 날도 있지 |곽진언, 최유리, 권진아, 김필, 정승환| 나에게 위로가 되는 노래들",
+          "channel": "of Note",
+          "publishedAt": "2024-03-24T14:01:39Z",
+          "duration": "PT57M59S"
+        },
+        {
+          "videoId": "VAoR8bL04qA",
+          "title": "부드럽게 듣기 좋은 행복음악 모음 🌸 입춘을 반기는 온화한 멜로디",
+          "channel": "케어멜로디 caremelody",
+          "publishedAt": "2023-02-06T00:00:18Z",
+          "duration": "PT3H3M19S"
+        },
+        {
+          "videoId": "4e1YnHauXCU",
+          "title": "[Playlist] 요즘 힘들었던 당신을 ‘위로’해줄 노래✨│어반자카파, 선우정아, 아이유, 권진아, 이하이",
+          "channel": "힛-트 쏭 플레이어",
+          "publishedAt": "2022-02-02T09:00:04Z",
+          "duration": "PT25M57S"
+        },
+        {
+          "videoId": "dP-NxIJ_DxI",
+          "title": "지친 삶에 위로가 되는 노래❤️‍🔥 예윤 - Little Dream [가사/해석/번역/lyrics]",
+          "channel": "TAKEONE MUSIC",
+          "publishedAt": "2024-03-17T12:33:41Z",
+          "duration": "PT3M23S"
+        },
+        {
+          "videoId": "f8WQyJVhE6s",
+          "title": "추운 가슴을 따뜻하게 위로하는 어쿠스틱 감성노래 An acoustic emotional song that warms and comforts a cold heart.",
+          "channel": "갠찮은소리",
+          "publishedAt": "2026-01-02T04:40:40Z",
+          "duration": "PT4H56M5S"
+        },
+        {
+          "videoId": "jR9m2pir2VM",
+          "title": "🌷기분 좋은 하루의 시작!따뜻한 봄 햇살같은 피아노 소품집 10시간모음",
+          "channel": "마인드피아노 MIND PIANO",
+          "publishedAt": "2022-04-21T23:00:14Z",
+          "duration": "PT10H28S"
+        },
+        {
+          "videoId": "8kQH_bBMrMQ",
+          "title": "숲",
+          "channel": "Choi Yu Ree - Topic",
+          "publishedAt": "2022-08-24T09:03:43Z",
+          "duration": "PT3M49S"
+        },
+        {
+          "videoId": "ZQWrleq-NhQ",
+          "title": "마음이 편안해지는 힐링음악☁숲 속 휴식음악,모닥불 소리,스트레스 해소음악,명상음악 - \"With Coffee\"",
+          "channel": "뮤직 메이트 Music Mate",
+          "publishedAt": "2021-01-03T06:00:19Z",
+          "duration": "PT3H16M2S"
+        },
+        {
+          "videoId": "UT1f14KuXi0",
+          "title": "𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 잠깐 멈춰요 따뜻한 노래와 위로가 있어요 :)ㅣ악뮤, 한로로, 잔나비 ...",
+          "channel": "아워니즈 ourneeds.",
+          "publishedAt": "2026-04-08T07:04:58Z",
+          "duration": "PT1H2M56S"
+        },
+        {
+          "videoId": "quUl8dlKA8E",
+          "title": "깊은 안정을 돕는 릴렉스음악 °• 잔잔하고 평온한 시간",
+          "channel": "Tempo:rest",
+          "publishedAt": "2022-12-05T00:00:28Z",
+          "duration": "PT1H35M19S"
+        },
+        {
+          "videoId": "Ro7nUIv3ftE",
+          "title": "따뜻한 연주곡, 복잡한 마음을 안정시키는 뉴에이지",
+          "channel": "BeiGe Mellow 베이지멜로우",
+          "publishedAt": "2020-10-30T09:00:12Z",
+          "duration": "PT5H17M59S"
+        },
+        {
+          "videoId": "klh7I70h3vg",
+          "title": "(playlist) 이 노래 너무 좋은걸? 나만 들을수 없지⎜잔잔한 피아노 연주곡 플리🤎",
+          "channel": "율다우피아노 Yuldau Piano",
+          "publishedAt": "2024-09-29T23:00:31Z",
+          "duration": "PT3H9M25S"
+        },
+        {
+          "videoId": "IHt4kgF-Ytk",
+          "title": "마음이 편안해지는 힐링음악 3시간 🎵 아침음악, 편안한음악, 스트레스해소음악 (Winter Love)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2024-12-23T22:00:17Z",
+          "duration": "PT3H1M30S"
+        },
+        {
+          "videoId": "67cpaoHup28",
+          "title": "[중간광고없음] 지치고, 힘든날 마음에 위로를 주는 따뜻한 가요 피아노 10시간 모음💗10Hours of Relaxing Piano(공부, 집중, 일, 힐링, 매장, 카페음악)",
+          "channel": "몽렉싱피아노 MONGLAXING PIANO",
+          "publishedAt": "2024-06-03T22:00:02Z",
+          "duration": "PT10H33M"
+        },
+        {
+          "videoId": "NLaArAZDJPY",
+          "title": "[#again_playlist] 마음을 따뜻하게 위로해주는 발라드 14곡 | KBS 방송",
+          "channel": "Again 가요톱10 : KBS KPOP Classic",
+          "publishedAt": "2024-12-12T12:00:06Z",
+          "duration": "PT58M20S"
+        },
+        {
+          "videoId": "JsPF4ICMfWY",
+          "title": "[Relaxing Piano]아,편안해☺️너무 편안한 잔잔한 피아노 모음",
+          "channel": "마인드피아노 MIND PIANO",
+          "publishedAt": "2024-10-16T06:56:50Z",
+          "duration": "PT10H1M16S"
+        }
+      ]
+    },
+    {
+      "id": "sadness.lonely",
+      "parent": "sadness",
+      "label": "외로움",
+      "videos": [
+        {
+          "videoId": "d_Dhmp_WATI",
+          "title": "잠잘때 듣는 오디오북 모음ㅣ중간광고 없는 ASMR | Sleep Audio Book #1",
+          "channel": "여배우의 책방 One woman's play",
+          "publishedAt": "2021-02-17T09:00:13Z",
+          "duration": "PT5H30M29S"
+        },
+        {
+          "videoId": "eMAKawcpkxQ",
+          "title": "행복한 사람은 단순하게 삽니다ㅣ잠잘 때 책 읽어주기 2시간 30분 [중간광고 없어서 꿀잠 보장]ㅣ책 읽어주는 남자 ASMRㅣ오디오북",
+          "channel": "그 남자의 목소리",
+          "publishedAt": "2023-09-17T13:10:49Z",
+          "duration": "PT2H28M3S"
+        },
+        {
+          "videoId": "5AqfPV3hXko",
+          "title": "[잠잘때 듣기 좋은 인기 에세이 모음] 마음이 편해지는 책듣고 힐링하기│수면 낭독│책읽어주는여자 오디오북 podcasts",
+          "channel": "책읽기좋은날",
+          "publishedAt": "2022-11-20T13:15:00Z",
+          "duration": "PT3H40M6S"
+        },
+        {
+          "videoId": "kjV2R_Y7ygQ",
+          "title": "(노벨문학상 수상작) 지금 힘들다면 [노인과 바다]를 읽겠습니다. 헤밍웨이의 불멸의 역작ㅣ잠잘 때 듣는 오디오북ㅣ동화책 읽어주는 남자",
+          "channel": "그 남자의 목소리",
+          "publishedAt": "2022-08-21T12:45:05Z",
+          "duration": "PT3H10M50S"
+        },
+        {
+          "videoId": "V7a1an2H0I4",
+          "title": "셜록홈즈 시리즈 몰아듣기ㅣ4시간 50분ㅣ중간광고없는ㅣ아서 코난 도일ㅣ잠잘때 듣는 고전 명작ㅣ책 읽어주는 남자ㅣASMR",
+          "channel": "고독한 낭독회",
+          "publishedAt": "2022-04-01T13:00:14Z",
+          "duration": "PT4H49M16S"
+        },
+        {
+          "videoId": "Qq8u9kEQ0ak",
+          "title": "데미안ㅣ헤르만 헤세ㅣ책 읽어주는 남자ㅣ잠 잘때 듣는ㅣASMR",
+          "channel": "따듯한 목소리 현준",
+          "publishedAt": "2022-05-26T13:31:48Z",
+          "duration": "PT4H29M14S"
+        },
+        {
+          "videoId": "SN92Zn6Xv00",
+          "title": "잠잘 때 듣는 세계명작 데미안 5시간 동안 읽어주기ㅣ중간광고 없음ㅣ남자 ASMRㅣ오디오북ㅣKOREAN BEDTIME STORY",
+          "channel": "그 남자의 목소리",
+          "publishedAt": "2023-08-22T14:00:19Z",
+          "duration": "PT4H51M48S"
+        },
+        {
+          "videoId": "kyHFcgbAZ8c",
+          "title": "어른의 행복은 조용하다ㅣ책 읽어주는 남자ㅣ태수 에세이ㅣ잠잘 때 듣는ㅣ오디오북ㅣASMR",
+          "channel": "따듯한 목소리 현준",
+          "publishedAt": "2024-11-17T13:00:51Z",
+          "duration": "PT1H38M2S"
+        },
+        {
+          "videoId": "W2EhixSBVoc",
+          "title": "노벨문학상 수상작가 한강 / 작별",
+          "channel": "영자의 오디오북",
+          "publishedAt": "2024-10-15T03:21:30Z",
+          "duration": "PT1H39M8S"
+        },
+        {
+          "videoId": "NHTc-hrpii0",
+          "title": "잠 잘때 들으면 인생이 바뀌는 석가모니 명언 모음집 2시간 40분 | 부처님 진리의 말씀  불교명언",
+          "channel": "고독한 낭독회",
+          "publishedAt": "2023-08-22T13:00:15Z",
+          "duration": "PT2H42M20S"
+        },
+        {
+          "videoId": "kPP0TVV89BM",
+          "title": "채근담ㅣ지혜의 고전 이야기ㅣ책 읽어주는 남자ㅣ잠잘 때 듣는ㅣ오디오북ㅣASMR",
+          "channel": "따듯한 목소리 현준",
+          "publishedAt": "2023-03-05T13:00:26Z",
+          "duration": "PT40M25S"
+        },
+        {
+          "videoId": "geL6LkO4DD4",
+          "title": "잠잘 때 듣는 동화 같은 소설ㅣ비가 오면 열리는 상점ㅣ불행을 팔 수있는 가게ㅣ책 읽어주는 남자ㅣ불면증ㅣ오디오 북ㅣASMRㅣ힐링",
+          "channel": "따듯한 목소리 현준",
+          "publishedAt": "2023-08-18T14:07:05Z",
+          "duration": "PT1H35M19S"
+        },
+        {
+          "videoId": "5aEv0EjAjrw",
+          "title": "🌿 나는 이제 마음 편히 살기로 했다 📘  인생을 즐기는 사람이 되는 방법 💡",
+          "channel": "책읽는 자작나무",
+          "publishedAt": "2025-04-27T12:00:07Z",
+          "duration": "PT54M29S"
+        },
+        {
+          "videoId": "S9HJNbF3lSI",
+          "title": "마흔에 읽는 쇼펜하우어ㅣ책 읽어주는 남자ㅣ잠잘 때 듣는ㅣ오디오북ㅣASMR",
+          "channel": "따듯한 목소리 현준",
+          "publishedAt": "2023-12-21T13:28:50Z",
+          "duration": "PT1H13M8S"
+        },
+        {
+          "videoId": "PAlUrwyPUvs",
+          "title": "오십, 논어를 읽어야 하는 이유ㅣ오십에 읽는 논어ㅣ오디오북ㅣ1시간 20분",
+          "channel": "고독한 낭독회",
+          "publishedAt": "2022-03-10T13:00:22Z",
+          "duration": "PT1H20M1S"
+        },
+        {
+          "videoId": "ch8bQBzM0N4",
+          "title": "잠잘 때 듣는 베스트셀러 오디오북 모음집  [중간광고 없이 90분 재생]ㅣ책 읽어주는 남자ㅣ오디오북ㅣASMRㅣKOREAN BEDTIME STORY",
+          "channel": "그 남자의 목소리",
+          "publishedAt": "2023-05-29T14:33:38Z",
+          "duration": "PT1H29M57S"
+        },
+        {
+          "videoId": "UHTY5EaTYvk",
+          "title": "참 괜찮은 말들ㅣ위로가 되는 이야기ㅣ박지현 에세이ㅣ책 읽어주는 남자ㅣ잠잘 때 듣는ㅣ오디오북 ASMR",
+          "channel": "따듯한 목소리 현준",
+          "publishedAt": "2025-10-05T13:30:26Z",
+          "duration": "PT1H49M57S"
+        },
+        {
+          "videoId": "me5jz5_EVAQ",
+          "title": "잠자고 싶은 토끼ㅣ책 읽어주는 남자ㅣ잠잘 때 듣는ㅣ오디오북 ASMRㅣ누구든지 잠들게 해드립니다",
+          "channel": "따듯한 목소리 현준",
+          "publishedAt": "2025-06-15T13:30:39Z",
+          "duration": "PT50M7S"
+        },
+        {
+          "videoId": "LZX6N6vdTJU",
+          "title": "잠잘 때 듣는 동화책 읽어주기 3시간 [중간광고 없어서 꿀잠 보장임]ㅣ책 읽어주는 남자 ASMRㅣ오디오북ㅣKOREAN BEDTIME STORY",
+          "channel": "그 남자의 목소리",
+          "publishedAt": "2023-07-31T13:00:17Z",
+          "duration": "PT2H56M23S"
+        },
+        {
+          "videoId": "vBZv4-3JC_Q",
+          "title": "[⏰2시간 통합본]  자기 전에 듣는 쇼펜하우어",
+          "channel": "지식의 취향",
+          "publishedAt": "2025-02-15T15:26:12Z",
+          "duration": "PT2H53M41S"
+        }
+      ]
+    },
+    {
+      "id": "sadness.loss",
+      "parent": "sadness",
+      "label": "상실감",
+      "videos": [
+        {
+          "videoId": "oow6sef4hNM",
+          "title": "죽음에 대한 상실과 애도 [죽음, 삶에 답하다 61회]",
+          "channel": "한국시니어TV",
+          "publishedAt": "2023-02-28T12:00:37Z",
+          "duration": "PT44M18S"
+        },
+        {
+          "videoId": "JZt89Y2jLvI",
+          "title": "애도반응",
+          "channel": "학생건강",
+          "publishedAt": "2017-08-10T00:36:12Z",
+          "duration": "PT6M55S"
+        },
+        {
+          "videoId": "hLkprH3L88A",
+          "title": "조용기 목사님을 떠나 보내며  (애도와 위로의 기도문)",
+          "channel": "시대외침 방송",
+          "publishedAt": "2021-09-17T06:07:13Z",
+          "duration": "PT4M33S"
+        },
+        {
+          "videoId": "gHU1v7Cx81o",
+          "title": "[애도시리즈2] 8화 \"이제는, 내가 전할 차례예요 – 회복된 내가 전하고 싶은 말”",
+          "channel": "어때맘마",
+          "publishedAt": "2025-10-24T10:01:16Z",
+          "duration": "PT4M6S"
+        },
+        {
+          "videoId": "NKw7HvP3ylU",
+          "title": "[애도시리즈2] 1화 \"나는 여전히 살아 있어요 – 상실 후의 삶을 받아들이는 연습\"",
+          "channel": "어때맘마",
+          "publishedAt": "2025-09-12T09:45:02Z",
+          "duration": "PT4M27S"
+        },
+        {
+          "videoId": "Odok80rhavI",
+          "title": "건강하게 이별하는 법, 정신과의사가 알려주는 연애 멘탈 관리법 #3 | 김지용 정신의학전문의",
+          "channel": "마인드그라운드 Mind Ground",
+          "publishedAt": "2022-03-23T06:21:33Z",
+          "duration": "PT10M56S"
+        },
+        {
+          "videoId": "ZgmxIS7F8JY",
+          "title": "\"애도\"2 : 어떻게 위로할 것인가 -  윤득형 박사┃C채널 [C'seed  씨드] 56회",
+          "channel": "C채널방송 : TV",
+          "publishedAt": "2022-08-08T05:43:06Z",
+          "duration": "PT27M17S"
+        },
+        {
+          "videoId": "XfkaNx2WUDs",
+          "title": "남녀의 다른 애도표현, 애도방식_\"상실을 대하는 우리의 자세(4)\"",
+          "channel": "이즈포레스트 ( Is Forest) ",
+          "publishedAt": "2020-08-31T00:18:16Z",
+          "duration": "PT4M5S"
+        },
+        {
+          "videoId": "iUdipoAbsf8",
+          "title": "[심리 교육] 애도 상담의 이해: 상실의 아픔을 치유로 바꾸는 여정",
+          "channel": "숨쉼상담센터",
+          "publishedAt": "2026-02-05T15:57:44Z",
+          "duration": "PT6M58S"
+        },
+        {
+          "videoId": "pUDOwGwmcqU",
+          "title": "건강한 사람은 애도를 이렇게 한다",
+          "channel": "고병준의 지혜의 서재",
+          "publishedAt": "2021-03-10T09:14:35Z",
+          "duration": "PT6M6S"
+        },
+        {
+          "videoId": "7bRlX825mUs",
+          "title": "[애도시리즈2] 4화 \"이 감정, 어떻게 해야 할까요? – 내 감정을 돌보는 기술\"",
+          "channel": "어때맘마",
+          "publishedAt": "2025-09-26T10:00:25Z",
+          "duration": "PT4M39S"
+        },
+        {
+          "videoId": "uvA_jDozt3Q",
+          "title": "'심야치유책방' 네번째 고민 : 이별, 충분히 슬퍼할 것. 애도와 위로",
+          "channel": "서점 리스본",
+          "publishedAt": "2019-10-11T13:00:23Z",
+          "duration": "PT8M45S"
+        },
+        {
+          "videoId": "gniQCZBzhw0",
+          "title": "신현근 박사: 애도와 우울증/조울증의 차이",
+          "channel": "혁신라이프코칭연수원ICC TV",
+          "publishedAt": "2019-06-20T18:44:11Z",
+          "duration": "PT26M32S"
+        },
+        {
+          "videoId": "EctruEMTH4k",
+          "title": "■ 애도작업 후기 - 부모님이 내 곁을 떠나버렸어요.",
+          "channel": "가족상담사 누리자",
+          "publishedAt": "2019-04-30T07:11:15Z",
+          "duration": "PT12M19S"
+        },
+        {
+          "videoId": "y3_vx1ErNoA",
+          "title": "상실과 슬픔에 대처하는 방법(한양대학교 상담심리대학원 하정희 교수)",
+          "channel": "한국상담심리학회KCPA",
+          "publishedAt": "2022-03-03T08:00:35Z",
+          "duration": "PT17M18S"
+        },
+        {
+          "videoId": "8KnmAstyogM",
+          "title": "[애도시리즈2] 6화 \"나는 누구였고, 누구이고, 누구일 수 있을까 – 나답게 살아가기 연습\"",
+          "channel": "어때맘마",
+          "publishedAt": "2025-10-10T10:00:13Z",
+          "duration": "PT4M42S"
+        },
+        {
+          "videoId": "c5UIocZPfIg",
+          "title": "[애도시리즈2] 2화 \"내가 더 잘했더라면  – 죄책감에서 벗어나는 연습\"",
+          "channel": "어때맘마",
+          "publishedAt": "2025-09-12T10:01:10Z",
+          "duration": "PT4M38S"
+        },
+        {
+          "videoId": "_2NFGZbTMuA",
+          "title": "[애도시리즈2] 5화 \"너무 가까워도, 너무 멀어도 힘들어요 – 상실 이후, 주변 사람과의 거리 조절\"",
+          "channel": "어때맘마",
+          "publishedAt": "2025-10-03T10:01:06Z",
+          "duration": "PT4M39S"
+        },
+        {
+          "videoId": "8Ax07Nu_EMU",
+          "title": "가족이 죽었을 때, #정신과의사는? (#상실, #애도)_ 정신건강매거진 7호",
+          "channel": "쿠크닥스 : 멘탈 바사삭 클리닉",
+          "publishedAt": "2020-06-18T06:19:22Z",
+          "duration": "PT10M1S"
+        },
+        {
+          "videoId": "mU_BSfmcdhg",
+          "title": "[심리상담사 반디의 수다방] 애도과정",
+          "channel": "bandi bandi",
+          "publishedAt": "2017-06-12T16:00:21Z",
+          "duration": "PT18M53S"
+        }
+      ]
+    },
+    {
+      "id": "exhaustion.burnout",
+      "parent": "exhaustion",
+      "label": "번아웃",
+      "videos": [
+        {
+          "videoId": "B9GsLAPeA2M",
+          "title": "만성피로, 수면부족을 위한 최고의 휴식법 | 요가 니드라, 낮잠 30분, 수면명상",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2022-09-05T11:00:05Z",
+          "duration": "PT30M3S"
+        },
+        {
+          "videoId": "inxAScz0PTM",
+          "title": "누워서 하는 10분 명상 | 호흡명상, 마음챙김 명상 가이드",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2023-10-23T11:30:16Z",
+          "duration": "PT10M10S"
+        },
+        {
+          "videoId": "CNYYWuH_Fcc",
+          "title": "몸과 마음의 완전한 휴식을 위한 이완명상 (ASMR · 바디스캔 · 자기암시) | 20분 요가니드라  | 요가소년 044",
+          "channel": "요가소년",
+          "publishedAt": "2018-03-15T06:22:29Z",
+          "duration": "PT21M11S"
+        },
+        {
+          "videoId": "PY2qCvdgP9E",
+          "title": "[정목스님의 하루명상] 지친 몸과 마음을 돌보고 싶을 때 / 건강명상",
+          "channel": "정목스님의 유나방송",
+          "publishedAt": "2022-02-07T01:30:04Z",
+          "duration": "PT17M32S"
+        },
+        {
+          "videoId": "cvPS_25gRPs",
+          "title": "생각 비우기 명상 - 부정적인 생각을 없애는 방법 (걱정, 나쁜 생각 대처법)",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2020-06-15T11:00:19Z",
+          "duration": "PT12M5S"
+        },
+        {
+          "videoId": "dZewQEbQQM0",
+          "title": "5분 호흡명상 - 뇌를 위한 최고의 휴식법 (스트레스 해소, 뇌 피로회복)",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2020-03-27T11:00:30Z",
+          "duration": "PT7M13S"
+        },
+        {
+          "videoId": "RtPwBk0pqKE",
+          "title": "[명상음악] 우와 진짜 놀랍다. 하루10분 만병을 치료 해주는 힐링 명상 기치료 음악 및 영상, 스트레스 해소 음악, 긴장이완음악, 편안한 음악 (치유음악)",
+          "channel": "Relaxing Music Korea",
+          "publishedAt": "2020-04-05T20:00:04Z",
+          "duration": "PT6H3M6S"
+        },
+        {
+          "videoId": "_MTd1opMBk0",
+          "title": "마음이 평온해지는 10분 명상 | 스트레스 해소, 호흡 명상 가이드",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2023-04-10T11:00:31Z",
+          "duration": "PT10M52S"
+        },
+        {
+          "videoId": "A2FjPz4ILhw",
+          "title": "몸에 배인 긴장과 불안을 완화하여 삶의 질을 높이는 심신 이완명상, 불면증 해소, 자율이완법",
+          "channel": "명상하는그녀_내안의별",
+          "publishedAt": "2021-02-02T09:16:13Z",
+          "duration": "PT15M55S"
+        },
+        {
+          "videoId": "3GaTIGUN8m0",
+          "title": "몸-마음 이완 명상 : 잠들기 전 완전한 휴식을 위한",
+          "channel": "마음요가tv",
+          "publishedAt": "2020-05-18T08:01:21Z",
+          "duration": "PT11M49S"
+        },
+        {
+          "videoId": "6nJztK7RBbQ",
+          "title": "뇌를 10분만에 리셋하는 법🔌 마음챙김 명상 | 호흡 명상 가이드, 뇌 휴식",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2024-03-18T11:00:06Z",
+          "duration": "PT17M37S"
+        },
+        {
+          "videoId": "HKX7Hg4WmWw",
+          "title": "오롯이 날 위한 휴식, 20분 명상",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2020-10-29T11:00:04Z",
+          "duration": "PT19M27S"
+        },
+        {
+          "videoId": "NJRF5x_AhK0",
+          "title": "[20분 비움명상] 생각을 멈추고 마음을 비우는 명상 ▶놓아버리기 비워내기 명상법 집에서 함께하기",
+          "channel": "귓전명상 채환TV Healing Meditation ChaeHwanTV",
+          "publishedAt": "2023-04-08T19:00:08Z",
+          "duration": "PT20M4S"
+        },
+        {
+          "videoId": "HazIv8l52Rw",
+          "title": "건강 회복 명상ㅣ 병든세포를 치유하는 명상 ㅣ 몸 치유 명상",
+          "channel": "명상하는그녀_내안의별",
+          "publishedAt": "2020-02-11T14:58:38Z",
+          "duration": "PT18M11S"
+        },
+        {
+          "videoId": "7lKI_XVHh_Q",
+          "title": "10분만에 마음을 다스리는 법 | 마음챙김 명상, 알아차림, 생각 비우기",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2022-02-28T11:00:05Z",
+          "duration": "PT20M5S"
+        },
+        {
+          "videoId": "sIdXWTEGNck",
+          "title": "[정화치유명상#3] 몸은 사랑 받을 때 강해집니다 | 몸의 에너지를 정화하고 치유력을 강화하는 명상",
+          "channel": "아이엠TV_마음공부",
+          "publishedAt": "2021-08-28T11:00:19Z",
+          "duration": "PT23M7S"
+        },
+        {
+          "videoId": "bT0qwMvvSTE",
+          "title": "이완 호흡명상 | 몸과 마음 휴식 복식 호흡법 | 피로를 풀어주는 호흡명상 | 마인드바디 요가명상",
+          "channel": "마인드바디 요가명상",
+          "publishedAt": "2020-09-21T11:45:02Z",
+          "duration": "PT12M11S"
+        },
+        {
+          "videoId": "SWEpVYaMcOs",
+          "title": "[이완명상] 완전한 휴식이 필요할 때마다 꺼내어 주세요 (ASMR · 바디스캔 · 자기암시) | 15분 요가니드라 | 요가소년 454",
+          "channel": "요가소년",
+          "publishedAt": "2022-07-11T19:01:53Z",
+          "duration": "PT15M59S"
+        },
+        {
+          "videoId": "2me4-hVJEWA",
+          "title": "복잡하고 지친 마음이 온전히 쉬는 마음휴식 명상가이드 ㅣ 스트레스 비우고 고요한 지금에 머물기ㅣ 이완의 시간",
+          "channel": "명상하는그녀_내안의별",
+          "publishedAt": "2020-12-01T15:06:53Z",
+          "duration": "PT14M59S"
+        },
+        {
+          "videoId": "PwXYtw7WZ48",
+          "title": "수면유도 명상 31 - 뇌신경계 이완 명상 (종합)",
+          "channel": "김주환의 내면소통",
+          "publishedAt": "2023-01-31T14:33:10Z",
+          "duration": "PT28M1S"
+        }
+      ]
+    },
+    {
+      "id": "exhaustion.tired",
+      "parent": "exhaustion",
+      "label": "피로",
+      "videos": [
+        {
+          "videoId": "WIqe9vM4U34",
+          "title": "10분안에 마취시켜주는 수면유도음악 | 잠잘때 듣는 음악",
+          "channel": "디노사운드 Dino.S",
+          "publishedAt": "2020-12-06T13:40:00Z",
+          "duration": "PT53M40S"
+        },
+        {
+          "videoId": "p2fxv3PAtLU",
+          "title": "10시간 잔잔한 수면음악 🎵 스트레스 해소음악, 잠잘때 듣는 음악, 불면증치료음악, 수면유도음악 (My Dream)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2019-09-19T12:00:10Z",
+          "duration": "PT10H2M3S"
+        },
+        {
+          "videoId": "axFQ190mQks",
+          "title": "과학적으로 입증된 3분 안에 잠드는 음악… 불면증 완화 (성공률 96%) 🎵잠이 오지 않는 친구들에게 꼭 들려주세요 - 명상음악, 힐링음악, 수면음악",
+          "channel": "Yunchan Lim - 수면 음악 프로듀서",
+          "publishedAt": "2025-10-05T12:00:50Z",
+          "duration": "PT3H25S"
+        },
+        {
+          "videoId": "NSNY8qDUKqw",
+          "title": "🧠💤 최상의 숙면을 경험하세요. 깸 없는 깊은 잠을 돕는 수면단계별 뇌파 동조화 수면 사운드 - 90분 수면사이클 버전 & 기상알람 2회 (연구 논문 기반)",
+          "channel": "브레이너 제이의 숙면 여행",
+          "publishedAt": "2021-07-04T13:43:47Z",
+          "duration": "PT9H43M6S"
+        },
+        {
+          "videoId": "kXJtSluW1SU",
+          "title": "😴 생각·잡념을 즉시 잠재우는 인지과학적 숙면가이드 | ADHD를 위한 인지셔플 및 구름심상 수면 명상 [루크 보두앵 박사 문헌 기반]",
+          "channel": "브레이너 제이의 숙면 여행",
+          "publishedAt": "2026-04-21T14:00:00Z",
+          "duration": "PT6H11S"
+        },
+        {
+          "videoId": "zCW-O6_LEz8",
+          "title": "👩‍🚀🔋 NASA 최첨단 수면실에서 6시간 회복 숙면하세요! 오래 잔 듯, 가득 충전되는 생체에너지 회복실 - NASA NAP의 밤잠 버전 [기상알람 1회]",
+          "channel": "브레이너 제이의 숙면 여행",
+          "publishedAt": "2021-11-09T13:59:35Z",
+          "duration": "PT6H22M8S"
+        },
+        {
+          "videoId": "QTiu6BYVPqo",
+          "title": "\"의사도 추천하는 수면음악\" 듣는 순간 졸음이 밀려오는 깊은 수면 빗소리 - 하루 스트레스 완전 해제, 불면증 치유 음악, 마음 안정 피아노",
+          "channel": "Yunchan Lim - 수면 음악 프로듀서",
+          "publishedAt": "2026-03-08T11:57:11Z",
+          "duration": "PT2H6M36S"
+        },
+        {
+          "videoId": "l-a5ZRkYgog",
+          "title": "너무 편해서 잠이 솔솔 오는 10시간 수면유도음악 🎵 편안한음악, 잠잘때듣는음악, 불면증음악 (Timeless)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2024-04-23T14:00:37Z",
+          "duration": "PT10H5M20S"
+        },
+        {
+          "videoId": "TAYZykSmQ8Q",
+          "title": "🌜💤 몇 시간을 자든, 숙면 골든타임 90분은 꼭 챙기세요! 스탠퍼드大 수면 연구진의 숙면하는 황금법칙 기반 첫번째 수면사이클 뇌파 동조화 사운드 (기상알람 없음)",
+          "channel": "브레이너 제이의 숙면 여행",
+          "publishedAt": "2021-12-02T14:25:16Z",
+          "duration": "PT2H10M11S"
+        },
+        {
+          "videoId": "iHCCwk3CV70",
+          "title": "10분안에 잠드는 꿀잠 수면명상 [숙면을 위한 수면유도 음악]",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2021-04-19T11:00:12Z",
+          "duration": "PT1H4M22S"
+        },
+        {
+          "videoId": "LysA1OKA5Tk",
+          "title": "아침이 달라지는 효과적인 수면법! 5시간 파워 숙면 뇌파소리!할 일이 많은 날 고효율 5시간 숙면!",
+          "channel": "Relaxing & Sleepping",
+          "publishedAt": "2021-08-12T11:15:52Z",
+          "duration": "PT4H51M13S"
+        },
+        {
+          "videoId": "SU1ANqWhFf4",
+          "title": "🌙듣자마자 스르르 눈이 감겨지는 수면유도음악 -5분후 화면 꺼짐 -잠 잘때 듣기 좋은 음악",
+          "channel": "Healing & Silent  ",
+          "publishedAt": "2023-10-05T13:12:00Z",
+          "duration": "PT9H10M20S"
+        },
+        {
+          "videoId": "4_X8taOamZQ",
+          "title": "5분만에 깊게 잠드는 수면유도 명상 | 숙면을 위한 7시간 수면음악, 불면증 치료 수면명상, 잠잘때 듣는 음악",
+          "channel": "에일린 mind yoga",
+          "publishedAt": "2022-04-18T12:00:03Z",
+          "duration": "PT7H30M23S"
+        },
+        {
+          "videoId": "6m0xbFKKPx0",
+          "title": "3시간 잔잔한 수면음악 + 풀벌레소리 🎵 스트레스 해소음악, 잠잘때 듣는 음악, 불면증치료음악, 수면유도음악 (My Dream)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2021-01-26T12:30:01Z",
+          "duration": "PT3H4M51S"
+        },
+        {
+          "videoId": "es3vIWdiyZA",
+          "title": "\"가장 포근했던 여름밤처럼\" 마음이 쉬는 수면음악",
+          "channel": "Music Drawing",
+          "publishedAt": "2026-07-16T11:45:12Z",
+          "duration": "PT8H45M10S"
+        },
+        {
+          "videoId": "nsvYJQTFjmE",
+          "title": "10시간 포근한 수면음악 🎵 마음이 편안해지는 음악, 불면증치료음악, 잠잘오는음악, 수면유도음악 (Lavender)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2019-11-05T00:30:00Z",
+          "duration": "PT10H9S"
+        },
+        {
+          "videoId": "-u98Ob6R8AU",
+          "title": "🌌 t=𝜏C 상대성이론으로 초-회복 수면하세요. 5시간 자고도 9시간 잔 것 같은 우주 시공간 수면실 & 우주 앰비언스 음악 [기상 알람 없음]",
+          "channel": "브레이너 제이의 숙면 여행",
+          "publishedAt": "2026-05-12T14:12:44Z",
+          "duration": "PT5H10S"
+        },
+        {
+          "videoId": "JDIZU1huFts",
+          "title": "수면유도 빗소리 5분뒤 화면꺼짐(2h) 잠 잘오는 숙면 빗소리asmr,  Rain sounds, 불면증완화",
+          "channel": "잠에 빠지는멜로디아  Sound Asleep melody",
+          "publishedAt": "2023-04-01T13:45:02Z",
+          "duration": "PT2H10S"
+        },
+        {
+          "videoId": "GGZQHesOGr4",
+          "title": "\" 불면증 오늘로 끝 \" 불안한 마음을 내려놓게 하는 안정적인 수면유도음악 - 이거 틀면 바로 잠듦, 수면제급 힐링 사운드, 휴식음악",
+          "channel": "Yunchan Lim - 수면 음악 프로듀서",
+          "publishedAt": "2026-03-01T11:59:55Z",
+          "duration": "PT3H45M13S"
+        },
+        {
+          "videoId": "JBCuqT46ALo",
+          "title": "🧠 잠 자면서 기억력 향상되는 6시간 숙면 + 6시간 학습 사운드 | 수면 중 기억 강화 TMR 뇌파 동조 [최신 신경과학 및 임상논문 10편 기반]",
+          "channel": "브레이너 제이의 숙면 여행",
+          "publishedAt": "2026-03-31T14:51:21Z",
+          "duration": "PT11H40M11S"
+        }
+      ]
+    },
+    {
+      "id": "exhaustion.listless",
+      "parent": "exhaustion",
+      "label": "의욕 없음",
+      "videos": [
+        {
+          "videoId": "ZGlUyWlEbEY",
+          "title": "냉장 물류센터 알바하는 40대 시골 주부의 일상",
+          "channel": "소소한 일상",
+          "publishedAt": "2026-08-12T09:00:38Z",
+          "duration": "PT18M20S"
+        },
+        {
+          "videoId": "nGfyFKysT7Q",
+          "title": "40도 더위에도 계속되는 40대 시골 주부의 일상",
+          "channel": "소소한 일상",
+          "publishedAt": "2026-08-06T09:00:13Z",
+          "duration": "PT15M46S"
+        },
+        {
+          "videoId": "jnzeQv4PwpQ",
+          "title": "집에 있는 재료로 집밥해 먹으며 하루하루 버티기",
+          "channel": "소소한 일상",
+          "publishedAt": "2026-07-28T09:00:09Z",
+          "duration": "PT9M50S"
+        },
+        {
+          "videoId": "I3R6FITfbR0",
+          "title": "아주 소소한 일상 브이로그 | 연남동 제로웨이스트샵 투어 & 물건 소개, 자수 유튜버 실버스노우님과 인터뷰",
+          "channel": "도토리생활dotori_life",
+          "publishedAt": "2020-11-16T17:09:30Z",
+          "duration": "PT10M18S"
+        },
+        {
+          "videoId": "xDagnaCPhyc",
+          "title": "40대 시골 주부의 4인 가족 짠내 투어(총경비 4만원)",
+          "channel": "소소한 일상",
+          "publishedAt": "2026-07-31T09:00:04Z",
+          "duration": "PT22M4S"
+        },
+        {
+          "videoId": "yPPZp_ohCNA",
+          "title": "40대 주부의 소소한 일상 브이로그",
+          "channel": "소소한 일상",
+          "publishedAt": "2024-04-15T10:01:00Z",
+          "duration": "PT14M42S"
+        },
+        {
+          "videoId": "KEmfiOkTU0I",
+          "title": "VLOG ⁷⁴/ 40대 노처녀 급식실 조리원의 지극히 소소한 일상 with 70대 엄빠 / 주말에 엄마랑 장 보고 러닝하고 조카 생일 축하해준 일상 /육회비빔밥 냉라면 만들어 먹기",
+          "channel": "소소한 하루 - just simple days",
+          "publishedAt": "2026-07-18T03:00:05Z",
+          "duration": "PT17M16S"
+        },
+        {
+          "videoId": "CsUh88M-3FA",
+          "title": "병원과 느~~무 친해진 40대 시골 주부의 일상",
+          "channel": "소소한 일상",
+          "publishedAt": "2026-07-08T09:00:16Z",
+          "duration": "PT14M29S"
+        },
+        {
+          "videoId": "Nr9ALXdiLyM",
+          "title": "갱년기 시골 주부의 소소한 일상/풀과의 전쟁",
+          "channel": "소소한 일상",
+          "publishedAt": "2026-04-21T09:00:28Z",
+          "duration": "PT12M59S"
+        },
+        {
+          "videoId": "mqraYxYew4A",
+          "title": "갱년기 시골 주부의 소소한 일상 / 뱀과의 전쟁 선포~!!!",
+          "channel": "소소한 일상",
+          "publishedAt": "2026-04-16T07:00:51Z",
+          "duration": "PT16M25S"
+        },
+        {
+          "videoId": "p8AZo8iVeXk",
+          "title": "이렇게까지 힘들줄 몰랐어요...텅장이 주는 무기력감",
+          "channel": "소소한 일상",
+          "publishedAt": "2026-02-03T08:01:03Z",
+          "duration": "PT7M51S"
+        },
+        {
+          "videoId": "7G4DUlMzrzI",
+          "title": "40대 시골 갱년기 주부의 소소한 일상 브이로그 ",
+          "channel": "소소한 일상",
+          "publishedAt": "2025-09-28T09:00:11Z",
+          "duration": "PT15M13S"
+        },
+        {
+          "videoId": "oziWw7GD7ds",
+          "title": "50대 시골 주부의 유쾌한 한겨울 일상/집에서 앞머리 자르기",
+          "channel": "소소한 일상",
+          "publishedAt": "2026-01-10T01:01:18Z",
+          "duration": "PT12M28S"
+        },
+        {
+          "videoId": "vCBaa7IePNM",
+          "title": "[vlog] 5시 기상 갓생 직장인의 평범한 일상 브이로그 ☀️| 출근 전 나를 위한 아침 시간 | 헬스·필라테스 | 마켓 컬리 다이어트 식단 | 여름 출근룩 | 아비에무아 북커버",
+          "channel": "혜치 hyechichi ",
+          "publishedAt": "2026-08-09T08:30:17Z",
+          "duration": "PT28M57S"
+        },
+        {
+          "videoId": "ME9g2PI6NNQ",
+          "title": "나에게서 엄마의 모습이 보일때...",
+          "channel": "소소한 일상",
+          "publishedAt": "2026-04-26T09:00:24Z",
+          "duration": "PT15M51S"
+        },
+        {
+          "videoId": "AmZ4cu0dD9s",
+          "title": "2026년 8월 1일  태백 바람의 언덕",
+          "channel": "소소한 일상",
+          "publishedAt": "2026-08-01T10:00:13Z",
+          "duration": "PT5M"
+        },
+        {
+          "videoId": "Peu4xlMi7Ks",
+          "title": "40대 시골 주부의 잔잔한 일상 ",
+          "channel": "소소한 일상",
+          "publishedAt": "2026-05-07T10:10:00Z",
+          "duration": "PT11M29S"
+        },
+        {
+          "videoId": "6gxwg91Y6vI",
+          "title": "충격적인 인바디 결과...다이어트 계획",
+          "channel": "소소한 일상",
+          "publishedAt": "2026-06-23T05:40:16Z",
+          "duration": "PT5M55S"
+        },
+        {
+          "videoId": "PGkKtx468Rw",
+          "title": "코에 봄바람 들어간 40대 아줌씨~싱숭생숭한 봄🌸",
+          "channel": "소소한 일상",
+          "publishedAt": "2026-03-24T09:00:37Z",
+          "duration": "PT14M11S"
+        },
+        {
+          "videoId": "S_YaykyRrgc",
+          "title": "하나씩 채워가는 가구와 공간. 여름 식탁 기록과 소소한 일상.",
+          "channel": "자민 jamin",
+          "publishedAt": "2026-08-09T04:00:07Z",
+          "duration": "PT13M44S"
+        }
+      ]
+    },
+    {
+      "id": "joy.proud",
+      "parent": "joy",
+      "label": "뿌듯함",
+      "videos": [
+        {
+          "videoId": "nkjLJd6EdS4",
+          "title": "묘하게 스트레스가 해소되는 기분좋아지는 영상 & ASMR # 13",
+          "channel": "묘한힐링",
+          "publishedAt": "2022-04-13T09:19:47Z",
+          "duration": "PT10M"
+        },
+        {
+          "videoId": "H6cVabj89vM",
+          "title": "보면 묘한 만족감을 주는 기분좋아지는 영상 & ASMR # 15",
+          "channel": "묘한힐링",
+          "publishedAt": "2022-04-22T09:02:14Z",
+          "duration": "PT7M54S"
+        },
+        {
+          "videoId": "YQBDAz_ki40",
+          "title": "보면 묘한 만족감을 주는 기분좋아지는 영상 & ASMR # 21",
+          "channel": "묘한힐링",
+          "publishedAt": "2022-05-17T09:31:19Z",
+          "duration": "PT9M10S"
+        },
+        {
+          "videoId": "RD36uQYN1vM",
+          "title": "묘한 만족감을 주며 마음이 편해지는 기분좋아지는 영상 & ASMR  # 27",
+          "channel": "묘한힐링",
+          "publishedAt": "2022-06-14T09:45:27Z",
+          "duration": "PT8M18S"
+        },
+        {
+          "videoId": "4YgbDKEqsqQ",
+          "title": "Best 힐링 모래영상 모음집 #5. The Most Satisfying Kinetic Sand ASMR Collection.",
+          "channel": "SandLand 샌드랜드",
+          "publishedAt": "2022-01-03T09:00:02Z",
+          "duration": "PT8M25S"
+        },
+        {
+          "videoId": "8EWUG_mPs1U",
+          "title": "보고만 있어도 기분 좋아지는 쾌감 영상 !! 수박 안에 구슬이 ?!",
+          "channel": "버섯도리",
+          "publishedAt": "2023-10-24T07:00:03Z",
+          "duration": "PT13M49S"
+        },
+        {
+          "videoId": "_9k0G78F33Q",
+          "title": "묘한 만족감을 주며 마음이 편해지는 기분좋아지는 영상 & ASMR # 29",
+          "channel": "묘한힐링",
+          "publishedAt": "2022-06-22T09:32:26Z",
+          "duration": "PT8M37S"
+        },
+        {
+          "videoId": "9OfvJZgBusI",
+          "title": "스트레스 해소와 마음에 안정을 주는 기분좋아지는 영상 & ASMR # 8",
+          "channel": "묘한힐링",
+          "publishedAt": "2022-03-31T09:45:26Z",
+          "duration": "PT8M16S"
+        },
+        {
+          "videoId": "8ISpDnoHX1I",
+          "title": "🍑 유리 과일 자르기 ASMR 롱버전 (약 40분) | AI ASMR",
+          "channel": "ASMRoom",
+          "publishedAt": "2025-06-25T12:15:00Z",
+          "duration": "PT42M48S"
+        },
+        {
+          "videoId": "13_B5CUEaMM",
+          "title": "보고만 있어도 기분 좋아지는 쾌감 영상 !! 딱 맞는 컬러 유리구슬",
+          "channel": "버섯도리",
+          "publishedAt": "2024-03-19T07:00:01Z",
+          "duration": "PT12M3S"
+        },
+        {
+          "videoId": "Os-Y4xU52H4",
+          "title": "보면 묘하게 마음이 편안해지는 기분좋아지는 영상 & ASMR # 34",
+          "channel": "묘한힐링",
+          "publishedAt": "2022-07-27T09:50:23Z",
+          "duration": "PT6M42S"
+        },
+        {
+          "videoId": "w89Hqm1IG8M",
+          "title": "4k자연영상| 힐링영상 I 아름다운산영상풍경 | 보고만 있어도 행복한 | 떠나고 싶어지는 영상 | 풍경영상 | 그림같은풍경 | 당신을 위한 모든 힐링음악 Must Healing",
+          "channel": "Must Healing",
+          "publishedAt": "2023-07-21T15:00:54Z",
+          "duration": "PT3H14M39S"
+        },
+        {
+          "videoId": "K8V4MDo3ggs",
+          "title": "기분 좋아지는 행복한 영상 !! 얼음 구슬 속에 색깔 넣기 ??",
+          "channel": "버섯도리",
+          "publishedAt": "2023-12-16T23:00:19Z",
+          "duration": "PT14M8S"
+        },
+        {
+          "videoId": "4L5-HrywunU",
+          "title": "웃다가 사람 미치는 컬투쇼 레전드 몰아보기🔥",
+          "channel": "재훍 영상툰",
+          "publishedAt": "2026-02-14T05:00:05Z",
+          "duration": "PT1H"
+        },
+        {
+          "videoId": "75JCHPdIXS4",
+          "title": "신기하고 기분좋아지는 영상 모음 #2   Oddly Satisfying compilation",
+          "channel": "World issue (월드 이슈)",
+          "publishedAt": "2019-01-06T13:01:29Z",
+          "duration": "PT10M16S"
+        },
+        {
+          "videoId": "kUAE1tzAFkw",
+          "title": "묘한 만족감을 주며 마음이 편해지는 기분좋아지는 영상 & ASMR  # 28",
+          "channel": "묘한힐링",
+          "publishedAt": "2022-06-17T10:33:17Z",
+          "duration": "PT8M18S"
+        },
+        {
+          "videoId": "g9rO6ecBTBA",
+          "title": "보고 있으면 기분 좋아지는 쾌감영상!! 호박 구슬 만들기",
+          "channel": "버섯도리",
+          "publishedAt": "2024-08-20T07:00:21Z",
+          "duration": "PT14M11S"
+        },
+        {
+          "videoId": "NnOC4_kH0ok",
+          "title": "[#신서유기] (1시간) 5분만 줘도 방송 한 회 분량 가볍게 뽑는 멤버들ㅋㅋㅋ 오프닝에만 킬포가 대체 몇 개야?! | #신서유기8",
+          "channel": "tvN D ENT",
+          "publishedAt": "2022-05-02T11:30:05Z",
+          "duration": "PT1H7S"
+        },
+        {
+          "videoId": "WXkJJaCNshY",
+          "title": "1 Hour Satisfying & Relaxing Video With Calm & Chill Music That Makes You Relax and Fall Asleep",
+          "channel": "Satisfying Life",
+          "publishedAt": "2020-08-02T13:00:05Z",
+          "duration": "PT1H4M13S"
+        },
+        {
+          "videoId": "d5gvWummEp4",
+          "title": "[삶에 지친 당신을 위한 명대사] 🍀살면서 넘어져도 괜찮아. 네 잘못 아니야. 알지? | 📺고화질2160p 권장",
+          "channel": "Nn의 상상은 영상이 된다",
+          "publishedAt": "2023-09-09T11:29:34Z",
+          "duration": "PT7M25S"
+        }
+      ]
+    },
+    {
+      "id": "joy.delight",
+      "parent": "joy",
+      "label": "즐거움",
+      "videos": [
+        {
+          "videoId": "Ok6UBJo4gGA",
+          "title": "고2 학교 축제 vlog 🎤 축제mc보기 • School",
+          "channel": "황예진 iamhwangyejin",
+          "publishedAt": "2024-12-22T14:40:18Z",
+          "duration": "PT16M41S"
+        },
+        {
+          "videoId": "ETagSp6yitw",
+          "title": "흔한 남녀공학 축제 vlog",
+          "channel": "AllZero다영",
+          "publishedAt": "2022-12-10T08:17:03Z",
+          "duration": "PT20M1S"
+        },
+        {
+          "videoId": "3dxIZcZSfrs",
+          "title": "VLOG | 축제 준비부터 축제 당일까지 | 중학교 축제 vlog | 연습실 | 공연 | 축제 | 08 | 혜빈HYEBIN",
+          "channel": "혜빈HYEBIN",
+          "publishedAt": "2023-01-11T10:49:50Z",
+          "duration": "PT18M11S"
+        },
+        {
+          "videoId": "gSDjsV604lc",
+          "title": "아카라카 pom michutdang~🦅 2023 연세대학교 아카라카 브이로그!💙ㅣ10cm, 르세라핌, 아이브, 에스파, 지코, 장기하, 폴킴, 싸이ㅣ대학생 브이로그",
+          "channel": "동세네DSN",
+          "publishedAt": "2023-05-28T10:54:46Z",
+          "duration": "PT11M27S"
+        },
+        {
+          "videoId": "98l7X8Yvz_I",
+          "title": "[한울 12기] 홍보대사의 2025 한서대학교 대동제 vlog💚 | E와 I가 축제를 즐기는 법 | 부스 운영부터 스테이씨 등 아티스트 공연까지",
+          "channel": "한서대학교 하늘한울TV",
+          "publishedAt": "2025-11-03T10:50:15Z",
+          "duration": "PT8M35S"
+        },
+        {
+          "videoId": "WsLUZBddMHw",
+          "title": "기빨리지만 즐거운 대학 축제 vlog~♪..✨ | 최예나를 피해 도망친 이유💦 • 축제 부스 운영 • 돼지파티🐷",
+          "channel": "고구미",
+          "publishedAt": "2026-05-23T10:15:27Z",
+          "duration": "PT11M54S"
+        },
+        {
+          "videoId": "6RAJskIpXmA",
+          "title": "08년생 축제 브이로그 ⭐️ / 부스 1등한 귀신의집 부스 !!💀 / 부스 making / EP03",
+          "channel": "쭉쭉빵빵",
+          "publishedAt": "2023-01-15T14:32:52Z",
+          "duration": "PT12M46S"
+        },
+        {
+          "videoId": "PoJcqo_weNM",
+          "title": "[vlog] 고등학교 축제 브이로그 | 09년생 • 남녀공학 • 학교 축제 • 공연 • 고등학생 |",
+          "channel": "루원조명",
+          "publishedAt": "2025-12-21T03:02:52Z",
+          "duration": "PT14M12S"
+        },
+        {
+          "videoId": "rBH_CvXfxHQ",
+          "title": "강원대학교 대동제 Vlog",
+          "channel": "강원대학교",
+          "publishedAt": "2025-10-16T23:05:40Z",
+          "duration": "PT6M24S"
+        },
+        {
+          "videoId": "7r-FEYXr3Do",
+          "title": "일본고등학교 축제 브이로그",
+          "channel": "수민soomin",
+          "publishedAt": "2025-11-21T11:00:13Z",
+          "duration": "PT16M57S"
+        },
+        {
+          "videoId": "_mmVSOufXm0",
+          "title": "vlog. 고등학교 축제 브이로그 | 고1 첫 축제 | 공연 |",
+          "channel": "나공이",
+          "publishedAt": "2026-01-04T14:05:06Z",
+          "duration": "PT12M22S"
+        },
+        {
+          "videoId": "o1UrdmP9QGw",
+          "title": "시험 끝나고, 즐거운 학교 축제 ♡ 한영외고 코스튬데이 브이로그 (마이린이 마이린 코스프레 했어요 ㅋㅋ) 마이린 TV",
+          "channel": "마이린 TV",
+          "publishedAt": "2022-12-22T06:00:20Z",
+          "duration": "PT6M38S"
+        },
+        {
+          "videoId": "kiY1wNpAX0U",
+          "title": "[인하대] 4년만에 돌아온 인하대축제 '비룡제' VLOG 2, 3DAY✈️ㅣ인하대 응원단 ASSESS, 마크툽부터 싸이, 크러쉬까지🤩",
+          "channel": "인하대학교 Inha University",
+          "publishedAt": "2023-05-23T08:38:45Z",
+          "duration": "PT10M52S"
+        },
+        {
+          "videoId": "6RODLTp7Atg",
+          "title": "VLOG l 즐거운 축제가 열리는 환상의 나라 에버랜드로🎢 #아디오스 에버랜드",
+          "channel": "영주의지구살이",
+          "publishedAt": "2020-11-18T08:34:56Z",
+          "duration": "PT6M34S"
+        },
+        {
+          "videoId": "M98PNl555gw",
+          "title": "[vlog] 2025 동국대학교 봄 대동제 ' DIRVANA'💭 I 홍보대사의 대학 축제 즐기기!ㅣ 축제 부스 운영🍊",
+          "channel": "동국대학교 홍보대사 동감🍊",
+          "publishedAt": "2025-07-01T06:58:34Z",
+          "duration": "PT13M48S"
+        },
+        {
+          "videoId": "JEZ1G1Owyz4",
+          "title": "즐거운학교생활브이로그축제 1탄-1학년6반",
+          "channel": "여중의 전설",
+          "publishedAt": "2022-10-20T20:49:08Z",
+          "duration": "PT3M23S"
+        },
+        {
+          "videoId": "BkhxNFoyB44",
+          "title": "일본의 낭만 가득 시골 여름 불꽃축제 - 애니속 하나비 마츠리에서 새로운 인연 ..? 🎇",
+          "channel": "HAEROOM 해이름",
+          "publishedAt": "2025-09-07T07:30:01Z",
+          "duration": "PT30M13S"
+        },
+        {
+          "videoId": "2aFp0XeU-PU",
+          "title": "잉덕 VLOG- 즐거운 남고 축제",
+          "channel": "잉덕",
+          "publishedAt": "2020-01-05T19:49:59Z",
+          "duration": "PT4M28S"
+        },
+        {
+          "videoId": "ffPDCBro7I8",
+          "title": "[VLOG] 드디어 랜덤깡에 성공한 오타쿠 법대생의 즐거운 시험기간 | 대학교 4학년 중간고사 | 카공 | 도리벤 키링 | 학교 축제 | 핫식스 | 조유리 컴백 | 전국노래자랑",
+          "channel": "윤겨울 YOON",
+          "publishedAt": "2022-10-31T07:25:32Z",
+          "duration": "PT10M24S"
+        },
+        {
+          "videoId": "v58I39NGCs8",
+          "title": "[VLOG] 양현고 11기 학생회 축제 준비 브이로그",
+          "channel": "양현고등학교 학생회",
+          "publishedAt": "2026-02-04T06:01:01Z",
+          "duration": "PT11M21S"
+        }
+      ]
+    },
+    {
+      "id": "joy.grateful",
+      "parent": "joy",
+      "label": "감사",
+      "videos": [
+        {
+          "videoId": "BSznwQvcCcA",
+          "title": "사랑스러운 연기와 따뜻한 영상미로 전하는 마을 가장 작은 영웅의 기적 같은 이야기 [영화리뷰/결말포함]",
+          "channel": "디토이야기",
+          "publishedAt": "2025-05-21T10:59:24Z",
+          "duration": "PT35M9S"
+        },
+        {
+          "videoId": "mw48e14PXaw",
+          "title": "하루 끝에 위로가 되는 한국 영화 드라마 속 따뜻한 이야기 모음",
+          "channel": "영화탐구생활",
+          "publishedAt": "2025-05-07T08:53:49Z",
+          "duration": "PT17M37S"
+        },
+        {
+          "videoId": "f7NmOLbPTSs",
+          "title": "늦은 밤 눈물 흘리며 버스기사 찾아온 학생의 사연",
+          "channel": "포크포크",
+          "publishedAt": "2023-01-03T10:42:53Z",
+          "duration": "PT3M7S"
+        },
+        {
+          "videoId": "GcG7s4EghFk",
+          "title": "[실험카메라] 가장 감동적인 순간들 BEST3 ㅣ사회실험ㅣ",
+          "channel": "오도씨(ODOSSI)",
+          "publishedAt": "2021-12-26T03:00:05Z",
+          "duration": "PT33M42S"
+        },
+        {
+          "videoId": "RohZ89_w93o",
+          "title": "지치고 힘들 때 위로가 되는 이야기들 | 동기부여 영상",
+          "channel": "짧은명언:AWAKE",
+          "publishedAt": "2024-09-29T06:00:12Z",
+          "duration": "PT4M13S"
+        },
+        {
+          "videoId": "eOsW7Yp7SzQ",
+          "title": "눈물댐 개방하는 오열각 사회실험 TOP7",
+          "channel": "원더맨 WonderMan",
+          "publishedAt": "2025-04-12T08:00:38Z",
+          "duration": "PT36M8S"
+        },
+        {
+          "videoId": "Gybuoh4Gadg",
+          "title": "'엄마, 아빠의 편지가 시험 문제로 나왔다'┃수험생을 울린 감동 영상┃힐링 모의고사┃학교의 기적┃다큐프라임┃#골라듄다큐",
+          "channel": "EBSDocumentary (EBS 다큐)",
+          "publishedAt": "2022-10-12T07:19:24Z",
+          "duration": "PT8M27S"
+        },
+        {
+          "videoId": "Q4KoWYgLMAI",
+          "title": "수술 4번 받고 교실 왔는데…‘눈물 버튼’ 눌러버린 선생님 [현장영상] / KBS 2024.04.28.",
+          "channel": "KBS News",
+          "publishedAt": "2024-04-28T09:44:10Z",
+          "duration": "PT3M7S"
+        },
+        {
+          "videoId": "rVP8n5-5t-U",
+          "title": "[무려 오스카 최우수 애니메이션 상을 받은 디즈니 픽사의 애니메이션 ]삶이 지치거나 힘들고 우울할 때 봐야 할 영화【영화리뷰/결말포함】",
+          "channel": "핑크돌고래 미디어Pink dolphin Media",
+          "publishedAt": "2022-01-23T05:06:53Z",
+          "duration": "PT7M42S"
+        },
+        {
+          "videoId": "9NVnan91Pww",
+          "title": "목마를 못태워주고 있는 엄마를 본 시민들의 놀라운 반응(feat.눈물주의) ㅣ감동실험 ㅣ실험카메라ㅣ사회실험",
+          "channel": "오도씨(ODOSSI)",
+          "publishedAt": "2022-06-16T03:00:01Z",
+          "duration": "PT9M23S"
+        },
+        {
+          "videoId": "P9a-84dpgj4",
+          "title": "직장인 브이로그 ㅣ 나만의 감사일기 쓰는 법과 생각정리 방법. 퇴근 후 일상들 모음.",
+          "channel": "안온민",
+          "publishedAt": "2025-12-13T11:47:39Z",
+          "duration": "PT12M28S"
+        },
+        {
+          "videoId": "JE2CDfxkLwI",
+          "title": "참고하면 좋을 책 '하루 5분 감사일기' (🎁 구독자 이벤트 있음)",
+          "channel": "진지우기",
+          "publishedAt": "2025-02-04T08:00:21Z",
+          "duration": "PT13M19S"
+        },
+        {
+          "videoId": "SAwFzCUnGOk",
+          "title": "기분 난리자베스 일 때 하면 일이 술술 풀리는 치트키 루틴ㅣ현타 올 땐 감사일기 말고 **일기 써보세요",
+          "channel": "튠앤피치_Tune&Pitch",
+          "publishedAt": "2026-02-28T02:30:31Z",
+          "duration": "PT6M51S"
+        },
+        {
+          "videoId": "n1Wm8KL4NNU",
+          "title": "감사일기 쓰는 방법 l 예시 l 효과 l 낮은 자존감 높이는 방법 l 오프라 윈프리, 알랭 드 보통 l 감사일기의 효과l감사일기의 힘 [하니와 함께 하는 감사일기쓰기 댓글 챌린지]",
+          "channel": "성장 하니 Hany : 우리 모두의 성장 이야기",
+          "publishedAt": "2021-08-05T17:14:30Z",
+          "duration": "PT5M18S"
+        },
+        {
+          "videoId": "aC48UzKBzwg",
+          "title": "감정 정리 아침 일기. 하루를 시작하는 다이어리 브이로그. 같이 리뷰해요 🖋️",
+          "channel": "yebaksa 예박사",
+          "publishedAt": "2025-05-10T23:55:44Z",
+          "duration": "PT17M51S"
+        },
+        {
+          "videoId": "XP2Un06tGuc",
+          "title": "[감사일기] 감사에 숨겨진 엄청난 과학적 효과 (감사의 원리, 감사일기 제대로 쓰는 법)",
+          "channel": "진지우기",
+          "publishedAt": "2023-06-02T15:08:14Z",
+          "duration": "PT12M25S"
+        },
+        {
+          "videoId": "17l15twW_po",
+          "title": "36세에 한강 아파트 30억 매출 만든 감사일기, 꿈 노트의 비밀ㅣ김묘정 마이오헤어 대표ㅣ디 아카이브 EP03",
+          "channel": "하와이 대저택",
+          "publishedAt": "2026-03-02T21:00:02Z",
+          "duration": "PT16M45S"
+        },
+        {
+          "videoId": "QO-yIcVYLhw",
+          "title": "직장인 브이로그 마지막회",
+          "channel": "정문츄☀︎ ",
+          "publishedAt": "2026-08-12T08:00:03Z",
+          "duration": "PT9M41S"
+        },
+        {
+          "videoId": "cxzGxAkpjxg",
+          "title": "나는 내가 뭘 좋아하는지도 모르겠어요 | 40대 백수 현실",
+          "channel": "그린루틴",
+          "publishedAt": "2026-08-13T12:02:19Z",
+          "duration": "PT7M13S"
+        },
+        {
+          "videoId": "ARniQjEaxkU",
+          "title": "감사일기 쓰는 방법 | 4가지 예시를 활용하세요!",
+          "channel": "최이솔",
+          "publishedAt": "2020-09-04T12:14:21Z",
+          "duration": "PT7M14S"
+        }
+      ]
+    },
+    {
+      "id": "flutter.anticipation",
+      "parent": "flutter",
+      "label": "기대",
+      "videos": [
+        {
+          "videoId": "_cB35dRMmGQ",
+          "title": "아침에 그냥 틀어 놓으세요 🎧편안한 하루를 위한 감성 팝송 / 감미로운 멜로디 Playlist🎵",
+          "channel": "HP Music",
+          "publishedAt": "2025-06-28T20:30:04Z",
+          "duration": "PT1H4M11S"
+        },
+        {
+          "videoId": "Xmn1jgD_x6s",
+          "title": "기분 좋은 하루를 만들어주는 플레이리스트 | ☀️🌿 𝗚𝗼𝗼𝗱 𝗩𝗶𝗯𝗲𝘀 ☁️",
+          "channel": "SISO Wave",
+          "publishedAt": "2025-08-13T21:41:56Z",
+          "duration": "PT2H51M54S"
+        },
+        {
+          "videoId": "kh1syoUI_xY",
+          "title": "아침을 상쾌하게 여는 음악 ☀️ 기분 좋은 하루를 위한 힐링 Playlist #67 🌿 Relaxing Morning Music",
+          "channel": "오늘의 멜로디 Today's Melody",
+          "publishedAt": "2025-08-18T22:30:22Z",
+          "duration": "PT2H6M35S"
+        },
+        {
+          "videoId": "lQhSefrjtUE",
+          "title": "희망찬 아침을 만들어주는 아침에 듣기 좋은 노래 10곡  - Heony`s Music Cafe",
+          "channel": "친절한이사장",
+          "publishedAt": "2020-07-27T03:00:07Z",
+          "duration": "PT39M5S"
+        },
+        {
+          "videoId": "zhNW9R7V0-c",
+          "title": "아침에 들으면 기분좋아지는 가을음악, 요즘 듣기 좋은 노래, 일할때 듣기좋은 노래, 공부할때 듣는음악, 카페음악, playlist, 플레이리스트, 즐거워지는 노래, 플리,#bgm",
+          "channel": "Serenora - Healing Music",
+          "publishedAt": "2025-09-08T21:45:06Z",
+          "duration": "PT3H8M27S"
+        },
+        {
+          "videoId": "21KEonvUpj4",
+          "title": "상쾌한 아침을 여는 힐링음악 3시간 🎵 아침명상음악, 스트레스해소음악, 명상음악",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2019-09-01T22:00:02Z",
+          "duration": "PT3H9M16S"
+        },
+        {
+          "videoId": "DIIwEJ4tr_Q",
+          "title": "Morning Piano | 긍정 에너지 가득!💪🏻 기분좋은 아침을 위한 피아노 연주",
+          "channel": "마인드피아노 MIND PIANO",
+          "publishedAt": "2023-02-01T00:36:48Z",
+          "duration": "PT10H1M41S"
+        },
+        {
+          "videoId": "v0VpZhT4m7M",
+          "title": "아침엔 이거부터 틀어요 (중간광고 없음) 🎧유럽 골목 카페  모닝팝 플레이리스트",
+          "channel": "morning pop [모닝팝]",
+          "publishedAt": "2026-04-09T21:30:09Z",
+          "duration": "PT2H8M34S"
+        },
+        {
+          "videoId": "VquVOY2utH8",
+          "title": "부드러운 아침을 위한 명곡 클래식 음악 모음 | 달콤한 클래식 | 새소리 | 힐링",
+          "channel": "코튼테라스",
+          "publishedAt": "2022-08-11T15:51:47Z",
+          "duration": "PT1H27M18S"
+        },
+        {
+          "videoId": "BTVKPASTWfI",
+          "title": "🎹🪴🍀 아침 향기 (Morning Scent) 아침을 노래하는 피아노 / Morning Piano / 1시간 반복 듣기",
+          "channel": "Song Kwangsik / 송광식 official",
+          "publishedAt": "2025-09-14T22:00:19Z",
+          "duration": "PT1H20S"
+        },
+        {
+          "videoId": "D2WezFoeswI",
+          "title": "[Playlist] \"아침에 듣기 좋은 산뜻한 클래식 왈츠\" | Summer Palace Waltz 🌿",
+          "channel": "okply",
+          "publishedAt": "2026-05-17T09:00:15Z",
+          "duration": "PT2H28M57S"
+        },
+        {
+          "videoId": "gfNj3mi8A-0",
+          "title": "𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 | 아침에 이 노래 틀면 하루가 이상하게 잘 풀림🌳 첫 곡 부터 기분 좋아지는 뉴욕 플리🎧🗽lofi 노동요",
+          "channel": "OOOffi",
+          "publishedAt": "2026-03-02T22:00:43Z",
+          "duration": "PT10H36M42S"
+        },
+        {
+          "videoId": "vfWwL4N8CM4",
+          "title": "𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 기분 좋은 하루의 시작",
+          "channel": "사계 ꜰᴏᴜʀ sᴇᴀsᴏɴs",
+          "publishedAt": "2024-02-05T23:00:30Z",
+          "duration": "PT1H5M41S"
+        },
+        {
+          "videoId": "ybsKKXDXlJ4",
+          "title": "기분 좋은 하루의 시작❣️ 밝은 느낌의 피아노 연주 10시간 모음🎹 (중간광고없음, 공부, 집중, 일, 힐링, 매장, 카페음악) Relaxing Piano Music",
+          "channel": "몽렉싱피아노 MONGLAXING PIANO",
+          "publishedAt": "2024-08-28T22:45:01Z",
+          "duration": "PT10H31M34S"
+        },
+        {
+          "videoId": "cpHsVKWA7fI",
+          "title": "새소리와 함께하는 아침 명상음악 🎵 1시간 잔잔한 음악 연속듣기, 아침요가음악, 긍정명상, 힐링아침음악 (Warm Mind)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2019-08-26T10:00:08Z",
+          "duration": "PT1H4M36S"
+        },
+        {
+          "videoId": "xbUB-eB5wQ0",
+          "title": "모든 일이 잘 풀리는 아침을 여는 음악 | 긍정적인 마음이 현실이 되는 시간",
+          "channel": "LazyFlow",
+          "publishedAt": "2026-04-13T22:57:21Z",
+          "duration": "PT1H34M14S"
+        },
+        {
+          "videoId": "wksiOZc_sUA",
+          "title": "모든 일이 잘 풀리는 아침을 여는 음악 | 기적 같은 소식이 들려올 것 같은 아침",
+          "channel": "LazyFlow",
+          "publishedAt": "2026-04-27T22:00:00Z",
+          "duration": "PT1H26M8S"
+        },
+        {
+          "videoId": "2bILCQfhfmk",
+          "title": "𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 : 월요일 아침에 듣기 좋은 노래, 달짝지근 기분 좋아지는",
+          "channel": "Taeyang (태양)",
+          "publishedAt": "2025-02-16T22:00:01Z",
+          "duration": "PT1H10M33S"
+        },
+        {
+          "videoId": "HmLdWMG6q7w",
+          "title": "밝은 아침을 위한 힐링음악 3시간 🎵 아침명상음악, 요가음악, 명상음악, 스트레스해소음악 (Lyla)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2019-10-28T22:00:02Z",
+          "duration": "PT3H4M55S"
+        },
+        {
+          "videoId": "scHYCQOYcdU",
+          "title": "기분 좋은 교실 아침을 맞는 bgm 모음",
+          "channel": "도담도담 포켓스쿨",
+          "publishedAt": "2020-06-30T01:15:17Z",
+          "duration": "PT58M47S"
+        }
+      ]
+    },
+    {
+      "id": "flutter.thrill",
+      "parent": "flutter",
+      "label": "두근거림",
+      "videos": [
+        {
+          "videoId": "Xmn1jgD_x6s",
+          "title": "기분 좋은 하루를 만들어주는 플레이리스트 | ☀️🌿 𝗚𝗼𝗼𝗱 𝗩𝗶𝗯𝗲𝘀 ☁️",
+          "channel": "SISO Wave",
+          "publishedAt": "2025-08-13T21:41:56Z",
+          "duration": "PT2H51M54S"
+        },
+        {
+          "videoId": "klh7I70h3vg",
+          "title": "(playlist) 이 노래 너무 좋은걸? 나만 들을수 없지⎜잔잔한 피아노 연주곡 플리🤎",
+          "channel": "율다우피아노 Yuldau Piano",
+          "publishedAt": "2024-09-29T23:00:31Z",
+          "duration": "PT3H9M25S"
+        },
+        {
+          "videoId": "QY0C7WO13d0",
+          "title": "[𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭] 이 노래들 틀자마자, 기분이 맑아졌어요 🍃 아무 생각 없이 듣기 좋은 국내 음악 모음 | 나답게 사는 법",
+          "channel": "잔잔",
+          "publishedAt": "2025-08-12T22:05:00Z",
+          "duration": "PT3H27M24S"
+        },
+        {
+          "videoId": "w89Hqm1IG8M",
+          "title": "4k자연영상| 힐링영상 I 아름다운산영상풍경 | 보고만 있어도 행복한 | 떠나고 싶어지는 영상 | 풍경영상 | 그림같은풍경 | 당신을 위한 모든 힐링음악 Must Healing",
+          "channel": "Must Healing",
+          "publishedAt": "2023-07-21T15:00:54Z",
+          "duration": "PT3H14M39S"
+        },
+        {
+          "videoId": "VAoR8bL04qA",
+          "title": "부드럽게 듣기 좋은 행복음악 모음 🌸 입춘을 반기는 온화한 멜로디",
+          "channel": "케어멜로디 caremelody",
+          "publishedAt": "2023-02-06T00:00:18Z",
+          "duration": "PT3H3M19S"
+        },
+        {
+          "videoId": "pywxuQJk3vc",
+          "title": "숲을 걷는 효과🌿 10분만에 머리가 맑아져요  | 5시간, 치유음악, 힐링음악, 새소리  | White Noise, the sound of birds in the forest",
+          "channel": "살구사운드 SalguSound",
+          "publishedAt": "2025-04-14T02:45:05Z",
+          "duration": "PT5H5M5S"
+        },
+        {
+          "videoId": "_cB35dRMmGQ",
+          "title": "아침에 그냥 틀어 놓으세요 🎧편안한 하루를 위한 감성 팝송 / 감미로운 멜로디 Playlist🎵",
+          "channel": "HP Music",
+          "publishedAt": "2025-06-28T20:30:04Z",
+          "duration": "PT1H4M11S"
+        },
+        {
+          "videoId": "d5gvWummEp4",
+          "title": "[삶에 지친 당신을 위한 명대사] 🍀살면서 넘어져도 괜찮아. 네 잘못 아니야. 알지? | 📺고화질2160p 권장",
+          "channel": "Nn의 상상은 영상이 된다",
+          "publishedAt": "2023-09-09T11:29:34Z",
+          "duration": "PT7M25S"
+        },
+        {
+          "videoId": "PRfXz1iN3_o",
+          "title": "𝐏𝐋𝐀𝐘𝐋𝐈𝐒𝐓 새벽감성 인디 플레이리스트🌙🎧 | 잔나비, 카더가든, 최유리, 허회경, 10cm, 검정치마, 너드커넥션, 아이유",
+          "channel": "주인장 𝐏𝐋𝐀𝐘𝐋𝐈𝐒𝐓",
+          "publishedAt": "2025-02-13T10:11:48Z",
+          "duration": "PT1H59M25S"
+        },
+        {
+          "videoId": "8EWUG_mPs1U",
+          "title": "보고만 있어도 기분 좋아지는 쾌감 영상 !! 수박 안에 구슬이 ?!",
+          "channel": "버섯도리",
+          "publishedAt": "2023-10-24T07:00:03Z",
+          "duration": "PT13M49S"
+        },
+        {
+          "videoId": "cG_2ZSvaE0Y",
+          "title": "퇴근길 노래와 노을지는 도시 ✨ 저녁에 듣기좋은 잔잔한 감성 팝송 | Design making tutorial",
+          "channel": "Blue rain",
+          "publishedAt": "2022-04-07T07:45:01Z",
+          "duration": "PT3H5M20S"
+        },
+        {
+          "videoId": "k5_qjRumLJA",
+          "title": "내가 사랑한 한강 그리고 노을 | Cinematic | 감성영상 | 한강 노을 풍경 | 한강야경 |  The Han River and the sunset I loved",
+          "channel": "달다DalDa",
+          "publishedAt": "2021-08-04T09:31:35Z",
+          "duration": "PT4M51S"
+        },
+        {
+          "videoId": "Qhfz525cRTs",
+          "title": "뭘 해도 행복한 사람과 불만인 사람의 말버릇 | 박재연 리플러스 인간연구소 소장 #대화 #관계 #심리 | 세바시 인생질문 186회",
+          "channel": "세바시 인생질문",
+          "publishedAt": "2022-04-29T11:00:30Z",
+          "duration": "PT23M16S"
+        },
+        {
+          "videoId": "cqf0Ni3Jo_I",
+          "title": "[Playlist] 가을 노을빛으로 물들어가는 밤 | 감성 팝과 함께 하는 재충전의 시간 with 해비치 | relaxing pop music",
+          "channel": "essential;",
+          "publishedAt": "2022-10-27T09:00:08Z",
+          "duration": "PT1H4M38S"
+        },
+        {
+          "videoId": "9aeCgBBnmYI",
+          "title": "𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 틀기만 해도 기분이 좋아지는 플리☀️🌿 (광고없음) 국내 노래 모음",
+          "channel": "오늘의 플리",
+          "publishedAt": "2026-05-09T05:40:55Z",
+          "duration": "PT10H17M24S"
+        },
+        {
+          "videoId": "tjKv-K5aaEI",
+          "title": "💿 일할 때 듣기 좋은 감성 발라드 100곡｜광고 없이 즐기는 베스트 명곡 모음｜하루 종일 마음을 감싸는 힐링 멜로디",
+          "channel": "추억발라드",
+          "publishedAt": "2025-10-17T03:01:52Z",
+          "duration": "PT2H30M51S"
+        },
+        {
+          "videoId": "38lqI1HxSlg",
+          "title": "첫곡부터 가슴 적시는 동화감성 명곡 클래식 피아노 모음 | 모두의 클래식 | 남녀노소 | 스토리 클래식 | 선한영향력",
+          "channel": "코튼테라스",
+          "publishedAt": "2021-08-01T18:46:09Z",
+          "duration": "PT1H23M27S"
+        },
+        {
+          "videoId": "cMjNtAgTHYE",
+          "title": "파리 여행 온 기분이야 ✨봄날을 기다리며🌸 기분 좋아지는 노래 광고없음 🌿 Design making tutorial",
+          "channel": "Blue rain",
+          "publishedAt": "2026-02-04T23:30:13Z",
+          "duration": "PT4H53M30S"
+        },
+        {
+          "videoId": "VX0WeJDvfZQ",
+          "title": "일할때 듣기좋은 발라드 추천 광고없는 노래모음🍕 집중력 UP! 일할 때 듣기 좋은 감성 노래 - 임창정,더원,백지영,성시경,김필,양파,이승기,왁스,김범수,소울스타,원티드",
+          "channel": "바람의 발라드",
+          "publishedAt": "2025-09-18T02:30:17Z",
+          "duration": "PT2H52M37S"
+        },
+        {
+          "videoId": "3SAfcUYWwkA",
+          "title": "[playlist] ❄️눈내리는 숲속 카페에서 듣기 좋은 | 잔잔한 감성 팝 카페음악 #101 🎶| Winter lo-fi pop ballad cafemusic",
+          "channel": "Lofi Breeze",
+          "publishedAt": "2025-12-01T01:26:54Z",
+          "duration": "PT1H20M14S"
+        }
+      ]
+    },
+    {
+      "id": "calm.ease",
+      "parent": "calm",
+      "label": "여유",
+      "videos": [
+        {
+          "videoId": "w89Hqm1IG8M",
+          "title": "4k자연영상| 힐링영상 I 아름다운산영상풍경 | 보고만 있어도 행복한 | 떠나고 싶어지는 영상 | 풍경영상 | 그림같은풍경 | 당신을 위한 모든 힐링음악 Must Healing",
+          "channel": "Must Healing",
+          "publishedAt": "2023-07-21T15:00:54Z",
+          "duration": "PT3H14M39S"
+        },
+        {
+          "videoId": "Fvu0w1vPXLM",
+          "title": "평화로운 한국의 자연과 풍경 | 4K | 힐링 풍경 & 편안한 음악 1시간",
+          "channel": "Explorer Archive",
+          "publishedAt": "2026-02-12T10:09:14Z",
+          "duration": "PT1H2M36S"
+        },
+        {
+          "videoId": "VGkoaHyVUdg",
+          "title": "편안한 음악과 함께한 스위스 여행 (4K UHD) 아름다운 자연 풍경 | 4K 비디오 Ultra HD",
+          "channel": "Relaxing Film",
+          "publishedAt": "2022-12-02T00:00:08Z",
+          "duration": "PT3H24M48S"
+        },
+        {
+          "videoId": "JubpYrOi738",
+          "title": "4K 평화로운 몽산포 바다 풍경 드론영상 | 아름다운 서해바다 노을 | 마음편해지는 잔잔한 음악 그리고 파도소리",
+          "channel": "힐링필름[Healing Films]",
+          "publishedAt": "2020-01-14T13:27:46Z",
+          "duration": "PT4M23S"
+        },
+        {
+          "videoId": "n4Mdh3TEq_k",
+          "title": "힘든 하루를 위로하는 푸른 파도 소리 바다 ASMR 🌊 불면증 수면 스트레스 완화를 위한 자연의 소리",
+          "channel": "힐링포유 Healing for you",
+          "publishedAt": "2023-09-13T09:14:15Z",
+          "duration": "PT8H"
+        },
+        {
+          "videoId": "pywxuQJk3vc",
+          "title": "숲을 걷는 효과🌿 10분만에 머리가 맑아져요  | 5시간, 치유음악, 힐링음악, 새소리  | White Noise, the sound of birds in the forest",
+          "channel": "살구사운드 SalguSound",
+          "publishedAt": "2025-04-14T02:45:05Z",
+          "duration": "PT5H5M5S"
+        },
+        {
+          "videoId": "lleN0FjZQL0",
+          "title": "평화로운 자연 풍경 -에릭 사티 짐노페디 Gymnopedie no 1",
+          "channel": "smilemedia",
+          "publishedAt": "2015-08-24T07:07:41Z",
+          "duration": "PT6M25S"
+        },
+        {
+          "videoId": "yBi56t321dM",
+          "title": "4k자연영상 | 힐링영상 I 아름답고 시원한 바다풍경 | 피아노음악 | 힐링음악 | 당신을 위한 모든 힐링음악 Must Healing",
+          "channel": "Must Healing",
+          "publishedAt": "2023-09-04T11:00:44Z",
+          "duration": "PT3H19M32S"
+        },
+        {
+          "videoId": "bWCdghIEc38",
+          "title": "물결 따라 풍경 소리 달그랑 흐르고 ASMR",
+          "channel": "낮잠 NZ Ambience",
+          "publishedAt": "2024-12-11T12:57:41Z",
+          "duration": "PT2H1S"
+        },
+        {
+          "videoId": "SDmUA1Ebok0",
+          "title": "✨지저귀는 청아한 새소리와 숲속 풍경🌿 | 평화로운 자연의 소리 🌲🐦 | 힐링 & 집중 명상",
+          "channel": "자연의소리tv",
+          "publishedAt": "2025-07-15T01:00:23Z",
+          "duration": "PT10H22S"
+        },
+        {
+          "videoId": "IHt4kgF-Ytk",
+          "title": "마음이 편안해지는 힐링음악 3시간 🎵 아침음악, 편안한음악, 스트레스해소음악 (Winter Love)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2024-12-23T22:00:17Z",
+          "duration": "PT3H1M30S"
+        },
+        {
+          "videoId": "RjTPKlKPM3Y",
+          "title": "머리가 맑아지는 숲 속 치유음악 🎵 3시간 자연 명상음악, 마음이 편안해지는 음악, 새소리와 하프연주 (Forest Light)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2019-06-05T21:37:38Z",
+          "duration": "PT3H1M22S"
+        },
+        {
+          "videoId": "IONC0qF4NCw",
+          "title": "현실 또한 한낱 찰나의 세월임을🌙바람부는 숲속, 불경과 풍경 소리가 들리는 [산사의 아침] ASMR",
+          "channel": "낮잠 NZ Ambience",
+          "publishedAt": "2024-05-15T11:09:13Z",
+          "duration": "PT2H1S"
+        },
+        {
+          "videoId": "0IwN5XmchSo",
+          "title": "4K UHD｜몰디브 드론 영상 - 휴식을 위한 아름다운 힐링음악, 머리가 맑아지는 바다풍경 랜선여행",
+          "channel": "Peaceful Odyssey",
+          "publishedAt": "2023-06-12T07:00:00Z",
+          "duration": "PT3H9M46S"
+        },
+        {
+          "videoId": "B9VRvOKKwfs",
+          "title": "SWITZERLAND • 4K Relaxation Film: Winter to Spring • Relaxing Music - Nature 4k Video Ultra HD",
+          "channel": "Relaxation Film",
+          "publishedAt": "2022-04-30T12:30:03Z",
+          "duration": "PT3H2M7S"
+        },
+        {
+          "videoId": "zNUPesGgBQY",
+          "title": "마음을 안정 시켜주는 평화로운 자연 풍경 | 휴식 영상",
+          "channel": "달문토끼 ",
+          "publishedAt": "2023-06-10T22:38:15Z",
+          "duration": "PT22M19S"
+        },
+        {
+          "videoId": "zDkapC-PuFA",
+          "title": "시골 아침의 평화로운 풍경 l Peaceful Countryside Morning",
+          "channel": "바람소리 채널 AudioVideo",
+          "publishedAt": "2023-05-02T07:13:45Z",
+          "duration": "PT34M9S"
+        },
+        {
+          "videoId": "UYmvFzDuO5k",
+          "title": "The Most Beautiful Earth Scenes Captured in 4K HDR (60FPS) |",
+          "channel": "8K VISION",
+          "publishedAt": "2025-04-26T13:00:58Z",
+          "duration": "PT55M39S"
+        },
+        {
+          "videoId": "7YRw9U_Ymu0",
+          "title": "고요한 바다의 평화로운 힐링 음악 🌊 | 마음의 휴식을 위한 자연 명상 음악 | 4K UHD 바다 풍경",
+          "channel": "Peaceful Odyssey",
+          "publishedAt": "2024-10-11T08:00:08Z",
+          "duration": "PT1H12M2S"
+        },
+        {
+          "videoId": "Z3Hyzsvg3ts",
+          "title": "평화로운 공원풍경 겨울산책영상 |풍경산책|자연경치 | 공원풍경 | Walk in the Scenery | Peaceful Natural Scenery | Park Scenery |",
+          "channel": " 캐나다 하루산책 Canada Daywalk ",
+          "publishedAt": "2021-02-27T04:14:25Z",
+          "duration": "PT9M23S"
+        }
+      ]
+    },
+    {
+      "id": "calm.stable",
+      "parent": "calm",
+      "label": "안정",
+      "videos": [
+        {
+          "videoId": "lYJ17n_oUkA",
+          "title": "[4k] 3시간 머리가 맑아지는 숲소리 ASMR 🍀 수면유도, 새소리, 바람소리, 자연의소리, 휴식명상",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2020-06-01T14:17:04Z",
+          "duration": "PT3H4M46S"
+        },
+        {
+          "videoId": "qtYmGL8ePN0",
+          "title": "계곡물소리 새소리 - 자연의소리 영상 , 명상, 공부, 휴식, 수면 효과음 백색소음",
+          "channel": "smilemedia",
+          "publishedAt": "2017-03-07T11:00:05Z",
+          "duration": "PT8H13S"
+        },
+        {
+          "videoId": "pywxuQJk3vc",
+          "title": "숲을 걷는 효과🌿 10분만에 머리가 맑아져요  | 5시간, 치유음악, 힐링음악, 새소리  | White Noise, the sound of birds in the forest",
+          "channel": "살구사운드 SalguSound",
+          "publishedAt": "2025-04-14T02:45:05Z",
+          "duration": "PT5H5M5S"
+        },
+        {
+          "videoId": "lQ0fS2meTYQ",
+          "title": "불면증에 좋은 최고의 빗소리 10분이내 수면 백색소음 자장가 ASMR | Rain Sounds For Sleeping, White Noise",
+          "channel": "Relax Sleep ASMR",
+          "publishedAt": "2021-11-12T20:00:27Z",
+          "duration": "PT10H37S"
+        },
+        {
+          "videoId": "r9pbtgGky4g",
+          "title": "숲과 바람과 비 ASMR",
+          "channel": "낮잠 NZ Ambience",
+          "publishedAt": "2024-01-14T13:00:52Z",
+          "duration": "PT2H1S"
+        },
+        {
+          "videoId": "WPlZUsbWqBc",
+          "title": "편안히 잠드는 고요한 시골 가을밤 풀벌레 소리 백색소음 귀뚜라미",
+          "channel": "소리바구니 SoriBaguni ASMR",
+          "publishedAt": "2022-09-05T19:00:28Z",
+          "duration": "PT5H26M55S"
+        },
+        {
+          "videoId": "9bHLr1Hpy0I",
+          "title": "비 오는 날 시골 아궁이 장작 타는 소리 | 불면증 해소 스트레스 완화 수면 ASMR",
+          "channel": "소리바구니 SoriBaguni ASMR",
+          "publishedAt": "2025-10-09T12:30:11Z",
+          "duration": "PT8H"
+        },
+        {
+          "videoId": "1xCfNv6mgWQ",
+          "title": "[10시간] ASMR ● 조용한 여름 밤 귀뚜라미 소리 ● 수면유도 백색소음 ● 시골 풀벌레 소리",
+          "channel": "힐링사운드 ASMR",
+          "publishedAt": "2019-10-31T12:38:11Z",
+          "duration": "PT10H1S"
+        },
+        {
+          "videoId": "RjTPKlKPM3Y",
+          "title": "머리가 맑아지는 숲 속 치유음악 🎵 3시간 자연 명상음악, 마음이 편안해지는 음악, 새소리와 하프연주 (Forest Light)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2019-06-05T21:37:38Z",
+          "duration": "PT3H1M22S"
+        },
+        {
+          "videoId": "qXfIixGkjWw",
+          "title": "ASMR 고요한 숲 / 시골 밤 자연의 소리  1시간 연속ㅣ불면증ㅣ집중ㅣ편안한ㅣ백색소음ㅣ",
+          "channel": "YOON SOUND",
+          "publishedAt": "2021-12-16T00:00:12Z",
+          "duration": "PT1H56S"
+        },
+        {
+          "videoId": "7ge_rh55RsA",
+          "title": "[8시간] 풀벌레 소리 ASMR 10분후소등 l 포근한 밤소리 l 수면유도 백색소음 l 잠 잘때 듣는 l 꿀잠 l Night Ambience Nature Crickets",
+          "channel": "숲해설가 숲이야기 김포스",
+          "publishedAt": "2020-04-02T14:45:00Z",
+          "duration": "PT8H11M59S"
+        },
+        {
+          "videoId": "7_-x2zLPCQU",
+          "title": "10분 만에 머리가 맑아져요🌳숲을 산책하는 효과  | 5시간, 힐링음악, 새소리 | Relaxing Music, Healing Music (맑은 날, 기억 속 바다)",
+          "channel": "살구사운드 SalguSound",
+          "publishedAt": "2025-06-17T01:09:37Z",
+          "duration": "PT5H4M2S"
+        },
+        {
+          "videoId": "P7Igsp7KWFg",
+          "title": "마음이 편안해지는 대나무숲 바람소리 | ASMR | 백색소음 | 편안한영상 | Wind sound in the Bamboo Forest",
+          "channel": "앰비언스 솜 - Ambience ASMR",
+          "publishedAt": "2023-03-25T04:48:47Z",
+          "duration": "PT41M24S"
+        },
+        {
+          "videoId": "QzVl0wYXjbQ",
+          "title": "산속의 집에 내리는 빗소리 | 집중, 휴식, 수면을 위한 실제 비 오는 소리 ASMR",
+          "channel": "소리바구니 SoriBaguni ASMR",
+          "publishedAt": "2025-11-04T14:02:18Z",
+          "duration": "PT8H29S"
+        },
+        {
+          "videoId": "n4Mdh3TEq_k",
+          "title": "힘든 하루를 위로하는 푸른 파도 소리 바다 ASMR 🌊 불면증 수면 스트레스 완화를 위한 자연의 소리",
+          "channel": "힐링포유 Healing for you",
+          "publishedAt": "2023-09-13T09:14:15Z",
+          "duration": "PT8H"
+        },
+        {
+          "videoId": "uNpanr3Jl3Q",
+          "title": "오늘 밤에는 시골소리 들리는 방에서 자야지...Zzz",
+          "channel": "힐링사운드 ASMR",
+          "publishedAt": "2022-03-06T12:00:26Z",
+          "duration": "PT10H1S"
+        },
+        {
+          "videoId": "83nwteWchUA",
+          "title": "10시간 편안한 수면유도음악 + 물소리 🎵 명상음악, 잠잘때듣는음악, 힐링음악, 수면음악 (Daisy)",
+          "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+          "publishedAt": "2021-02-23T12:30:01Z",
+          "duration": "PT10H4M6S"
+        },
+        {
+          "videoId": "RtPwBk0pqKE",
+          "title": "[명상음악] 우와 진짜 놀랍다. 하루10분 만병을 치료 해주는 힐링 명상 기치료 음악 및 영상, 스트레스 해소 음악, 긴장이완음악, 편안한 음악 (치유음악)",
+          "channel": "Relaxing Music Korea",
+          "publishedAt": "2020-04-05T20:00:04Z",
+          "duration": "PT6H3M6S"
+        },
+        {
+          "videoId": "bWCdghIEc38",
+          "title": "물결 따라 풍경 소리 달그랑 흐르고 ASMR",
+          "channel": "낮잠 NZ Ambience",
+          "publishedAt": "2024-12-11T12:57:41Z",
+          "duration": "PT2H1S"
+        },
+        {
+          "videoId": "yMTIP8D39_k",
+          "title": "“고요한 숲 속 자연의 소리 숲 속 공기처럼 스며드는...– 수면·명상·백색소음” 자연 그대로의 사운드 힐링 ASMR",
+          "channel": "자연의 소리 연구소 – Healing Nature",
+          "publishedAt": "2025-05-07T12:31:11Z",
+          "duration": "PT3H19S"
+        }
+      ]
+    },
+    {
+      "id": "boredom.dull",
+      "parent": "boredom",
+      "label": "지루함",
+      "videos": [
+        {
+          "videoId": "JAS26jzWjZA",
+          "title": "과학으로도 풀리지 않은 태평양 심해의 미스터리｜태평양 심해 탐사｜수면다큐｜다큐프라임｜#골라듄다큐",
+          "channel": "EBSDocumentary (EBS 다큐)",
+          "publishedAt": "2025-01-23T10:30:13Z",
+          "duration": "PT1H51M31S"
+        },
+        {
+          "videoId": "TogKftwFAH0",
+          "title": "아직도 풀리지 않은 역사 속 최대 미스터리 20가지",
+          "channel": "Nariman",
+          "publishedAt": "2026-03-02T09:23:25Z",
+          "duration": "PT2H40M39S"
+        },
+        {
+          "videoId": "bWfP1yyp12A",
+          "title": "(6부작) ⭐우주 미스터리 중독자라면 주목⭐ 그 누구도 풀지 못한 과학계의 미스터리 총집합 영상 4시간 풀버전 | 과학계 최대의 미스터리 1~6부 몰아보기 #BBC",
+          "channel": "세상의 모든 다큐",
+          "publishedAt": "2026-02-16T08:00:48Z",
+          "duration": "PT4H9M50S"
+        },
+        {
+          "videoId": "2A5YKYY7ytQ",
+          "title": "🌙성우 이지선이 직접 읽어드리는 | 세계의 미스터리_아직 풀리지 않은 다섯 개의 이야기| 잘 때 듣는 세계사[중간광고X]",
+          "channel": "잘듣세 - 잘 때 듣는 세계사",
+          "publishedAt": "2025-11-05T12:40:00Z",
+          "duration": "PT56M6S"
+        },
+        {
+          "videoId": "6KUHEGSF8jI",
+          "title": "현대 과학으로도 풀리지 않는 5000년 이집트 미스터리 완전판 | 7월의 몰아보기",
+          "channel": "기묘한 밤",
+          "publishedAt": "2023-07-15T04:00:02Z",
+          "duration": "PT1H13M27S"
+        },
+        {
+          "videoId": "M6puLHfp9ps",
+          "title": "세계 곳곳에서 발견된 충격적인 미스터리 기록들[12월의 몰아보기] [미스터리]",
+          "channel": "코드 레드",
+          "publishedAt": "2025-12-27T05:50:12Z",
+          "duration": "PT1H17M46S"
+        },
+        {
+          "videoId": "6BM8KjFXpZs",
+          "title": "[#사프라이즈] 갑자기 사라진 천재 민족? 인류 최초의 문명 수메르 미스터리 | MBC100822방송",
+          "channel": "MBC 미스터리 : 심야괴담회 X 서프라이즈",
+          "publishedAt": "2024-12-12T08:00:04Z",
+          "duration": "PT10M35S"
+        },
+        {
+          "videoId": "l2gdbPaFfFw",
+          "title": "북한을 속이기 위해 10년 간 철저히 신분을 위장한 덴마크 무명배우가 비밀리 제작에 성공한 폭로 다큐멘터리, '잠입: 북한의 스파이' [리뷰]",
+          "channel": "기묘한 밤",
+          "publishedAt": "2026-06-10T10:00:11Z",
+          "duration": "PT31M54S"
+        },
+        {
+          "videoId": "KN4ESkCxetQ",
+          "title": "수수께끼의 연속, 인기 미스테리 영상 몰아보기",
+          "channel": "궁금소",
+          "publishedAt": "2024-02-09T11:49:35Z",
+          "duration": "PT1H1M19S"
+        },
+        {
+          "videoId": "X1FNYkGaPt8",
+          "title": "아직까지도 풀리지 않고 여전히 미스터리로 남아있는 전세계 고대도시 모아보기｜#골라듄다큐",
+          "channel": "EBSDocumentary (EBS 다큐)",
+          "publishedAt": "2025-07-19T09:00:48Z",
+          "duration": "PT1H47M45S"
+        },
+        {
+          "videoId": "a2YkqlF8C0c",
+          "title": "✨미스터리한 전세계 불가사의 모음🗿┃이건 마치 외계인의 흔적? 감히 인간이 만들었다고 보기 믿기 힘든 전세계 불가사의를 찾아서┃세계테마기행┃#골라듄다큐",
+          "channel": "EBSDocumentary (EBS 다큐)",
+          "publishedAt": "2025-04-03T07:00:00Z",
+          "duration": "PT1H23M50S"
+        },
+        {
+          "videoId": "WyBCpH5OpDA",
+          "title": "🌜수면다큐🌛 인류 역사의 절반이 기록됐지만 읽을 수 없는 미스터리 고대 문자 100년이 넘도록 해독했더니｜한국방송 최초! 문자의 기원을 찾아서｜#골라듄다큐",
+          "channel": "EBSDocumentary (EBS 다큐)",
+          "publishedAt": "2026-02-10T13:01:04Z",
+          "duration": "PT1H59M54S"
+        },
+        {
+          "videoId": "5C5TcZ7ngcc",
+          "title": "히스토리 선정 전 세계에서 가장 미스터리한 7가지 사건들 [미스터리 그 이상의 것]",
+          "channel": "히스토리",
+          "publishedAt": "2021-07-14T07:00:00Z",
+          "duration": "PT11M13S"
+        },
+        {
+          "videoId": "1M-rEeMqRyo",
+          "title": "[#밥친구] 10년간 북한에 잠입한 진짜 스파이… 김정은도 속았다! 🕵️‍♂️💣 | #이만갑 575회",
+          "channel": "채널A WORLD",
+          "publishedAt": "2025-08-07T06:00:02Z",
+          "duration": "PT1H12M34S"
+        },
+        {
+          "videoId": "zO_F2GGkNws",
+          "title": "현재까지도 미스터리로 남아있는 한순간에 증발하듯 사라진 사람들 | 6월의 몰아보기",
+          "channel": "기묘한 밤",
+          "publishedAt": "2024-06-20T10:01:02Z",
+          "duration": "PT1H7M3S"
+        },
+        {
+          "videoId": "9cuQ8w3oqjs",
+          "title": "⚔️철기시대 이전에 만들어진 단검?ㄷㄷ 투탕카멘 무덤의 미스터리 | 과학계 최대의 미스터리 4부 투탕카멘의 단검 #BBC",
+          "channel": "세상의 모든 다큐",
+          "publishedAt": "2025-10-18T08:00:19Z",
+          "duration": "PT42M8S"
+        },
+        {
+          "videoId": "IMe_A79kx2s",
+          "title": "김다큐 - 미스터리 다큐 7편 폴터가이스트   소리를 내는 유령 납량특집",
+          "channel": "김다큐",
+          "publishedAt": "2017-05-09T08:04:18Z",
+          "duration": "PT46M19S"
+        },
+        {
+          "videoId": "ppbPr7SaKlU",
+          "title": "과학도 설명하지 못한 고대 미스터리 4시간 몰아보기",
+          "channel": "Nariman",
+          "publishedAt": "2026-05-08T11:01:25Z",
+          "duration": "PT4H37M29S"
+        },
+        {
+          "videoId": "G_JkqujnEfw",
+          "title": "10년 간 북한에 잠입한 외국인 스파이🔥김정은을 감쪽같이 속인 남자의 충격 정체? | #이만갑 575회",
+          "channel": "이만갑",
+          "publishedAt": "2026-03-27T09:00:00Z",
+          "duration": "PT1H11M57S"
+        },
+        {
+          "videoId": "BTwjTmsg6Ec",
+          "title": "현재까지도 설명되지 않은 세계 7대 불가사의 미스터리 I 6월의 몰아보기",
+          "channel": "기묘한 밤",
+          "publishedAt": "2022-06-25T04:00:04Z",
+          "duration": "PT44M18S"
+        }
+      ]
+    },
+    {
+      "id": "boredom.novelty",
+      "parent": "boredom",
+      "label": "새로운 자극 원함",
+      "videos": [
+        {
+          "videoId": "ER3ZXEuV1X0",
+          "title": "[맛보기] 프리미어 프로 입문, 영상편집 감잡기 | 강의소개",
+          "channel": "도각쌤의 타닥클래스",
+          "publishedAt": "2026-08-10T14:20:52Z",
+          "duration": "PT5M10S"
+        },
+        {
+          "videoId": "Vsci6_gYqqs",
+          "title": "힐링댄스 맛보기 5분 | 초간단 훌라동작 배우기",
+          "channel": "하이훌라•슬퍼할 시간에 춤을 추겠어",
+          "publishedAt": "2021-08-08T13:36:06Z",
+          "duration": "PT4M23S"
+        },
+        {
+          "videoId": "i_HGpfVZwVU",
+          "title": "SMP 원데이클래스 교육, 이건 알고 가세요",
+          "channel": "메디컬타투 친절한고도쌤",
+          "publishedAt": "2022-03-24T05:07:07Z",
+          "duration": "PT6M37S"
+        },
+        {
+          "videoId": "gVjIZ02qocY",
+          "title": "에임 좋아지는 법_ 2. 감도",
+          "channel": "바실리, 게임 아카데미",
+          "publishedAt": "2023-05-05T10:57:06Z",
+          "duration": "PT16M55S"
+        },
+        {
+          "videoId": "gWJdxOByuQM",
+          "title": "클라이밍 실력 기준 (야매)정리해드렸습니다. 더클라임 기준",
+          "channel": "오코모, 클라이밍 이야기",
+          "publishedAt": "2022-08-24T13:00:32Z",
+          "duration": "PT5M58S"
+        },
+        {
+          "videoId": "LQVQLJCw0K4",
+          "title": "배그 사운드 설정_ 사플 종결 영상~!!",
+          "channel": "바실리, 게임 아카데미",
+          "publishedAt": "2023-09-01T08:48:03Z",
+          "duration": "PT8M2S"
+        },
+        {
+          "videoId": "6NYUI8LpcXE",
+          "title": "#1 비대면 GX수업 12월 1일 벨리댄스 배우기 1탄 Bellydance combination 1 - bum bum",
+          "channel": "chojinhwa",
+          "publishedAt": "2020-12-03T14:30:40Z",
+          "duration": "PT18M22S"
+        },
+        {
+          "videoId": "Uqv2tt_EDik",
+          "title": "“나를 영어 잘하게 만들어줄” 영어선생님 고르는 2가지 꿀팁 기준",
+          "channel": "매드코리안클래스",
+          "publishedAt": "2022-07-07T08:17:41Z",
+          "duration": "PT4M47S"
+        },
+        {
+          "videoId": "c2KIpyV0_6E",
+          "title": "터프팅, 어렵지 않아요🙅‍♀️/원데이 클래스 브이로그/ Tufting one-day class",
+          "channel": "일일니나",
+          "publishedAt": "2022-01-31T12:08:19Z",
+          "duration": "PT3M5S"
+        },
+        {
+          "videoId": "0RnDA6MoB08",
+          "title": "송파구 평생학습원 수업맛보기 - 타로심리상담사 자격증과정",
+          "channel": "송파런",
+          "publishedAt": "2023-09-26T23:52:43Z",
+          "duration": "PT3M1S"
+        },
+        {
+          "videoId": "JDeo1ne_I4I",
+          "title": "째히 하고 싶은 거 다 해 | 마카롱 원데이 클래스, 베이킹 브이로그, 핑크 마카롱, 딸기 뚱카롱 + 더현대 여의도 구경 | baking vlog, macaron",
+          "channel": "재희jaehee",
+          "publishedAt": "2021-03-14T09:51:30Z",
+          "duration": "PT12M31S"
+        },
+        {
+          "videoId": "MeAjWRsgX8g",
+          "title": "v초보운전v 후진주차 연습하기-수정까지 배웁니다(운전산삼 대발이ㅋ)driving solution/safe driving",
+          "channel": "대발이랑 안전운전",
+          "publishedAt": "2019-05-20T07:00:02Z",
+          "duration": "PT30M49S"
+        },
+        {
+          "videoId": "c-VpjkhEpGQ",
+          "title": "에임 강의_ 무조건! 에임 좋아지는 연습법~!!",
+          "channel": "바실리, 게임 아카데미",
+          "publishedAt": "2022-07-22T10:12:53Z",
+          "duration": "PT16M13S"
+        },
+        {
+          "videoId": "HO_CDMurFZQ",
+          "title": "하루에 하나씩 축구기술을 완벽하게 배워보자! #1",
+          "channel": "스폴투 카툰싸커",
+          "publishedAt": "2020-04-08T08:29:11Z",
+          "duration": "PT7M27S"
+        },
+        {
+          "videoId": "Gmsyr3fajtY",
+          "title": "배그 DMR, SR 감도 찾는 법~",
+          "channel": "바실리, 게임 아카데미",
+          "publishedAt": "2022-10-07T09:44:35Z",
+          "duration": "PT12M18S"
+        },
+        {
+          "videoId": "cCqmx1c5YkA",
+          "title": "★홈벨리댄스★아샤벨리 온라인벨리댄스 왕초급 클래스★초보벨리/홈 벨리댄스 따라하기!!",
+          "channel": "AshaDance TV",
+          "publishedAt": "2021-01-07T04:34:05Z",
+          "duration": "PT3M59S"
+        },
+        {
+          "videoId": "TbUH2tCKmHY",
+          "title": "늦기 전에 막차 탑승! 어도비 인공지능 파이어플라이(Firefly) 배워보기 // AdobeMAX",
+          "channel": "JohnKOBA Design",
+          "publishedAt": "2023-10-31T08:00:21Z",
+          "duration": "PT10M12S"
+        },
+        {
+          "videoId": "hzT8qh-QmUQ",
+          "title": "그는 그저 택배를 배달했을 뿐인데, 아름다운 여사장님이 그를 자신의 가짜 남자친구로 끌어들였다.",
+          "channel": "하은-SHORT",
+          "publishedAt": "2026-08-09T11:00:16Z",
+          "duration": "PT1H56M38S"
+        },
+        {
+          "videoId": "32XC-RVtUFI",
+          "title": "배그 AR 감도 찾는법~",
+          "channel": "바실리, 게임 아카데미",
+          "publishedAt": "2022-09-30T11:57:51Z",
+          "duration": "PT13M12S"
+        },
+        {
+          "videoId": "euRR0ikkxeg",
+          "title": "생각보다 쉬운 스와힐리어(?) 배워보니 별거 아니......지 않네 - 🇹🇿탄자니아3",
+          "channel": "바안",
+          "publishedAt": "2023-02-28T09:00:18Z",
+          "duration": "PT17M17S"
+        }
+      ]
+    }
+  ],
+  "crisis": {
+    "updated_at": "2026-08-14T09:37:18Z",
+    "source": "whitelist+guarded_search",
+    "videos": [
+      {
+        "videoId": "R_0PgzRIitg",
+        "title": "[Playlist] 바다가 보이는 카페에서 일하기 🌊 | 일할 때 듣기 좋은 피아노, 업무음악, 공부음악, 집중음악",
+        "channel": "마인드피아노 MIND PIANO",
+        "publishedAt": "2026-08-14T05:58:14Z",
+        "duration": "PT10H1M30S"
+      },
+      {
+        "videoId": "z2y7IqEPWco",
+        "title": "중간광고❌| 🌿잔잔한 힐링 피아노 BEST | Best Classical Music for Relaxing | 집중, 휴식, 수면유도 배경음악",
+        "channel": "퓨얼리 피아노 𝚋𝚐𝚖",
+        "publishedAt": "2026-08-07T10:59:30Z",
+        "duration": "PT3H3M54S"
+      },
+      {
+        "videoId": "lsSlMK3mOjY",
+        "title": "10시간 수면음악「도시가 보이는 전망대에서」🎵 힐링음악, 불면증음악, 차분한음악 (Slowly)",
+        "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+        "publishedAt": "2026-08-11T14:00:23Z",
+        "duration": "PT10H8S"
+      },
+      {
+        "videoId": "Z8ilc_iHLs8",
+        "title": "잠잘 때 듣는 아르네 마을 동화ㅣEP.8 핀의 편지 배달ㅣ책 읽어주는 남자ㅣ오디오북 ASMR",
+        "channel": "따듯한 목소리 현준",
+        "publishedAt": "2026-08-09T13:30:05Z",
+        "duration": "PT1H20M28S"
+      },
+      {
+        "videoId": "S935F1WMLPM",
+        "title": "여름 카페 감성 피아노 | 무더운 오후를 식혀주는 힐링 음악",
+        "channel": "BeiGe Mellow 베이지멜로우",
+        "publishedAt": "2026-07-30T23:00:04Z",
+        "duration": "PT2H7M47S"
+      },
+      {
+        "videoId": "3Dvz3pHPExU",
+        "title": "어느 여름날의 시골집｜매미·풀벌레·개구리 소리 ASMR",
+        "channel": "소리바구니 SoriBaguni ASMR",
+        "publishedAt": "2026-08-09T11:04:01Z",
+        "duration": "PT8H30S"
+      },
+      {
+        "videoId": "9lEwsnDope4",
+        "title": "8시간 잔잔하고 청량한 파도소리 🌊 깊은 수면을 위한 맑은 바다 ASMR",
+        "channel": "힐링포유 Healing for you",
+        "publishedAt": "2026-07-27T12:53:44Z",
+        "duration": "PT8H"
+      },
+      {
+        "videoId": "os5g3XNiGyA",
+        "title": "🕳️ 잠에 들며, 우주의 비밀을 깨우치다. 블랙홀과 시간지연, 상대성이론｜잠잘 때 듣는 30분 우주 수면 다큐 [UNIST 물리학 교수 자문·감수 완료]",
+        "channel": "브레이너 제이의 숙면 여행",
+        "publishedAt": "2026-07-28T14:00:33Z",
+        "duration": "PT8H10S"
+      },
+      {
+        "videoId": "i6BqXKJxrgU",
+        "title": "[수면 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭] 오늘 걱정은 잠시 내려놓아요",
+        "channel": "뮤직 메이트 Music Mate",
+        "publishedAt": "2026-08-06T11:30:36Z",
+        "duration": "PT8H17M56S"
+      },
+      {
+        "videoId": "u6DxiEP5Ff8",
+        "title": "평화로워지는 치유음악🎵+편안한 빗소리😊| 3시간, 힐링음악, 명상음악 | Relaxing Music, Healing Music",
+        "channel": "살구사운드 SalguSound",
+        "publishedAt": "2026-08-10T23:15:01Z",
+        "duration": "PT3H8M31S"
+      },
+      {
+        "videoId": "Q3zFD-9hl14",
+        "title": "[Playlist] 초록 숲🌿을 바라보며 일하는 북카페 | 업무음악,공부음악,작업음악,집중할때듣는음악,독서음악",
+        "channel": "마인드피아노 MIND PIANO",
+        "publishedAt": "2026-08-11T00:07:44Z",
+        "duration": "PT10H1M8S"
+      },
+      {
+        "videoId": "qQs5xJKsjjU",
+        "title": "여름의 고요를 채우는 피아노 소리 | 클래식 명곡 모음 | 중간광고❌| No AI",
+        "channel": "퓨얼리 피아노 𝚋𝚐𝚖",
+        "publishedAt": "2026-07-21T10:03:51Z",
+        "duration": "PT3H2M44S"
+      },
+      {
+        "videoId": "tVKYqE76Jd8",
+        "title": "오늘 하루가 행복해지는 아침음악 3시간 🎵 힐링음악, 명상음악, 스트레스해소음악 (Every Moment)",
+        "channel": "힐링트리뮤직 Healing Tree Music & Sounds",
+        "publishedAt": "2026-08-03T22:00:29Z",
+        "duration": "PT3H2M33S"
+      },
+      {
+        "videoId": "9lDSa94SEr0",
+        "title": "삶은 그대에게 잘해줄 의무가 없다ㅣ책 읽어주는 남자ㅣ잠잘 때 듣는ㅣ오디오북 ASMR",
+        "channel": "따듯한 목소리 현준",
+        "publishedAt": "2026-08-02T13:30:30Z",
+        "duration": "PT1H6M34S"
+      },
+      {
+        "videoId": "Lo4AJjhx1IU",
+        "title": "좋은 기분을 채워주는 감성 피아노 뉴에이지 🎹 | 공부, 휴식, 카페에서 듣기 좋은 힐링 음악",
+        "channel": "BeiGe Mellow 베이지멜로우",
+        "publishedAt": "2026-07-28T23:00:12Z",
+        "duration": "PT2H18M58S"
+      },
+      {
+        "videoId": "o-IZmpD0gnw",
+        "title": "대나무 바람소리와 새소리 ASMR | 숲속 오두막에서 쉬어가는 하루",
+        "channel": "소리바구니 SoriBaguni ASMR",
+        "publishedAt": "2026-07-20T11:30:36Z",
+        "duration": "PT8H1M40S"
+      },
+      {
+        "videoId": "oB5sBtmSW9w",
+        "title": "8시간 편안한 수면을 위한 파도 소리 🌊 시원 청량한 여름 바다 ASMR",
+        "channel": "힐링포유 Healing for you",
+        "publishedAt": "2026-06-29T12:59:50Z",
+        "duration": "PT8H"
+      },
+      {
+        "videoId": "xV6DVHHS4Zc",
+        "title": "🥱 [내 맘대로 설정 가능] HSP 초민감자의 예민한 신경을 다 잠재워버리는 신경과학적 숙면가이드 | 소마틱스 수면 명상 및 이완 암시 (9시간 업그레이드 버전)",
+        "channel": "브레이너 제이의 숙면 여행",
+        "publishedAt": "2026-07-07T14:31:53Z",
+        "duration": "PT9H10S"
+      },
+      {
+        "videoId": "7thuxP3EkBg",
+        "title": "[위로 𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭] 지치고 불안한 마음들을 위해",
+        "channel": "뮤직 메이트 Music Mate",
+        "publishedAt": "2026-07-21T10:00:36Z",
+        "duration": "PT7H47M42S"
+      },
+      {
+        "videoId": "1dO_eZrIS7w",
+        "title": "자연 속을 걷는 효과🌳머리가 맑아지는 치유명상음악 | 3시간, 힐링음악, 명상음악 | Relaxing Music, Healing Music",
+        "channel": "살구사운드 SalguSound",
+        "publishedAt": "2026-08-03T23:15:37Z",
+        "duration": "PT3H4M41S"
+      }
+    ]
+  }
+}

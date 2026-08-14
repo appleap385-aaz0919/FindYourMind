@@ -1,0 +1,158 @@
+{
+  "checked_at": "2026-08-14T09:38:07Z",
+  "allowlist_size": 10,
+  "placeholder_count": 0,
+  "thresholds": {
+    "min_allowlist_size": 15,
+    "no_upload_days": 90,
+    "min_blocklist_pass_rate": 0.5,
+    "review_overdue_days": 120
+  },
+  "quota_spent": 21,
+  "channels": [
+    {
+      "channel_id": "UC1RG7m8FwFKgB3IpfN3ccew",
+      "channel_name": "힐링트리뮤직 Healing Tree Music & Sounds",
+      "alive": true,
+      "last_upload_at": "2026-08-11T14:00:23Z",
+      "days_since_upload": 2,
+      "recent_checked": 10,
+      "blocklist_pass_rate": 1.0,
+      "blocked_titles": [],
+      "last_reviewed_at": "2026-08-12",
+      "days_since_review": 2,
+      "status": "ok"
+    },
+    {
+      "channel_id": "UCGWn2Lyk0ssNx7VgW5ndacA",
+      "channel_name": "힐링포유 Healing for you",
+      "alive": true,
+      "last_upload_at": "2026-07-27T12:53:44Z",
+      "days_since_upload": 17,
+      "recent_checked": 10,
+      "blocklist_pass_rate": 1.0,
+      "blocked_titles": [],
+      "last_reviewed_at": "2026-08-12",
+      "days_since_review": 2,
+      "status": "ok"
+    },
+    {
+      "channel_id": "UCMBkmtMIII0o7wnvQoRWi1g",
+      "channel_name": "소리바구니 SoriBaguni ASMR",
+      "alive": true,
+      "last_upload_at": "2026-08-09T11:04:01Z",
+      "days_since_upload": 4,
+      "recent_checked": 10,
+      "blocklist_pass_rate": 1.0,
+      "blocked_titles": [],
+      "last_reviewed_at": "2026-08-12",
+      "days_since_review": 2,
+      "status": "ok"
+    },
+    {
+      "channel_id": "UC4FVoIeyD4VG9Qx9vTHkv8w",
+      "channel_name": "뮤직 메이트 Music Mate",
+      "alive": true,
+      "last_upload_at": "2026-08-06T11:30:36Z",
+      "days_since_upload": 7,
+      "recent_checked": 10,
+      "blocklist_pass_rate": 1.0,
+      "blocked_titles": [],
+      "last_reviewed_at": "2026-08-12",
+      "days_since_review": 2,
+      "status": "ok"
+    },
+    {
+      "channel_id": "UCYMEXdU9oVJ6JUoyL8Fv06Q",
+      "channel_name": "마인드피아노 MIND PIANO",
+      "alive": true,
+      "last_upload_at": "2026-08-14T05:58:14Z",
+      "days_since_upload": 0,
+      "recent_checked": 10,
+      "blocklist_pass_rate": 1.0,
+      "blocked_titles": [],
+      "last_reviewed_at": "2026-08-12",
+      "days_since_review": 2,
+      "status": "ok"
+    },
+    {
+      "channel_id": "UCEbIsZjyZx3pERuusDfgM3A",
+      "channel_name": "BeiGe Mellow 베이지멜로우",
+      "alive": true,
+      "last_upload_at": "2026-07-30T23:00:04Z",
+      "days_since_upload": 14,
+      "recent_checked": 10,
+      "blocklist_pass_rate": 1.0,
+      "blocked_titles": [],
+      "last_reviewed_at": "2026-08-12",
+      "days_since_review": 2,
+      "status": "ok"
+    },
+    {
+      "channel_id": "UC89ztIun9CqAvkxPYVyUqjQ",
+      "channel_name": "살구사운드 SalguSound",
+      "alive": true,
+      "last_upload_at": "2026-08-10T23:15:01Z",
+      "days_since_upload": 3,
+      "recent_checked": 10,
+      "blocklist_pass_rate": 1.0,
+      "blocked_titles": [],
+      "last_reviewed_at": "2026-08-12",
+      "days_since_review": 2,
+      "status": "ok"
+    },
+    {
+      "channel_id": "UC5jSCU8FpKGr8P5Z-p-70lw",
+      "channel_name": "브레이너 제이의 숙면 여행",
+      "alive": true,
+      "last_upload_at": "2026-07-28T14:00:33Z",
+      "days_since_upload": 16,
+      "recent_checked": 10,
+      "blocklist_pass_rate": 1.0,
+      "blocked_titles": [],
+      "last_reviewed_at": "2026-08-12",
+      "days_since_review": 2,
+      "status": "ok"
+    },
+    {
+      "channel_id": "UCwzLJSRcPOIPXTRt77HI6iA",
+      "channel_name": "따듯한 목소리 현준",
+      "alive": true,
+      "last_upload_at": "2026-08-09T13:32:04Z",
+      "days_since_upload": 4,
+      "recent_checked": 10,
+      "blocklist_pass_rate": 1.0,
+      "blocked_titles": [],
+      "last_reviewed_at": "2026-08-12",
+      "days_since_review": 2,
+      "status": "ok"
+    },
+    {
+      "channel_id": "UCf7_HKr9VyDh7XfC7c-OjWw",
+      "channel_name": "퓨얼리 피아노 𝚋𝚐𝚖",
+      "alive": true,
+      "last_upload_at": "2026-08-07T10:59:30Z",
+      "days_since_upload": 6,
+      "recent_checked": 10,
+      "blocklist_pass_rate": 1.0,
+      "blocked_titles": [],
+      "last_reviewed_at": "2026-08-12",
+      "days_since_review": 2,
+      "status": "ok"
+    }
+  ],
+  "alerts": [
+    {
+      "type": "allowlist_undersized",
+      "severity": "critical",
+      "title": "[화이트리스트] 채널 수 부족 (10/15)",
+      "body": "활성 채널이 10개로 최소 기준 15개를 밑돕니다.\n\n위기 카테고리의 영상 풀이 고갈될 수 있습니다. taxonomy.yaml `selection_criteria`에 맞는 채널을 보충하세요.",
+      "labels": [
+        "allowlist",
+        "safety",
+        "auto"
+      ],
+      "renotify_days": 2
+    }
+  ]
+}
