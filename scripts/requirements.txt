@@ -1,0 +1,5 @@
+# Phase 1 데이터 파이프라인 의존성
+# google-api-python-client 대신 requests를 쓴다 — 호출하는 엔드포인트가 4개뿐이라
+# 클라이언트 라이브러리의 무게(전이 의존성·인증 스택)를 감당할 이유가 없다.
+PyYAML>=6.0.1
+requests>=2.31.0

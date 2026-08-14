@@ -1,0 +1,25 @@
+# 배치 산출물 — gh-pages에 배포되므로 저장소에 커밋하지 않는다
+dist/
+
+# Actions에서 직전 배포본을 체크아웃하는 경로
+_previous/
+
+# 부분 실행(--only) 산출물 — 24개 카테고리가 다 들어 있지 않아 배포 대상이 아니다.
+# dist/가 이미 제외되지만, --out-dir로 다른 경로에 뽑는 경우까지 막는다.
+*.partial.json
+
+# 후보 검토 시트 — suggest_channels.py가 매번 새로 만드는 일회성 작업 문서.
+# 승인 결과는 channel_allowlist.yaml에 남으므로 이 파일 자체는 이력이 필요 없다.
+channel_candidates.md
+
+# 로컬 환경변수 (YOUTUBE_API_KEY 등)
+# 운영 키는 GitHub Actions Secrets에만 두고, 저장소에는 어떤 형태로도 넣지 않는다.
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/

@@ -1,0 +1,248 @@
+name: 데이터 배치 (videos.json)
+
+# PLAN.md Phase 1 — 매일 1회 videos.json / channel_health.json을 만들어 gh-pages에 배포한다.
+# API 키는 이 워크플로의 Secrets에만 존재한다. 앱은 YouTube API를 직접 호출하지 않는다.
+
+on:
+  schedule:
+    # YouTube 쿼터는 태평양 시간 자정에 리셋된다. 리셋 직후에 실행해야 하루치를 온전히 쓴다.
+    # UTC 08:30 = PST 00:30(겨울) / PDT 01:30(여름) — 서머타임 어느 쪽이든 리셋 이후다.
+    # (cron은 UTC 고정이라 서머타임을 따라가지 않으므로 여유를 두고 잡았다.)
+    - cron: "30 8 * * *"
+  workflow_dispatch:
+
+# 데이터 워크플로와 앱 배포 워크플로(Phase 3)가 같은 gh-pages 브랜치에 쓴다.
+# 같은 그룹명을 공유해 동시 배포를 막는다 — Phase 3 워크플로도 반드시 이 그룹명을 쓸 것.
+# cancel-in-progress를 켜지 않는 이유: 배포 도중 취소되면 브랜치가 반쯤 갱신된 상태로 남는다.
+concurrency:
+  group: gh-pages-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: write # gh-pages 푸시
+  issues: write # auto_alerts Issue 생성
+
+env:
+  PREVIOUS_VIDEOS: _previous/data/videos.json
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: 직전 배포본 가져오기
+        # "12건 미달 시 직전 결과 유지" 규칙과 카테고리 확보량 보충에 반드시 필요하다.
+        # 최초 실행에는 gh-pages 브랜치가 없으므로 실패를 허용한다.
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: _previous
+
+      - name: Python 준비
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: 의존성 설치
+        run: pip install -r scripts/requirements.txt
+
+      - name: API 키 확인
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          if [ -z "$YOUTUBE_API_KEY" ]; then
+            echo "::error::secrets.YOUTUBE_API_KEY가 설정되지 않았습니다."
+            exit 1
+          fi
+          echo "API 키 확인됨"
+
+      - name: videos.json 생성
+        id: build
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          # 재시도는 정확히 1회로 제한한다. 무한 재시도는 쿼터를 이중으로 소모한다.
+          # 종료 코드 2(쿼터 중단)는 재시도해도 같은 결과이므로 즉시 포기한다.
+          run_build() {
+            python scripts/build_videos.py \
+              --previous "$PREVIOUS_VIDEOS" \
+              --out-dir dist
+          }
+
+          set +e
+          run_build
+          code=$?
+          set -e
+
+          if [ "$code" -eq 2 ]; then
+            echo "::error::쿼터 관련 중단 — 재시도하지 않습니다. 다음 리셋 이후 재실행하세요."
+            exit 2
+          fi
+
+          if [ "$code" -ne 0 ]; then
+            echo "::warning::1차 실행 실패(code=$code) — 60초 후 1회만 재시도합니다."
+            sleep 60
+            set +e
+            run_build
+            code=$?
+            set -e
+            if [ "$code" -eq 2 ]; then
+              echo "::error::재시도 중 쿼터 중단."
+              exit 2
+            fi
+          fi
+          exit "$code"
+
+      - name: 채널 건강 점검
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python scripts/check_channels.py --out dist/channel_health.json
+
+      - name: 산출물 검증
+        # 스키마가 깨진 파일이 조용히 배포되지 않도록 배포 직전에 확인한다.
+        run: |
+          python - <<'PY'
+          import json, sys
+          from pathlib import Path
+
+          data = json.loads(Path("dist/videos.json").read_text(encoding="utf-8"))
+          missing = {"version", "categories", "crisis"} - set(data)
+          if missing:
+              sys.exit(f"videos.json 최상위 키 누락: {missing}")
+          if len(data["categories"]) != 24:
+              sys.exit(f"카테고리가 24개가 아님: {len(data['categories'])}")
+
+          crisis_ids = {v["videoId"] for v in data["crisis"]["videos"]}
+          category_ids = {v["videoId"] for c in data["categories"] for v in c["videos"]}
+          overlap = crisis_ids & category_ids
+          if overlap:
+              sys.exit(f"crisis와 categories가 videoId를 공유: {sorted(overlap)}")
+
+          version = json.loads(Path("dist/version.json").read_text(encoding="utf-8"))
+          if version["version"] != data["version"]:
+              sys.exit("version.json과 videos.json의 version이 다름")
+
+          health = json.loads(Path("dist/channel_health.json").read_text(encoding="utf-8"))
+          print(
+              f"검증 통과 — 카테고리 {len(data['categories'])}개 / "
+              f"영상 {len(category_ids)}건 / 위기 {len(crisis_ids)}건 / "
+              f"채널 {health['allowlist_size']}개"
+          )
+          PY
+
+      - name: 진단용 산출물 보관
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-report-${{ github.run_number }}
+          path: |
+            dist/build_report.json
+            dist/channel_health.json
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: 경보를 GitHub Issue로 올리기
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            // 판정은 스크립트가 이미 끝냈다. 여기서는 옮겨 적기만 한다.
+            const alerts = [];
+            for (const file of ['dist/build_report.json', 'dist/channel_health.json']) {
+              if (!fs.existsSync(file)) continue;
+              try {
+                const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+                alerts.push(...(data.alerts || []));
+              } catch (e) {
+                core.warning(`${file} 파싱 실패: ${e.message}`);
+              }
+            }
+            if (alerts.length === 0) {
+              core.info('경보 없음');
+              return;
+            }
+
+            const { owner, repo } = context.repo;
+            const open = await github.paginate(github.rest.issues.listForRepo, {
+              owner, repo, state: 'open', labels: 'auto', per_page: 100,
+            });
+            const byTitle = new Map(open.map(i => [i.title, i]));
+
+            // 같은 사유로 매일 Issue가 쌓이지 않도록 제목으로 중복을 판정한다.
+            // 이미 열려 있으면 새로 만들지 않고, 일정 기간 조용했을 때만 한 번 더 알린다.
+            // 재알림 주기는 경보 자체가 들고 온다(scripts/lib/alerts.py) — 기본 7일,
+            // 안전 관련 경보(crisis_stale, allowlist_undersized)는 2일.
+            // 감지 주기(crisis_stale은 3일)보다 알림 주기가 길면 경보의 의미가 없다.
+            const DAY_MS = 24 * 60 * 60 * 1000;
+            const now = Date.now();
+
+            for (const alert of alerts) {
+              const quietMs = (alert.renotify_days ?? 7) * DAY_MS;
+              const existing = byTitle.get(alert.title);
+              if (!existing) {
+                const created = await github.rest.issues.create({
+                  owner, repo,
+                  title: alert.title,
+                  body: `${alert.body}\n\n---\n자동 생성 · [실행 로그](${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId})`,
+                  labels: alert.labels && alert.labels.length ? alert.labels : ['auto'],
+                });
+                core.info(`Issue 생성 #${created.data.number}: ${alert.title}`);
+                continue;
+              }
+              if (now - new Date(existing.updated_at).getTime() < quietMs) {
+                core.info(`중복 생략 (#${existing.number}, 재알림 ${alert.renotify_days ?? 7}일): ${alert.title}`);
+                continue;
+              }
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: existing.number,
+                body: `여전히 해결되지 않았습니다.\n\n${alert.body}\n\n[실행 로그](${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId})`,
+              });
+              core.info(`기존 Issue에 코멘트 (#${existing.number}): ${alert.title}`);
+            }
+
+      - name: 공개 배포 대상만 남기기
+        # build_report.json은 진단용이라 아티팩트로만 보관하고 공개 URL에는 올리지 않는다.
+        # *.partial.json은 --only 부분 실행 산출물이다. CI는 --only를 쓰지 않지만,
+        # publish_dir 전체가 배포되므로 어떤 경로로도 섞이지 않게 여기서 한 번 더 막는다.
+        run: rm -f dist/build_report.json dist/*.partial.json
+
+      - name: gh-pages 배포 (data/ 하위)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          destination_dir: data
+          # Phase 3에서 앱이 루트에 배포되므로 기존 파일을 지우면 안 된다.
+          keep_files: true
+          commit_message: "data: videos.json 갱신 (run ${{ github.run_number }})"
+
+      - name: 배치 실패 알림
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const title = `[배치] 데이터 파이프라인 실패 (${new Date().toISOString().slice(0, 10)})`;
+            await github.rest.issues.create({
+              owner, repo, title,
+              body: [
+                '일일 데이터 배치가 실패했습니다.',
+                '',
+                '부분 결과는 기록되지 않았으므로 **직전 videos.json이 그대로 유지**됩니다.',
+                '방치의 결과는 신선도 저하이지 안전성 저하가 아닙니다.',
+                '',
+                `[실행 로그](${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId})`,
+                '',
+                '종료 코드 2는 쿼터 관련 중단이며 재시도하지 않습니다 (다음 PT 자정 이후 재실행).',
+              ].join('\n'),
+              labels: ['batch', 'auto'],
+            });
