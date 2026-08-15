@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-08-14T09:38:07Z",
+  "checked_at": "2026-08-15T08:57:42Z",
   "allowlist_size": 10,
   "placeholder_count": 0,
   "thresholds": {
@@ -15,12 +15,12 @@
       "channel_name": "힐링트리뮤직 Healing Tree Music & Sounds",
       "alive": true,
       "last_upload_at": "2026-08-11T14:00:23Z",
-      "days_since_upload": 2,
+      "days_since_upload": 3,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 2,
+      "days_since_review": 3,
       "status": "ok"
     },
     {
@@ -28,12 +28,12 @@
       "channel_name": "힐링포유 Healing for you",
       "alive": true,
       "last_upload_at": "2026-07-27T12:53:44Z",
-      "days_since_upload": 17,
+      "days_since_upload": 18,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 2,
+      "days_since_review": 3,
       "status": "ok"
     },
     {
@@ -41,12 +41,12 @@
       "channel_name": "소리바구니 SoriBaguni ASMR",
       "alive": true,
       "last_upload_at": "2026-08-09T11:04:01Z",
-      "days_since_upload": 4,
+      "days_since_upload": 5,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 2,
+      "days_since_review": 3,
       "status": "ok"
     },
     {
@@ -54,12 +54,12 @@
       "channel_name": "뮤직 메이트 Music Mate",
       "alive": true,
       "last_upload_at": "2026-08-06T11:30:36Z",
-      "days_since_upload": 7,
+      "days_since_upload": 8,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 2,
+      "days_since_review": 3,
       "status": "ok"
     },
     {
@@ -67,12 +67,12 @@
       "channel_name": "마인드피아노 MIND PIANO",
       "alive": true,
       "last_upload_at": "2026-08-14T05:58:14Z",
-      "days_since_upload": 0,
+      "days_since_upload": 1,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 2,
+      "days_since_review": 3,
       "status": "ok"
     },
     {
@@ -80,12 +80,12 @@
       "channel_name": "BeiGe Mellow 베이지멜로우",
       "alive": true,
       "last_upload_at": "2026-07-30T23:00:04Z",
-      "days_since_upload": 14,
+      "days_since_upload": 15,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 2,
+      "days_since_review": 3,
       "status": "ok"
     },
     {
@@ -93,12 +93,12 @@
       "channel_name": "살구사운드 SalguSound",
       "alive": true,
       "last_upload_at": "2026-08-10T23:15:01Z",
-      "days_since_upload": 3,
+      "days_since_upload": 4,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 2,
+      "days_since_review": 3,
       "status": "ok"
     },
     {
@@ -106,12 +106,12 @@
       "channel_name": "브레이너 제이의 숙면 여행",
       "alive": true,
       "last_upload_at": "2026-07-28T14:00:33Z",
-      "days_since_upload": 16,
+      "days_since_upload": 17,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 2,
+      "days_since_review": 3,
       "status": "ok"
     },
     {
@@ -119,12 +119,12 @@
       "channel_name": "따듯한 목소리 현준",
       "alive": true,
       "last_upload_at": "2026-08-09T13:32:04Z",
-      "days_since_upload": 4,
+      "days_since_upload": 5,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 2,
+      "days_since_review": 3,
       "status": "ok"
     },
     {
@@ -132,12 +132,12 @@
       "channel_name": "퓨얼리 피아노 𝚋𝚐𝚖",
       "alive": true,
       "last_upload_at": "2026-08-07T10:59:30Z",
-      "days_since_upload": 6,
+      "days_since_upload": 7,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 2,
+      "days_since_review": 3,
       "status": "ok"
     }
   ],
