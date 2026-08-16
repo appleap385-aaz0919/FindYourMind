@@ -100,7 +100,8 @@ python scripts/build_videos.py --previous dist/videos.json
 ## 문서
 
 - **[PLAN.md](PLAN.md)** — 개발 계획서. 목표·제약·아키텍처·Phase 0~5 로드맵과 각 결정의 근거
-- **[OPERATIONS.md](OPERATIONS.md)** — 운영 문서. 정기 체크리스트, 자동 Issue 대응, 화이트리스트 관리 절차, 배포 구조, 쿼터 관리, 장애 대응
+- **[OPERATIONS.md](OPERATIONS.md)** — 운영 문서. 정기 체크리스트, 자동 Issue 대응, 화이트리스트·채널 차단 절차, 배포 구조, 쿼터 관리, 장애 대응
+- **[HANDOFF.md](HANDOFF.md)** — 작업 인수인계. 지금 무엇이 걸려 있는지, 어떤 판단으로 그렇게 됐는지. **이어서 작업한다면 여기부터**
 
 운영을 인수인계받으셨다면 **OPERATIONS.md의 "최소 안전선"부터** 읽으시면 됩니다. 자동화가 대신해줄 수 없는 것 — 썸네일과 실제 영상 내용 판단, 채널 성향의 미묘한 변화, 새로운 위험 표현 — 이 무엇인지 적혀 있습니다.
 
