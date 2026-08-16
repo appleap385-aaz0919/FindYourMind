@@ -178,6 +178,12 @@ def main() -> int:
         ("미쳐버리겠다", "anger.rage"),
         ("미쳐버려", "anger.rage"),
         ("미처버릴것같아", "anger.rage"),
+        ("미쳐버리", "anger.rage"),
+        ("미처버리", "anger.rage"),
+        ("미처버리고싶어", "anger.rage"),
+        # "미처버리"는 "미처 버리지 못한"에도 걸린다. sadness.loss의 "버리지못한"이
+        # 더 길어 점수에서 이기므로 상실감 맥락은 그쪽으로 간다 — 길이 합 우선 규칙.
+        ("미처 버리지 못한 물건들", "sadness.loss"),
         ("돌아버릴 것 같아", "anger.rage"),
         ("돌아버리겠다", "anger.rage"),
         ("환장하겠네", "anger.rage"),
@@ -197,7 +203,7 @@ def main() -> int:
     # 어간을 넓히다 격분으로 잘못 보내면 안 되는 표현들
     print("\n어간 오탐 방지")
     print("-" * 76)
-    for text in ["미처 버리지 못한 물건들", "뒤돌아 버렸다", "집에 돌아 버스를 탔다"]:
+    for text in ["뒤돌아 버렸다", "집에 돌아 버스를 탔다"]:
         cid, _ = classify(text)
         ok = cid != "anger.rage"
         print(f"{'   ' if ok else 'X  '}{text:<24} → {cid}")

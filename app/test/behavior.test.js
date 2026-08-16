@@ -514,7 +514,7 @@ test("'-버릴 것 같다' 활용형이 어간으로 흡수된다", () => {
 
   for (const input of [
     "미쳐버릴 것 같아", "미쳐버리겠다", "미쳐버려", "미쳐버렸어",
-    "미처버릴것같아", "미처버리겠어",
+    "미처버릴것같아", "미처버리겠어", "미쳐버리", "미처버리", "미처버리고싶어",
     "돌아버릴 것 같아", "돌아버리겠다",
     "환장하겠네", "환장할 것 같아",
   ]) {
@@ -542,9 +542,18 @@ test("흔한 오타 표기가 잡힌다", () => {
 test("어간을 넓히다 정상 표현을 격분으로 보내지 않는다", () => {
   // "미처버"까지 줄이면 "미처 버리지 못한 물건들"에 걸린다 — 상실감 맥락이라
   // 격분으로 보내면 안 된다. 그래서 오타 쪽 어간은 좁게 잡았다.
-  for (const input of ["미처 버리지 못한 물건들", "뒤돌아 버렸다", "집에 돌아 버스를 탔다"]) {
+  // "미처 버리지 못한 물건들"은 sadness.loss의 "버리지못한"(5자)이 anger.rage의
+  // "미처버리"(4자)를 길이에서 이겨 상실감으로 간다 — 아래 별도 테스트에서 확인한다.
+  for (const input of ["뒤돌아 버렸다", "집에 돌아 버스를 탔다"]) {
     const outcome = classify(input, taxonomy);
     const id = outcome.kind === RESULT.OK ? outcome.subcategory.id : null;
     assert.notEqual(id, "anger.rage", `"${input}"가 격분으로 분류됐다`);
   }
+});
+
+test("'미처버리'가 상실감 표현을 격분으로 가져가지 않는다", () => {
+  // 길이 합 우선 규칙으로 갈린다 — anger.rage "미처버리"(4) vs sadness.loss "버리지못한"(5).
+  const outcome = classify("미처 버리지 못한 물건들", taxonomy);
+  assert.equal(outcome.kind, RESULT.OK);
+  assert.equal(outcome.subcategory.id, "sadness.loss");
 });
