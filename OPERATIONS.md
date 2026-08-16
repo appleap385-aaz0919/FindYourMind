@@ -32,7 +32,8 @@ GitHub Actions (매일 1회, PT 자정 직후)
 | 파일 | 역할 | 누가 고치나 |
 |---|---|---|
 | `taxonomy.yaml` | 감정 체계·검색어·blocklist 계층·위기 정책의 단일 소스 | 운영자 (PR) |
-| `channel_allowlist.yaml` | 위기 카테고리 채널 화이트리스트 | 운영자 (PR) |
+| `channel_allowlist.yaml` | 위기 카테고리 채널 화이트리스트 — "이 채널만 쓴다" | 운영자 (PR) |
+| `channel_blocklist.yaml` | 채널 차단 목록 (일반+위기 전부) — "이 채널은 쓰지 않는다" | 운영자 (PR) |
 | `scripts/build_videos.py` | 배치 본체 | 개발자 |
 | `scripts/check_channels.py` | 채널 건강 점검 | 개발자 |
 | `.github/workflows/build.yml` | 스케줄·배포·Issue 자동 생성 | 개발자 |
@@ -47,6 +48,7 @@ GitHub Actions (매일 1회, PT 자정 직후)
 | 매일(자동) | 채널 생존·업로드·필터 통과율 | `channel_health.json` 생성, 이상 시 Issue 자동 생성 | 시스템 |
 | 매일(자동) | 위기 풀 신선도 | `crisis.updated_at`이 3일 이상 멈추면 Issue 자동 생성 | 시스템 |
 | 월 1회 | 위기 카테고리 영상 샘플 점검 | 실제 노출 영상 10개를 **사람이 직접 열어** 확인 | 운영자 |
+| 월 1회 | 나쁜 채널 발견 시 차단 | `channel_blocklist.yaml`에 추가 (4.5절 절차) | 운영자 |
 | 월 1회 | 자동 생성된 Issue 처리 | 채널 교체·제외 후 `channel_allowlist.yaml` 수정 | 운영자 |
 | 분기 1회 | 화이트리스트 전체 재검토 | 채널별 최근 영상 성향 변화 확인, 필요 시 신규 채널 보충 | 운영자 |
 | 분기 1회 | `blocklist_tiers` 갱신 | 신조어·새로운 위험 표현 반영 | 운영자 |
@@ -202,6 +204,84 @@ python scripts/suggest_channels.py --top 30 --reviewer <내-아이디>
 
 항목을 **삭제**한다 (주석 처리하지 않는다 — 주석은 나중에 실수로 되살아난다).
 PR 본문에 제외 사유를 남긴다. 이력은 git이 기억한다.
+
+---
+
+## 4.5. 채널 차단 절차 (`channel_blocklist.yaml`)
+
+화이트리스트의 반대 개념이다. 적용 범위가 다르니 헷갈리지 않는다.
+
+| | 파일 | 적용 범위 | 의미 |
+|---|---|---|---|
+| 화이트리스트 | `channel_allowlist.yaml` | **위기 카테고리만** | 이 채널만 쓴다 |
+| 블록리스트 | `channel_blocklist.yaml` | **일반 + 위기 전부** | 이 채널은 쓰지 않는다 |
+
+### 언제 쓰나 — 제목으로 잡을 수 없을 때만
+
+blocklist 용어를 추가해서 막을 수 있으면 **그쪽이 먼저다.** 채널 차단은 제목 필터로
+구조적으로 잡히지 않는 경우에만 쓴다. 실제 사례:
+
+```
+"동창회에 남편을 데려갔는데, 선생님은 그를 보자마자 물컵을 떨어뜨리며…"
+"내가 서울대에 합격하자, 새아버지는 나를 위해 갈비찜을 한 냄비…"
+```
+
+막장 가족 서사 낭독인데 blocklist 용어가 하나도 없다. 제목으로 잡으려면
+"남편"·"합격" 같은 일상어를 넣어야 하고, 그러면 멀쩡한 영상이 대량으로 잘려나간다.
+이럴 때 채널 단위로 막는다.
+
+### 월 1회 샘플 점검에서 나쁜 채널을 발견했다면
+
+**1. 정말 채널 단위여야 하는지 먼저 판단한다**
+
+- 제목에 공통 용어가 있는가 → `taxonomy.yaml`의 `blocklist_tiers`에 용어를 추가한다
+- 그 채널이 그 콘텐츠만 만드는가 → 채널 차단
+- 가끔 괜찮은 영상도 올리는가 → 차단하지 않는다. 목록은 짧게 유지한다
+
+**2. 채널 ID를 얻는다** (1 unit)
+
+`videos.json`에는 채널명만 있고 ID가 없다. 문제 영상의 `videoId`로 역조회한다.
+
+```bash
+python - <<'PY'
+import os, sys
+sys.path.insert(0, "scripts")
+from lib.quota import QuotaBudget
+from lib.youtube import YouTubeClient
+client = YouTubeClient(os.environ["YOUTUBE_API_KEY"], QuotaBudget(hard_cap=20))
+for item in client.videos(["여기에_videoId"]):
+    s = item["snippet"]
+    print(s["channelTitle"], s["channelId"])
+PY
+```
+
+**3. `channel_blocklist.yaml`에 추가하고 PR을 올린다**
+
+```yaml
+  - channel_id: UC...
+    channel_name: 채널 이름
+    added_at: "YYYY-MM-DD"
+    added_by: 본인
+    reason: >
+      무엇이 문제인지, 그리고 **제목 필터로 왜 안 되는지**까지 적는다.
+      다음 사람이 "이건 blocklist 용어로 되지 않나?" 하고 되돌리지 않게.
+```
+
+필수 필드가 하나라도 비면 배치가 실패한다. 변경은 PR로만 한다.
+
+**4. 다음 배치 리포트에서 확인한다**
+
+`build_report.json`의 각 카테고리 `filters.blocked_channels`에 채널별 차단 건수가 남는다.
+0건이면 그 채널이 애초에 검색에 안 잡히고 있다는 뜻이니 목록에서 빼도 된다.
+
+### 목록이 길어지면 검색어를 의심한다
+
+채널 차단은 **두더지 잡기**다. 같은 장르 채널은 수천 개고, 하나를 막으면 다음이 들어온다.
+목록이 빠르게 길어진다면 그건 **검색어가 그 장르를 부르고 있다는 신호**다.
+
+실제로 "사연"·"이야기"가 들어간 검색어가 막장 서사를 대량으로 데려왔고,
+검색어를 바꾼 것이 채널 차단보다 효과가 컸다. 채널을 더 막기 전에
+`build_report.json`의 `queries`를 보고 어떤 검색어가 데려왔는지 먼저 확인한다.
 
 ---
 

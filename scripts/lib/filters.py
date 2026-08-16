@@ -4,7 +4,8 @@
     1) 이용 불가(삭제·비공개·처리 중)  ← 애초에 노출 자체가 불가능
     2) 국내 차단
     3) 3분 미만 (Shorts 포함)
-    4) blocklist 계층 — 제목만 검사한다 (blocklist_text 참조)
+    4) 차단 채널 — 제목과 무관하게 채널로 거른다 (channel_blocklist.yaml)
+    5) blocklist 계층 — 제목만 검사한다 (blocklist_text 참조)
 정확한 길이 판정은 search.list의 videoDuration 파라미터가 아니라
 videos.list의 contentDetails.duration으로 한다.
 videoDuration=medium은 4분 이상이라 3~4분 영상을 놓치고,
@@ -101,6 +102,8 @@ class FilterStats:
     dropped_region: int = 0
     dropped_short: int = 0
     dropped_shorts_tag: int = 0
+    dropped_blocked_channel: int = 0
+    blocked_channels: Counter[str] = field(default_factory=Counter)
     entered_blocklist: int = 0
     dropped_by_tier: Counter[str] = field(default_factory=Counter)
     samples: list[str] = field(default_factory=list)
@@ -129,6 +132,7 @@ class FilterStats:
             f"후보 {self.considered} → 확보 {self.kept} "
             f"(이용불가 {self.dropped_unavailable}, 국내차단 {self.dropped_region}, "
             f"3분미만 {self.dropped_short}, Shorts표기 {self.dropped_shorts_tag}, "
+            f"차단채널 {self.dropped_blocked_channel}, "
             f"blocklist {self.dropped_blocklist} [{tiers}])"
         )
 
@@ -140,6 +144,8 @@ class FilterStats:
             "dropped_region": self.dropped_region,
             "dropped_short": self.dropped_short,
             "dropped_shorts_tag": self.dropped_shorts_tag,
+            "dropped_blocked_channel": self.dropped_blocked_channel,
+            "blocked_channels": dict(self.blocked_channels),
             "dropped_blocklist": self.dropped_blocklist,
             "dropped_by_tier": dict(self.dropped_by_tier),
             "blocklist_drop_ratio": round(self.blocklist_drop_ratio, 3),
@@ -211,12 +217,18 @@ def apply_filters(
     tiers: Mapping[str, Sequence[str]],
     *,
     min_seconds: int,
+    blocked_channel_ids: frozenset[str] | set[str] | None = None,
 ) -> tuple[list[Video], FilterStats]:
     """videos.list 응답에 필터를 적용한다.
 
     tiers는 적용할 blocklist 계층만 담는다 (긍정 감정 카테고리는 tier_a만).
     걸러낸 건수는 계층별로 나누어 세서 어떤 층이 과하게 잡는지 볼 수 있게 한다.
+
+    blocked_channel_ids는 channel_blocklist.yaml에서 온다. 제목 검사보다 먼저 본다 —
+    채널이 걸리면 제목이 무엇이든 결과가 같고, 어느 쪽에 걸렸는지 리포트에서
+    구분되어야 "제목 필터를 고쳐야 하나"를 헷갈리지 않는다.
     """
+    blocked_ids = blocked_channel_ids or frozenset()
     stats = FilterStats()
     kept: list[Video] = []
 
@@ -235,6 +247,10 @@ def apply_filters(
             continue
         if _has_shorts_marker(video):
             stats.dropped_shorts_tag += 1
+            continue
+        if video.channel_id in blocked_ids:
+            stats.dropped_blocked_channel += 1
+            stats.blocked_channels[video.channel] += 1
             continue
 
         stats.entered_blocklist += 1

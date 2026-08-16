@@ -49,6 +49,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lib import alerts as alert_specs
 from lib.alerts import AlertCollector
 from lib.allowlist import MIN_ALLOWLIST_SIZE, Allowlist, load_allowlist
+from lib.channel_blocklist import ChannelBlocklist, load_channel_blocklist
 from lib.filters import FilterStats, Video, apply_filters, dedupe
 from lib.normalize import normalize
 from lib.quota import DEFAULT_HARD_CAP, QuotaBudget, QuotaExceeded, build_estimate
@@ -144,6 +145,8 @@ class BuildContext:
     client: Client
     budget: QuotaBudget
     previous: dict[str, Any]
+    # 채널 단위 차단 — 제목으로 잡히지 않는 유형을 막는 안전망 (channel_blocklist.yaml)
+    blocked_channel_ids: frozenset[str] = frozenset()
     collector: AlertCollector = field(default_factory=AlertCollector)
 
 
@@ -240,7 +243,10 @@ def build_crisis(
 
     items = ctx.client.videos(ordered)
     kept, stats = apply_filters(
-        items, ctx.tax.crisis_blocklist(), min_seconds=MIN_DURATION_SECONDS
+        items,
+        ctx.tax.crisis_blocklist(),
+        min_seconds=MIN_DURATION_SECONDS,
+        blocked_channel_ids=ctx.blocked_channel_ids,
     )
     logger.info("위기 필터 결과 — %s", stats.summary())
     _log_blocked_samples(stats)
@@ -417,7 +423,10 @@ def _carry_over_crisis(
     previous_ids = [str(v["videoId"]) for v in previous_videos]
     alive_items = ctx.client.videos(previous_ids)
     alive, _ = apply_filters(
-        alive_items, ctx.tax.crisis_blocklist(), min_seconds=MIN_DURATION_SECONDS
+        alive_items,
+        ctx.tax.crisis_blocklist(),
+        min_seconds=MIN_DURATION_SECONDS,
+        blocked_channel_ids=ctx.blocked_channel_ids,
     )
     order = {vid: i for i, vid in enumerate(previous_ids)}
     alive.sort(key=lambda v: order.get(v.video_id, len(order)))
@@ -491,7 +500,10 @@ def _build_one_category(
 
     items = ctx.client.videos(candidates)
     kept, stats = apply_filters(
-        items, ctx.tax.blocklist_for(sub.parent), min_seconds=MIN_DURATION_SECONDS
+        items,
+        ctx.tax.blocklist_for(sub.parent),
+        min_seconds=MIN_DURATION_SECONDS,
+        blocked_channel_ids=ctx.blocked_channel_ids,
     )
 
     rank = {vid: i for i, vid in enumerate(candidates)}
@@ -645,6 +657,7 @@ def write_outputs(
         "dry_run": dry_run,
         "partial": partial,
         "only": only,
+        "blocked_channels": sorted(ctx.blocked_channel_ids),
         "quota_spent": ctx.budget.spent,
         "quota_calls": dict(ctx.budget.calls),
         "crisis": None
@@ -800,6 +813,9 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="videos.json 생성 배치")
     parser.add_argument("--taxonomy", type=Path, default=root / "taxonomy.yaml")
     parser.add_argument("--allowlist", type=Path, default=root / "channel_allowlist.yaml")
+    parser.add_argument(
+        "--channel-blocklist", type=Path, default=root / "channel_blocklist.yaml"
+    )
     parser.add_argument("--out-dir", type=Path, default=root / "dist")
     parser.add_argument(
         "--previous", type=Path, default=None, help="직전 배치의 videos.json 경로"
@@ -861,6 +877,7 @@ def run(args: argparse.Namespace, spent_box: dict[str, Any] | None = None) -> in
 
     tax = load_taxonomy(args.taxonomy)
     allowlist = load_allowlist(args.allowlist)
+    blocklist = load_channel_blocklist(args.channel_blocklist)
     previous = load_previous(args.previous)
 
     selected, run_crisis, only = resolve_selection(tax, args.only)
@@ -923,8 +940,18 @@ def run(args: argparse.Namespace, spent_box: dict[str, Any] | None = None) -> in
     if spent_box is not None:
         spent_box["budget"] = budget
     ctx = BuildContext(
-        tax=tax, client=make_client(args, tax, budget), budget=budget, previous=previous
+        tax=tax,
+        client=make_client(args, tax, budget),
+        budget=budget,
+        previous=previous,
+        blocked_channel_ids=blocklist.ids,
     )
+    if blocklist.size:
+        logger.info(
+            "차단 채널 %d개 적용 — %s",
+            blocklist.size,
+            ", ".join(c.channel_name for c in blocklist.channels),
+        )
     _collect_allowlist_alerts(ctx, allowlist)
 
     # 1) 위기 카테고리 먼저 — 중단되더라도 안전 데이터는 갱신된 상태를 유지한다

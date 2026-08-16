@@ -44,6 +44,7 @@ from lib.allowlist import (
     AllowlistChannel,
     load_allowlist,
 )
+from lib.channel_blocklist import load_channel_blocklist
 from lib.filters import blocklist_text
 from lib.normalize import matched_terms
 from lib.quota import QuotaBudget, QuotaExceeded

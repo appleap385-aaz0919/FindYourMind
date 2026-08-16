@@ -69,6 +69,7 @@ jobs:
         # 로직이라 조용히 틀어지면 하루치 예산을 이중으로 태운다.
         run: |
           python scripts/quota_test.py
+          python scripts/blocklist_test.py > /dev/null && echo "채널 차단 목록 테스트 통과"
           python scripts/normalize_test.py > /dev/null && echo "정규화 테스트 통과"
 
       - name: videos.json 생성
