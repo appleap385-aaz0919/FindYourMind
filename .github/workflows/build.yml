@@ -205,6 +205,14 @@ jobs:
               return;
             }
 
+            // 같은 경보가 두 산출물에 모두 들어 있는 경우가 있다
+            // (allowlist_undersized는 build_report와 channel_health가 각각 담는다).
+            // 그대로 두면 같은 실행에서 Issue가 두 개 만들어진다 — 실제로 #4/#5가 그랬다.
+            const unique = [...new Map(alerts.map(a => [a.title, a])).values()];
+            if (unique.length !== alerts.length) {
+              core.info(`경보 ${alerts.length}건 → 제목 기준 중복 제거 후 ${unique.length}건`);
+            }
+
             const { owner, repo } = context.repo;
             const open = await github.paginate(github.rest.issues.listForRepo, {
               owner, repo, state: 'open', labels: 'auto', per_page: 100,
@@ -219,7 +227,7 @@ jobs:
             const DAY_MS = 24 * 60 * 60 * 1000;
             const now = Date.now();
 
-            for (const alert of alerts) {
+            for (const alert of unique) {
               const quietMs = (alert.renotify_days ?? 7) * DAY_MS;
               const existing = byTitle.get(alert.title);
               if (!existing) {
@@ -228,6 +236,12 @@ jobs:
                   title: alert.title,
                   body: `${alert.body}\n\n---\n자동 생성 · [실행 로그](${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId})`,
                   labels: alert.labels && alert.labels.length ? alert.labels : ['auto'],
+                });
+                // 이번 실행에서 만든 것도 지도에 넣는다. 위 중복 제거로 이미 막히지만,
+                // 경보 출처가 늘어나도 같은 실행에서 두 번 만들어지지 않게 하는 안전장치다.
+                byTitle.set(alert.title, {
+                  number: created.data.number,
+                  updated_at: created.data.updated_at,
                 });
                 core.info(`Issue 생성 #${created.data.number}: ${alert.title}`);
                 continue;
