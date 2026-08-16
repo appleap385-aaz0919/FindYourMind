@@ -130,6 +130,40 @@ def main() -> int:
         if not ok:
             failures.append(text)
 
+    # --- 6) 자·타해 표현의 갈림 ----------------------------------------------
+    #
+    # "죽고싶"(위기)과 "죽여버리"(격분)는 정규화 후에도 부분 매칭되지 않는다.
+    # 한글은 음절 단위라 "죽여버리고싶어"에서 죽 다음이 여이고 고가 아니기 때문이다.
+    # 이 성질에 기대고 있으므로 여기서 고정한다 — 정규화 규칙이 바뀌면 여기서 걸린다.
+    #
+    # 방향이 갈리는 지점도 함께 고정한다. 타인 지향은 격분, 자기 지향은 위기다.
+    # anger.rage에 "죽이고싶·없애버리고싶"을 넣으면서 자해 의사를 밝힌 입력이
+    # 격분으로 분류되는 구멍이 생겼고(위기 키워드 어디에도 안 걸렸다),
+    # safety.crisis_keywords의 자기 지향 가드가 그 구멍을 막는다.
+    print("\n자·타해 표현의 갈림")
+    print("-" * 76)
+    if normalize("죽고싶") in normalize("죽여버리고 싶어"):
+        print("X  '죽고싶'이 '죽여버리고 싶어'에 부분 매칭된다 — 정규화 규칙 확인 필요")
+        failures.append("부분매칭")
+
+    for text, expected in [
+        ("죽고 싶어", "CRISIS"),
+        ("죽여버리고 싶어", "anger.rage"),
+        ("죽이고 싶어", "anger.rage"),
+        ("패버리고 싶어", "anger.rage"),
+        ("없애버리고 싶어", "anger.rage"),
+        ("가만두지 않을거야", "anger.rage"),
+        ("나를 죽이고 싶어", "CRISIS"),
+        ("나 죽이고 싶어", "CRISIS"),
+        ("나 죽여버리고 싶어", "CRISIS"),
+        ("나를 없애버리고 싶어", "CRISIS"),
+    ]:
+        cid, hits = classify(text)
+        ok = cid == expected
+        print(f"{'   ' if ok else 'X  '}{text:<24} → {cid:<14} (기대 {expected})  {hits[:2]}")
+        if not ok:
+            failures.append(text)
+
     print("\n" + "=" * 76)
     if failures:
         print(f"실패 {len(failures)}건: {', '.join(failures)}")

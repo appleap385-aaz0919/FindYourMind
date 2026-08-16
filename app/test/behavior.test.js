@@ -10,6 +10,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 import { classify, RESULT } from "../src/lib/classify.js";
+import { normalize } from "../src/lib/normalize.js";
 import { getCategoryVideos, getCrisisVideos, formatDuration } from "../src/lib/videos.js";
 import { withMinDuration } from "../src/lib/offline.js";
 import { revisitSlot } from "../src/lib/messages.js";
@@ -452,6 +453,53 @@ test("test/의 모든 *.test.js가 npm test 목록에 있다", () => {
     assert.ok(
       script.includes(`test/${file}`),
       `${file}이 npm test 목록에 없다 — package.json scripts.test에 추가하세요`,
+    );
+  }
+});
+
+// --- 자·타해 표현의 갈림 --------------------------------------------------------
+
+test("'죽고싶'이 '죽여버리고 싶어'에 부분 매칭되지 않는다", () => {
+  // 한글은 음절 단위라 "죽여버리고싶어"에서 죽 다음이 여이고 고가 아니다.
+  // 위기/격분이 갈리는 근거가 이 성질이므로 여기서 고정한다.
+  assert.ok(!normalize("죽여버리고 싶어").includes(normalize("죽고싶")));
+  assert.ok(normalize("죽고 싶어").includes(normalize("죽고싶")));
+});
+
+test("타인 지향은 격분, 자기 지향은 위기로 갈린다", () => {
+  const cases = [
+    // 요청받은 두 문장
+    ["죽고 싶어", RESULT.CRISIS, null],
+    ["죽여버리고 싶어", RESULT.OK, "anger.rage"],
+    // 타인 지향 — 격분
+    ["죽이고 싶어", RESULT.OK, "anger.rage"],
+    ["패버리고 싶어", RESULT.OK, "anger.rage"],
+    ["없애버리고 싶어", RESULT.OK, "anger.rage"],
+    ["가만두지 않을거야", RESULT.OK, "anger.rage"],
+    ["저 사람 죽여버리고 싶어", RESULT.OK, "anger.rage"],
+    // 자기 지향 — 위기. anger.rage에 "죽이고싶"을 넣으면서 생긴 구멍을
+    // safety.crisis_keywords의 자기 지향 가드가 막는다. 위기 검사가 먼저 돌기 때문이다.
+    ["나를 죽이고 싶어", RESULT.CRISIS, null],
+    ["나 죽이고 싶어", RESULT.CRISIS, null],
+    ["나 죽여버리고 싶어", RESULT.CRISIS, null],
+    ["나를 죽여버리고 싶어", RESULT.CRISIS, null],
+    ["나를 없애버리고 싶어", RESULT.CRISIS, null],
+    ["내가 죽고 싶어", RESULT.CRISIS, null],
+  ];
+  for (const [input, kind, subId] of cases) {
+    const outcome = classify(input, taxonomy);
+    assert.equal(outcome.kind, kind, `"${input}" → ${outcome.kind}`);
+    if (subId) {
+      assert.equal(outcome.subcategory.id, subId, `"${input}" → ${outcome.subcategory.id}`);
+    }
+  }
+});
+
+test("자기 지향 가드가 위기 키워드에 들어 있다", () => {
+  for (const guard of ["나를죽이", "나죽이고싶", "나를죽여", "나죽여버리", "나를없애"]) {
+    assert.ok(
+      taxonomy.safety.crisis_keywords.includes(guard),
+      `위기 키워드에 ${guard}가 없다 — 자해 표현이 격분으로 분류된다`,
     );
   }
 });
