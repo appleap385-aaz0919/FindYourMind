@@ -15,10 +15,11 @@ import yaml
 # --- PLAN.md / taxonomy.yaml에서 확정된 수치 ---------------------------------
 CATEGORY_MIN_VIDEOS = 15  # 카테고리당 목표 하한 (PLAN.md 4절)
 CATEGORY_MAX_VIDEOS = 20  # 카테고리당 목표 상한
+CATEGORY_MAX_PER_CHANNEL = 3  # 일반 카테고리 채널당 상한 (category_selection.max_per_channel 기본값)
 CRISIS_MIN_VIDEOS = 12  # 미달 시 필터를 완화하지 않고 직전 결과 유지 (filter_rules)
 CRISIS_MAX_VIDEOS = 20
 CRISIS_MAX_PER_CHANNEL = 3  # 위기 카테고리 채널당 상한 (content_policy.max_per_channel 기본값)
-CRISIS_PER_CHANNEL_STEPS = 3  # 20건을 못 채울 때 상한을 몇 단계까지 올리는가 (3 → 4 → 5)
+PER_CHANNEL_STEPS = 3  # 목표치를 못 채울 때 상한을 몇 단계까지 올리는가 (3 → 4 → 5)
 MIN_DURATION_SECONDS = 180  # 3분 미만 제외 (Shorts는 여기에 포함되어 걸러진다)
 MAX_QUERIES_PER_SUBCATEGORY = 3  # 4개 중 3개 로테이션 (쿼터 7,200 유지)
 CRISIS_STALE_DAYS = 3  # crisis.updated_at이 이보다 오래되면 경보
@@ -57,6 +58,10 @@ class Taxonomy:
         self.tier_c = _tier_terms(tiers, CRISIS_TIER)
         self.negative_parents = _parse_negative_parents(raw, tiers)
         self.crisis = _parse_crisis(raw)
+        # 블록이 통째로 없어도 실패시키지 않는다 — 기본값(3)이 곧 상한 적용이라
+        # 누락의 결과가 "필터가 빠진 상태"가 아니라 "기본 정책대로"이기 때문이다.
+        # 값이 들어 있는데 이상한 경우에만 아래 property에서 실패시킨다.
+        self.category_selection = raw.get("category_selection") or {}
 
     # --- blocklist 계층 -----------------------------------------------------
     def blocklist_for(self, parent_id: str) -> dict[str, tuple[str, ...]]:
@@ -142,8 +147,40 @@ class Taxonomy:
     @property
     def crisis_per_channel_ladder(self) -> tuple[int, ...]:
         """확보량이 상한에 막힐 때 순차 완화할 값들 (기본 3 → 4 → 5)."""
-        base = self.crisis_max_per_channel
-        return tuple(base + step for step in range(CRISIS_PER_CHANNEL_STEPS))
+        return _ladder(self.crisis_max_per_channel)
+
+    # --- 일반 카테고리 선정 --------------------------------------------------
+    @property
+    def category_max_per_channel(self) -> int:
+        """일반 카테고리에서 한 채널이 차지할 수 있는 최대 건수.
+
+        위기 카테고리와 값은 같지만(3) 출처가 다르다 — 위기는
+        safety.crisis_response.content_policy.max_per_channel, 일반은
+        category_selection.max_per_channel이다. 한쪽을 조정할 때 다른 쪽이
+        따라 움직이면 안 되므로 값을 공유하지 않는다.
+        """
+        raw = self.category_selection.get("max_per_channel", CATEGORY_MAX_PER_CHANNEL)
+        try:
+            value = int(raw)
+        except (TypeError, ValueError):
+            raise TaxonomyError(
+                f"category_selection.max_per_channel이 정수가 아니다: {raw!r}"
+            ) from None
+        if value < 1:
+            raise TaxonomyError(
+                f"category_selection.max_per_channel은 1 이상이어야 한다: {value}"
+            )
+        return value
+
+    @property
+    def category_per_channel_ladder(self) -> tuple[int, ...]:
+        """20건을 못 채울 때 순차 완화할 값들 (기본 3 → 4 → 5)."""
+        return _ladder(self.category_max_per_channel)
+
+
+def _ladder(base: int) -> tuple[int, ...]:
+    """상한 완화 사다리 — base에서 한 단계씩 올린 값들 (3이면 3, 4, 5)."""
+    return tuple(base + step for step in range(PER_CHANNEL_STEPS))
 
 
 def load_taxonomy(path: Path) -> Taxonomy:

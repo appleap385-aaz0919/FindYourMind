@@ -14,11 +14,18 @@ taxonomy.yaml을 읽어 세분류별로 YouTube를 검색하고, 검증·필터�
      파일은 모든 처리가 끝난 뒤 한 번에, tmp → os.replace로 교체한다.
      빌드가 실패하면 워크플로가 배포 단계를 건너뛰므로 직전 videos.json이 그대로 유지된다.
   4. 위기 카테고리 확보량이 12건 미만이면 필터를 완화하지 않고 직전 결과를 유지한다.
-  5. 위기 카테고리는 채널을 라운드로빈으로 순회하며 채우고, 한 채널이 3건을 넘게
-     차지하지 못한다 (일반 카테고리는 제외). 순회 시작 지점은 day_of_year로 매일 돌려
-     뒤쪽 채널이 구조적으로 배제되지 않게 한다.
-     20건을 못 채울 때만 4, 5로 완화하고, 그래도 12건이 안 되면 상한을 해제한다.
-     상세는 select_crisis_videos()와 taxonomy.yaml content_policy.max_per_channel 참조.
+  5. 위기·일반 카테고리 **모두** 채널을 라운드로빈으로 순회하며 채우고,
+     한 채널이 3건을 넘게 차지하지 못한다. 20건을 못 채울 때만 4, 5로 완화하고,
+     그래도 최소 확보량에 미달하면 상한을 해제한다.
+     두 경로는 세 가지가 다르다.
+       최소 확보량   위기 12건 / 일반 15건
+       미달 시 동작  위기는 직전 결과 유지 / 일반은 상한 해제 (되돌아갈 결과가 없다)
+       일별 회전     위기만 적용. 일반은 채널이 슬롯보다 훨씬 많아 회전이
+                     "관련성 상위 채널 통째로 건너뛰기"가 된다 — _rotate() 주석 참조
+       위기: select_crisis_videos(), taxonomy.yaml safety…content_policy.max_per_channel
+       일반: select_category_videos(), taxonomy.yaml category_selection.max_per_channel
+     (일반 카테고리 상한은 2026-08-16 신설. 그전에는 순위 상위 20건을 그대로 잘라
+      한 채널이 20건 중 18건까지 차지하는 일이 있었다.)
 
 종료 코드:
   0  성공
@@ -129,6 +136,12 @@ class CategoryResult:
     from_previous: int = 0
     excluded_by_crisis: int = 0
     surplus: int = 0  # 상한 20건을 넘겨 남은 예비 후보. 0이면 풀에 여유가 없다는 뜻
+    max_per_channel: int | None = None  # 실제로 적용된 채널당 상한
+    per_channel_unlocked: bool = False  # 최소 확보량을 지키려 상한을 해제했는가
+
+    @property
+    def channel_spread(self) -> dict[str, int]:
+        return dict(Counter(v["channel"] for v in self.videos).most_common())
 
     def to_json(self) -> dict[str, Any]:
         return {
@@ -305,12 +318,16 @@ def select_crisis_videos(
     """
     last = ladder[-1]
     for cap in ladder:
-        picked = _take_round_robin(kept, cap, allowlist_channels, day_of_year)
+        picked = _take_round_robin(
+            kept, cap, CRISIS_MAX_VIDEOS, allowlist_channels, day_of_year
+        )
         if len(picked) >= CRISIS_MAX_VIDEOS:
             _log_spread(picked, cap, unlocked=False)
             return picked, cap, False
 
-    picked = _take_round_robin(kept, last, allowlist_channels, day_of_year)
+    picked = _take_round_robin(
+        kept, last, CRISIS_MAX_VIDEOS, allowlist_channels, day_of_year
+    )
     # 상한을 풀어도 12건을 못 채우면 해제할 이유가 없다 — 풀 자체가 얕은 것이고,
     # 어차피 호출자가 직전 결과 유지로 넘어간다.
     if len(picked) < CRISIS_MIN_VIDEOS <= len(kept):
@@ -334,27 +351,40 @@ def select_crisis_videos(
 def _take_round_robin(
     videos: list[Video],
     cap: int,
+    limit: int,
     allowlist_channels: set[str],
     day_of_year: int,
+    *,
+    rotate: bool = True,
 ) -> list[Video]:
-    """채널을 한 바퀴씩 돌며 1건씩, 채널당 cap건까지 채운다.
+    """채널을 한 바퀴씩 돌며 1건씩, 채널당 cap건까지 limit건이 찰 때까지 채운다.
 
-    채널 내부 순서는 건드리지 않는다 — 전달받은 정렬(화이트리스트 우선 →
-    댓글 사용 중지 → 후보 순위)이 채널 안에서 그대로 유지된다.
+    채널 내부 순서는 건드리지 않는다 — 전달받은 정렬(위기: 화이트리스트 우선 →
+    댓글 사용 중지 → 후보 순위 / 일반: 후보 순위)이 채널 안에서 그대로 유지된다.
 
     라운드로빈은 화이트리스트 그룹을 **먼저 끝까지 돌린 뒤** 검색 결과 그룹으로
     넘어간다. 두 그룹을 한 바퀴에 섞으면 채널 수가 20개를 넘는 순간 첫 바퀴만으로
     슬롯이 차버려, 화이트리스트가 20슬롯의 절반밖에 못 가져간다.
     (실측: 섞었을 때 화이트리스트 10건 + 검토받지 않은 검색 채널 10건)
     화이트리스트 우선은 가드레일 2 자체라 분산을 위해 양보할 대상이 아니다.
+
+    일반 카테고리에는 화이트리스트 개념이 없으므로 allowlist_channels에 빈 집합을
+    넘긴다. 그러면 첫 그룹이 비고 전체가 한 그룹으로 처리된다 — 분기를 따로 두지
+    않으려고 이렇게 했다. 위기 경로와 같은 코드를 지나야 한쪽만 조용히 낡지 않는다.
+
+    rotate=False는 일반 카테고리 전용이다. 회전이 위기에서는 옳고 일반에서는
+    해로운 이유는 _rotate()의 주석 참조.
     """
     by_channel: dict[str, list[Video]] = {}
     for video in videos:
         by_channel.setdefault(video.channel_id, []).append(video)
 
+    def order(ids: list[str]) -> list[str]:
+        return _rotate(ids, day_of_year) if rotate else ids
+
     channel_ids = list(by_channel)
-    listed = _rotate([c for c in channel_ids if c in allowlist_channels], day_of_year)
-    others = _rotate([c for c in channel_ids if c not in allowlist_channels], day_of_year)
+    listed = order([c for c in channel_ids if c in allowlist_channels])
+    others = order([c for c in channel_ids if c not in allowlist_channels])
 
     picked: list[Video] = []
     for group in (listed, others):
@@ -364,16 +394,34 @@ def _take_round_robin(
                 if depth >= len(queue):
                     continue  # 이 채널은 재고 소진 — 다음 채널로 넘어간다
                 picked.append(queue[depth])
-                if len(picked) >= CRISIS_MAX_VIDEOS:
+                if len(picked) >= limit:
                     return picked
     return picked
 
 
 def _rotate(channel_ids: list[str], day_of_year: int) -> list[str]:
-    """순회 시작 지점을 매일 돌린다.
+    """순회 시작 지점을 매일 돌린다. **위기 카테고리 전용이다.**
 
     순서가 고정이면 뒤쪽 채널이 매일 같은 자리에서 20슬롯 밖으로 밀려
     구조적으로 배제된다. 사람이 승인한 화이트리스트가 실질적으로 축소되는 것이다.
+
+    ⛔ 일반 카테고리에는 쓰지 않는다 (2026-08-16, 넣었다가 검증에서 되돌렸다).
+      두 경우의 채널 목록이 전혀 다른 것이기 때문이다.
+
+        위기: 사람이 승인한 화이트리스트 10개 안팎. 슬롯(20)이 채널보다 많아
+              회전은 "전원이 돌아가며 들어온다"는 뜻이고, 전원 포함이 목표다.
+        일반: 검색 관련성 순위대로 늘어선 채널 50~80개. 슬롯(20)이 채널보다
+              훨씬 적어 회전은 "매일 다른 20채널 구간을 자른다"가 된다.
+
+      실측 (후보 132건·채널 61개로 재현):
+        day  0 → 채널순위 0~19  (관련성 상위)
+        day 20 → 채널순위 20~39 (상위 20채널 전부 제외)
+        day 40 → 채널순위 40~59 (상위 40채널 전부 제외, 하위권만 남는다)
+
+      즉 대부분의 날에 가장 관련성 높은 채널들이 통째로 빠진다. 편중을 고치려다
+      관련성을 잃는 거래인데, 애초에 그런 거래를 할 이유가 없다 —
+      검색어가 매일 3/4로 로테이션되므로 후보 풀과 그 순서는 회전 없이도
+      날마다 달라진다. 다양성은 이미 거기서 나온다.
     """
     if not channel_ids:
         return []
@@ -468,6 +516,54 @@ def build_categories(
     return results
 
 
+def _take_category(kept: list[Video], cap: int) -> list[Video]:
+    """일반 카테고리용 라운드로빈 — 화이트리스트 그룹 없음, 일별 회전 없음.
+
+    회전을 쓰지 않는 이유는 _rotate() 주석에 있다 (요약: 채널이 슬롯보다 훨씬
+    많아 회전이 '관련성 상위 채널을 통째로 건너뛰기'가 된다).
+    """
+    return _take_round_robin(
+        kept, cap, CATEGORY_MAX_VIDEOS, allowlist_channels=set(),
+        day_of_year=0, rotate=False,
+    )
+
+
+def select_category_videos(
+    kept: list[Video], ladder: Sequence[int]
+) -> tuple[list[Video], int, bool]:
+    """일반 카테고리 20건을 채널 라운드로빈으로 고른다 (taxonomy.yaml category_selection).
+
+    그전에는 `kept[:CATEGORY_MAX_VIDEOS]`로 순위 상위를 그대로 잘랐고, 검색 상위를
+    한 채널이 쓸어담으면 그대로 20슬롯에 들어왔다 (실측: anger.rage 힐링포유 12/20,
+    exhaustion.listless 소소한 일상 18/20). 근거와 수치는 taxonomy.yaml 주석 참조.
+
+    채널은 "그 채널의 최상위 영상이 몇 등인가" 순으로 늘어서고, 그 순서대로
+    한 바퀴씩 돈다. 그래서 목록 1번은 여전히 관련성 1위 영상이고, 2번부터는
+    다른 채널로 넘어간다 — 같은 채널 썸네일이 연달아 붙지 않는다.
+
+    위기 카테고리와 완화 규칙이 하나 다르다.
+      위기: 상한 5로도 12건에 못 미치면 직전 결과를 유지한다 — 못 채우는 것이
+            안전한 기본값이라 상한 해제 조건을 좁게 둔다.
+      일반: 되돌아갈 직전 결과가 없다. 상한 때문에 확보량이 줄면 그대로 배포되므로,
+            "상한을 풀면 더 채울 수 있는데 15건에 못 미치는" 모든 경우에 해제한다.
+            후보 풀 자체가 얕아서(kept < 15) 미달인 경우에는 해제해도 늘지 않으므로
+            하지 않는다 — min(하한, 확보 가능량)과 비교하는 이유다.
+
+    반환: (선정 목록, 실제 적용된 상한, 상한 해제 여부)
+    """
+    for cap in ladder:
+        picked = _take_category(kept, cap)
+        if len(picked) >= CATEGORY_MAX_VIDEOS:
+            return picked, cap, False
+
+    last = ladder[-1]
+    picked = _take_category(kept, last)
+    reachable = min(CATEGORY_MIN_VIDEOS, len(kept))
+    if len(picked) < reachable:
+        return kept[:CATEGORY_MAX_VIDEOS], last, True
+    return picked, last, False
+
+
 def _build_one_category(
     ctx: BuildContext,
     sub: Subcategory,
@@ -508,12 +604,17 @@ def _build_one_category(
 
     rank = {vid: i for i, vid in enumerate(candidates)}
     kept.sort(key=lambda v: rank.get(v.video_id, len(rank)))
-    final = kept[:CATEGORY_MAX_VIDEOS]
+    final, cap, unlocked = select_category_videos(
+        kept, ctx.tax.category_per_channel_ladder
+    )
     from_previous = sum(1 for v in final if v.video_id not in seen)
 
+    spread = Counter(v.channel for v in final)
+    top_share = f"{spread.most_common(1)[0][1]}/{len(final)}" if final else "0/0"
     excluded = excluded_new + excluded_previous
     logger.info(
-        "%-22s 쿼리 %d개 → %s | 위기 제외 %d건(신규 %d/직전 %d), 여유 %d건, 직전 유입 %d건",
+        "%-22s 쿼리 %d개 → %s | 위기 제외 %d건(신규 %d/직전 %d), 여유 %d건, 직전 유입 %d건"
+        " | %d채널 분산(최다 %s), 상한 %d%s",
         sub.id,
         len(queries),
         stats.summary(),
@@ -522,7 +623,22 @@ def _build_one_category(
         excluded_previous,
         max(0, len(kept) - len(final)),  # 상한을 넘겨 버려진 예비 후보 수
         from_previous,
+        len(spread),
+        top_share,
+        cap,
+        " 해제" if unlocked else "",
     )
+    if unlocked:
+        # 조용히 넘기지 않는다 — 상한이 풀렸다는 것은 이 카테고리의 후보 채널이
+        # 얕아졌다는 신호이고, 다음 날에도 반복되면 검색어를 봐야 한다.
+        logger.warning(
+            "%s 채널당 상한 %d로는 %d건뿐이라 해제했다 (후보 %d건, %d채널)",
+            sub.id,
+            cap,
+            len(_take_category(kept, cap)),
+            len(kept),
+            len({v.channel_id for v in kept}),
+        )
     _evaluate_category(ctx, sub, final, stats, excluded)
 
     return CategoryResult(
@@ -535,6 +651,8 @@ def _build_one_category(
         from_previous=from_previous,
         excluded_by_crisis=excluded,
         surplus=max(0, len(kept) - len(final)),
+        max_per_channel=cap,
+        per_channel_unlocked=unlocked,
     )
 
 
@@ -680,6 +798,9 @@ def write_outputs(
                 "excluded_by_crisis": c.excluded_by_crisis,
                 "surplus": c.surplus,
                 "queries": c.queries,
+                "max_per_channel": c.max_per_channel,
+                "per_channel_unlocked": c.per_channel_unlocked,
+                "channel_spread": c.channel_spread,
                 "filters": c.stats.to_json(),
             }
             for c in categories
