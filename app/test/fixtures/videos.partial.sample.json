@@ -1,0 +1,52 @@
+{
+  "version": "2026-08-14T03:57:55Z",
+  "partial": true,
+  "only": [
+    "frustration.suppressed",
+    "sadness.lonely"
+  ],
+  "categories": [
+    {
+      "id": "frustration.suppressed",
+      "parent": "frustration",
+      "label": "억눌림",
+      "videos": [
+        {
+          "videoId": "gcGQyd-4mQQ",
+          "title": "헤어진 후 연락을 끊었을 때 일어나는 상대방 속마음 | 재회가 가까워질 때 보이는 신호 #러브커넥트 #연애심리치유 #유지연",
+          "channel": "러브커넥트 유지연",
+          "publishedAt": "2025-09-24T10:15:08Z",
+          "duration": "PT17M58S"
+        },
+        {
+          "videoId": "Sogc60FHTjA",
+          "title": "\"속마음을 다 보여주지 마라\" 혼자 있을 때 비로소 강력해지는 사람들의 비밀 (쇼펜하우어)",
+          "channel": "어른의 심리",
+          "publishedAt": "2026-08-12T01:00:14Z",
+          "duration": "PT16M37S"
+        }
+      ]
+    },
+    {
+      "id": "sadness.lonely",
+      "parent": "sadness",
+      "label": "외로움",
+      "videos": [
+        {
+          "videoId": "1BPKHQVanZY",
+          "title": "[잠드뇌] 틀어놓고 주무세요 (1)",
+          "channel": "장동선의 궁금한 뇌",
+          "publishedAt": "2025-04-24T14:00:04Z",
+          "duration": "PT57M20S"
+        },
+        {
+          "videoId": "hOXO4vf-Qak",
+          "title": "듣고 있으면 편안해지는 책ㅣ잠자고 싶은 토끼ㅣ칼 요한 포센ㅣ책 읽어주는 남자ㅣ잠 잘때 듣는ㅣ오디오북  ASMR",
+          "channel": "따듯한 목소리 현준",
+          "publishedAt": "2022-08-18T13:00:21Z",
+          "duration": "PT1H7M43S"
+        }
+      ]
+    }
+  ]
+}

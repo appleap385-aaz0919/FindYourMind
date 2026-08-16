@@ -158,11 +158,15 @@ test("긴 키워드가 짧은 키워드보다 우선한다", () => {
 // --- 캐시 교체 관문 (부분 데이터 방어) ---------------------------------------
 
 test("실제 배포 산출물은 통과하고 부분 실행 산출물은 거부된다", () => {
-  const dist = join(here, "..", "..", "dist");
-  const full = JSON.parse(readFileSync(join(dist, "videos.json"), "utf8"));
-  const partial = JSON.parse(readFileSync(join(dist, "videos.partial.json"), "utf8"));
+  // dist/는 배치 산출물이라 저장소에 없다(.gitignore). CI의 깨끗한 체크아웃에서도
+  // 돌아야 하므로, 커밋된 실물 사본으로 검사한다.
+  //   전체 — src/data/seed-videos.json (실제 videos.json을 그대로 옮긴 번들 시드)
+  //   부분 — test/fixtures/videos.partial.sample.json (--only 산출물을 줄인 것)
+  const partial = JSON.parse(
+    readFileSync(join(here, "fixtures", "videos.partial.sample.json"), "utf8"),
+  );
 
-  assert.equal(isCompleteVideosPayload(full), true, "정상 배포물이 거부됐다");
+  assert.equal(isCompleteVideosPayload(videos), true, "정상 배포물이 거부됐다");
   assert.equal(isCompleteVideosPayload(partial), false, "부분 산출물이 통과했다");
   assert.equal(partial.partial, true);
 });

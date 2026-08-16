@@ -10,6 +10,7 @@
     "prebuild": "npm run gen:taxonomy",
     "build": "vite build",
     "preview": "vite preview",
+    "pretest": "npm run gen:taxonomy",
     "test": "node --test \"test/**/*.test.js\""
   },
   "dependencies": {
