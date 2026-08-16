@@ -272,6 +272,88 @@ def main() -> int:
         if not ok:
             failures.append(text)
 
+    # --- 9) 사전 일괄 보강 (2026-08-16) --------------------------------------
+    #
+    # 세분류당 30~57개로 늘리면서 제보분을 함께 넣었다.
+    # 여기 있는 것은 "이 표현이 이 세분류로 가야 한다"는 약속이다.
+    print("\n일괄 보강 — 제보분")
+    print("-" * 76)
+    for text, expected in [
+        ("힘들어", "exhaustion.tired"),
+        ("너무 힘들다", "exhaustion.tired"),
+        ("오늘 진짜 힘드네", "exhaustion.tired"),
+        ("싸우고 싶어", "anger.rage"),
+        ("도망치고 싶어", "exhaustion.burnout"),
+        ("도망가고 싶다", "exhaustion.burnout"),
+        ("헛헛하다", "sadness.lonely"),
+        ("이해되지 않아", "frustration.stuck"),
+        ("이해가 안 돼", "frustration.stuck"),
+    ]:
+        cid, hits = classify(text)
+        ok = cid == expected
+        print(f"{'   ' if ok else 'X  '}{text:<22} → {cid:<24} (기대 {expected})  {hits[:2]}")
+        if not ok:
+            failures.append(text)
+
+    # 욕설은 감정 표현으로 매우 흔하다. 어간이 일상어를 삼키지 않는지가 관건이라
+    # 잡혀야 하는 것과 잡히면 안 되는 것을 나란히 둔다.
+    print("\n일괄 보강 — 욕설 (전부 anger.irritation)")
+    print("-" * 76)
+    for text in ["씨발", "시발 진짜", "ㅅㅂ", "좆같아", "좇같아", "개같네", "개같은 경우",
+                 "개빡친다", "존나 짜증나", "꼴받네"]:
+        cid, hits = classify(text)
+        ok = cid == "anger.irritation"
+        print(f"{'   ' if ok else 'X  '}{text:<22} → {cid}  {hits[:2]}")
+        if not ok:
+            failures.append(text)
+
+    # 욕설 어간이 삼키면 안 되는 것들 — 개같이(속담)/존나(강조어)
+    #
+    # "시발"은 시발점·시발역을 삼키는 걸 알면서 넣었다. 씨/시 표기 혼동이
+    # 처/쳐만큼 흔한데 "시발"을 빼면 절반을 놓치고, 시발점·시발역은 감정 입력
+    # 상자에 적힐 말이 아니다. 반대로 "개같이"(속담)와 "존나"(강조어)는
+    # 일상 대화에 그대로 나오므로 어간을 좁혀 피했다.
+    print("\n일괄 보강 — 욕설 어간 오탐 방지")
+    print("-" * 76)
+    for text in ["개같이 벌어서 정승같이 쓴다", "존나 좋아", "존나 맛있어"]:
+        cid, hits = classify(text)
+        ok = cid != "anger.irritation"
+        print(f"{'   ' if ok else 'X  '}{text:<24} → {cid}  {hits[:2]}")
+        if not ok:
+            failures.append(text)
+
+    # 일상어와 겹쳐 뺀 기존 키워드들. 다시 넣으면 여기서 걸린다.
+    # (taxonomy.yaml normalization 위쪽 "사전 일괄 보강" 주석의 표와 같은 목록)
+    print("\n일괄 보강 — 일상어 충돌로 뺀 키워드")
+    print("-" * 76)
+    # "여유"만 예외로 되살렸다 — calm.ease의 세분류 label이 "여유"라서, 빼면
+    # label 단독 입력이 분류되지 않는다(선택 UI가 쓰는 값이다). 그 대가로
+    # "여유 자금이 없어"는 평온으로 간다. label 보장이 더 중요하다고 봤다.
+    for text in ["무료 배송이래", "한가운데 서 있었어",
+                 "교통 정체가 심해", "정체가 뭐야", "배터리 방전됐어", "포인트 소진했어",
+                 "한계효용 체감의 법칙", "균형 잡힌 식단", "고요한 밤 거룩한 밤",
+                 "잔잔한 파도 소리", "영화 보고 싶어", "상실 신고를 했어"]:
+        cid, hits = classify(text)
+        ok = cid is None
+        print(f"{'   ' if ok else 'X  '}{text:<24} → {cid}  {hits[:2]}")
+        if not ok:
+            failures.append(text)
+
+    # 세분류당 최소 개수 — 다시 빈약해지면 알아차린다
+    print("\n세분류별 키워드 수 (최소 30개)")
+    print("-" * 76)
+    thin = []
+    for c in tax["categories"]:
+        for s in c["subcategories"]:
+            n = len(s["keywords"])
+            if n < 30:
+                thin.append(f"{s['id']}({n})")
+    total = sum(len(s["keywords"]) for c in tax["categories"] for s in c["subcategories"])
+    print(f"{'X  ' if thin else '   '}합계 {total}개 / 24개 세분류"
+          f"{' — 30개 미만: ' + ', '.join(thin) if thin else ' — 전부 30개 이상'}")
+    if thin:
+        failures.append("세분류 키워드 부족")
+
     print("\n" + "=" * 76)
     if failures:
         print(f"실패 {len(failures)}건: {', '.join(failures)}")

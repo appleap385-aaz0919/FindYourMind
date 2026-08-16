@@ -72,6 +72,7 @@ jobs:
           python scripts/blocklist_test.py > /dev/null && echo "채널 차단 목록 테스트 통과"
           python scripts/normalize_test.py > /dev/null && echo "정규화 테스트 통과"
           python scripts/spread_test.py > /dev/null && echo "채널 분산 선정 테스트 통과"
+          python scripts/coverage_test.py > /dev/null && echo "실사용 문장 커버리지 통과"
 
       - name: videos.json 생성
         id: build
