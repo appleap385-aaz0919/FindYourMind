@@ -164,6 +164,46 @@ def main() -> int:
         if not ok:
             failures.append(text)
 
+    # --- 7) 활용형 흡수와 흔한 오타 -------------------------------------------
+    #
+    # 어간을 한 음절 더 줄여 활용형을 흡수한다. "미쳐버리"는 "미쳐버릴"을 잡지 못한다 —
+    # 한글은 음절 단위라 리와 릴이 다른 글자다. "미쳐버"까지 줄이면 전부 걸린다.
+    #
+    # 다만 무조건 줄이면 안 된다. "미처버"는 "미처 버리지 못한 물건들"에도 걸리는데
+    # 그건 상실감 맥락이라 격분으로 보내면 안 된다. 오타 쪽 어간은 좁게 잡았다.
+    print("\n활용형과 오타")
+    print("-" * 76)
+    for text, expected in [
+        ("미쳐버릴 것 같아", "anger.rage"),
+        ("미쳐버리겠다", "anger.rage"),
+        ("미쳐버려", "anger.rage"),
+        ("미처버릴것같아", "anger.rage"),
+        ("돌아버릴 것 같아", "anger.rage"),
+        ("돌아버리겠다", "anger.rage"),
+        ("환장하겠네", "anger.rage"),
+        ("환장할 것 같아", "anger.rage"),
+        ("귀찬아 죽겠어", "exhaustion.listless"),
+        ("괜찬아졌어", "calm.stable"),
+        ("빡처 죽겠네", "anger.irritation"),
+        ("돼는일이없어", "frustration.blocked"),
+        ("어떻하지", "anxiety.worry"),
+    ]:
+        cid, hits = classify(text)
+        ok = cid == expected
+        print(f"{'   ' if ok else 'X  '}{text:<22} → {cid:<22} (기대 {expected})  {hits[:2]}")
+        if not ok:
+            failures.append(text)
+
+    # 어간을 넓히다 격분으로 잘못 보내면 안 되는 표현들
+    print("\n어간 오탐 방지")
+    print("-" * 76)
+    for text in ["미처 버리지 못한 물건들", "뒤돌아 버렸다", "집에 돌아 버스를 탔다"]:
+        cid, _ = classify(text)
+        ok = cid != "anger.rage"
+        print(f"{'   ' if ok else 'X  '}{text:<24} → {cid}")
+        if not ok:
+            failures.append(text)
+
     print("\n" + "=" * 76)
     if failures:
         print(f"실패 {len(failures)}건: {', '.join(failures)}")

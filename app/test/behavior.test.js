@@ -503,3 +503,48 @@ test("자기 지향 가드가 위기 키워드에 들어 있다", () => {
     );
   }
 });
+
+// --- 활용형 흡수와 흔한 오타 -----------------------------------------------------
+
+test("'-버릴 것 같다' 활용형이 어간으로 흡수된다", () => {
+  // "미쳐버리"는 "미쳐버릴"을 잡지 못한다 — 한글은 음절 단위라 리와 릴이 다르다.
+  // "미쳐버"까지 줄여야 전부 걸린다. 외로/외롭 때와 같은 성질이다.
+  assert.ok(!normalize("미쳐버릴것같아").includes(normalize("미쳐버리")));
+  assert.ok(normalize("미쳐버릴것같아").includes(normalize("미쳐버")));
+
+  for (const input of [
+    "미쳐버릴 것 같아", "미쳐버리겠다", "미쳐버려", "미쳐버렸어",
+    "미처버릴것같아", "미처버리겠어",
+    "돌아버릴 것 같아", "돌아버리겠다",
+    "환장하겠네", "환장할 것 같아",
+  ]) {
+    const outcome = classify(input, taxonomy);
+    assert.equal(outcome.kind, RESULT.OK, `"${input}" 미매칭`);
+    assert.equal(outcome.subcategory.id, "anger.rage", `"${input}" → ${outcome.subcategory.id}`);
+  }
+});
+
+test("흔한 오타 표기가 잡힌다", () => {
+  const cases = [
+    ["귀찬아 죽겠어", "exhaustion.listless"], // 귀찮
+    ["괜찬아졌어", "calm.stable"], // 괜찮
+    ["빡처 죽겠네", "anger.irritation"], // 빡쳐
+    ["돼는일이없어", "frustration.blocked"], // 되는일이없
+    ["어떻하지", "anxiety.worry"], // 어떡하지
+  ];
+  for (const [input, id] of cases) {
+    const outcome = classify(input, taxonomy);
+    assert.equal(outcome.kind, RESULT.OK, `"${input}" 미매칭`);
+    assert.equal(outcome.subcategory.id, id, `"${input}" → ${outcome.subcategory.id}`);
+  }
+});
+
+test("어간을 넓히다 정상 표현을 격분으로 보내지 않는다", () => {
+  // "미처버"까지 줄이면 "미처 버리지 못한 물건들"에 걸린다 — 상실감 맥락이라
+  // 격분으로 보내면 안 된다. 그래서 오타 쪽 어간은 좁게 잡았다.
+  for (const input of ["미처 버리지 못한 물건들", "뒤돌아 버렸다", "집에 돌아 버스를 탔다"]) {
+    const outcome = classify(input, taxonomy);
+    const id = outcome.kind === RESULT.OK ? outcome.subcategory.id : null;
+    assert.notEqual(id, "anger.rage", `"${input}"가 격분으로 분류됐다`);
+  }
+});
