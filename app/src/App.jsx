@@ -174,16 +174,12 @@ export default function App() {
   const submitText = () => void run(classify(text, taxonomy));
 
   /**
-   * 처음 화면으로 되돌린다.
+   * 입력 화면으로 되돌리되 어느 모드로 갈지는 호출부가 정한다.
    *
-   * 기본은 텍스트 입력이다. "갑갑해"처럼 대분류 폴백으로 선택 UI에 들어온 뒤
-   * 다시 적기를 누르면, 방금 고르던 목록이 아니라 처음 적던 자리로 가야 한다 —
-   * "다시 적기"가 약속하는 것이 그것이다.
-   *
-   * nextMode를 받는 이유: 무매칭 화면의 "골라서 찾기"는 선택 UI로 가야 한다.
-   * 호출부에서 setMode를 따로 부르면 여기의 setMode가 덮어써 버린다.
+   * 직접 핸들러로 넘기지 않는다 (아래 reset의 경고 참조).
+   * 지금 쓰는 곳은 무매칭 화면의 "골라서 찾기" 하나뿐이다 — 그쪽은 선택 UI로 가야 한다.
    */
-  const reset = (nextMode = "text") => {
+  const resetTo = (nextMode) => {
     setMode(nextMode);
     setPhase("input");
     setText("");
@@ -191,6 +187,21 @@ export default function App() {
     setResult(null);
     setPlaceholder(pickMessage("placeholder", taxonomy.ui.placeholders));
   };
+
+  /**
+   * 처음 화면으로 되돌린다 — 항상 텍스트 입력이다.
+   *
+   * "갑갑해"처럼 대분류 폴백으로 선택 UI에 들어온 뒤 다시 적기를 누르면,
+   * 방금 고르던 목록이 아니라 처음 적던 자리로 가야 한다.
+   * 하단 "다시 적어보기"와 플로팅 버튼이 모두 이 함수를 쓴다.
+   *
+   * ⚠ 인자를 받지 않는다. onClick={reset}처럼 핸들러로 직접 넘기면 React가
+   *   클릭 이벤트를 첫 인자로 준다. 예전에 reset(nextMode = "text")로 두었더니
+   *   기본값이 적용되지 않고(이벤트는 undefined가 아니다) setMode(이벤트)가 실행돼
+   *   mode가 문자열이 아니게 됐고, 그 결과 선택 UI가 계속 렌더됐다.
+   *   모드를 지정해야 하는 곳은 resetTo를 화살표로 감싸 쓴다.
+   */
+  const reset = () => resetTo("text");
 
   const wrap = useMemo(
     () => ({
@@ -405,7 +416,7 @@ export default function App() {
             title="제가 잘 못 알아들었어요"
             sub="아래에서 가까운 마음을 골라주실래요?"
             back="골라서 찾기"
-            onBack={() => reset("select")}
+            onBack={() => resetTo("select")}
           />
         )}
 

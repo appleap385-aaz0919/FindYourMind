@@ -347,12 +347,58 @@ test("recordVisit이 주는 값으로 회차가 계산된다", () => {
 
 // --- 다시 적기는 항상 텍스트 입력으로 돌아간다 ---------------------------------
 
-test("reset의 기본 모드는 text, 인자로 select도 지정할 수 있다", () => {
-  // App.jsx reset(nextMode = "text")과 같은 규칙.
-  // 선택 UI로 들어온 뒤 다시 적기를 눌러도 처음 적던 자리로 가야 한다.
-  const reset = (nextMode = "text") => nextMode;
-  assert.equal(reset(), "text", "기본값이 text가 아니다");
-  assert.equal(reset("select"), "select", "무매칭 → 골라서 찾기 경로가 깨졌다");
+test("핸들러로 넘기는 reset은 인자를 받지 않는다", () => {
+  // 실제로 났던 버그: reset(nextMode = "text")를 onClick={reset}로 넘겼더니
+  // React가 클릭 이벤트를 첫 인자로 줬다. 기본값은 undefined일 때만 적용되므로
+  // setMode(이벤트)가 실행됐고, mode가 문자열이 아니어서 선택 UI가 계속 렌더됐다.
+  const src = readFileSync(join(here, "..", "src", "App.jsx"), "utf8");
+
+  const signature = /const reset = \(([^)]*)\) =>/.exec(src);
+  assert.ok(signature, "reset 정의를 찾지 못했다");
+  assert.equal(
+    signature[1].trim(),
+    "",
+    `reset이 인자를 받는다(${signature[1]}) — 핸들러로 넘기면 이벤트가 들어온다`,
+  );
+
+  // 기본값이 이벤트를 막지 못한다는 사실 자체를 고정한다
+  const withDefault = (nextMode = "text") => nextMode;
+  assert.notEqual(withDefault({ type: "click" }), "text");
+});
+
+test("다시 적기 경로가 모두 텍스트 입력으로 간다", () => {
+  const src = readFileSync(join(here, "..", "src", "App.jsx"), "utf8");
+
+  // reset은 언제나 text
+  assert.ok(
+    /const reset = \(\) => resetTo\("text"\);/.test(src),
+    "reset이 resetTo(\"text\")를 부르지 않는다",
+  );
+
+  // resetTo는 mode와 selectedCategory를 함께 되돌린다
+  const body = src.slice(src.indexOf("const resetTo = ("), src.indexOf("const reset = ()"));
+  for (const call of ["setMode(nextMode)", "setSelectedCategory(null)", 'setPhase("input")']) {
+    assert.ok(body.includes(call), `resetTo에 ${call}가 없다`);
+  }
+
+  // 하단 "다시 적어보기"(Closing)와 플로팅 버튼이 같은 reset을 쓴다
+  const closingHandlers = [...src.matchAll(/<Closing[^>]*onBack=\{([^}]*)\}/g)].map(
+    (m) => m[1].trim(),
+  );
+  assert.ok(closingHandlers.length >= 2, "Closing 호출부를 찾지 못했다");
+  for (const handler of closingHandlers) {
+    assert.equal(handler, "reset", `Closing onBack이 reset이 아니다: ${handler}`);
+  }
+  const floating = /<FloatingRestart[^>]*onClick=\{([^}]*)\}/.exec(src);
+  assert.ok(floating, "FloatingRestart 호출부를 찾지 못했다");
+  assert.equal(floating[1].trim(), "reset", "플로팅 버튼이 reset을 쓰지 않는다");
+
+  // 모드를 지정하는 곳은 화살표로 감싼다 — 이벤트가 인자로 들어가지 않게
+  assert.ok(
+    src.includes('onBack={() => resetTo("select")}'),
+    "무매칭 → 골라서 찾기 경로가 깨졌다",
+  );
+  assert.ok(!/onBack=\{resetTo\}|onClick=\{resetTo\}/.test(src), "resetTo를 핸들러로 직접 넘긴다");
 });
 
 // --- 화면 전환 시 스크롤 최상단 -------------------------------------------------
