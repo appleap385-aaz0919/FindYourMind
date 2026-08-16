@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- FindYourMind 앱 아이콘 — scripts/gen_icons.py가 PNG와 함께 생성한다.
+       색은 app/src/theme.js와 같다. 글자·도형 없이 배경 + 호흡하는 빛뿐이다. -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="0%" r="115%">
+      <stop offset="0%" stop-color="#221A28" />
+      <stop offset="45%" stop-color="#141E24" />
+      <stop offset="100%" stop-color="#0B1216" />
+    </radialGradient>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7FB3A3" stop-opacity="0.780" />
+      <stop offset="15%" stop-color="#7FB3A3" stop-opacity="0.715" />
+      <stop offset="30%" stop-color="#7FB3A3" stop-opacity="0.551" />
+      <stop offset="45%" stop-color="#7FB3A3" stop-opacity="0.357" />
+      <stop offset="60%" stop-color="#7FB3A3" stop-opacity="0.194" />
+      <stop offset="80%" stop-color="#7FB3A3" stop-opacity="0.066" />
+      <stop offset="100%" stop-color="#7FB3A3" stop-opacity="0.016" />
+    </radialGradient>
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A4C8BC" stop-opacity="1.000" />
+      <stop offset="15%" stop-color="#A4C8BC" stop-opacity="0.707" />
+      <stop offset="30%" stop-color="#A4C8BC" stop-opacity="0.249" />
+      <stop offset="45%" stop-color="#A4C8BC" stop-opacity="0.044" />
+      <stop offset="60%" stop-color="#A4C8BC" stop-opacity="0.004" />
+      <stop offset="80%" stop-color="#A4C8BC" stop-opacity="0.000" />
+      <stop offset="100%" stop-color="#A4C8BC" stop-opacity="0.000" />
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)" />
+  <rect width="512" height="512" fill="url(#halo)" />
+  <rect width="512" height="512" fill="url(#core)" />
+</svg>
