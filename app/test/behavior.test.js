@@ -5,7 +5,7 @@
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -431,4 +431,27 @@ test("스크롤 리셋이 전환 전체에 걸려 있다", () => {
     );
   }
   assert.ok(!code.includes("smooth"), "전환에는 smooth를 쓰지 않기로 했다");
+});
+
+// --- 테스트 파일이 조용히 빠지지 않게 -------------------------------------------
+
+test("test/의 모든 *.test.js가 npm test 목록에 있다", () => {
+  // package.json의 test 스크립트는 glob이 아니라 파일을 하나씩 적는다.
+  //   node --test에 glob을 넘기면 Node 버전에 따라 동작이 갈린다. CI(Node 20)에서
+  //   앱 배포가 계속 실패한 원인이 여기였다 — 로컬(Node 24)에서는 통과했다.
+  //   버전 가정에 기대지 않으려고 명시 목록으로 바꿨고, 대신 새 테스트 파일을
+  //   목록에 넣는 것을 잊으면 조용히 안 돌게 되므로 여기서 막는다.
+  const pkg = JSON.parse(readFileSync(join(here, "..", "package.json"), "utf8"));
+  const script = pkg.scripts.test;
+
+  assert.ok(!script.includes("*"), `test 스크립트에 glob이 있다: ${script}`);
+
+  const files = readdirSync(here).filter((f) => f.endsWith(".test.js"));
+  assert.ok(files.length > 0, "테스트 파일을 찾지 못했다");
+  for (const file of files) {
+    assert.ok(
+      script.includes(`test/${file}`),
+      `${file}이 npm test 목록에 없다 — package.json scripts.test에 추가하세요`,
+    );
+  }
 });

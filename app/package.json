@@ -11,7 +11,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "pretest": "npm run gen:taxonomy",
-    "test": "node --test \"test/**/*.test.js\""
+    "test": "node --test test/behavior.test.js test/normalize.parity.test.js"
   },
   "dependencies": {
     "idb": "^8.0.0",
