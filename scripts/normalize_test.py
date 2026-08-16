@@ -210,6 +210,68 @@ def main() -> int:
         if not ok:
             failures.append(text)
 
+    # --- 8) 처지·쳐지·눅눅·터질 (2026-08-16 추가분) --------------------------
+    #
+    # 셋 다 "어간을 어디까지 줄일 것인가"가 결과를 가른 사례다.
+    #
+    #   처지 : 처지(處地)가 일상어라 2자로 줄이면 "내 처지가", "같은 처지라"가
+    #          전부 걸린다(실측 오탐 11건). 활용형을 하나씩 적는 쪽을 택했다.
+    #   눅눅 : 본래 용법이 물리적 습기라 주어를 고정하지 않으면 과자·빨래가 걸린다.
+    #   터질 : **넓히는 것이 오히려 위험했던 사례다.** 이 사전은 매칭 수가 같으면
+    #          키워드 길이 합으로 우선순위를 정하므로, "터질것같"(5자)을 넣으면
+    #          기존의 올바른 짧은 키워드(웃음이·눈물이·속이터, 각 3자)를 전부
+    #          이겨버린다. 2자로 두어야 그것들에 져서 제자리로 간다.
+    #          아래 세 줄이 그 관계를 고정한다 — 어간을 늘리면 여기서 깨진다.
+    print("\n처지·눅눅·터질 (어간 폭)")
+    print("-" * 76)
+    for text, expected in [
+        # 목표 — 제보된 미분류 입력
+        ("기분이 처진다", "sadness.sorrow"),
+        ("기분이 쳐진다", "sadness.sorrow"),
+        ("기분이 처져", "sadness.sorrow"),
+        ("기분이 쳐져", "sadness.sorrow"),
+        ("기분이 처지네", "sadness.sorrow"),
+        ("기분이 눅눅해", "sadness.sorrow"),
+        ("마음이 눅눅해", "sadness.sorrow"),
+        ("눅눅한 기분이야", "sadness.sorrow"),
+        ("터질거 같아", "frustration.suppressed"),
+        ("터질 것 같아", "frustration.suppressed"),
+        # "터질"이 기존 키워드를 이기면 안 된다 (길이 우선 규칙에 기대는 지점)
+        ("웃음이 터질 것 같아", "joy.delight"),
+        ("눈물이 터질 것 같아", "sadness.sorrow"),
+        ("속이 터질 것 같아", "frustration.suppressed"),
+        # "터질" 때문에 생긴 충돌을 막는 가드
+        ("빵 터질 것 같아", "joy.delight"),
+        ("대박 터질 것 같아", "flutter.anticipation"),
+    ]:
+        cid, hits = classify(text)
+        ok = cid == expected
+        print(f"{'   ' if ok else 'X  '}{text:<22} → {cid:<24} (기대 {expected})  {hits[:2]}")
+        if not ok:
+            failures.append(text)
+
+    # 처지/쳐지/눅눅을 2자로 줄이면 걸리는 일상 표현들.
+    # 여기가 깨지면 어간이 넓어진 것이다 — 줄이지 말고 활용형을 늘려야 한다.
+    print("\n어간 오탐 방지 (처지·쳐지·눅눅)")
+    print("-" * 76)
+    for text in [
+        "내 처지가 딱해",
+        "그 사람 처지도 이해돼",
+        "처지를 바꿔서 생각해봐",
+        "같은 처지라 그런지",
+        "성적이 처지는 편이야",
+        "관계가 고쳐지지 않아",
+        "부딪쳐지는 일이 많아",
+        "과자가 눅눅해졌어",
+        "빨래가 눅눅해",
+        "장마라 집이 눅눅해",
+    ]:
+        cid, hits = classify(text)
+        ok = cid is None
+        print(f"{'   ' if ok else 'X  '}{text:<24} → {cid}  {hits[:2]}")
+        if not ok:
+            failures.append(text)
+
     print("\n" + "=" * 76)
     if failures:
         print(f"실패 {len(failures)}건: {', '.join(failures)}")

@@ -97,6 +97,86 @@ test("위기 노출 개수는 4~6개 사이다 (여러 번 돌려도)", () => {
   }
 });
 
+// --- 위기 화면 채널 중복 ------------------------------------------------------
+// 풀은 배치가 채널당 3건으로 분산시켜 두지만(현재 시드는 10채널 × 2건),
+// 화면에는 4~6개만 나오므로 단순 셔플이면 중복이 잦다.
+// 이전 구현(shuffle().slice())에서 평균 48% — 두 번에 한 번꼴이었다.
+
+const crisisPool = (channels) => ({
+  crisis: {
+    updated_at: "2026-08-16T00:00:00Z",
+    videos: channels.map((channel, i) => ({
+      videoId: `v${i}`,
+      title: `${channel} 영상`,
+      channel,
+      publishedAt: "2026-08-16T00:00:00Z",
+      duration: "PT10M",
+    })),
+  },
+  categories: [],
+});
+
+test("위기 화면에 같은 채널이 두 번 나오지 않는다", () => {
+  // 1000회면 이전 구현은 사실상 확실히 걸린다 (회당 중복 확률 약 48%).
+  for (let i = 0; i < 1000; i += 1) {
+    const shown = getCrisisVideos(videos);
+    const channels = shown.map((v) => v.channel);
+    assert.equal(
+      new Set(channels).size,
+      channels.length,
+      `중복 채널: ${channels.join(", ")}`,
+    );
+  }
+});
+
+test("채널이 노출 개수보다 적으면 개수를 지킨다 (중복을 허용한다)", () => {
+  // 배치에서 상한이 해제된 날처럼 풀의 채널이 얕은 경우.
+  // 화면이 비는 것보다 중복이 낫다 — 노출 개수 4~6개가 우선이다.
+  const data = crisisPool(["A", "A", "A", "A", "B", "B", "B", "B"]);
+  for (let i = 0; i < 200; i += 1) {
+    const shown = getCrisisVideos(data);
+    assert.ok(shown.length >= 4 && shown.length <= 6, `${shown.length}개 노출됨`);
+    assert.equal(new Set(shown.map((v) => v.videoId)).size, shown.length, "같은 영상 중복");
+  }
+});
+
+test("채널이 충분하면 노출 개수와 채널 수가 같다", () => {
+  const data = crisisPool(["A", "B", "C", "D", "E", "F", "G", "H"]);
+  for (let i = 0; i < 200; i += 1) {
+    const shown = getCrisisVideos(data);
+    assert.equal(new Set(shown.map((v) => v.channel)).size, shown.length);
+  }
+});
+
+test("채널명이 없어도 서로 다른 영상으로 취급한다", () => {
+  // channel이 비어 있다고 한 채널로 묶여 목록이 줄어들면 안 된다.
+  const data = {
+    crisis: {
+      updated_at: "2026-08-16T00:00:00Z",
+      videos: Array.from({ length: 8 }, (_, i) => ({
+        videoId: `n${i}`,
+        title: `제목 ${i}`,
+        channel: "",
+        publishedAt: "2026-08-16T00:00:00Z",
+        duration: "PT10M",
+      })),
+    },
+    categories: [],
+  };
+  const shown = getCrisisVideos(data);
+  assert.ok(shown.length >= 4 && shown.length <= 6, `${shown.length}개 노출됨`);
+  assert.equal(new Set(shown.map((v) => v.videoId)).size, shown.length);
+});
+
+test("풀 전체를 소진해도 없는 영상을 만들어내지 않는다", () => {
+  const data = crisisPool(["A", "B", "C", "D"]); // 4건뿐 — 최대 노출(6)보다 적다
+  for (let i = 0; i < 100; i += 1) {
+    const shown = getCrisisVideos(data);
+    assert.equal(shown.length, 4);
+    assert.equal(new Set(shown.map((v) => v.videoId)).size, 4);
+  }
+});
+
 // --- 로딩 지연 ----------------------------------------------------------------
 
 test("min_duration_ms는 taxonomy에서 읽으며 1000이다", () => {
