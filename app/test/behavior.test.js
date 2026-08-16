@@ -23,7 +23,7 @@ const videos = load("seed-videos.json");
 
 // --- 위기 검사는 감정 분류보다 항상 먼저 -------------------------------------
 
-test("위기 키워드 18개가 모두 crisis로 분류된다", () => {
+test("위기 키워드가 모두 crisis로 분류된다 (개수는 taxonomy에서 읽는다)", () => {
   for (const keyword of taxonomy.safety.crisis_keywords) {
     assert.equal(classify(keyword, taxonomy).kind, RESULT.CRISIS, `키워드: ${keyword}`);
   }

@@ -354,6 +354,72 @@ def main() -> int:
     if thin:
         failures.append("세분류 키워드 부족")
 
+    # --- 10) 자책 / 부담감 경계선 (2026-08-16) -------------------------------
+    #
+    # taxonomy.yaml safety의 [경계선 원칙]을 코드로 고정한다.
+    #   자책 = 결과에 대한 책임 귀속  → 위기 아님. 미분류로 두고 선택 UI로 보낸다.
+    #   부담감 = 자기 존재에 대한 판단 → 위기.
+    # 이 두 줄이 흔들리면 여기서 걸린다. 어느 방향으로 흔들려도 위험하다 —
+    # 자책을 통째로 위기로 넣으면 상담 안내가 남발되어 진짜 위기에서 무게가 떨어지고,
+    # 부담감을 "그냥 자책"이라며 빼면 자살 위험 지표를 놓친다.
+    print("\n부담감 표현은 위기다 (자기 존재에 대한 판단)")
+    print("-" * 76)
+    for text in [
+        "나만 없으면 다 잘될 텐데",
+        "내가 없어야 다들 편할 거야",
+        "나 같은 건 없는 게 나아",
+        "내가 사라지는 게 낫겠어",
+        "내가 사라져야 끝날 것 같아",
+        "살 자격이 없어",
+        "나는 짐만 되는 존재야",
+        "내가 태어나지 말았어야 했어",
+    ]:
+        cid, hits = classify(text)
+        ok = cid == "CRISIS"
+        print(f"{'   ' if ok else 'X  '}{text:<28} → {cid}  {hits[:1]}")
+        if not ok:
+            failures.append(text)
+
+    print("\n자책 자체는 위기가 아니다 (결과에 대한 책임 귀속)")
+    print("-" * 76)
+    for text in [
+        "내가 다 망쳤어",
+        "나 때문이야 미안해",
+        "내 잘못이야",
+        "자책하게 돼",
+        "나 때문에 회의가 늦어졌어",
+        "괜히 나 때문에 분위기 어색해졌어",
+        "나 때문에 다 망했어",  # 결과를 탓한다 — 존재를 탓하는 게 아니다
+    ]:
+        cid, hits = classify(text)
+        ok = cid != "CRISIS"
+        print(f"{'   ' if ok else 'X  '}{text:<28} → {cid}  {hits[:1]}")
+        if not ok:
+            failures.append(text)
+
+    # 어간을 좁혀 제거한 오탐. 다시 넓히면 여기서 걸린다.
+    print("\n부담감 어간 오탐 방지")
+    print("-" * 76)
+    for text in ["살 자격증 땄어", "내가 사라지는 마술 배웠어", "짐만 늘었네", "이삿짐만 남았어"]:
+        cid, hits = classify(text)
+        ok = cid != "CRISIS"
+        print(f"{'   ' if ok else 'X  '}{text:<28} → {cid}  {hits[:1]}")
+        if not ok:
+            failures.append(text)
+
+    # 감수하기로 한 오탐. 고쳐진 게 아니라 **의도적으로 남긴 것**이라 여기 적어둔다.
+    # "나만없으면"은 같은 표현이 정반대 뜻이 되는 양면적 어구라 키워드로 못 가른다.
+    # 상담 안내를 불필요하게 보여주는 방향이라 감수한다.
+    # 어느 날 이게 위기로 안 잡히면 "나만없으면"이 빠진 것이니 그때 확인한다.
+    print("\n감수한 오탐 (양면적 어구 — 위기로 잡히는 게 현재 의도다)")
+    print("-" * 76)
+    for text in ["나만 없으면 팀이 안 돌아가", "나만 없으면 다들 심심할걸"]:
+        cid, _ = classify(text)
+        ok = cid == "CRISIS"
+        print(f"{'   ' if ok else 'X  '}{text:<28} → {cid}  (감수 중)")
+        if not ok:
+            failures.append(f"{text} — 감수 대상이 아니게 됐다. 키워드 확인 필요")
+
     print("\n" + "=" * 76)
     if failures:
         print(f"실패 {len(failures)}건: {', '.join(failures)}")
