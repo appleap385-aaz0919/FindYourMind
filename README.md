@@ -55,7 +55,7 @@
 | 경로 | 역할 |
 |---|---|
 | [`taxonomy.yaml`](taxonomy.yaml) | 감정 체계·검색어·문구·blocklist·위기 정책의 **단일 소스**. 여기 없는 정책은 코드 어디에도 없어야 합니다. |
-| [`channel_allowlist.yaml`](channel_allowlist.yaml) | 위기 카테고리 채널 화이트리스트. 변경은 PR로만 합니다. |
+| [`channel_allowlist.yaml`](channel_allowlist.yaml) | 위기 카테고리 채널 화이트리스트. 변경 시 이유를 `note`와 커밋 메시지에 남깁니다. |
 | `scripts/build_videos.py` | 일일 배치. `videos.json`·`version.json`·`build_report.json` 생성 |
 | `scripts/check_channels.py` | 화이트리스트 채널 정기 점검 (삭제·휴면·성향 변화 감지) |
 | `scripts/suggest_channels.py` | 화이트리스트 후보 수집 — **일회성 도구**, 배치에 넣지 않습니다 |
@@ -107,4 +107,7 @@ python scripts/build_videos.py --previous dist/videos.json
 
 ## 기여
 
-`channel_allowlist.yaml` 변경은 반드시 PR로 합니다. 누가 왜 바꿨는지 이력이 남아야 합니다.
+`channel_allowlist.yaml`을 바꿀 때는 **누가 왜 바꿨는지가 남아야 합니다.**
+채널마다 `note`에 검토 근거를, 제외한 채널은 파일 주석에 사유를, 커밋 메시지에는
+채널명과 검토 근거를 적습니다. 담당자가 2명 이상이 되면 PR 필수로 전환합니다
+(PLAN.md Phase 4.5 "변경 추적").
