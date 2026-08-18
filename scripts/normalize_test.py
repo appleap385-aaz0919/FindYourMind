@@ -549,6 +549,56 @@ def main() -> int:
             if not ok:
                 failures.append(f"{word} — 대분류 {category['id']}에 도달하지 못했다")
 
+    # --- 11.7) 무망감·포기 (2026-08-18) --------------------------------------
+    print("\n무망감·포기는 위기다")
+    print("-" * 76)
+    for text in [
+        "자포자기 상태야", "자포자기했어", "자포자기하는 심정이야",
+        "절망밖에 안 남았어", "절망뿐이야",
+        "희망이 안 보여", "희망이 하나도 없어", "희망조차 없어",
+    ]:
+        cid, hits = classify(text)
+        ok = cid == "CRISIS"
+        print(f"{'   ' if ok else 'X  '}{text:<26} → {cid}  {hits[:1]}")
+        if not ok:
+            failures.append(text)
+
+    # ⛔ "절망"·"절망적"·"희망이없"은 상황 과장의 관용어라 넣지 않았다.
+    #   놓치는 "절망적이야"는 미분류 → 선택 UI로 간다. 안전한 실패다.
+    print("\n무망감 오탐 방지 — 상황 과장은 위기가 아니다")
+    print("-" * 76)
+    for text in ["경기가 절망적이야", "성적이 절망적이네", "이 팀 수비가 절망적이다",
+                 "날씨가 절망적이야", "교통 상황이 절망적", "이 팀은 희망이 없어"]:
+        cid, hits = classify(text)
+        ok = cid != "CRISIS"
+        print(f"{'   ' if ok else 'X  '}{text:<26} → {cid}  {hits[:1]}")
+        if not ok:
+            failures.append(text)
+
+    # --- 11.8) 어간 원칙: 자기 지향이 문법적으로 드러나야 한다 ----------------
+    #
+    # "의미가없"이 운영 중에 업무 얘기를 위기로 보내고 있었다.
+    # 목적어만 바뀌면 뜻이 완전히 달라지는 어간이라 좁혔다.
+    # 여기가 깨지면 누군가 다시 "의미가없"으로 되돌린 것이다.
+    print("\n어간 원칙 — 사는 의미 vs 일의 의미")
+    print("-" * 76)
+    for text, want_crisis in [
+        ("사는 게 의미가 없어", True),
+        ("살 의미가 없어", True),
+        ("살아갈 의미가 없어", True),
+        ("존재 의미가 없어", True),
+        ("이 회의는 의미가 없어", False),
+        ("이 기능은 의미가 없어", False),
+        ("지금 와서 사과는 의미가 없어", False),
+        ("숫자만 늘리는 건 의미가 없어", False),
+    ]:
+        cid, hits = classify(text)
+        ok = (cid == "CRISIS") == want_crisis
+        mark = "위기" if cid == "CRISIS" else "위기 아님"
+        print(f"{'   ' if ok else 'X  '}{text:<28} → {mark}  {hits[:1]}")
+        if not ok:
+            failures.append(f"{text} — 어간 원칙 위반. 의미가없을 되돌리지 말 것")
+
     # --- 12) 정상 동작 — 고치려 들지 말 것 -----------------------------------
     #
     # 아래 두 가지는 **미분류인 것이 옳다.** 버그로 보고 고치면 안 된다.
