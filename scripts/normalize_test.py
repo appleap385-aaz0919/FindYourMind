@@ -599,6 +599,51 @@ def main() -> int:
         if not ok:
             failures.append(f"{text} — 어간 원칙 위반. 의미가없을 되돌리지 말 것")
 
+    # --- 11.9) 전수 점검 후속 (2026-08-18) -----------------------------------
+    print("\n세상에없 — 자기 지향만 위기")
+    print("-" * 76)
+    for text, want in [
+        ("내가 세상에 없으면 좋겠어", True),
+        ("나는 세상에 없는 게 나아", True),
+        ("그런 완벽한 사람은 세상에 없어", False),
+        ("이런 맛집은 세상에 없어", False),
+        ("공짜는 세상에 없다", False),
+    ]:
+        cid, hits = classify(text)
+        ok = (cid == "CRISIS") == want
+        print(f"{'   ' if ok else 'X  '}{text:<30} → {cid}  {hits[:1]}")
+        if not ok:
+            failures.append(text)
+
+    # 아무도날은 외로움이지 위기가 아니다. 위기에서 빼고 sadness.lonely로 옮겼다.
+    print("\n아무도날 — 위기가 아니라 외로움")
+    print("-" * 76)
+    for text in ["아무도 날 안 도와줘", "아무도 날 기다리지 않아",
+                 "아무도 날 찾지 않아", "아무도 날 부르지 않네"]:
+        cid, hits = classify(text)
+        ok = cid == "sadness.lonely"
+        print(f"{'   ' if ok else 'X  '}{text:<30} → {cid}  {hits[:1]}")
+        if not ok:
+            failures.append(f"{text} — 외로움으로 가야 한다")
+
+    # ⚠ 감수 중인 오탐. 고쳐진 게 아니라 좁힐 방법을 못 찾아 남긴 것이다.
+    #   업무 문맥이 위기로 가는데, 좁히면 "다 끝내고 싶어" 같은 자기 지향 표현을
+    #   놓친다. 재검토 조건은 taxonomy.yaml [전수 점검] 주석 참조.
+    print("\n감수 중 — 끝내고싶 / 살기싫 계열 (좁히면 본체를 잃는다)")
+    print("-" * 76)
+    for text in ["이 일을 빨리 끝내고 싶어", "이 동네 살기 싫어"]:
+        cid, _ = classify(text)
+        ok = cid == "CRISIS"
+        print(f"{'   ' if ok else 'X  '}{text:<30} → {cid}  (감수 중)")
+        if not ok:
+            failures.append(f"{text} — 감수 대상이 아니게 됐다. 어간이 좁혀졌는지 확인")
+    for text in ["살기 싫어", "진짜 살기 싫어", "다 끝내고 싶어"]:
+        cid, _ = classify(text)
+        ok = cid == "CRISIS"
+        print(f"{'   ' if ok else 'X  '}{text:<30} → {cid}  (이건 반드시 위기)")
+        if not ok:
+            failures.append(f"{text} — 위기를 놓쳤다")
+
     # --- 12) 정상 동작 — 고치려 들지 말 것 -----------------------------------
     #
     # 아래 두 가지는 **미분류인 것이 옳다.** 버그로 보고 고치면 안 된다.
