@@ -464,6 +464,49 @@ def main() -> int:
         if not ok:
             failures.append(text)
 
+    # --- 11.5) 비하성 관용어·부정 평가 (2026-08-18) --------------------------
+    #
+    # "거지같아"가 미분류였다. 어간을 어디까지 줄이느냐가 또 결과를 가른 사례다.
+    print("\n비하성 관용어·부정 평가")
+    print("-" * 76)
+    for text, expected in [
+        ("거지같아", "anger.irritation"),
+        ("거지같은 하루였어", "anger.irritation"),
+        ("개떡같네", "anger.irritation"),
+        ("엿같아 진짜", "anger.irritation"),
+        ("별로네", "anger.irritation"),
+        ("별로더라", "anger.irritation"),
+        ("별로였어", "anger.irritation"),
+        ("최악이야", "anger.irritation"),
+        ("오늘 최악이다", "anger.irritation"),
+    ]:
+        cid, hits = classify(text)
+        ok = cid == expected
+        print(f"{'   ' if ok else 'X  '}{text:<24} → {cid}  {hits[:2]}")
+        if not ok:
+            failures.append(text)
+
+    # 어간을 줄이면 걸리는 것들. taxonomy.yaml의 ⛔ 표시와 같은 목록이다.
+    print("\n비하성 관용어 어간 오탐 방지")
+    print("-" * 76)
+    for text in [
+        "거지 소굴 같은 방",      # 거지  — 비하가 아니다
+        "거지꼴로 나갔어",
+        "엿 사 먹었어",           # 엿    — 먹는 엿
+        "엿가락처럼 늘어졌어",
+        "개떡 먹었어",
+        "별로 야근이 많아",       # 별로야 — 정규화가 공백을 지운다
+        "별로 야한 장면 없어",
+        "별로 야식 안 먹어",
+        "최악이 아니야",          # 최악이 — 부정·해소 표현
+        "최악이 지나갔어",
+    ]:
+        cid, hits = classify(text)
+        ok = cid != "anger.irritation"
+        print(f"{'   ' if ok else 'X  '}{text:<24} → {cid}  {hits[:2]}")
+        if not ok:
+            failures.append(text)
+
     # --- 12) 정상 동작 — 고치려 들지 말 것 -----------------------------------
     #
     # 아래 두 가지는 **미분류인 것이 옳다.** 버그로 보고 고치면 안 된다.
