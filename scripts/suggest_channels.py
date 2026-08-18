@@ -509,10 +509,24 @@ def run(args: argparse.Namespace, budget_box: dict[str, Any] | None = None) -> i
         reviewer=args.reviewer,
         dry_run=args.dry_run,
     )
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(markdown, encoding="utf-8")
+    # 드라이런이 실제 시트를 덮지 않게 한다.
+    #
+    # 2026-08-18에 실제로 그랬다 — 661 units로 만든 검토 시트를 배선 검증용
+    # 드라이런이 합성 데이터로 교체했다. 채널 ID는 채널별 상세 섹션에만 있어서
+    # 요약 표를 따로 읽어뒀어도 화이트리스트에 넣을 수 없었고, 다시 661을 써야 했다.
+    #
+    # 드라이런은 "API를 안 부른다"는 뜻이지 "아무것도 안 건드린다"는 뜻이 아니었다.
+    # 산출물 경로가 같으면 공짜 실행이 비싼 결과를 지운다.
+    out = args.out
+    if args.dry_run and out.exists() and "드라이런" not in out.read_text(encoding="utf-8")[:400]:
+        out = out.with_name(f"{out.stem}.dry-run{out.suffix}")
+        logger.warning(
+            "실제 실행 결과가 이미 있다 — 드라이런은 %s에 쓴다 (덮어쓰지 않는다)", out.name
+        )
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(markdown, encoding="utf-8")
 
-    logger.info("%s 기록 — 소모 %d units", args.out, budget.spent)
+    logger.info("%s 기록 — 소모 %d units", out, budget.spent)
     logger.info("사람이 읽고 판단할 차례다. 붙여넣기용 YAML 블록은 문서 맨 아래에 있다.")
     return EXIT_OK
 

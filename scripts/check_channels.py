@@ -287,12 +287,21 @@ def run(args: argparse.Namespace, budget_box: dict[str, Any] | None = None) -> i
         "alerts": collector.to_json(),
     }
 
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    tmp = args.out.with_suffix(args.out.suffix + ".tmp")
+    # 드라이런은 파일 이름을 갈라 실제 산출물을 덮지 않는다.
+    # DryRunClient는 해시 끝자리로 "삭제된 채널"을 가장하므로 산출물 내용이
+    # 실제 채널 상태와 무관하다. 그걸 channel_health.json 자리에 두면
+    # 사람이 읽고 멀쩡한 채널을 지우는 사고가 난다.
+    # (2026-08-18 suggest_channels에서 드라이런이 실제 결과를 덮은 뒤 전 스크립트 점검)
+    out = args.out
+    if args.dry_run:
+        out = out.with_name(f"{out.stem}.dry-run{out.suffix}")
+        logger.warning("드라이런 — %s에 쓴다 (실제 산출물은 건드리지 않는다)", out.name)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    tmp = out.with_suffix(out.suffix + ".tmp")
     tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    os.replace(tmp, args.out)
+    os.replace(tmp, out)
 
-    logger.info("%s 기록 — 경보 %d건, 소모 %d units", args.out, len(collector), budget.spent)
+    logger.info("%s 기록 — 경보 %d건, 소모 %d units", out, len(collector), budget.spent)
     for alert in collector.alerts:
         logger.warning("  [%s] %s", alert.severity, alert.title)
     return EXIT_OK

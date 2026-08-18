@@ -34,9 +34,9 @@
 #   화이트리스트는 "믿을 만한 출처"일 뿐 필터 면제권이 아니다.
 #
 # ---------------------------------------------------------------------
-# 현재 등록: 10개 (목표 15~25개)
-#   15개 미만이라 배치가 allowlist_undersized 경보를 매 실행마다 생성한다.
-#   보충 전까지는 정상 동작이며, 위기 카테고리는 전용 검색 fallback으로 채워진다.
+# 현재 등록: 16개 (목표 15~25개)
+#   2026-08-18에 10개 → 16개로 보충해 allowlist_undersized 경보가 해소됐다.
+#   다시 15개 미만으로 줄면 배치가 경고 Issue를 매 실행마다 생성한다.
 #   후보는 `python scripts/suggest_channels.py`로 다시 뽑을 수 있다.
 #
 # 2026-08-12 최초 등록 — channel_candidates.md 상위 30개 중 사람이 10개를 선별.
@@ -136,4 +136,68 @@ channels:
     reviewed_by: jaehyuk.myung
     note: >
       검토 승인 (2026-08-12, jaehyuk.myung). 잔잔한 음악·사운드 위주 채널.
+      최근 영상 blocklist 통과율 100%, 3분 미만 비율 낮음.
+
+# 2026-08-18 보충 — suggest_channels.py --top 50 결과에서 사람이 6개를 선별.
+#   6개 모두 blocklist 통과율 100%, 자동 점검 통과. 10개 → 16개가 되어
+#   목표 규모(15~25)에 들어왔고 allowlist_undersized 경보가 해소된다.
+#
+#   ⛔ 같은 후보 목록에서 검토하고 **제외한** 채널 — 다시 올라와도 같은 검토를 반복하지 말 것
+#     에일린 mind yoga            요가는 따라 하기 부담. 위기 상태에 부적합
+#     김주환의 내면소통             강연형. 위기 상태에는 자기계발 톤이 부담
+#     정목스님의 유나방송            종교 채널. 선정 기준의 종교 권유성 콘텐츠 금지
+#     힐링트리뮤직Healing Tree Music  기존 등록 채널과 이름 유사. 혼동 방지
+
+  - channel_id: UCbWzWaGembaIceXDiLWl9ew
+    channel_name: 낮잠 NZ Ambience
+    added_at: "2026-08-18"
+    last_reviewed_at: "2026-08-18"
+    reviewed_by: jaehyuk.myung
+    note: >
+      검토 승인 (2026-08-18, jaehyuk.myung). 잔잔한 사운드·음악 위주 채널.
+      최근 영상 blocklist 통과율 100%, 3분 미만 비율 낮음.
+
+  - channel_id: UCdbicYdErYTR-J4ZTVz6kUg
+    channel_name: "Yunchan Lim - 수면 음악 프로듀서"
+    added_at: "2026-08-18"
+    last_reviewed_at: "2026-08-18"
+    reviewed_by: jaehyuk.myung
+    note: >
+      검토 승인 (2026-08-18, jaehyuk.myung). 잔잔한 사운드·음악 위주 채널.
+      최근 영상 blocklist 통과율 100%, 3분 미만 비율 낮음.
+
+  - channel_id: UC_Xjg_BpywMUOUZvN67Ua6w
+    channel_name: smilemedia
+    added_at: "2026-08-18"
+    last_reviewed_at: "2026-08-18"
+    reviewed_by: jaehyuk.myung
+    note: >
+      검토 승인 (2026-08-18, jaehyuk.myung). 화이트 노이즈 전문 채널
+      (천둥·빗소리·귀뚜라미). 위기 카테고리에 적합한 무자극 유형.
+
+  - channel_id: UCr0Dgam-vK5BAGGYOv2IDpA
+    channel_name: Healing Now
+    added_at: "2026-08-18"
+    last_reviewed_at: "2026-08-18"
+    reviewed_by: jaehyuk.myung
+    note: >
+      검토 승인 (2026-08-18, jaehyuk.myung). 잔잔한 사운드·음악 위주 채널.
+      최근 영상 blocklist 통과율 100%, 3분 미만 비율 낮음.
+
+  - channel_id: UC9aQvMf8RdH3wyLiqnFnISw
+    channel_name: 카메랄라 힐링 빗소리
+    added_at: "2026-08-18"
+    last_reviewed_at: "2026-08-18"
+    reviewed_by: jaehyuk.myung
+    note: >
+      검토 승인 (2026-08-18, jaehyuk.myung). 잔잔한 사운드·음악 위주 채널.
+      최근 영상 blocklist 통과율 100%, 3분 미만 비율 낮음.
+
+  - channel_id: UCa1a7JFwJfDs-1nbc1YWZDw
+    channel_name: mini Music 미니뮤직
+    added_at: "2026-08-18"
+    last_reviewed_at: "2026-08-18"
+    reviewed_by: jaehyuk.myung
+    note: >
+      검토 승인 (2026-08-18, jaehyuk.myung). 잔잔한 사운드·음악 위주 채널.
       최근 영상 blocklist 통과율 100%, 3분 미만 비율 낮음.

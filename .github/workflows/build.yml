@@ -264,7 +264,10 @@ jobs:
         # build_report.json은 진단용이라 아티팩트로만 보관하고 공개 URL에는 올리지 않는다.
         # *.partial.json은 --only 부분 실행 산출물이다. CI는 --only를 쓰지 않지만,
         # publish_dir 전체가 배포되므로 어떤 경로로도 섞이지 않게 여기서 한 번 더 막는다.
-        run: rm -f dist/build_report.json dist/*.partial.json
+        # *.dry-run.json은 CI에서 생길 일이 없다(--dry-run을 쓰지 않는다).
+        # 그래도 지우는 이유는 publish_dir 전체가 배포되기 때문이다 —
+        # 어떤 경로로든 합성 데이터가 섞이면 앱이 그걸 진짜로 받는다.
+        run: rm -f dist/build_report.json dist/*.partial.json dist/*.dry-run.json
 
       - name: gh-pages 배포 (data/ 하위)
         uses: peaceiris/actions-gh-pages@v4

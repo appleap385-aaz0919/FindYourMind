@@ -818,14 +818,30 @@ def write_outputs(
         )
         return
 
-    _atomic_write(out_dir / "videos.json", videos_json)
+    # 드라이런은 파일 이름을 갈라 실제 산출물을 덮지 않는다.
+    #
+    # --only(partial)는 이미 갈라져 있었지만 --dry-run은 그렇지 않아서,
+    # `--out-dir dist`로 드라이런하면 합성 데이터가 dist/videos.json과
+    # version.json을 그대로 덮었다. version.json은 앱이 "새 데이터가 있나"를
+    # 판단하는 파일이라 특히 위험하다.
+    # (2026-08-18에 suggest_channels에서 같은 함정으로 661 units짜리 결과를
+    #  드라이런이 지웠다. 그때 나머지 스크립트도 점검해 여기까지 고쳤다.)
+    #
+    # CI는 --dry-run을 쓰지 않으므로 접미사가 붙지 않는다 — 배포 경로는 그대로다.
+    suffix = ".dry-run" if dry_run else ""
+    _atomic_write(out_dir / f"videos{suffix}.json", videos_json)
     # 앱이 매일 500KB를 받지 않도록 버전만 담은 경량 파일을 따로 낸다.
     _atomic_write(
-        out_dir / "version.json",
+        out_dir / f"version{suffix}.json",
         {"version": version, "crisis_updated_at": crisis.updated_at},  # type: ignore[union-attr]
     )
-    _atomic_write(out_dir / "build_report.json", report_json)
-    logger.info("산출물 기록 완료 — %s", out_dir)
+    _atomic_write(out_dir / f"build_report{suffix}.json", report_json)
+    if dry_run:
+        logger.warning(
+            "드라이런 산출물 — %s/videos.dry-run.json (실제 파일은 건드리지 않았다)", out_dir
+        )
+    else:
+        logger.info("산출물 기록 완료 — %s", out_dir)
 
 
 def _atomic_write(path: Path, payload: Any) -> None:
