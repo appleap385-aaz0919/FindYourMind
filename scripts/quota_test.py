@@ -188,20 +188,28 @@ def main() -> int:
         print(f"{label:<44}{expected:>5}{actual:>5}  {'OK  ' if ok else 'FAIL'} {action}")
 
     failures += list(check_reserve())
+    failures += list(check_gh_lookup())
 
     print("-" * 84)
     if failures:
         print(f"{len(failures)}건 실패: {', '.join(failures)}")
         return EXIT_FAIL
-    print(f"{len(CASES)}/{len(CASES)} 통과 + 예약 로직")
+    print(f"{len(CASES)}/{len(CASES)} 통과 + 배치 몫 회계 + gh 탐색")
     return EXIT_OK
 
 
 def check_reserve():
-    """Actions 배치 예약이 언제 붙고 언제 풀리는지 고정한다.
+    """Actions 배치 몫이 언제 붙고 언제 빠지는지 고정한다.
+
+    가장 중요한 고정 (2026-08-18)
+        **probe 결과가 금액을 바꾸지 않는다.** 배치가 이미 돌았어도 그 소모는
+        로컬 로그에 없으므로 7,900은 그대로 예산에서 빠져야 한다. 예약을
+        풀면 하루 회계에서 7,900이 통째로 사라진다 — 한때 그렇게 동작했고
+        되돌렸다(근거는 lib/quota_log.py check() 주석).
+        probe는 이름(예약/계상)만 정한다.
 
     gh를 실제로 부르지 않는다 — 가짜 probe를 넣어 판정만 검사한다.
-    CI(Actions)에서는 GITHUB_ACTIONS 때문에 예약이 애초에 0이고 probe도
+    CI(Actions)에서는 GITHUB_ACTIONS 때문에 몫이 애초에 0이고 probe도
     호출되지 않으므로, 이 테스트가 네트워크나 gh 설치에 의존하지 않는다.
     """
     import json
@@ -213,9 +221,10 @@ def check_reserve():
     from lib.quota_log import ACTIONS_BATCH_RESERVE, check as check_quota
 
     print()
-    print("Actions 배치 예약 로직")
+    print("Actions 배치 몫 — 금액과 이름")
     print("-" * 84)
 
+    RESERVE = ACTIONS_BATCH_RESERVE
     saved = os.environ.pop("GITHUB_ACTIONS", None)
     try:
         with tempfile.TemporaryDirectory() as tmp:
@@ -224,32 +233,163 @@ def check_reserve():
                 json.dumps({"2026-08-17": {"spent": 661, "runs": []}}), encoding="utf-8"
             )
             day = "2026-08-17"
+            # (설명, probe, 기대 금액, 기대 이름)
             cases = [
-                ("probe 없음 — 기존 동작", None, ACTIONS_BATCH_RESERVE),
-                ("probe True — 배치 확인됨, 예약 해제", lambda d: True, 0),
-                ("probe False — 그날 배치 없음, 예약 유지", lambda d: False, ACTIONS_BATCH_RESERVE),
-                ("probe None — gh 확인 실패, 예약 유지", lambda d: None, ACTIONS_BATCH_RESERVE),
+                ("probe 없음 — 이름 미상, 금액 유지", None, RESERVE, "Actions 일일 배치 몫"),
+                ("probe True — 이미 돌았다 → 계상 (금액 그대로)",
+                 lambda d: True, RESERVE, "Actions 일일 배치 계상"),
+                ("probe False — 아직 안 돌았다 → 예약",
+                 lambda d: False, RESERVE, "Actions 일일 배치 예약"),
+                ("probe None — 확인 실패, 금액 유지",
+                 lambda d: None, RESERVE, "Actions 일일 배치 몫"),
             ]
-            for label, probe, want in cases:
-                _, reserve = check_quota(
+            for label, probe, want_units, want_label in cases:
+                _, allowance = check_quota(
                     log, 661, day=day, batch_probe=probe, ceiling=99_999
                 )
-                ok = reserve == want
-                print(f"{'   ' if ok else 'X  '}{label:<44} 예약 {reserve:>6,} (기대 {want:,})")
+                ok = allowance.units == want_units and allowance.label == want_label
+                print(f"{'   ' if ok else 'X  '}{label:<48}"
+                      f"{allowance.units:>7,}  {allowance.label}")
                 if not ok:
+                    print(f"{'':51}기대 {want_units:,}  {want_label}")
                     yield label
+
+            # 로컬 로그에 전체 배치가 있으면 그 소모는 이미 spent에 있다 → 더하지 않는다.
+            # 이것이 유일하게 금액이 0이 되는 경우다(Actions 내부·명시적 해제 제외).
+            logged = Path(tmp) / "q2.json"
+            logged.write_text(
+                json.dumps({day: {"spent": 7914, "runs": [
+                    {"script": "build_videos", "units": 7914, "only": None}
+                ]}}),
+                encoding="utf-8",
+            )
+            _, allowance = check_quota(
+                logged, 1, day=day, batch_probe=lambda d: True, ceiling=99_999
+            )
+            ok = allowance.units == 0
+            print(f"{'   ' if ok else 'X  '}"
+                  f"{'로컬에 배치 기록 있음 → 0 (이중 계산 방지)':<48}{allowance.units:>7,}")
+            if not ok:
+                yield "had_full_batch 시 0"
 
             # probe에 넘어가는 날짜가 로그 키와 같아야 한다 (PT 기준)
             seen: list[str] = []
             check_quota(log, 1, day=day, batch_probe=lambda d: seen.append(d) or True,
                         ceiling=99_999)
             ok = seen == [day]
-            print(f"{'   ' if ok else 'X  '}{'probe는 PT 날짜 키를 받는다':<44} {seen}")
+            print(f"{'   ' if ok else 'X  '}{'probe는 PT 날짜 키를 받는다':<48} {seen}")
             if not ok:
                 yield "probe 날짜 키"
+
+            # 회귀 방지의 핵심: 배치가 돌았다고 여유가 늘어나면 안 된다.
+            # 되돌리기 전에는 여기서 여유가 7,900만큼 늘어났다.
+            _, ran = check_quota(log, 0, day=day, batch_probe=lambda d: True,
+                                 ceiling=9_500)
+            _, not_ran = check_quota(log, 0, day=day, batch_probe=lambda d: False,
+                                     ceiling=9_500)
+            ok = ran.units == not_ran.units
+            print(f"{'   ' if ok else 'X  '}"
+                  f"{'배치 실행 여부가 여유를 바꾸지 않는다':<48}"
+                  f"{ran.units:>7,} == {not_ran.units:,}")
+            if not ok:
+                yield "probe가 금액을 바꿈"
     finally:
         if saved is not None:
             os.environ["GITHUB_ACTIONS"] = saved
+
+
+def check_gh_lookup():
+    """gh 실행 파일을 어떤 순서로 찾는지 고정한다.
+
+    실제 gh를 부르지 않는다 — 경로 결정만 검사하므로 gh 설치 여부와 무관하게
+    Windows·Linux 어디서든 같은 결과가 나온다.
+
+    이 테스트가 있는 이유 (2026-08-18)
+        gh가 설치돼 있고 Machine PATH에도 있는데 shutil.which가 못 찾는
+        환경이 실제로 있었다(셸이 낡은 환경을 물려받은 경우). 그러면 probe가
+        영영 None을 돌려주고 배치 몫 7,900이 계속 예약된 채로 남는다.
+        폴백 탐색이 조용히 사라지면 그 증상이 그대로 돌아온다.
+    """
+    import os
+    import shutil
+    import tempfile
+    from pathlib import Path
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from lib import actions_status
+
+    print()
+    print("gh 실행 파일 탐색 순서")
+    print("-" * 84)
+
+    saved_env = {k: os.environ.get(k) for k in ("GH_BIN", "FAKE_GH_HOME")}
+    saved_which = shutil.which
+    saved_fallbacks = actions_status._GH_FALLBACKS
+
+    def restore() -> None:
+        shutil.which = saved_which
+        actions_status._GH_FALLBACKS = saved_fallbacks
+        for key, value in saved_env.items():
+            if value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = value
+
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            # 폴백이 실제로 집어야 할 "설치된 gh" 역할
+            installed = Path(tmp) / ("gh.exe" if os.name == "nt" else "gh")
+            installed.write_text("", encoding="utf-8")
+            installed.chmod(0o755)
+            os.environ["FAKE_GH_HOME"] = tmp
+            actions_status._GH_FALLBACKS = (
+                "{FAKE_GH_HOME}" + os.sep + installed.name,
+                "{NO_SUCH_ENV_VAR_XYZ}" + os.sep + "gh",  # 없는 환경변수는 건너뛴다
+            )
+
+            cases = [
+                (
+                    "GH_BIN이 PATH보다 우선",
+                    {"GH_BIN": "/explicit/gh"},
+                    lambda _: "/from/path/gh",
+                    "/explicit/gh",
+                ),
+                (
+                    "GH_BIN 없으면 PATH를 쓴다",
+                    {},
+                    lambda _: "/from/path/gh",
+                    "/from/path/gh",
+                ),
+                (
+                    "PATH에 없으면 설치 경로를 훑는다",
+                    {},
+                    lambda _: None,
+                    str(installed),
+                ),
+            ]
+            for label, env, which_stub, want in cases:
+                os.environ.pop("GH_BIN", None)
+                os.environ.update(env)
+                shutil.which = which_stub
+                got = actions_status._gh_binary()
+                ok = got == want
+                print(f"{'   ' if ok else 'X  '}{label:<44} {got}")
+                if not ok:
+                    print(f"{'':47} 기대 {want}")
+                    yield label
+
+            # 어디에도 없으면 "gh" — subprocess가 OSError를 내고 probe는 None이 된다.
+            # 즉 예약이 유지되는 안전한 방향으로 실패한다.
+            os.environ.pop("GH_BIN", None)
+            shutil.which = lambda _: None
+            actions_status._GH_FALLBACKS = ("{NO_SUCH_ENV_VAR_XYZ}" + os.sep + "gh",)
+            got = actions_status._gh_binary()
+            ok = got == "gh"
+            print(f"{'   ' if ok else 'X  '}{'아무 데도 없으면 gh (probe None → 이름만 미상)':<44} {got}")
+            if not ok:
+                yield "폴백 실패 시 기본값"
+    finally:
+        restore()
 
 
 if __name__ == "__main__":
