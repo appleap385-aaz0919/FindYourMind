@@ -507,6 +507,48 @@ def main() -> int:
         if not ok:
             failures.append(text)
 
+    # --- 11.6) 활용형 누락 보충 (2026-08-18) ---------------------------------
+    #
+    # 참고 어휘 목록과 대조해 찾은 순수 활용형 누락. 사전에 이웃 형태가 이미 있는데
+    # 이 형태만 없었다. "미쳐버리"가 "미쳐버릴"을 못 잡던 것과 같은 유형이다.
+    #   기쁜 ← 기쁘 있음 / 구슬픈 ← 구슬프 있음
+    #   지겨운 ← 지겨워 있음 / 마음무거 ← 마음이무거 있음("이"가 빠진 형태)
+    print("\n활용형 누락 보충")
+    print("-" * 76)
+    for text, expected in [
+        ("기쁜 하루였어", "joy.delight"),
+        ("구슬픈 밤이야", "sadness.sorrow"),
+        ("지겨운 하루", "anger.irritation"),
+        ("마음 무거운 저녁", "sadness.sorrow"),
+        # 이웃 형태도 그대로여야 한다
+        ("구슬프다", "sadness.sorrow"),
+        ("지겨워", "anger.irritation"),
+        ("마음이 무거워", "sadness.sorrow"),
+    ]:
+        cid, hits = classify(text)
+        ok = cid == expected
+        print(f"{'   ' if ok else 'X  '}{text:<24} → {cid}  {hits[:2]}")
+        if not ok:
+            failures.append(text)
+
+    # 대분류 키워드는 두 갈래로 갈린다. 둘 다 정상이다.
+    #   세분류에도 같은 문자열이 있으면 → 그 세분류로 직행 (분노→rage, 우울→sorrow 등)
+    #   대분류에만 있으면              → 선택 UI로 되묻는다 (불안, 기쁨, 답답 등)
+    # 어느 쪽이든 "미분류"로 빠지면 안 된다는 게 여기서 지키는 것이다.
+    print("\n대분류 키워드는 최소한 대분류까지는 도달한다")
+    print("-" * 76)
+    parent_ids = {c["id"] for c in tax["categories"]}
+    for category in tax["categories"]:
+        for word in category.get("keywords") or []:
+            cid, hits = classify(word)
+            ok = cid is not None and (
+                str(cid).startswith(category["id"]) or str(cid).split(".")[0] == category["id"]
+            )
+            route = "선택 UI" if str(cid).startswith(f"{category['id']} (") else "세분류 직행"
+            print(f"{'   ' if ok else 'X  '}{word:<10} → {cid}  ({route})")
+            if not ok:
+                failures.append(f"{word} — 대분류 {category['id']}에 도달하지 못했다")
+
     # --- 12) 정상 동작 — 고치려 들지 말 것 -----------------------------------
     #
     # 아래 두 가지는 **미분류인 것이 옳다.** 버그로 보고 고치면 안 된다.
