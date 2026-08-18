@@ -15,7 +15,8 @@
             ▼  앱은 version.json으로 버전만 비교하고, 바뀐 날만 내려받는다
 [PWA (React)]
    ├─ 감정 입력 — 자연어 텍스트 또는 대분류 → 세분류 선택
-   ├─ 온디바이스 분류 — TensorFlow.js 모델(대분류) + 키워드 사전(세분류 보정)
+   ├─ 온디바이스 분류 — 키워드 사전 단독 (커버리지 98.6%), 못 알아들으면 선택 UI
+   │                    ※ TF.js 모델은 검토 후 보류 (PLAN.md Phase 2)
    ├─ IndexedDB — videos.json 캐시
    └─ 클릭 → youtube.com에서 열기
 ```
