@@ -1,0 +1,370 @@
+{
+  "cases": [
+    {
+      "input": "죽고싶다",
+      "kind": "crisis",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "input": "답답해서 죽고싶다",
+      "kind": "crisis",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "input": "짜증나 짜증나 진짜 죽고싶어",
+      "kind": "crisis",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "input": "죽여버리고 싶어",
+      "kind": "ok",
+      "category": "anger",
+      "subcategory": "anger.rage"
+    },
+    {
+      "input": "나를 죽이고 싶어",
+      "kind": "crisis",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "input": "나만 없으면 다 잘될 텐데",
+      "kind": "crisis",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "input": "웃음이 터질 것 같아",
+      "kind": "ok",
+      "category": "joy",
+      "subcategory": "joy.delight"
+    },
+    {
+      "input": "눈물이 터질 것 같아",
+      "kind": "ok",
+      "category": "sadness",
+      "subcategory": "sadness.sorrow"
+    },
+    {
+      "input": "속이 터질 것 같아",
+      "kind": "ok",
+      "category": "frustration",
+      "subcategory": "frustration.suppressed"
+    },
+    {
+      "input": "가슴이 답답하고 불안해",
+      "kind": "ok",
+      "category": "anxiety",
+      "subcategory": "anxiety.restless"
+    },
+    {
+      "input": "대박 터질 것 같아",
+      "kind": "ok",
+      "category": "flutter",
+      "subcategory": "flutter.anticipation"
+    },
+    {
+      "input": "빵 터질 것 같아",
+      "kind": "ok",
+      "category": "joy",
+      "subcategory": "joy.delight"
+    },
+    {
+      "input": "답답해",
+      "kind": "category",
+      "category": "frustration",
+      "subcategory": null
+    },
+    {
+      "input": "혼란스러워",
+      "kind": "nomatch",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "input": "qqqqzzzz",
+      "kind": "nomatch",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "input": "",
+      "kind": "empty",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "input": "   ",
+      "kind": "empty",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "input": "못마땅해",
+      "kind": "ok",
+      "category": "anger",
+      "subcategory": "anger.irritation"
+    },
+    {
+      "input": "너무 속상해",
+      "kind": "ok",
+      "category": "sadness",
+      "subcategory": "sadness.sorrow"
+    },
+    {
+      "input": "울음이 북받쳐 올라",
+      "kind": "ok",
+      "category": "sadness",
+      "subcategory": "sadness.sorrow"
+    },
+    {
+      "input": "진짜 맥빠진다",
+      "kind": "ok",
+      "category": "exhaustion",
+      "subcategory": "exhaustion.listless"
+    },
+    {
+      "input": "전세 계약 올라서 부담이야",
+      "kind": "nomatch",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "input": "애처로운 눈빛으로 쳐다보더라",
+      "kind": "nomatch",
+      "category": null,
+      "subcategory": null
+    },
+    {
+      "input": "눈물겨운 노력 끝에 성공했대",
+      "kind": "ok",
+      "category": "joy",
+      "subcategory": "joy.proud"
+    },
+    {
+      "input": "앞날이 암담해",
+      "kind": "ok",
+      "category": "anxiety",
+      "subcategory": "anxiety.worry"
+    },
+    {
+      "input": "마 음 이  급 해",
+      "kind": "ok",
+      "category": "anxiety",
+      "subcategory": "anxiety.restless"
+    },
+    {
+      "input": "짜증나아아아아!!!",
+      "kind": "ok",
+      "category": "anger",
+      "subcategory": "anger.irritation"
+    },
+    {
+      "input": "너무 외로워ㅠㅠㅠㅠ",
+      "kind": "ok",
+      "category": "sadness",
+      "subcategory": "sadness.sorrow"
+    },
+    {
+      "input": "불안",
+      "kind": "category",
+      "category": "anxiety",
+      "subcategory": null
+    },
+    {
+      "input": "초조함",
+      "kind": "ok",
+      "category": "anxiety",
+      "subcategory": "anxiety.restless"
+    },
+    {
+      "input": "걱정",
+      "kind": "ok",
+      "category": "anxiety",
+      "subcategory": "anxiety.worry"
+    },
+    {
+      "input": "긴장",
+      "kind": "ok",
+      "category": "anxiety",
+      "subcategory": "anxiety.tension"
+    },
+    {
+      "input": "분노",
+      "kind": "ok",
+      "category": "anger",
+      "subcategory": "anger.rage"
+    },
+    {
+      "input": "짜증",
+      "kind": "ok",
+      "category": "anger",
+      "subcategory": "anger.irritation"
+    },
+    {
+      "input": "억울함",
+      "kind": "ok",
+      "category": "anger",
+      "subcategory": "anger.unfair"
+    },
+    {
+      "input": "격분",
+      "kind": "ok",
+      "category": "anger",
+      "subcategory": "anger.rage"
+    },
+    {
+      "input": "답답함",
+      "kind": "category",
+      "category": "frustration",
+      "subcategory": null
+    },
+    {
+      "input": "막막함",
+      "kind": "ok",
+      "category": "frustration",
+      "subcategory": "frustration.stuck"
+    },
+    {
+      "input": "진전 없음",
+      "kind": "ok",
+      "category": "frustration",
+      "subcategory": "frustration.blocked"
+    },
+    {
+      "input": "억눌림",
+      "kind": "ok",
+      "category": "frustration",
+      "subcategory": "frustration.suppressed"
+    },
+    {
+      "input": "우울",
+      "kind": "ok",
+      "category": "sadness",
+      "subcategory": "sadness.sorrow"
+    },
+    {
+      "input": "슬픔",
+      "kind": "ok",
+      "category": "sadness",
+      "subcategory": "sadness.sorrow"
+    },
+    {
+      "input": "외로움",
+      "kind": "ok",
+      "category": "sadness",
+      "subcategory": "sadness.lonely"
+    },
+    {
+      "input": "상실감",
+      "kind": "ok",
+      "category": "sadness",
+      "subcategory": "sadness.loss"
+    },
+    {
+      "input": "지침/무기력",
+      "kind": "ok",
+      "category": "exhaustion",
+      "subcategory": "exhaustion.listless"
+    },
+    {
+      "input": "번아웃",
+      "kind": "ok",
+      "category": "exhaustion",
+      "subcategory": "exhaustion.burnout"
+    },
+    {
+      "input": "피로",
+      "kind": "ok",
+      "category": "exhaustion",
+      "subcategory": "exhaustion.tired"
+    },
+    {
+      "input": "의욕 없음",
+      "kind": "ok",
+      "category": "exhaustion",
+      "subcategory": "exhaustion.listless"
+    },
+    {
+      "input": "기쁨",
+      "kind": "category",
+      "category": "joy",
+      "subcategory": null
+    },
+    {
+      "input": "뿌듯함",
+      "kind": "ok",
+      "category": "joy",
+      "subcategory": "joy.proud"
+    },
+    {
+      "input": "즐거움",
+      "kind": "ok",
+      "category": "joy",
+      "subcategory": "joy.delight"
+    },
+    {
+      "input": "감사",
+      "kind": "ok",
+      "category": "joy",
+      "subcategory": "joy.grateful"
+    },
+    {
+      "input": "설렘",
+      "kind": "ok",
+      "category": "flutter",
+      "subcategory": "flutter.thrill"
+    },
+    {
+      "input": "기대",
+      "kind": "ok",
+      "category": "flutter",
+      "subcategory": "flutter.anticipation"
+    },
+    {
+      "input": "두근거림",
+      "kind": "ok",
+      "category": "flutter",
+      "subcategory": "flutter.thrill"
+    },
+    {
+      "input": "평온",
+      "kind": "ok",
+      "category": "calm",
+      "subcategory": "calm.stable"
+    },
+    {
+      "input": "여유",
+      "kind": "ok",
+      "category": "calm",
+      "subcategory": "calm.ease"
+    },
+    {
+      "input": "안정",
+      "kind": "ok",
+      "category": "calm",
+      "subcategory": "calm.stable"
+    },
+    {
+      "input": "심심함/무료함",
+      "kind": "ok",
+      "category": "boredom",
+      "subcategory": "boredom.dull"
+    },
+    {
+      "input": "지루함",
+      "kind": "ok",
+      "category": "boredom",
+      "subcategory": "boredom.dull"
+    },
+    {
+      "input": "새로운 자극 원함",
+      "kind": "ok",
+      "category": "boredom",
+      "subcategory": "boredom.novelty"
+    }
+  ]
+}

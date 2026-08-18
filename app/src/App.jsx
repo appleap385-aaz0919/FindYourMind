@@ -24,6 +24,7 @@ import {
   pickMessage,
   recordVisit,
   revisitSlot,
+  sameDayGreetingPool,
 } from "./lib/messages.js";
 import { useOnline, usePrefersReducedMotion, withMinDuration } from "./lib/offline.js";
 import { exposeConsoleApi, recordFailure } from "./lib/failures.js";
@@ -488,14 +489,10 @@ function pickGreeting(visit) {
   const slot = revisitSlot(visit);
 
   if (slot === "same_day") {
-    // recordVisit()은 증가 *전* 상태를 준다. 이번 방문을 포함하면 +1이 실제 횟수다.
-    const visitNumber = (visit.visitCountToday ?? 0) + 1;
-    // 횟수를 말하는 문구는 2회차에서만 쓴다. 3회차 이상에서 "두 번째네요"가
-    // 나오면 틀린 숫자를 말하게 되고, 그건 아무 말도 안 하느니만 못하다.
-    const pool =
-      visitNumber === 2
-        ? [...taxonomy.ui.revisit.same_day, ...taxonomy.ui.revisit.same_day_second]
-        : taxonomy.ui.revisit.same_day;
+    // 풀 선정 규칙(횟수 문구는 2회차 전용)은 messages.js에 있다.
+    // 여기 두면 테스트가 import할 수 없어 규칙을 베껴 적게 된다 — 그 사본은
+    // App.jsx가 바뀌어도 통과한다. sameDayGreetingPool의 주석 참조.
+    const pool = sameDayGreetingPool(visit, taxonomy);
     // 회전 키를 하나로 둔다 — same_day가 항상 앞쪽 인덱스라 2회차/3회차 이상에서
     // 같은 인덱스가 같은 문구를 가리킨다.
     return pickMessage("revisit:same_day", pool);

@@ -24,6 +24,8 @@ import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from lib import classify as classify_kinds
+from lib.classify import classify as classify_real
 from lib.normalize import normalize
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,32 +36,24 @@ EXIT_FAIL = 1
 
 
 def classify(text):
-    """앱(classify.js)과 같은 순서로 판정한다: 위기 → 세분류 → 대분류 폴백."""
-    n = normalize(text)
-    if not n:
+    """판정 결과를 이 스크립트의 표시 형식으로 옮긴다.
+
+    ⚠ 알고리즘은 여기 없다. lib/classify.py 하나뿐이고, 그것이
+      app/src/lib/classify.js와 classify.parity.test.js로 묶여 있다.
+      예전에는 이 함수가 알고리즘을 통째로 복사해 갖고 있었다 — 그러면
+      classify.js가 바뀌어도 이 테스트는 자기 사본을 검사하며 통과한다
+      (2026-08-17 reset 사건과 같은 유형).
+    """
+    outcome = classify_real(text, tax)
+    if outcome.kind == classify_kinds.EMPTY:
         return ("EMPTY", [])
-
-    for kw in tax["safety"]["crisis_keywords"]:
-        if normalize(kw) in n:
-            return ("CRISIS", [kw])
-
-    best = None
-    for c in tax["categories"]:
-        for s in c["subcategories"]:
-            hits = [k for k in s["keywords"] if normalize(k) in n]
-            if hits:
-                score = (len(hits), sum(len(normalize(k)) for k in hits))
-                if best is None or score > best[0]:
-                    best = (score, s["id"], hits)
-    if best:
-        return (best[1], best[2])
-
-    # 대분류 폴백 — 세분류를 특정하지 못하면 선택 UI로 넘어간다
-    for c in tax["categories"]:
-        hits = [k for k in (c.get("keywords") or []) if normalize(k) in n]
-        if hits:
-            return (f"{c['id']} (대분류→선택 UI)", hits)
-
+    if outcome.kind == classify_kinds.CRISIS:
+        return ("CRISIS", list(outcome.hits))
+    if outcome.kind == classify_kinds.OK:
+        return (outcome.subcategory_id, list(outcome.hits))
+    if outcome.kind == classify_kinds.CATEGORY:
+        # 세분류를 특정하지 못하면 선택 UI로 넘어간다
+        return (f"{outcome.category_id} (대분류→선택 UI)", list(outcome.hits))
     return (None, [])
 
 

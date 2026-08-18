@@ -13,7 +13,7 @@ import { classify, RESULT } from "../src/lib/classify.js";
 import { normalize } from "../src/lib/normalize.js";
 import { getCategoryVideos, getCrisisVideos, formatDuration } from "../src/lib/videos.js";
 import { withMinDuration } from "../src/lib/offline.js";
-import { revisitSlot } from "../src/lib/messages.js";
+import { revisitSlot, sameDayGreetingPool, visitNumberOf } from "../src/lib/messages.js";
 import { isCompleteVideosPayload } from "../src/lib/payload.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -181,6 +181,22 @@ test("풀 전체를 소진해도 없는 영상을 만들어내지 않는다", ()
 
 test("min_duration_ms는 taxonomy에서 읽으며 1000이다", () => {
   assert.equal(taxonomy.ui.loading.min_duration_ms, 1000);
+
+  // 데이터 값만 재면 App.jsx가 1000을 박아 넣어도 통과한다.
+  // 이 테스트의 이름은 "taxonomy에서 읽는다"이므로 그것까지 확인한다.
+  // (App.jsx는 JSX라 import할 수 없어 소스를 읽는다 — reset 테스트와 같은 방식)
+  const src = readFileSync(join(here, "..", "src", "App.jsx"), "utf8");
+  const assigned = /const MIN_DURATION_MS = ([^;]+);/.exec(src);
+  assert.ok(assigned, "MIN_DURATION_MS 정의를 찾지 못했다");
+  assert.equal(
+    assigned[1].trim(),
+    "taxonomy.ui.loading.min_duration_ms",
+    "MIN_DURATION_MS가 taxonomy를 읽지 않는다 — 값이 두 곳으로 갈린다",
+  );
+  assert.ok(
+    src.includes("withMinDuration(") && src.includes("MIN_DURATION_MS"),
+    "MIN_DURATION_MS가 실제로 쓰이지 않는다",
+  );
 });
 
 test("분류가 빠르면 최소 지연을 채운다", async () => {
@@ -406,28 +422,48 @@ test("same_day 문구 풀이 충분히 크다", () => {
   assert.equal(total, 10, `2회차 풀이 10개가 아님 (${total})`);
 });
 
-test("2회차에만 숫자 문구가 후보에 들어간다", () => {
-  // App.jsx pickGreeting과 같은 규칙
-  const poolFor = (visitNumber) =>
-    visitNumber === 2
-      ? [...taxonomy.ui.revisit.same_day, ...taxonomy.ui.revisit.same_day_second]
-      : taxonomy.ui.revisit.same_day;
+// ⚠ 아래 두 테스트는 2026-08-18에 고쳤다.
+//   전에는 규칙을 테스트 안에 베껴 적고(poolFor) 그 사본을 검사했고,
+//   회차 계산은 `(0 ?? 0) + 1 === 1`처럼 리터럴 산술만 단언했다.
+//   둘 다 App.jsx가 어떻게 바뀌든 통과한다 — 2026-08-17 reset 사건과 같은 유형이다.
+//   규칙을 messages.js로 빼고 실제 함수를 부르도록 바꿨다.
 
+test("2회차에만 숫자 문구가 후보에 들어간다", () => {
   const counting = /번째|두 번|두번/;
-  assert.ok(poolFor(2).some((m) => counting.test(m)), "2회차에 숫자 문구가 없다");
-  for (const n of [3, 4, 5, 9]) {
+  const poolFor = (visitCountToday) =>
+    sameDayGreetingPool({ visitCountToday }, taxonomy);
+
+  // visitCountToday는 갱신 *전* 값이므로 1이 이번 방문 기준 2회차다
+  assert.ok(poolFor(1).some((m) => counting.test(m)), "2회차에 숫자 문구가 없다");
+  for (const stored of [0, 2, 3, 4, 8]) {
     assert.ok(
-      !poolFor(n).some((m) => counting.test(m)),
-      `${n}회차 풀에 숫자 문구가 있다`,
+      !poolFor(stored).some((m) => counting.test(m)),
+      `${stored + 1}회차 풀에 숫자 문구가 있다`,
     );
   }
+  // 기록이 없는 경우(시크릿 모드·데이터 삭제)도 1회차로 조용히 처리된다
+  assert.ok(!sameDayGreetingPool({}, taxonomy).some((m) => counting.test(m)));
 });
 
 test("recordVisit이 주는 값으로 회차가 계산된다", () => {
-  // recordVisit()은 증가 전 상태를 준다 → 이번 방문은 +1
-  assert.equal((0 ?? 0) + 1, 1);
-  assert.equal((1 ?? 0) + 1, 2); // 2회차 → 숫자 문구 허용
-  assert.equal((3 ?? 0) + 1, 4); // 4회차 → 숫자 문구 배제
+  // recordVisit()은 증가 *전* 상태를 준다 → 이번 방문은 +1.
+  // 실제 함수를 부른다. 예전에는 리터럴 산술만 단언해 아무것도 검사하지 않았다.
+  assert.equal(visitNumberOf({ visitCountToday: 0 }), 1);
+  assert.equal(visitNumberOf({ visitCountToday: 1 }), 2); // 숫자 문구 허용
+  assert.equal(visitNumberOf({ visitCountToday: 3 }), 4); // 숫자 문구 배제
+  assert.equal(visitNumberOf({}), 1, "기록이 없으면 1회차");
+  assert.equal(visitNumberOf(), 1, "인자가 없어도 터지지 않는다");
+});
+
+test("recordVisit의 반환값이 pickGreeting 입력과 같은 모양이다", async () => {
+  // 위 두 테스트는 visitCountToday를 손으로 만든다. 그 모양이 recordVisit의
+  // 실제 반환과 어긋나면 둘 다 통과하면서 화면만 틀린다 — 그 이음매를 여기서 고정한다.
+  const { recordVisit, __test__ } = await import("../src/lib/messages.js");
+  __test__.reset();
+  const state = await recordVisit(new Date());
+  assert.ok("visitCountToday" in state, "recordVisit이 visitCountToday를 주지 않는다");
+  assert.ok("lastVisitAt" in state, "recordVisit이 lastVisitAt을 주지 않는다");
+  assert.equal(typeof visitNumberOf(state), "number");
 });
 
 // --- 다시 적기는 항상 텍스트 입력으로 돌아간다 ---------------------------------

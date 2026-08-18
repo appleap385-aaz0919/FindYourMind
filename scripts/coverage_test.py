@@ -32,6 +32,8 @@ import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from lib import classify as classify_kinds
+from lib.classify import classify as classify_real
 from lib.normalize import normalize
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -153,26 +155,20 @@ def load_taxonomy_from(ref: str | None) -> dict:
 
 
 def classify(tax: dict, text: str) -> tuple[str | None, str | None]:
-    """(대분류, 세분류) — 못 잡으면 (None, None)."""
-    n = normalize(text)
-    if not n:
-        return None, None
-    for kw in tax["safety"]["crisis_keywords"]:
-        if normalize(kw) in n:
-            return "safety", "CRISIS"
-    best = None
-    for c in tax["categories"]:
-        for s in c["subcategories"]:
-            hits = [k for k in s["keywords"] if normalize(k) in n]
-            if hits:
-                score = (len(hits), sum(len(normalize(k)) for k in hits))
-                if best is None or score > best[0]:
-                    best = (score, c["id"], s["id"])
-    if best:
-        return best[1], best[2]
-    for c in tax["categories"]:
-        if [k for k in (c.get("keywords") or []) if normalize(k) in n]:
-            return c["id"], None  # 대분류까지만 — 선택 UI로 넘어간다
+    """(대분류, 세분류) — 못 잡으면 (None, None).
+
+    ⚠ 알고리즘은 여기 없다. lib/classify.py 하나뿐이고, 그것이
+      app/src/lib/classify.js와 classify.parity.test.js로 묶여 있다.
+      예전에는 이 함수가 알고리즘을 복사해 갖고 있어, classify.js가 바뀌어도
+      이 커버리지 수치는 자기 사본 기준으로 나왔다.
+    """
+    outcome = classify_real(text, tax)
+    if outcome.kind == classify_kinds.CRISIS:
+        return "safety", "CRISIS"
+    if outcome.kind == classify_kinds.OK:
+        return outcome.category_id, outcome.subcategory_id
+    if outcome.kind == classify_kinds.CATEGORY:
+        return outcome.category_id, None  # 대분류까지만 — 선택 UI로 넘어간다
     return None, None
 
 

@@ -92,6 +92,34 @@ export function revisitSlot({ lastVisitAt, visitCountToday }, now = new Date()) 
   return "same_day";
 }
 
+/**
+ * 이번 방문이 오늘 몇 번째인가.
+ *
+ * recordVisit()은 갱신 **전** 상태를 주므로 이번 방문을 포함하려면 +1이다.
+ * 기록이 없으면(시크릿 모드·데이터 삭제) 1회차로 본다.
+ */
+export function visitNumberOf({ visitCountToday } = {}) {
+  return (visitCountToday ?? 0) + 1;
+}
+
+/**
+ * same_day 인사 문구 후보 풀.
+ *
+ * 횟수를 말하는 문구는 **2회차에서만** 쓴다. 3회차 이상에서 "두 번째네요"가
+ * 나오면 틀린 숫자를 말하게 되고, 그건 아무 말도 안 하느니만 못하다
+ * (taxonomy.yaml ui.revisit 주석 참조).
+ *
+ * ⚠ App.jsx의 pickGreeting이 이 함수를 부른다. 여기 있는 이유는 테스트가
+ *   **실제로 실행되는 코드**를 검사하기 위해서다 — App.jsx는 JSX라 node:test에서
+ *   import할 수 없어, 예전에는 테스트가 이 규칙을 베껴 적었다. 그러면 App.jsx가
+ *   바뀌어도 테스트는 자기 사본을 검사하며 통과한다(2026-08-17 reset 사건과 같은 유형).
+ *   규칙을 고칠 일이 있으면 App.jsx가 아니라 여기서 고친다.
+ */
+export function sameDayGreetingPool(visit, taxonomy) {
+  const { same_day: sameDay, same_day_second: sameDaySecond } = taxonomy.ui.revisit;
+  return visitNumberOf(visit) === 2 ? [...sameDay, ...sameDaySecond] : sameDay;
+}
+
 /** 방문 기록 갱신. 날짜가 바뀌면 오늘 방문 수를 0으로 되돌린다. */
 export async function recordVisit(now = new Date()) {
   const today = now.toDateString();
