@@ -15,6 +15,7 @@ import { getCategoryVideos, getCrisisVideos, formatDuration } from "../src/lib/v
 import { withMinDuration } from "../src/lib/offline.js";
 import { revisitSlot, sameDayGreetingPool, visitNumberOf } from "../src/lib/messages.js";
 import { isCompleteVideosPayload } from "../src/lib/payload.js";
+import { summarize } from "../src/lib/failures.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const load = (p) => JSON.parse(readFileSync(join(here, "..", "src", "data", p), "utf8"));
@@ -548,6 +549,56 @@ test("스크롤 리셋이 전환 전체에 걸려 있다", () => {
     );
   }
   assert.ok(!code.includes("smooth"), "전환에는 smooth를 쓰지 않기로 했다");
+});
+
+// --- 분류 실패 집계는 콘솔 전용이다 ---------------------------------------------
+
+test("Phase 2 조건 1(미분류 30건)이 정확히 30에서 넘어간다", () => {
+  const make = (n, outcome) => Array.from({ length: n }, () => ({ outcome }));
+
+  assert.equal(summarize([]).phase2ConditionOne.met, false);
+  assert.equal(summarize(make(29, "nomatch")).phase2ConditionOne.met, false);
+  assert.equal(summarize(make(30, "nomatch")).phase2ConditionOne.met, true);
+
+  // category(대분류까지만)는 조건 1에 세지 않는다 — 조건은 "실사용 미분류"다
+  const mixed = summarize([...make(29, "nomatch"), ...make(40, "category")]);
+  assert.equal(mixed.phase2ConditionOne.met, false, "category가 조건 1에 섞여 들어갔다");
+  assert.equal(mixed.nomatch, 29);
+  assert.equal(mixed.category, 40);
+  assert.equal(mixed.total, 69);
+
+  // 저장소가 비어 있거나 깨져도 터지지 않는다
+  assert.equal(summarize(null).total, 0);
+  assert.equal(summarize(undefined).phase2ConditionOne.met, false);
+});
+
+test("실패 기록은 어떤 화면에도 닿지 않는다", () => {
+  // 마음이 힘들어 들어온 사람에게 "분류 실패 12건"이 보이면 안 된다.
+  // 설정 화면도 포함이다 — 그래서 UI 컴포넌트가 failures.js를 아예 모르게 둔다.
+  const uiFiles = readdirSync(join(here, "..", "src", "components")).filter((f) =>
+    f.endsWith(".jsx"),
+  );
+  assert.ok(uiFiles.length >= 3, "컴포넌트를 못 찾았다 — 경로가 바뀌었나");
+
+  for (const file of uiFiles) {
+    const src = readFileSync(join(here, "..", "src", "components", file), "utf8");
+    assert.ok(
+      !src.includes("failures.js") && !src.includes("__fym"),
+      `${file}가 실패 기록을 참조한다 — 화면에 노출될 수 있다`,
+    );
+  }
+
+  // App.jsx는 기록만 하고(recordFailure) 집계는 읽지 않는다.
+  // 집계를 읽기 시작하면 화면에 그릴 길이 열린다.
+  const app = readFileSync(join(here, "..", "src", "App.jsx"), "utf8");
+  for (const forbidden of ["reviewStatus", "summarize", "printStatus", "readFailures"]) {
+    assert.ok(
+      !app.includes(forbidden),
+      `App.jsx가 ${forbidden}를 쓴다 — 집계가 렌더 경로로 들어갔다`,
+    );
+  }
+  // 시작 알림은 콘솔 전용 함수 하나만 쓴다
+  assert.ok(app.includes("announceIfReviewDue"), "시작 시 재검토 알림이 빠졌다");
 });
 
 // --- 테스트 파일이 조용히 빠지지 않게 -------------------------------------------

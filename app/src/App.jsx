@@ -27,7 +27,7 @@ import {
   sameDayGreetingPool,
 } from "./lib/messages.js";
 import { useOnline, usePrefersReducedMotion, withMinDuration } from "./lib/offline.js";
-import { exposeConsoleApi, recordFailure } from "./lib/failures.js";
+import { announceIfReviewDue, exposeConsoleApi, recordFailure } from "./lib/failures.js";
 import { Videos } from "./components/Videos.jsx";
 import { BreathingGuide } from "./components/BreathingGuide.jsx";
 import {
@@ -78,6 +78,9 @@ export default function App() {
     let cancelled = false;
 
     exposeConsoleApi();
+    // 재검토 조건이 찼을 때만 콘솔에 한 줄. 화면에는 어떤 경우에도 표시하지 않는다
+    // (failures.js 상단 주석). 조용히 실패해도 앱 동작에 영향이 없다.
+    void announceIfReviewDue();
 
     (async () => {
       await loadMessageIndexes();

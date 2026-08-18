@@ -65,11 +65,34 @@ for text in payload["inputs"]:
         "category": o.category_id,
         "subcategory": o.subcategory_id,
     })
-sys.stdout.write(json.dumps({"cases": out}, ensure_ascii=False))
+sys.stdout.write(json.dumps({"cases": out, "taxonomy": payload["summary"]}, ensure_ascii=False))
 `;
 
+/**
+ * 픽스처가 어느 사전으로 만들어졌는지 남긴다.
+ *
+ * label만으로는 **키워드 추가를 놓친다** — 세분류 이름은 그대로인 채
+ * keywords만 늘어나는 것이 가장 흔한 변경이다(2026-08-18 어휘 보충이 그랬다).
+ * 그러면 패리티가 낡은 사전을 보면서 계속 초록불이 된다.
+ */
+const summary = {
+  keywords: taxonomy.categories.reduce(
+    (sum, c) => sum + c.subcategories.reduce((s, x) => s + x.keywords.length, 0),
+    0,
+  ),
+  categoryKeywords: taxonomy.categories.reduce(
+    (sum, c) => sum + (c.keywords?.length ?? 0),
+    0,
+  ),
+  crisisKeywords: taxonomy.safety.crisis_keywords.length,
+  subcategories: taxonomy.categories.reduce(
+    (sum, c) => sum + c.subcategories.length,
+    0,
+  ),
+};
+
 const result = execFileSync("python", ["-X", "utf8", "-c", py], {
-  input: JSON.stringify({ inputs: INPUTS, taxonomy }),
+  input: JSON.stringify({ inputs: INPUTS, taxonomy, summary }),
   encoding: "utf8",
   maxBuffer: 64 * 1024 * 1024,
 });
@@ -82,5 +105,6 @@ writeFileSync(
 );
 
 console.log(
-  `픽스처 생성 — classify ${JSON.parse(result).cases.length}건 (정답: Python 구현)`,
+  `픽스처 생성 — classify ${JSON.parse(result).cases.length}건 ` +
+    `(감정 키워드 ${summary.keywords} / 위기 ${summary.crisisKeywords}, 정답: Python 구현)`,
 );

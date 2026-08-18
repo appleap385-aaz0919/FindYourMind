@@ -366,5 +366,11 @@
       "category": "boredom",
       "subcategory": "boredom.novelty"
     }
-  ]
+  ],
+  "taxonomy": {
+    "keywords": 892,
+    "categoryKeywords": 15,
+    "crisisKeywords": 55,
+    "subcategories": 24
+  }
 }

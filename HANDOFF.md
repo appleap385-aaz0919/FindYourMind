@@ -318,7 +318,27 @@ python scripts/spread_test.py                    # 채널 분산 선정
 python scripts/blocklist_test.py                 # 채널 차단
 python scripts/quota_test.py                     # 429/403 판정 + 배치 몫 회계 + gh 탐색
 python scripts/build_videos.py --dry-run --out-dir /tmp/x
-cd app && npm test                               # 54개
+cd app && npm test                               # 60개
 ```
 
 > 드라이런은 이제 `.dry-run` 접미사로 분리되지만, `--out-dir`은 여전히 임시 경로를 주는 편이 안전하다.
+
+**`taxonomy.yaml`을 고쳤다면 순서를 지킨다** (쿼터 0, 상세는 `OPERATIONS.md` 7절)
+
+```bash
+python scripts/normalize_test.py
+python scripts/coverage_test.py
+cd app
+npm run gen:taxonomy                 # yaml → src/data/taxonomy.json
+node test/gen-classify-fixture.mjs   # 패리티 픽스처 재생성 (Python이 정답)
+npm test
+```
+
+픽스처는 `taxonomy.json`을 읽으므로 `gen:taxonomy`를 먼저 돌려야 한다.
+⛔ 재생성을 `pretest`에 자동으로 걸지 말 것 — 매번 "Python이 정답"을 새로 찍어
+JS 회귀를 덮는다. 대신 잊으면 픽스처의 사전 요약(키워드 수 등)과 어긋나 테스트가 잡는다.
+
+**보류 결정 재검토 조건 확인** (분기 1회, `OPERATIONS.md` 2절)
+
+배포본 콘솔에서 `await __fym.status()`. 세 결정(Phase 2 · 수치심 · `끝내고싶`)의
+조건과 읽을 문서가 함께 나온다. ⛔ **이 숫자는 어떤 화면에도 표시하지 않는다.**

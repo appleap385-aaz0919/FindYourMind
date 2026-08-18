@@ -68,7 +68,12 @@ test("classify()가 Python 구현과 같은 판정을 낸다", () => {
 
 test("픽스처가 taxonomy와 함께 갱신됐다", () => {
   // 사전을 고치고 픽스처를 안 만들면 패리티 검사가 낡은 사전을 보게 된다.
-  // label은 사전이 바뀔 때 함께 바뀌므로 그것으로 신선도를 잰다.
+  //
+  // ⚠ label만 보면 **키워드 추가를 놓친다.** 세분류 이름은 그대로인 채
+  //   keywords만 늘어나는 것이 가장 흔한 변경이다(2026-08-18 어휘 보충).
+  //   그래서 개수까지 함께 잰다.
+  const REGEN = "node test/gen-classify-fixture.mjs를 돌리세요";
+
   const labels = new Set();
   for (const category of taxonomy.categories) {
     labels.add(category.label);
@@ -76,10 +81,31 @@ test("픽스처가 taxonomy와 함께 갱신됐다", () => {
   }
   const covered = new Set(fixture.cases.map((c) => c.input));
   const missing = [...labels].filter((l) => !covered.has(l));
+  assert.deepEqual(missing, [], `픽스처에 없는 label ${missing.length}개 — ${REGEN}`);
+
+  assert.ok(fixture.taxonomy, `픽스처에 taxonomy 요약이 없다 (옛 형식) — ${REGEN}`);
+
+  const now = {
+    keywords: taxonomy.categories.reduce(
+      (sum, c) => sum + c.subcategories.reduce((s, x) => s + x.keywords.length, 0),
+      0,
+    ),
+    categoryKeywords: taxonomy.categories.reduce(
+      (sum, c) => sum + (c.keywords?.length ?? 0),
+      0,
+    ),
+    crisisKeywords: taxonomy.safety.crisis_keywords.length,
+    subcategories: taxonomy.categories.reduce(
+      (sum, c) => sum + c.subcategories.length,
+      0,
+    ),
+  };
   assert.deepEqual(
-    missing,
-    [],
-    `픽스처에 없는 label ${missing.length}개 — node test/gen-classify-fixture.mjs를 돌리세요`,
+    now,
+    fixture.taxonomy,
+    `사전이 픽스처 생성 이후에 바뀌었다 — ${REGEN}\n` +
+      `  지금:   ${JSON.stringify(now)}\n` +
+      `  픽스처: ${JSON.stringify(fixture.taxonomy)}`,
   );
 });
 
