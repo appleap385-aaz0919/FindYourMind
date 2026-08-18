@@ -187,12 +187,69 @@ def main() -> int:
         action = "재시도 안 함" if actual == QUOTA else "60초 후 재시도"
         print(f"{label:<44}{expected:>5}{actual:>5}  {'OK  ' if ok else 'FAIL'} {action}")
 
+    failures += list(check_reserve())
+
     print("-" * 84)
     if failures:
         print(f"{len(failures)}건 실패: {', '.join(failures)}")
         return EXIT_FAIL
-    print(f"{len(CASES)}/{len(CASES)} 통과")
+    print(f"{len(CASES)}/{len(CASES)} 통과 + 예약 로직")
     return EXIT_OK
+
+
+def check_reserve():
+    """Actions 배치 예약이 언제 붙고 언제 풀리는지 고정한다.
+
+    gh를 실제로 부르지 않는다 — 가짜 probe를 넣어 판정만 검사한다.
+    CI(Actions)에서는 GITHUB_ACTIONS 때문에 예약이 애초에 0이고 probe도
+    호출되지 않으므로, 이 테스트가 네트워크나 gh 설치에 의존하지 않는다.
+    """
+    import json
+    import os
+    import tempfile
+    from pathlib import Path
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from lib.quota_log import ACTIONS_BATCH_RESERVE, check as check_quota
+
+    print()
+    print("Actions 배치 예약 로직")
+    print("-" * 84)
+
+    saved = os.environ.pop("GITHUB_ACTIONS", None)
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            log = Path(tmp) / "q.json"
+            log.write_text(
+                json.dumps({"2026-08-17": {"spent": 661, "runs": []}}), encoding="utf-8"
+            )
+            day = "2026-08-17"
+            cases = [
+                ("probe 없음 — 기존 동작", None, ACTIONS_BATCH_RESERVE),
+                ("probe True — 배치 확인됨, 예약 해제", lambda d: True, 0),
+                ("probe False — 그날 배치 없음, 예약 유지", lambda d: False, ACTIONS_BATCH_RESERVE),
+                ("probe None — gh 확인 실패, 예약 유지", lambda d: None, ACTIONS_BATCH_RESERVE),
+            ]
+            for label, probe, want in cases:
+                _, reserve = check_quota(
+                    log, 661, day=day, batch_probe=probe, ceiling=99_999
+                )
+                ok = reserve == want
+                print(f"{'   ' if ok else 'X  '}{label:<44} 예약 {reserve:>6,} (기대 {want:,})")
+                if not ok:
+                    yield label
+
+            # probe에 넘어가는 날짜가 로그 키와 같아야 한다 (PT 기준)
+            seen: list[str] = []
+            check_quota(log, 1, day=day, batch_probe=lambda d: seen.append(d) or True,
+                        ceiling=99_999)
+            ok = seen == [day]
+            print(f"{'   ' if ok else 'X  '}{'probe는 PT 날짜 키를 받는다':<44} {seen}")
+            if not ok:
+                yield "probe 날짜 키"
+    finally:
+        if saved is not None:
+            os.environ["GITHUB_ACTIONS"] = saved
 
 
 if __name__ == "__main__":

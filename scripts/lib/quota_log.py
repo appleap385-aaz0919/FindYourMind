@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import json
 import os
+from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -119,24 +120,36 @@ def check(
     ceiling: int = DAILY_CEILING,
     reserve_actions_batch: bool = True,
     day: str | None = None,
+    batch_probe: Callable[[str], bool | None] | None = None,
 ) -> tuple[DayUsage, int]:
     """실행해도 되는지 판단한다. 넘으면 QuotaBudgetExceeded를 던진다.
+
+    batch_probe는 "그 PT 날짜에 Actions 배치가 성공했는가"를 답하는 함수다
+    (lib.actions_status.batch_succeeded_on). True를 받으면 예약을 푼다.
+    None(확인 실패)이나 False면 예약을 유지한다 — 모르면 보수적으로 간다.
+    넘기지 않으면 조회하지 않는다.
 
     반환: (그날 사용량, 적용된 예약분)
     """
     usage = read_day(path, day)
 
     # 예약은 "로컬 실행이 Actions 배치 몫을 까먹지 않도록" 비워두는 장치다.
-    # 그래서 두 경우에는 적용하지 않는다:
+    # 그래서 세 경우에는 적용하지 않는다:
     #   - Actions 안에서 도는 중이면 — 자기 자신을 위해 자리를 비울 이유가 없다.
     #     (러너는 매번 초기화되므로 누적도 0이라, 예약까지 걸면 배치가 스스로를 거부한다)
-    #   - 오늘 전체 배치가 이미 기록됐으면 — 예약분이 실제 소모로 바뀌었다.
+    #   - 오늘 전체 배치가 로컬에 기록됐으면 — 예약분이 실제 소모로 바뀌었다.
+    #   - Actions 배치가 오늘 이미 성공한 것이 확인되면 — 위와 같은 이유인데,
+    #     Actions 소모는 로컬 기록에 잡히지 않으므로 gh로 따로 물어본다.
+    #     이 조회가 없으면 배치가 끝난 뒤(KST 17:30 ~ 다음 날 16:00) 하루의
+    #     대부분 동안 이미 쓴 7,900을 또 예약하게 된다.
     in_actions = bool(os.environ.get("GITHUB_ACTIONS"))
     reserve = (
         ACTIONS_BATCH_RESERVE
         if reserve_actions_batch and not usage.had_full_batch and not in_actions
         else 0
     )
+    if reserve and batch_probe is not None and batch_probe(usage.date) is True:
+        reserve = 0
     projected = usage.spent + estimate + reserve
     if projected > ceiling:
         raise QuotaBudgetExceeded(

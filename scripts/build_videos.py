@@ -59,6 +59,7 @@ from lib.allowlist import MIN_ALLOWLIST_SIZE, Allowlist, load_allowlist
 from lib.channel_blocklist import ChannelBlocklist, load_channel_blocklist
 from lib.filters import FilterStats, Video, apply_filters, dedupe
 from lib.normalize import normalize
+from lib.actions_status import batch_succeeded_on
 from lib.quota import DEFAULT_HARD_CAP, QuotaBudget, QuotaExceeded, build_estimate
 from lib.quota_log import (
     DAILY_CEILING,
@@ -1044,6 +1045,7 @@ def run(args: argparse.Namespace, spent_box: dict[str, Any] | None = None) -> in
                 estimated,
                 ceiling=args.daily_ceiling,
                 reserve_actions_batch=args.reserve_actions_batch,
+                batch_probe=batch_succeeded_on,
             )
         except QuotaBudgetExceeded as exc:
             logger.error("%s", exc)

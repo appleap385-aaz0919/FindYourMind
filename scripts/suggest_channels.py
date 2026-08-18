@@ -49,6 +49,7 @@ from lib.allowlist import NO_UPLOAD_DAYS, load_allowlist
 from lib.filters import blocklist_text, parse_duration
 from lib.normalize import matched_terms
 from lib.quota import COST, QuotaBudget, QuotaExceeded
+from lib.actions_status import batch_succeeded_on
 from lib.quota_log import (
     DAILY_CEILING,
     DEFAULT_LOG,
@@ -446,6 +447,30 @@ def run(args: argparse.Namespace, budget_box: dict[str, Any] | None = None) -> i
     if estimated > args.hard_cap:
         logger.error("예상 소모량이 하드캡을 넘는다 — 중단한다")
         return EXIT_QUOTA
+
+    # 하드캡은 "이번 실행 하나"의 상한이고, 아래는 "그날 전체"의 상한이다.
+    # 둘 다 있어야 한다 — 이 스크립트는 하루에 여러 번 돌려볼 수 있고,
+    # 한 번에 661이면 하드캡(1,200)은 통과하지만 세 번 돌면 배치 몫을 까먹는다.
+    # (2026-08-18까지 check를 import만 하고 부르지 않아 이 검사가 빠져 있었다.
+    #  --daily-ceiling·--no-reserve-actions-batch 플래그도 아무 일을 하지 않았다.)
+    if not args.dry_run and not args.no_quota_log:
+        try:
+            usage, reserve = check_daily_quota(
+                args.quota_log,
+                estimated,
+                ceiling=args.daily_ceiling,
+                reserve_actions_batch=args.reserve_actions_batch,
+                batch_probe=batch_succeeded_on,
+            )
+        except QuotaBudgetExceeded as exc:
+            logger.error("%s", exc)
+            logger.error(
+                "그날 이미 쓴 양을 포함한 판단이다. "
+                "정말 실행하려면 --no-quota-log, Actions 배치 예약을 빼려면 "
+                "--no-reserve-actions-batch."
+            )
+            return EXIT_QUOTA
+        print(quota_table(usage, estimated, reserve, args.daily_ceiling))
 
     budget = QuotaBudget(hard_cap=args.hard_cap)
     if budget_box is not None:
