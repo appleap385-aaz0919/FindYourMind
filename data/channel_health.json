@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-01T13:39:13Z",
+  "checked_at": "2026-09-02T12:56:11Z",
   "allowlist_size": 16,
   "placeholder_count": 0,
   "thresholds": {
@@ -14,13 +14,13 @@
       "channel_id": "UC1RG7m8FwFKgB3IpfN3ccew",
       "channel_name": "힐링트리뮤직 Healing Tree Music & Sounds",
       "alive": true,
-      "last_upload_at": "2026-08-25T14:00:02Z",
-      "days_since_upload": 6,
+      "last_upload_at": "2026-09-01T14:00:28Z",
+      "days_since_upload": 0,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 20,
+      "days_since_review": 21,
       "status": "ok"
     },
     {
@@ -33,7 +33,7 @@
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 20,
+      "days_since_review": 21,
       "status": "ok"
     },
     {
@@ -41,12 +41,12 @@
       "channel_name": "소리바구니 SoriBaguni ASMR",
       "alive": true,
       "last_upload_at": "2026-08-24T12:30:08Z",
-      "days_since_upload": 8,
+      "days_since_upload": 9,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 20,
+      "days_since_review": 21,
       "status": "ok"
     },
     {
@@ -54,25 +54,25 @@
       "channel_name": "뮤직 메이트 Music Mate",
       "alive": true,
       "last_upload_at": "2026-08-30T11:15:01Z",
-      "days_since_upload": 2,
+      "days_since_upload": 3,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 20,
+      "days_since_review": 21,
       "status": "ok"
     },
     {
       "channel_id": "UCYMEXdU9oVJ6JUoyL8Fv06Q",
       "channel_name": "마인드피아노 MIND PIANO",
       "alive": true,
-      "last_upload_at": "2026-08-23T09:37:58Z",
-      "days_since_upload": 9,
+      "last_upload_at": "2026-09-01T22:30:33Z",
+      "days_since_upload": 0,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 20,
+      "days_since_review": 21,
       "status": "ok"
     },
     {
@@ -80,12 +80,12 @@
       "channel_name": "BeiGe Mellow 베이지멜로우",
       "alive": true,
       "last_upload_at": "2026-08-28T01:37:43Z",
-      "days_since_upload": 4,
+      "days_since_upload": 5,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 20,
+      "days_since_review": 21,
       "status": "ok"
     },
     {
@@ -93,25 +93,25 @@
       "channel_name": "살구사운드 SalguSound",
       "alive": true,
       "last_upload_at": "2026-08-31T23:15:36Z",
-      "days_since_upload": 0,
+      "days_since_upload": 1,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 20,
+      "days_since_review": 21,
       "status": "ok"
     },
     {
       "channel_id": "UC5jSCU8FpKGr8P5Z-p-70lw",
       "channel_name": "브레이너 제이의 숙면 여행",
       "alive": true,
-      "last_upload_at": "2026-08-25T13:28:07Z",
-      "days_since_upload": 7,
+      "last_upload_at": "2026-09-01T14:22:04Z",
+      "days_since_upload": 0,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 20,
+      "days_since_review": 21,
       "status": "ok"
     },
     {
@@ -124,7 +124,7 @@
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 20,
+      "days_since_review": 21,
       "status": "ok"
     },
     {
@@ -132,12 +132,12 @@
       "channel_name": "퓨얼리 피아노 𝚋𝚐𝚖",
       "alive": true,
       "last_upload_at": "2026-08-21T21:11:04Z",
-      "days_since_upload": 10,
+      "days_since_upload": 11,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 20,
+      "days_since_review": 21,
       "status": "ok"
     },
     {
@@ -150,7 +150,7 @@
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 14,
+      "days_since_review": 15,
       "status": "ok"
     },
     {
@@ -163,7 +163,7 @@
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 14,
+      "days_since_review": 15,
       "status": "ok"
     },
     {
@@ -176,20 +176,20 @@
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 14,
+      "days_since_review": 15,
       "status": "ok"
     },
     {
       "channel_id": "UCr0Dgam-vK5BAGGYOv2IDpA",
       "channel_name": "Healing Now",
       "alive": true,
-      "last_upload_at": "2026-08-31T14:10:36Z",
+      "last_upload_at": "2026-09-01T14:23:00Z",
       "days_since_upload": 0,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 14,
+      "days_since_review": 15,
       "status": "ok"
     },
     {
@@ -202,20 +202,20 @@
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 14,
+      "days_since_review": 15,
       "status": "ok"
     },
     {
       "channel_id": "UCa1a7JFwJfDs-1nbc1YWZDw",
       "channel_name": "mini Music 미니뮤직",
       "alive": true,
-      "last_upload_at": "2026-09-01T05:33:57Z",
+      "last_upload_at": "2026-09-02T07:32:30Z",
       "days_since_upload": 0,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 14,
+      "days_since_review": 15,
       "status": "ok"
     }
   ],
