@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-15T13:39:05Z",
+  "checked_at": "2026-10-16T13:28:25Z",
   "allowlist_size": 16,
   "placeholder_count": 0,
   "thresholds": {
@@ -15,12 +15,12 @@
       "channel_name": "힐링트리뮤직 Healing Tree Music & Sounds",
       "alive": true,
       "last_upload_at": "2026-10-13T14:00:32Z",
-      "days_since_upload": 1,
+      "days_since_upload": 2,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 64,
+      "days_since_review": 65,
       "status": "ok"
     },
     {
@@ -28,12 +28,12 @@
       "channel_name": "힐링포유 Healing for you",
       "alive": true,
       "last_upload_at": "2026-09-28T12:57:26Z",
-      "days_since_upload": 17,
+      "days_since_upload": 18,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 64,
+      "days_since_review": 65,
       "status": "ok"
     },
     {
@@ -41,12 +41,12 @@
       "channel_name": "소리바구니 SoriBaguni ASMR",
       "alive": true,
       "last_upload_at": "2026-09-14T12:30:24Z",
-      "days_since_upload": 31,
+      "days_since_upload": 32,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 64,
+      "days_since_review": 65,
       "status": "ok"
     },
     {
@@ -54,12 +54,12 @@
       "channel_name": "뮤직 메이트 Music Mate",
       "alive": true,
       "last_upload_at": "2026-09-27T12:00:14Z",
-      "days_since_upload": 18,
+      "days_since_upload": 19,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 64,
+      "days_since_review": 65,
       "status": "ok"
     },
     {
@@ -67,12 +67,12 @@
       "channel_name": "마인드피아노 MIND PIANO",
       "alive": true,
       "last_upload_at": "2026-10-10T23:42:37Z",
-      "days_since_upload": 4,
+      "days_since_upload": 5,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 64,
+      "days_since_review": 65,
       "status": "ok"
     },
     {
@@ -80,12 +80,12 @@
       "channel_name": "BeiGe Mellow 베이지멜로우",
       "alive": true,
       "last_upload_at": "2026-09-20T23:00:12Z",
-      "days_since_upload": 24,
+      "days_since_upload": 25,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 64,
+      "days_since_review": 65,
       "status": "ok"
     },
     {
@@ -93,12 +93,12 @@
       "channel_name": "살구사운드 SalguSound",
       "alive": true,
       "last_upload_at": "2026-10-12T23:15:31Z",
-      "days_since_upload": 2,
+      "days_since_upload": 3,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 64,
+      "days_since_review": 65,
       "status": "ok"
     },
     {
@@ -106,12 +106,12 @@
       "channel_name": "브레이너 제이의 숙면 여행",
       "alive": true,
       "last_upload_at": "2026-10-14T13:21:48Z",
-      "days_since_upload": 1,
+      "days_since_upload": 2,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 64,
+      "days_since_review": 65,
       "status": "ok"
     },
     {
@@ -124,7 +124,7 @@
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 64,
+      "days_since_review": 65,
       "status": "ok"
     },
     {
@@ -132,12 +132,12 @@
       "channel_name": "퓨얼리 피아노 𝚋𝚐𝚖",
       "alive": true,
       "last_upload_at": "2026-10-08T01:17:39Z",
-      "days_since_upload": 7,
+      "days_since_upload": 8,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 64,
+      "days_since_review": 65,
       "status": "ok"
     },
     {
@@ -145,25 +145,25 @@
       "channel_name": "낮잠 NZ Ambience",
       "alive": true,
       "last_upload_at": "2026-10-11T10:03:59Z",
-      "days_since_upload": 4,
+      "days_since_upload": 5,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 58,
+      "days_since_review": 59,
       "status": "ok"
     },
     {
       "channel_id": "UCdbicYdErYTR-J4ZTVz6kUg",
       "channel_name": "Yunchan Lim - 수면 음악 프로듀서",
       "alive": true,
-      "last_upload_at": "2026-10-15T13:07:32Z",
+      "last_upload_at": "2026-10-16T13:03:56Z",
       "days_since_upload": 0,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 58,
+      "days_since_review": 59,
       "status": "ok"
     },
     {
@@ -171,12 +171,12 @@
       "channel_name": "smilemedia",
       "alive": true,
       "last_upload_at": "2026-10-14T13:00:34Z",
-      "days_since_upload": 1,
+      "days_since_upload": 2,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 58,
+      "days_since_review": 59,
       "status": "ok"
     },
     {
@@ -189,7 +189,7 @@
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 58,
+      "days_since_review": 59,
       "status": "ok"
     },
     {
@@ -197,12 +197,12 @@
       "channel_name": "카메랄라 힐링 빗소리",
       "alive": true,
       "last_upload_at": "2026-10-15T13:00:14Z",
-      "days_since_upload": 0,
+      "days_since_upload": 1,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 58,
+      "days_since_review": 59,
       "status": "ok"
     },
     {
@@ -210,12 +210,12 @@
       "channel_name": "mini Music 미니뮤직",
       "alive": true,
       "last_upload_at": "2026-10-07T01:16:13Z",
-      "days_since_upload": 8,
+      "days_since_upload": 9,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 58,
+      "days_since_review": 59,
       "status": "ok"
     }
   ],
