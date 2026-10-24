@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-23T13:44:40Z",
+  "checked_at": "2026-10-24T12:53:29Z",
   "allowlist_size": 16,
   "placeholder_count": 0,
   "thresholds": {
@@ -15,12 +15,12 @@
       "channel_name": "힐링트리뮤직 Healing Tree Music & Sounds",
       "alive": true,
       "last_upload_at": "2026-10-20T14:00:09Z",
-      "days_since_upload": 2,
+      "days_since_upload": 3,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 72,
+      "days_since_review": 73,
       "status": "ok"
     },
     {
@@ -33,7 +33,7 @@
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 72,
+      "days_since_review": 73,
       "status": "ok"
     },
     {
@@ -41,12 +41,12 @@
       "channel_name": "소리바구니 SoriBaguni ASMR",
       "alive": true,
       "last_upload_at": "2026-09-14T12:30:24Z",
-      "days_since_upload": 39,
+      "days_since_upload": 40,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 72,
+      "days_since_review": 73,
       "status": "ok"
     },
     {
@@ -54,12 +54,12 @@
       "channel_name": "뮤직 메이트 Music Mate",
       "alive": true,
       "last_upload_at": "2026-10-18T11:30:21Z",
-      "days_since_upload": 5,
+      "days_since_upload": 6,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 72,
+      "days_since_review": 73,
       "status": "ok"
     },
     {
@@ -67,12 +67,12 @@
       "channel_name": "마인드피아노 MIND PIANO",
       "alive": true,
       "last_upload_at": "2026-10-21T23:38:10Z",
-      "days_since_upload": 1,
+      "days_since_upload": 2,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 72,
+      "days_since_review": 73,
       "status": "ok"
     },
     {
@@ -80,12 +80,12 @@
       "channel_name": "BeiGe Mellow 베이지멜로우",
       "alive": true,
       "last_upload_at": "2026-09-20T23:00:12Z",
-      "days_since_upload": 32,
+      "days_since_upload": 33,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 72,
+      "days_since_review": 73,
       "status": "ok"
     },
     {
@@ -93,12 +93,12 @@
       "channel_name": "살구사운드 SalguSound",
       "alive": true,
       "last_upload_at": "2026-10-19T23:15:05Z",
-      "days_since_upload": 3,
+      "days_since_upload": 4,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 72,
+      "days_since_review": 73,
       "status": "ok"
     },
     {
@@ -111,7 +111,7 @@
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 72,
+      "days_since_review": 73,
       "status": "ok"
     },
     {
@@ -124,7 +124,7 @@
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 72,
+      "days_since_review": 73,
       "status": "ok"
     },
     {
@@ -132,12 +132,12 @@
       "channel_name": "퓨얼리 피아노 𝚋𝚐𝚖",
       "alive": true,
       "last_upload_at": "2026-10-08T01:17:39Z",
-      "days_since_upload": 15,
+      "days_since_upload": 16,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-12",
-      "days_since_review": 72,
+      "days_since_review": 73,
       "status": "ok"
     },
     {
@@ -145,12 +145,12 @@
       "channel_name": "낮잠 NZ Ambience",
       "alive": true,
       "last_upload_at": "2026-10-23T07:42:32Z",
-      "days_since_upload": 0,
+      "days_since_upload": 1,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 66,
+      "days_since_review": 67,
       "status": "ok"
     },
     {
@@ -163,7 +163,7 @@
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 66,
+      "days_since_review": 67,
       "status": "ok"
     },
     {
@@ -176,20 +176,20 @@
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 66,
+      "days_since_review": 67,
       "status": "ok"
     },
     {
       "channel_id": "UCr0Dgam-vK5BAGGYOv2IDpA",
       "channel_name": "Healing Now",
       "alive": true,
-      "last_upload_at": "2026-10-22T14:30:25Z",
+      "last_upload_at": "2026-10-23T14:15:09Z",
       "days_since_upload": 0,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 66,
+      "days_since_review": 67,
       "status": "ok"
     },
     {
@@ -197,12 +197,12 @@
       "channel_name": "카메랄라 힐링 빗소리",
       "alive": true,
       "last_upload_at": "2026-10-22T13:54:21Z",
-      "days_since_upload": 0,
+      "days_since_upload": 1,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 66,
+      "days_since_review": 67,
       "status": "ok"
     },
     {
@@ -210,12 +210,12 @@
       "channel_name": "mini Music 미니뮤직",
       "alive": true,
       "last_upload_at": "2026-10-07T01:16:13Z",
-      "days_since_upload": 16,
+      "days_since_upload": 17,
       "recent_checked": 10,
       "blocklist_pass_rate": 1.0,
       "blocked_titles": [],
       "last_reviewed_at": "2026-08-18",
-      "days_since_review": 66,
+      "days_since_review": 67,
       "status": "ok"
     }
   ],
